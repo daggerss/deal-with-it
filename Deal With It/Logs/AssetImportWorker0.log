@@ -4071,3 +4071,4 @@ Received Import Request.
   path: Assets/Scripts/Cards/Actions
   artifactKey: Guid(06e6858517949e84b866cc9765fbff4d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Scripts/Cards/Actions using Guid(06e6858517949e84b866cc9765fbff4d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bba4844972c16411674ce124dbf77a22') in 0.005891 seconds 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
