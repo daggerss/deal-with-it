@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc03cd37f96abe54ca195cfd60c3f0d1, type: 3}
   m_Name: Knot
   m_EditorClassIdentifier: 
-  <CardName>k__BackingField: Knot
-  <CardDescription>k__BackingField: They're easy to anger and has high anxiety, but
-    they're not afraid to express themself!
+  _cardName: Knot
+  _cardDescription: They're easy to anger and has high anxiety, but they're not afraid
+    to express themself!
+  <Illustration>k__BackingField: {fileID: 0}
   _cardGoals:
-  - Maintain less than 6 points for anger and fear for 7 rounds
+  - Maintain less than 6 points of anger and fear for 7 rounds
   - Keep all other emotions within 6-8 points for 7 rounds
   - Don't use more than 3 expression cards in succession in a round
-  <Illustration>k__BackingField: {fileID: 0}
