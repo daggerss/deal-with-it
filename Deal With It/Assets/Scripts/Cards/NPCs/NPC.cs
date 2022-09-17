@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NPC Card", menuName = "Deal With It/Cards/NPC Card", order = 0)]
-public class NPC : ScriptableObject
+public class NPC : Card
 {
-    [field: SerializeField]
-    public string CardName {get; private set;}
+    // [field: SerializeField]
+    // public string CardName {get; private set;}
 
-    [field: SerializeField]
-    [field: TextArea(1,3)]
-    public string CardDescription {get; private set;}
+    // [field: SerializeField]
+    // [field: TextArea(1,3)]
+    // public string CardDescription {get; private set;}
 
     [SerializeField]
     [TextArea(1,5)]
