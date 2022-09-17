@@ -16,10 +16,10 @@ public class NPC : Card
     // Serialization is causing issues, but it's not necessary since emotions are
     // set within a range for each game.
     private int _energyLvl = 20;
-    private int _joyLvl;
-    private int _sadnessLvl;
-    private int _fearLvl;
-    private int _angerLvl;
+    private int _joyLvl = 7;
+    private int _sadnessLvl = 7;
+    private int _fearLvl = 7;
+    private int _angerLvl = 7;
 
     public int EnergyLvl
     {
