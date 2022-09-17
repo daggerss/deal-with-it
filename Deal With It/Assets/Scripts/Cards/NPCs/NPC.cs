@@ -9,6 +9,7 @@ public class NPC : Card
     [SerializeField]
     [TextArea(1,5)]
     List<string> _cardGoals = new List<string>();
+    public List<string> CardGoals => _cardGoals;
 
     /* ------------------------- Energy & Emotion Levels ------------------------ */
     // The energy and emotion levels are capped accordingly.
