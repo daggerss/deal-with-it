@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6af4158c31e9d04da24e92c4b1aa214, type: 3}
   m_Name: Full Stack
   m_EditorClassIdentifier: 
-  _CardName: 
-  _CardDescription: 
+  _CardName: Full Stack
+  _CardDescription: You're thinking about your workload for the week. It's going
+    to be hectic!
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: 20
-  _joyVal: 0
+  _energyVal: 0
+  _joyVal: -1
   _sadnessVal: 0
-  _fearVal: 0
+  _fearVal: 2
   _angerVal: 0

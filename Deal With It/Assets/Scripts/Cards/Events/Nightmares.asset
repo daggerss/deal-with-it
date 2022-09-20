@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6af4158c31e9d04da24e92c4b1aa214, type: 3}
   m_Name: Nightmares
   m_EditorClassIdentifier: 
-  _CardName: 
-  _CardDescription: 
+  _CardName: Nightmares
+  _CardDescription: AAAH! The bogeyman paid you a visit in your sleep, waking you
+    up in a sweat at 3am.
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: 20
+  _energyVal: -2
   _joyVal: 0
   _sadnessVal: 0
-  _fearVal: 0
+  _fearVal: 3
   _angerVal: 0

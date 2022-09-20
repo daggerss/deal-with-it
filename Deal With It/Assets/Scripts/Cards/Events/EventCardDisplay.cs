@@ -5,14 +5,14 @@ using UnityEngine.UI;
 
 public class EventCardDisplay : MonoBehaviour
 {
-    public Event eventCard;
+    public Event[] EventCard;
 
-    public Text nameText;
+    public Text NameText;
 
     // Start is called before the first frame update
     void Start()
     {
-        nameText.text = eventCard.CardName;
+        
     }
 
     // Update is called once per frame
