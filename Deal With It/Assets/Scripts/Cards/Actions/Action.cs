@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Event Card", menuName = "Deal With It/Cards/Event Card", order = 0)]
-public class Event : Card
+[CreateAssetMenu(fileName = "Action Card", menuName = "Deal With It/Cards/Action Card", order = 0)]
+public class Action : Card
 {
     [field: SerializeField]
     public Sprite Illustration {get; private set;}
@@ -16,6 +16,7 @@ public class Event : Card
     [SerializeField] private int _sadnessVal;
     [SerializeField] private int _fearVal;
     [SerializeField] private int _angerVal;
+    [SerializeField] private string _actionType;
 
     public int EnergyVal
     {
@@ -74,6 +75,14 @@ public class Event : Card
         set
         {
             _angerVal = Mathf.Clamp(value, -13, 13);
+        }
+    }
+
+    public string ActionType
+    {
+        get
+        {
+            return _actionType.ToUpper();
         }
     }
 }

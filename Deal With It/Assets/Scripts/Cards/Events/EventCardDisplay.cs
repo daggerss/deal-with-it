@@ -44,10 +44,6 @@ public class EventCardDisplay : MonoBehaviour
         if(RoundController.Round != CurrentRound){
             CurrentRound = RoundController.Round;
 
-            /* -------------------------------------------------------------------------- */
-            /*                             // Temporary Delete                            */
-            /* -------------------------------------------------------------------------- */
-
             // Select New Card
             CurrentEventCard = EventCard[GetRandomCard()];
             CurrentEventCardText.text = CurrentEventCard.CardName;

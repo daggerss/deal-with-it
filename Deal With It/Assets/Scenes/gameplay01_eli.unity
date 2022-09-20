@@ -758,7 +758,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2070779330}
-  - component: {fileID: 2070779329}
   m_Layer: 0
   m_Name: Background Elements
   m_TagString: Untagged
@@ -766,18 +765,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2070779329
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2070779328}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e14ba180f7d0e94b8287e716591f116, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &2070779330
 Transform:
   m_ObjectHideFlags: 0
