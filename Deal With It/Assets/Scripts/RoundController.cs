@@ -17,8 +17,9 @@ public class RoundController : MonoBehaviour
         }
     }
 
+    // Executes on next round
     public void NextRound(){
-        Debug.Log("Next Round");
+        _Round++;
     }
 
     // Start is called before the first frame update
