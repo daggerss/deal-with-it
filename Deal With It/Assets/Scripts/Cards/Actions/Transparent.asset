@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aa43e862d793eb4f9dac7fb1437dbe1, type: 3}
   m_Name: Transparent
   m_EditorClassIdentifier: 
-  _CardName: 
-  _CardDescription: 
+  _CardName: Transparent
+  _CardDescription: Calmly explain your feelings to a trusted friend or the person
+    who hurt you. People don't read minds, so it's important to be clear!
   <Illustration>k__BackingField: {fileID: 0}
   _energyVal: 0
   _joyVal: 0
-  _sadnessVal: 0
+  _sadnessVal: -1
   _fearVal: 0
-  _angerVal: 0
-  _actionType: 
+  _angerVal: -2
+  _actionType: Expression
