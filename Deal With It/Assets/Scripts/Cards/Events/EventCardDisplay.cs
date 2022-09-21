@@ -1,4 +1,4 @@
-using System; // For Array Resize
+using System; // For Array Controllers
 using System.Linq; // For Count() method 
 using System.Collections;
 using System.Collections.Generic;
@@ -19,7 +19,7 @@ public class EventCardDisplay : MonoBehaviour
     // Round Variables
     public GameObject RoundObject;
     private RoundController RoundController;
-    private int CurrentRound;
+    private int CurrentRound = -1;
 
     /* ----------------------------- Default Methods ---------------------------- */
     // Start is called before the first frame update
@@ -27,7 +27,6 @@ public class EventCardDisplay : MonoBehaviour
     {
         // Initializing the RoundController variable to access the RoundController from the RoundController Object (kinda confusing to type it xd)
         RoundController = (RoundController)RoundObject.GetComponent(typeof(RoundController));
-        CurrentRound = RoundController.Round;
 
         // Updating array size of SelectedEventCards to match the array size of the total number of EventCards
         Array.Resize(ref SelectedEventCards, EventCard.Length);
