@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     private int SelectedCard = -1;
 
     // Misc
-    private Vector2 OriginalButtonSize;
+    private Vector2[] OriginalButtonPosition = new Vector2[5];
 
     // Array of cards in a player's hand (public if we're adding feature when other players can look into ur hand)
     public Action[] CardsInHand = new Action[5];
@@ -28,22 +28,23 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Initializing the ActionCardDeck
+        // Initializing the ActionCardDeck 
         ActionCardDeck = (ActionCardDeck)GameObject.FindGameObjectWithTag("Action Card Deck").GetComponent(typeof(ActionCardDeck));
 
         // Initializing the RoundController 
         RoundController = (RoundController)GameObject.FindGameObjectWithTag("Round Controller").GetComponent(typeof(RoundController));
 
         // Initializing OriginalButtonSize
-        OriginalButtonSize = CardsInHandButton[0].transform.localScale;
+        for(int i = 0; i < OriginalButtonPosition.Length; i++){
+            OriginalButtonPosition[i] = CardsInHandButton[i].transform.position;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Debug.Log(RoundController.Round);
-        // Debug.Log(CurrentRound);
         if(RoundController.Round != CurrentRound){
+            // Set Current round to roundcontroller.round so the if doesn't repeat 
             CurrentRound = RoundController.Round;
             SelectedCard = -1;
 
@@ -60,12 +61,25 @@ public class PlayerController : MonoBehaviour
                 // Writes down the card name for a button
                 CardsInHandText[IndexOfEmptyElement].text = PickedCard.CardName;
 
+                // Check for empty slot again for the while loop
                 IndexOfEmptyElement = Array.IndexOf(CardsInHand, null);
             }
         }
     }
 
-    public void PlayCard(int CardIndex){
+    // Check If Player Has Card Buttons
+    private bool PlayerHasButtons(){
+        foreach(Button btn in CardsInHandButton){
+            if(btn != null){
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    // Select Card
+    public void SelectCard(int CardIndex){
         // If a player clicks on a card twice it will deselect the card
         if(CardIndex == SelectedCard){
             SelectedCard = -1;
@@ -77,11 +91,13 @@ public class PlayerController : MonoBehaviour
             // Do nothing
         }
 
+        // Flare for selected card and non-flare for non selected cards
         for(int i = 0; i < CardsInHandButton.Length; i++){
+            Button CurrentButton = CardsInHandButton[i];
             if(SelectedCard == i){
-                CardsInHandButton[i].transform.localScale = new Vector2(1.2f, 1.2f);
+                CurrentButton.transform.position = new Vector2(CurrentButton.transform.position.x, CurrentButton.transform.position.y + 2f);
             }else{
-                CardsInHandButton[i].transform.localScale = OriginalButtonSize;
+                CurrentButton.transform.position = OriginalButtonPosition[i];
             }
         }
     }
