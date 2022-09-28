@@ -6,23 +6,16 @@ public class Card : ScriptableObject
 {
     /* -------------------------------- Card Name ------------------------------- */
     [SerializeField]
-    private string _CardName;
-    public string CardName => _CardName;
+    private string _cardName;
+    public string CardName => _cardName;
 
     /* ---------------------------- Card Description ---------------------------- */
     [SerializeField] 
     [TextArea(1, 3)]
-    private string _CardDescription;
-    public string CardDescription => _CardDescription;
+    private string _cardDescription;
+    public string CardDescription => _cardDescription;
 
-    /* ------------------------------- Test things ------------------------------ */
-    // public Card(string CardName, string CardDescription){
-    //     _CardName = CardName;
-    //     _CardDescription = CardDescription;
-    // }
-
-    public void Info(){
-        Debug.Log("Card Name: " + _CardName);
-        Debug.Log("Card Description: " + _CardDescription);
-    }
+    /* ------------------------------- Card Sprite ------------------------------ */
+    [field: SerializeField]
+    public Sprite Illustration {get; private set;}
 }
