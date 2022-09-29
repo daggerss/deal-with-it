@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc03cd37f96abe54ca195cfd60c3f0d1, type: 3}
   m_Name: Sniffles
   m_EditorClassIdentifier: 
-  <CardName>k__BackingField: Sniffles
-  <CardDescription>k__BackingField: "This one\u2019s fragile! But they\u2019re clear
-    about what they need and how they feel."
-  _cardGoals:
-  - Reach 6-8 points for all emotions
+  _cardName: Sniffles
+  _cardDescription: This one's fragile! But they're clear about how they feel and
+    what they need.
   <Illustration>k__BackingField: {fileID: 0}
+  _cardGoals:
+  - Reach 6-8 points on all emotions

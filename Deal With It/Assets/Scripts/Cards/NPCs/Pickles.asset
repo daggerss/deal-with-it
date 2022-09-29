@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc03cd37f96abe54ca195cfd60c3f0d1, type: 3}
   m_Name: Pickles
   m_EditorClassIdentifier: 
-  <CardName>k__BackingField: Pickles
-  <CardDescription>k__BackingField: Though they tend to procrastinate and bottle
-    up emotions, they find it easy to look at the silver lining.
-  _cardGoals:
-  - Use 10 expression cards in total
-  - No emotion should go above 10 points after the first round
+  _cardName: Pickles
+  _cardDescription: Though they tend to procrastinate and bottle up emotions, they
+    find it easier to look at the silver lining.
   <Illustration>k__BackingField: {fileID: 0}
+  _cardGoals:
+  - Keep all emotions below 11 points after the first round
+  - Use 10 expression cards in total
