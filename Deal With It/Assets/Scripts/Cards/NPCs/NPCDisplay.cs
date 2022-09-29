@@ -47,6 +47,13 @@ public class NPCDisplay : MonoBehaviour
             npc.FearLvl = Random.Range(9, 12);
             npc.AngerLvl = Random.Range(9, 12);
         }
+        else
+        {
+            npc.JoyLvl = Random.Range(6, 9);
+            npc.SadnessLvl = Random.Range(6, 9);
+            npc.FearLvl = Random.Range(6, 9);
+            npc.AngerLvl = Random.Range(6, 9);
+        }
 
         // Setting information UI
         cardTypeText.text = npc.GetType().Name;
