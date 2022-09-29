@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aa43e862d793eb4f9dac7fb1437dbe1, type: 3}
   m_Name: Meditate
   m_EditorClassIdentifier: 
-  _CardName: Meditate
-  _CardDescription: Be aware of your thoughts, emotions, and sensations. Let it flow
+  _cardName: Meditate
+  _cardDescription: Be aware of your thoughts, emotions, and sensations. Let it flow
     through you.
   <Illustration>k__BackingField: {fileID: 0}
   _energyVal: 0

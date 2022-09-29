@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aa43e862d793eb4f9dac7fb1437dbe1, type: 3}
   m_Name: Learning Opportunity
   m_EditorClassIdentifier: 
-  _CardName: Learning Opportunity
-  _CardDescription: What lessons did you learn? How can you grow and develop from
-    your situation?
+  _cardName: Learning Opportunity
+  _cardDescription: What lessons did you learn? How can you grow and develop from
+    your situation
   <Illustration>k__BackingField: {fileID: 0}
   _energyVal: 0
   _joyVal: 0

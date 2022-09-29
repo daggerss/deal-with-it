@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aa43e862d793eb4f9dac7fb1437dbe1, type: 3}
   m_Name: Even Temper
   m_EditorClassIdentifier: 
-  _CardName: Even Temper
-  _CardDescription: Speak quietly instead of yelling to help halt an intense emotion
+  _cardName: Even Temper
+  _cardDescription: Speak quietly instead of yelling to help halt an intense emotion
     from escalating. But it's still important to let your voice be heard!
   <Illustration>k__BackingField: {fileID: 0}
   _energyVal: 0

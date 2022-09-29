@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6af4158c31e9d04da24e92c4b1aa214, type: 3}
   m_Name: Memories Apart
   m_EditorClassIdentifier: 
-  _CardName: Memories Apart
-  _CardDescription: A trinket from a store reminded you of a friend you had a falling
+  _cardName: Memories Apart
+  _cardDescription: A trinket from a store reminded you off a friend you had a falling
     out with.
   <Illustration>k__BackingField: {fileID: 0}
   _energyVal: 0

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6af4158c31e9d04da24e92c4b1aa214, type: 3}
   m_Name: Shenzhen Limbo
   m_EditorClassIdentifier: 
-  _CardName: Shenzhen Limbo
-  _CardDescription: Your package has been in the sorting center for days. How much
+  _cardName: Shenzhen Limbo
+  _cardDescription: Your package has been in the sorting center for days. How much
     longer do you have to wait?
   <Illustration>k__BackingField: {fileID: 0}
   _energyVal: 0

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aa43e862d793eb4f9dac7fb1437dbe1, type: 3}
   m_Name: Movie Night
   m_EditorClassIdentifier: 
-  _CardName: Movie Night
-  _CardDescription: Stay in bed and watch a fun movie! You deserve to relax after
+  _cardName: Movie Night
+  _cardDescription: Stay in bed and watch a fun movie! You deserve to relax after
     a long day.
   <Illustration>k__BackingField: {fileID: 0}
   _energyVal: 0

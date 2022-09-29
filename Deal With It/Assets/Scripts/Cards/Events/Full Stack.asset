@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6af4158c31e9d04da24e92c4b1aa214, type: 3}
   m_Name: Full Stack
   m_EditorClassIdentifier: 
-  _CardName: Full Stack
-  _CardDescription: You're thinking about your workload for the week. It's going
+  _cardName: Full Stack
+  _cardDescription: You're thinking about your workload for the week. It's going
     to be hectic!
   <Illustration>k__BackingField: {fileID: 0}
   _energyVal: 0

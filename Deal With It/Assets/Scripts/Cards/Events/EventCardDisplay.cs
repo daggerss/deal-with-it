@@ -14,7 +14,8 @@ public class EventCardDisplay : MonoBehaviour
 
     // Displays the current event card being played
     private Event CurrentEventCard;
-    public Text CurrentEventCardText;
+    public Text CardNameText, CardDescriptionText, EnergyText, JoyText, SadnessText, FearText, AngerText;
+    public GameObject ThisObject;
 
     // Round Variables
     public GameObject RoundObject;
@@ -41,11 +42,19 @@ public class EventCardDisplay : MonoBehaviour
     {
         // If round is changed then select a new card from array
         if(RoundController.Round != CurrentRound){
+            ThisObject.SetActive(true);
             CurrentRound = RoundController.Round;
 
             // Select New Card
             CurrentEventCard = EventCard[GetRandomCard()];
-            CurrentEventCardText.text = CurrentEventCard.CardName;
+            //Format Text of New Card
+            CardNameText.text = CurrentEventCard.CardName;
+            CardDescriptionText.text = CurrentEventCard.CardDescription;
+            EnergyText.text = FormatText(CurrentEventCard.EnergyVal);
+            JoyText.text = FormatText(CurrentEventCard.JoyVal);
+            SadnessText.text = FormatText(CurrentEventCard.SadnessVal);
+            FearText.text = FormatText(CurrentEventCard.FearVal);
+            AngerText.text = FormatText(CurrentEventCard.AngerVal);
         }
     }
 
@@ -75,5 +84,19 @@ public class EventCardDisplay : MonoBehaviour
         // Output
         SelectedEventCards[IndexOfEmptyElement] = output;
         return output;
+    }
+
+    // Hides the card
+    public void HideCard(){
+        ThisObject.SetActive(false);
+    }
+
+    // Returns null if value is 0 (for printing values of energy etc.)
+    private string FormatText(int Value){
+        if(Value == 0){
+            return null;
+        }else{
+            return Value.ToString();
+        }
     }
 }

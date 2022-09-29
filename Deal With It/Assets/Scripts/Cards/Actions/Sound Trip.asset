@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aa43e862d793eb4f9dac7fb1437dbe1, type: 3}
   m_Name: Sound Trip
   m_EditorClassIdentifier: 
-  _CardName: Sound Trip
-  _CardDescription: Rock your heart out to music you relate to at this moment. Sing
+  _cardName: Sound Trip
+  _cardDescription: Rock your heart out to music you relate to at this moment. Sing
     into your comb and let it all out!
   <Illustration>k__BackingField: {fileID: 0}
   _energyVal: 0

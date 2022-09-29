@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6af4158c31e9d04da24e92c4b1aa214, type: 3}
   m_Name: A Cold Shoulder
   m_EditorClassIdentifier: 
-  _CardName: A Cold Shoulder
-  _CardDescription: Your friend is being unusually icy. Did you do something wrong?
+  _cardName: A Cold Shoulder
+  _cardDescription: Your friend is being unusually icy. Did you do something wrong?
   <Illustration>k__BackingField: {fileID: 0}
   _energyVal: 0
   _joyVal: 0

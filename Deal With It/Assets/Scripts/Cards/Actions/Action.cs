@@ -5,9 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Action Card", menuName = "Deal With It/Cards/Action Card", order = 0)]
 public class Action : Card
 {
-    [field: SerializeField]
-    public Sprite Illustration {get; private set;}
-
     // The energy and emotion levels are capped accordingly.
     // Serialization is causing issues, but it's not necessary since emotions
     // are set within a range for each game.

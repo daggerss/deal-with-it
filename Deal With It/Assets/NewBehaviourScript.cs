@@ -2,13 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActionCardDisplay : MonoBehaviour
+public class NewBehaviourScript : MonoBehaviour
 {
-    public PlayerController Owner;
-    public int CardNumber;
-    
-
-    //public Text CardNameText, CardDescriptionText;
     // Start is called before the first frame update
     void Start()
     {

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6af4158c31e9d04da24e92c4b1aa214, type: 3}
   m_Name: Free Cut
   m_EditorClassIdentifier: 
-  _CardName: Free Cut
-  _CardDescription: One of your classes got cancelled! You suddenly have some free
-    time. (Add a variable for extra actions)
+  _cardName: Free Cut
+  _cardDescription: One of your classes got cancelled! You suddenly have some free
+    time.
   <Illustration>k__BackingField: {fileID: 0}
   _energyVal: 1
   _joyVal: 0

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aa43e862d793eb4f9dac7fb1437dbe1, type: 3}
   m_Name: Overthinking
   m_EditorClassIdentifier: 
-  _CardName: Overthinking?
-  _CardDescription: Think about what a trusted friend would tell you right now. Are
+  _cardName: Overthinking?
+  _cardDescription: Think about what a trusted friend would tell you right now. Are
     your thoughts facts or opinions?
   <Illustration>k__BackingField: {fileID: 0}
   _energyVal: 0

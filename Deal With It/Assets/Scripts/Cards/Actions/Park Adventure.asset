@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aa43e862d793eb4f9dac7fb1437dbe1, type: 3}
   m_Name: Park Adventure
   m_EditorClassIdentifier: 
-  _CardName: Park Adventure
-  _CardDescription: Hang out with your friends at the park! You can prepare a picnic
+  _cardName: Park Adventure
+  _cardDescription: Hang out with your friends at the park! You can prepare a picnic
     for it too.
   <Illustration>k__BackingField: {fileID: 0}
   _energyVal: 0

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aa43e862d793eb4f9dac7fb1437dbe1, type: 3}
   m_Name: Not Myself Right Now
   m_EditorClassIdentifier: 
-  _CardName: Not Myself Right Now
-  _CardDescription: Let others know you're emotionally unavailable at the moment
-    and can come back to them later. It's okay to take time for yourself!
+  _cardName: Not Myself
+  _cardDescription: Let others know you're emotionally unavailable at the moment
+    and can come back to them later. It's okay to take time for yourself.
   <Illustration>k__BackingField: {fileID: 0}
   _energyVal: 0
   _joyVal: 0

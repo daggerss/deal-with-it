@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aa43e862d793eb4f9dac7fb1437dbe1, type: 3}
   m_Name: Remember When...
   m_EditorClassIdentifier: 
-  _CardName: Remember When...
-  _CardDescription: Share a happy memory with a friend. You had some good times!
+  _cardName: Remember When...
+  _cardDescription: Share a happy memory with a friend. You had some good times!
   <Illustration>k__BackingField: {fileID: 0}
   _energyVal: 0
   _joyVal: 2
