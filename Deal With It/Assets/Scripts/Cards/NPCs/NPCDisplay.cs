@@ -2,22 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class NPCDisplay : MonoBehaviour
 {
     public NPC npc;
 
     /* ---------------------------- Card Information ---------------------------- */
-    public Text nameText;
-    public Text descriptionText;
+    public TMP_Text cardTypeText;
+    public TMP_Text nameText;
+    public TMP_Text descriptionText;
 
     public Image illustrationImage;
 
-    public Text energyText;
-    public Text joyText;
-    public Text sadnessText;
-    public Text fearText;
-    public Text angerText;
+    public TMP_Text energyText;
+    public TMP_Text joyText;
+    public TMP_Text sadnessText;
+    public TMP_Text fearText;
+    public TMP_Text angerText;
 
     /* --------------------------------- Methods -------------------------------- */
     // Start is called before the first frame update
@@ -47,6 +49,7 @@ public class NPCDisplay : MonoBehaviour
         }
 
         // Setting information UI
+        cardTypeText.text = npc.GetType().Name;
         nameText.text = npc.CardName;
         descriptionText.text = npc.CardDescription;
 
