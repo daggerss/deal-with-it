@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class EventCardDisplay : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class EventCardDisplay : MonoBehaviour
 
     // Displays the current event card being played
     private Event CurrentEventCard;
-    public Text CardNameText, CardDescriptionText, EnergyText, JoyText, SadnessText, FearText, AngerText;
+    public TMP_Text CardTypeText, CardNameText, CardDescriptionText, EnergyText, JoyText, SadnessText, FearText, AngerText;
     public GameObject ThisObject;
 
     // Round Variables
@@ -48,6 +49,7 @@ public class EventCardDisplay : MonoBehaviour
             // Select New Card
             CurrentEventCard = EventCard[GetRandomCard()];
             //Format Text of New Card
+            CardTypeText.text = CurrentEventCard.GetType().Name;
             CardNameText.text = CurrentEventCard.CardName;
             CardDescriptionText.text = CurrentEventCard.CardDescription;
             EnergyText.text = FormatText(CurrentEventCard.EnergyVal);
