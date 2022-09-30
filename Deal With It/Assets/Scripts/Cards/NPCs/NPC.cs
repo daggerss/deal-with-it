@@ -80,4 +80,63 @@ public class NPC : Card
             _angerLvl = Mathf.Clamp(value, 0, 13);
         }
     }
+
+    /* ------------------------------ Trait Effects ----------------------------- */
+
+    // [GUIDE: EMOTIONS EFFECTS ONLY]
+    // Addend must be positive (+) when effects "increased", "more effective"
+    // Addend must be negative (-) when effects "diminished"
+    // If card emotion value is positive (+), add the addend
+    // If card emotion value is negative (-), subtract the addend
+
+    // Event Addends
+    [SerializeField]
+    private int _joyAddend;
+    public int JoyAddend => _joyAddend;
+
+    [SerializeField]
+    private int _sadnessAddend;
+    public int SadnessAddend => _sadnessAddend;
+    
+    [SerializeField]
+    private int _fearAddend;
+    public int FearAddend => _fearAddend;
+
+    [SerializeField]
+    private int _angerAddend;
+    public int AngerAddend => _angerAddend;
+
+    // Strategy Emotion Addends
+    [SerializeField]
+    private int _distractionEmotionAddend;
+    public int DistractionEmotionAddend => _distractionEmotionAddend;
+
+    [SerializeField]
+    private int _expressionEmotionAddend;
+    public int ExpressionEmotionAddend => _expressionEmotionAddend;
+    
+    [SerializeField]
+    private int _processingEmotionAddend;
+    public int ProcessingEmotionAddend => _processingEmotionAddend;
+
+    [SerializeField]
+    private int _reappraisalEmotionAddend;
+    public int ReappraisalEmotionAddend => _reappraisalEmotionAddend;
+
+    // Strategy Energy Addends
+    [SerializeField]
+    private int _distractionEnergyAddend;
+    public int DistractionEnergyAddend => _distractionEnergyAddend;
+
+    [SerializeField]
+    private int _expressionEnergyAddend;
+    public int ExpressionEnergyAddend => _expressionEnergyAddend;
+    
+    [SerializeField]
+    private int _processingEnergyAddend;
+    public int ProcessingEnergyAddend => _processingEnergyAddend;
+
+    [SerializeField]
+    private int _reappraisalEnergyAddend;
+    public int ReappraisalEnergyAddend => _reappraisalEnergyAddend;
 }

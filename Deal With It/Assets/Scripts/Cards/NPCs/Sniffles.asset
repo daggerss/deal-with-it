@@ -18,3 +18,15 @@ MonoBehaviour:
   <Illustration>k__BackingField: {fileID: 0}
   _cardGoals:
   - Reach 6-8 points on all emotions
+  _joyAddend: 2
+  _sadnessAddend: 2
+  _fearAddend: 2
+  _angerAddend: 2
+  _distractionEmotionAddend: 0
+  _expressionEmotionAddend: 1
+  _processingEmotionAddend: 1
+  _reappraisalEmotionAddend: 0
+  _distractionEnergyAddend: 0
+  _expressionEnergyAddend: 0
+  _processingEnergyAddend: 0
+  _reappraisalEnergyAddend: 0
