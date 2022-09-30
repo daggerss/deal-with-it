@@ -83,7 +83,7 @@ public class NPC : Card
 
     /* ------------------------------ Trait Effects ----------------------------- */
 
-    // [GUIDE: EMOTIONS EFFECTS ONLY]
+    // [GUIDE]
     // Addend must be positive (+) when effects "increased", "more effective"
     // Addend must be negative (-) when effects "diminished"
     // If card emotion value is positive (+), add the addend
