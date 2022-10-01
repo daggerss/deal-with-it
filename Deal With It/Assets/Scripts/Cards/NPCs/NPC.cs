@@ -86,8 +86,8 @@ public class NPC : Card
     // [GUIDE]
     // Addend must be positive (+) when effects "increased", "more effective"
     // Addend must be negative (-) when effects "diminished"
-    // If card emotion value is positive (+), add the addend
-    // If card emotion value is negative (-), subtract the addend
+    // If card energy/emotion value is positive (+), add the addend
+    // If card energy/emotion value is negative (-), subtract the addend
 
     // Event Addends
     [SerializeField]
