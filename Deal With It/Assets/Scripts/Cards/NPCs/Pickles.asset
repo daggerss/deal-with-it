@@ -19,3 +19,15 @@ MonoBehaviour:
   _cardGoals:
   - Keep all emotions below 11 points after the first round
   - Use 10 expression cards in total
+  _joyAddend: 0
+  _sadnessAddend: 0
+  _fearAddend: 0
+  _angerAddend: 0
+  _distractionEmotionAddend: -1
+  _expressionEmotionAddend: 0
+  _processingEmotionAddend: 0
+  _reappraisalEmotionAddend: 0
+  _distractionEnergyAddend: 0
+  _expressionEnergyAddend: 0
+  _processingEnergyAddend: 0
+  _reappraisalEnergyAddend: -1

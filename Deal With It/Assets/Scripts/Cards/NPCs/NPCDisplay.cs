@@ -21,10 +21,21 @@ public class NPCDisplay : MonoBehaviour
     public TMP_Text fearText;
     public TMP_Text angerText;
 
+    /* --------------------------------- Bar UI --------------------------------- */
+    public LevelBar EnergyBar;
+    public LevelBar JoyBar;
+    public LevelBar SadnessBar;
+    public LevelBar FearBar;
+    public LevelBar AngerBar;
+
     /* --------------------------------- Methods -------------------------------- */
     // Start is called before the first frame update
     void Start()
     {
+        // Set energy UI
+        EnergyBar.SetMaxValue(20);
+        EnergyBar.SetValue(20);
+
         // Set random starting emotion levels
         if (npc.CardName == "Knot")
         {
@@ -55,7 +66,18 @@ public class NPCDisplay : MonoBehaviour
             npc.AngerLvl = Random.Range(6, 9);
         }
 
-        // Setting information UI
+        // Set emotions UI
+        JoyBar.SetMaxValue(13);
+        SadnessBar.SetMaxValue(13);
+        FearBar.SetMaxValue(13);
+        AngerBar.SetMaxValue(13);
+
+        JoyBar.SetValue(npc.JoyLvl);
+        SadnessBar.SetValue(npc.SadnessLvl);
+        FearBar.SetValue(npc.FearLvl);
+        AngerBar.SetValue(npc.AngerLvl);
+
+        // Set text UI
         cardTypeText.text = npc.GetType().Name;
         nameText.text = npc.CardName;
         descriptionText.text = npc.CardDescription;
