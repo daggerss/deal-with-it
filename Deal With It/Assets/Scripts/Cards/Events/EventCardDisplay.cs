@@ -11,37 +11,37 @@ public class EventCardDisplay : MonoBehaviour
     /* -------------------------------- Variables ------------------------------- */
     // Arrays storing event cards
     public Event[] EventCard;
-    private int[] SelectedEventCards;
+    private int[] selectedEventCards;
 
     // NPC 
     public NPCDisplay NPCDisplay;
 
     // Displays the current event card being played
-    private Event CurrentEventCard;
+    private Event currentEventCard;
     public TMP_Text CardTypeText, CardNameText, CardDescriptionText, EnergyText, JoyText, SadnessText, FearText, AngerText;
     public Image EnergyImage, JoyImage, SadnessImage, FearImage, AngerImage;
     public GameObject ThisObject;
 
     // Round Variables
     public GameObject RoundObject;
-    private RoundController RoundController;
-    private int CurrentRound = -1;
+    private roundController roundController;
+    private int currentRound = -1;
 
     /* ----------------------------- Default Methods ---------------------------- */
     // Start is called before the first frame update
     void Start()
     {
-        // Initializing the RoundController variable to access the RoundController from the RoundController Object (kinda confusing to type it xd)
-        RoundController = (RoundController)RoundObject.GetComponent(typeof(RoundController));
+        // Initializing the roundController variable to access the roundController from the roundController Object (kinda confusing to type it xd)
+        roundController = (roundController)RoundObject.GetComponent(typeof(roundController));
 
         // Initialize the NPC
         NPCDisplay = (NPCDisplay)GameObject.FindGameObjectWithTag("NPC").GetComponent(typeof(NPCDisplay));
 
-        // Updating array size of SelectedEventCards to match the array size of the total number of EventCards
-        Array.Resize(ref SelectedEventCards, EventCard.Length);
-        // Set all elements in SelectedEventCards to -1 (Can't make it null)
-        for(int i = 0; i < SelectedEventCards.Length; i++){
-            SelectedEventCards[i] = -1;
+        // Updating array size of selectedEventCards to match the array size of the total number of EventCards
+        Array.Resize(ref selectedEventCards, EventCard.Length);
+        // Set all elements in selectedEventCards to -1 (Can't make it null)
+        for(int i = 0; i < selectedEventCards.Length; i++){
+            selectedEventCards[i] = -1;
         }
     }
 
@@ -49,31 +49,31 @@ public class EventCardDisplay : MonoBehaviour
     void Update()
     {
         // If round is changed then select a new card from array
-        if(RoundController.Round != CurrentRound){
+        if(roundController.Round != currentRound){
             ThisObject.SetActive(true);
-            CurrentRound = RoundController.Round;
+            currentRound = roundController.Round;
 
             // Select New Card
-            CurrentEventCard = EventCard[GetRandomCard()];
+            currentEventCard = EventCard[GetRandomCard()];
             //Format Text of New Card
-            CardTypeText.text = CurrentEventCard.GetType().Name;
-            CardNameText.text = CurrentEventCard.CardName;
-            CardDescriptionText.text = CurrentEventCard.CardDescription;
+            CardTypeText.text = currentEventCard.GetType().Name;
+            CardNameText.text = currentEventCard.CardName;
+            CardDescriptionText.text = currentEventCard.CardDescription;
 
-            EnergyText.text = FormatText(CurrentEventCard.EnergyVal);
-            EnergyImage.gameObject.SetActive(ShowImage(CurrentEventCard.EnergyVal));
+            EnergyText.text = FormatText(currentEventCard.EnergyVal);
+            EnergyImage.gameObject.SetActive(ShowImage(currentEventCard.EnergyVal));
 
-            JoyText.text = FormatText(CurrentEventCard.JoyVal);
-            JoyImage.gameObject.SetActive(ShowImage(CurrentEventCard.JoyVal));
+            JoyText.text = FormatText(currentEventCard.JoyVal);
+            JoyImage.gameObject.SetActive(ShowImage(currentEventCard.JoyVal));
 
-            SadnessText.text = FormatText(CurrentEventCard.SadnessVal);
-            SadnessImage.gameObject.SetActive(ShowImage(CurrentEventCard.SadnessVal));
+            SadnessText.text = FormatText(currentEventCard.SadnessVal);
+            SadnessImage.gameObject.SetActive(ShowImage(currentEventCard.SadnessVal));
 
-            FearText.text = FormatText(CurrentEventCard.FearVal);
-            FearImage.gameObject.SetActive(ShowImage(CurrentEventCard.FearVal));
+            FearText.text = FormatText(currentEventCard.FearVal);
+            FearImage.gameObject.SetActive(ShowImage(currentEventCard.FearVal));
 
-            AngerText.text = FormatText(CurrentEventCard.AngerVal);
-            AngerImage.gameObject.SetActive(ShowImage(CurrentEventCard.AngerVal));
+            AngerText.text = FormatText(currentEventCard.AngerVal);
+            AngerImage.gameObject.SetActive(ShowImage(currentEventCard.AngerVal));
         }
     }
 
@@ -83,25 +83,25 @@ public class EventCardDisplay : MonoBehaviour
         // Getting random number
         int output = UnityEngine.Random.Range(0, EventCard.Length);
 
-        int IndexOfEmptyElement = Array.IndexOf(SelectedEventCards, -1);
+        int IndexOfEmptyElement = Array.IndexOf(selectedEventCards, -1);
 
-        // If SelectedEventCards is not full
+        // If selectedEventCards is not full
         if(IndexOfEmptyElement != -1){
             // Checking if the card has already been used
-            while(Array.IndexOf(SelectedEventCards, output) != -1){
+            while(Array.IndexOf(selectedEventCards, output) != -1){
                 output = UnityEngine.Random.Range(0, EventCard.Length);
             }
-        // SelectedEventCards is full
+        // selectedEventCards is full
         }else{
-            // Clear SelectedEventCards Array
-            for(int i = 0; i < SelectedEventCards.Length; i++){
-                SelectedEventCards[i] = -1;
+            // Clear selectedEventCards Array
+            for(int i = 0; i < selectedEventCards.Length; i++){
+                selectedEventCards[i] = -1;
             }
-            IndexOfEmptyElement = Array.IndexOf(SelectedEventCards, -1);
+            IndexOfEmptyElement = Array.IndexOf(selectedEventCards, -1);
         }
 
         // Output
-        SelectedEventCards[IndexOfEmptyElement] = output;
+        selectedEventCards[IndexOfEmptyElement] = output;
         return output;
     }
 
@@ -110,29 +110,29 @@ public class EventCardDisplay : MonoBehaviour
         ThisObject.SetActive(false);
 
         // Apply Event Effects
-        NPCDisplay.ApplyEffect(NPCDisplay.LevelType.Energy, CurrentEventCard.EnergyVal);
-        NPCDisplay.ApplyEffect(NPCDisplay.LevelType.Joy, CurrentEventCard.JoyVal);
-        NPCDisplay.ApplyEffect(NPCDisplay.LevelType.Sadness, CurrentEventCard.SadnessVal);
-        NPCDisplay.ApplyEffect(NPCDisplay.LevelType.Fear, CurrentEventCard.FearVal);
-        NPCDisplay.ApplyEffect(NPCDisplay.LevelType.Anger, CurrentEventCard.AngerVal);
+        NPCDisplay.ApplyEffect(NPCDisplay.LevelType.Energy, currentEventCard.EnergyVal);
+        NPCDisplay.ApplyEffect(NPCDisplay.LevelType.Joy, currentEventCard.JoyVal);
+        NPCDisplay.ApplyEffect(NPCDisplay.LevelType.Sadness, currentEventCard.SadnessVal);
+        NPCDisplay.ApplyEffect(NPCDisplay.LevelType.Fear, currentEventCard.FearVal);
+        NPCDisplay.ApplyEffect(NPCDisplay.LevelType.Anger, currentEventCard.AngerVal);
 
         // Debug.Log(NPCDisplay.npc.EnergyLvl);
     }
 
     // Returns null if value is 0 (for printing values of energy etc.)
-    private string FormatText(int Value){
-        if(Value == 0){
+    private string FormatText(int value){
+        if(value == 0){
             return null;
-        }else if(Value > 0){
-            return "+" + Value.ToString();
+        }else if(value > 0){
+            return "+" + value.ToString();
         }else{
-            return Value.ToString();
+            return value.ToString();
         }
     }
 
     // Show or hide image
-    private bool ShowImage(int Value){
-        string EmotionPoints = FormatText(Value);
+    private bool ShowImage(int value){
+        string EmotionPoints = FormatText(value);
 
         if(EmotionPoints == null){
             return false;

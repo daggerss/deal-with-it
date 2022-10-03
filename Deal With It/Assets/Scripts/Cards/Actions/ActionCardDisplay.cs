@@ -24,48 +24,48 @@ public class ActionCardDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Action ThisCard = Owner.CardsInHand[CardNumber];
+        Action thisCard = Owner.CardsInHand[CardNumber];
 
-        if(ThisCard != null){
+        if(thisCard != null){
 
-            CardTypeText.text = ThisCard.GetType().Name;
-            CardNameText.text = ThisCard.CardName;
-            CardDescriptionText.text = ThisCard.CardDescription;
-            ActionTypeText.text = ThisCard.ActionType;
+            CardTypeText.text = thisCard.GetType().Name;
+            CardNameText.text = thisCard.CardName;
+            CardDescriptionText.text = thisCard.CardDescription;
+            ActionTypeText.text = thisCard.ActionType;
 
-            EnergyText.text = FormatText(ThisCard.EnergyVal);
-            EnergyImage.gameObject.SetActive(ShowImage(ThisCard.EnergyVal));
+            EnergyText.text = FormatText(thisCard.EnergyVal);
+            EnergyImage.gameObject.SetActive(ShowImage(thisCard.EnergyVal));
 
-            JoyText.text = FormatText(ThisCard.JoyVal);
-            JoyImage.gameObject.SetActive(ShowImage(ThisCard.JoyVal));
+            JoyText.text = FormatText(thisCard.JoyVal);
+            JoyImage.gameObject.SetActive(ShowImage(thisCard.JoyVal));
 
-            SadnessText.text = FormatText(ThisCard.SadnessVal);
-            SadnessImage.gameObject.SetActive(ShowImage(ThisCard.SadnessVal));
+            SadnessText.text = FormatText(thisCard.SadnessVal);
+            SadnessImage.gameObject.SetActive(ShowImage(thisCard.SadnessVal));
 
-            FearText.text = FormatText(ThisCard.FearVal);
-            FearImage.gameObject.SetActive(ShowImage(ThisCard.FearVal));
+            FearText.text = FormatText(thisCard.FearVal);
+            FearImage.gameObject.SetActive(ShowImage(thisCard.FearVal));
 
-            AngerText.text = FormatText(ThisCard.AngerVal);
-            AngerImage.gameObject.SetActive(ShowImage(ThisCard.AngerVal));
+            AngerText.text = FormatText(thisCard.AngerVal);
+            AngerImage.gameObject.SetActive(ShowImage(thisCard.AngerVal));
         }else{
         }
     }
 
     /* ---------------------------- Custom Functions ---------------------------- */
     // Returns null if value is 0 (for printing values of energy etc.)
-    private string FormatText(int Value){
-        if(Value == 0){
+    private string FormatText(int value){
+        if(value == 0){
             return null;
-        }else if(Value > 0){
-            return "+" + Value.ToString();
+        }else if(value > 0){
+            return "+" + value.ToString();
         }else{
-            return Value.ToString();
+            return value.ToString();
         }
     }
 
     // Show or hide image
-    private bool ShowImage(int Value){
-        string EmotionPoints = FormatText(Value);
+    private bool ShowImage(int value){
+        string EmotionPoints = FormatText(value);
 
         if(EmotionPoints == null){
             return false;
