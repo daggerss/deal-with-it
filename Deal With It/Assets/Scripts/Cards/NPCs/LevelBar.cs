@@ -7,13 +7,15 @@ public class LevelBar : MonoBehaviour
 {
     public Slider SliderBar;
 
+    public float Value => SliderBar.value;
+
     /* ----------------------------- Custom Methods ----------------------------- */
     public void SetMaxValue(int value)
     {
         SliderBar.maxValue = value;
     }
 
-    public void SetValue(int value)
+    public void SetValue(float value)
     {
         SliderBar.value = value;
     }

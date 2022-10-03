@@ -7,6 +7,7 @@ using TMPro;
 public class NPCDisplay : MonoBehaviour
 {
     public NPC npc;
+    public enum LevelType {Energy, Joy, Sadness, Fear, Anger};
 
     /* ---------------------------- Card Information ---------------------------- */
     public TMP_Text cardTypeText;
@@ -22,19 +23,38 @@ public class NPCDisplay : MonoBehaviour
     public TMP_Text angerText;
 
     /* --------------------------------- Bar UI --------------------------------- */
-    public LevelBar EnergyBar;
-    public LevelBar JoyBar;
-    public LevelBar SadnessBar;
-    public LevelBar FearBar;
-    public LevelBar AngerBar;
+    public LevelBar EnergyFrontBar;
+    public LevelBar EnergyBackBar;
+
+    public LevelBar JoyFrontBar;
+    public LevelBar JoyBackBar;
+
+    public LevelBar SadnessFrontBar;
+    public LevelBar SadnessBackBar;
+
+    public LevelBar FearFrontBar;
+    public LevelBar FearBackBar;
+
+    public LevelBar AngerFrontBar;
+    public LevelBar AngerBackBar;
+
+    private float lerpTimer;
+    private float chipSpeed = 0.5f;
+    private float percentComplete;
 
     /* --------------------------------- Methods -------------------------------- */
     // Start is called before the first frame update
     void Start()
     {
-        // Set energy UI
-        EnergyBar.SetMaxValue(20);
-        EnergyBar.SetValue(20);
+        // Set energy level
+        npc.EnergyLvl = 20;
+
+        // Set energy bar
+        EnergyFrontBar.SetMaxValue(20);
+        EnergyFrontBar.SetValue(20);
+
+        EnergyBackBar.SetMaxValue(20);
+        EnergyBackBar.SetValue(20);
 
         // Set random starting emotion levels
         if (npc.CardName == "Knot")
@@ -66,16 +86,27 @@ public class NPCDisplay : MonoBehaviour
             npc.AngerLvl = Random.Range(6, 9);
         }
 
-        // Set emotions UI
-        JoyBar.SetMaxValue(13);
-        SadnessBar.SetMaxValue(13);
-        FearBar.SetMaxValue(13);
-        AngerBar.SetMaxValue(13);
+        // Set emotions front bar
+        JoyFrontBar.SetMaxValue(13);
+        SadnessFrontBar.SetMaxValue(13);
+        FearFrontBar.SetMaxValue(13);
+        AngerFrontBar.SetMaxValue(13);
 
-        JoyBar.SetValue(npc.JoyLvl);
-        SadnessBar.SetValue(npc.SadnessLvl);
-        FearBar.SetValue(npc.FearLvl);
-        AngerBar.SetValue(npc.AngerLvl);
+        JoyFrontBar.SetValue(npc.JoyLvl);
+        SadnessFrontBar.SetValue(npc.SadnessLvl);
+        FearFrontBar.SetValue(npc.FearLvl);
+        AngerFrontBar.SetValue(npc.AngerLvl);
+
+        // Set emotions back bar
+        JoyBackBar.SetMaxValue(13);
+        SadnessBackBar.SetMaxValue(13);
+        FearBackBar.SetMaxValue(13);
+        AngerBackBar.SetMaxValue(13);
+
+        JoyBackBar.SetValue(npc.JoyLvl);
+        SadnessBackBar.SetValue(npc.SadnessLvl);
+        FearBackBar.SetValue(npc.FearLvl);
+        AngerBackBar.SetValue(npc.AngerLvl);
 
         // Set text UI
         cardTypeText.text = npc.GetType().Name;
@@ -89,5 +120,133 @@ public class NPCDisplay : MonoBehaviour
         sadnessText.text = npc.SadnessLvl.ToString();
         fearText.text = npc.FearLvl.ToString();
         angerText.text = npc.AngerLvl.ToString();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        UpdateLevelBars();
+    }
+
+    /* ----------------------------- Custom Methods ----------------------------- */
+    // Apply energy and emotion effects on bars
+    public void UpdateLevelBars()
+    {
+        // Update energy
+        if (EnergyBackBar.Value > npc.EnergyLvl)
+        {
+            lerpTimer += Time.deltaTime;
+            percentComplete = Mathf.Pow(lerpTimer / chipSpeed, 2);
+            EnergyFrontBar.SetValue(npc.EnergyLvl);
+            EnergyBackBar.SetValue(Mathf.Lerp(EnergyBackBar.Value, npc.EnergyLvl, percentComplete));
+        }
+
+        if (EnergyFrontBar.Value < npc.EnergyLvl)
+        {
+            lerpTimer += Time.deltaTime;
+            percentComplete = Mathf.Pow(lerpTimer / chipSpeed, 2);
+            EnergyBackBar.SetValue(npc.EnergyLvl);
+            EnergyFrontBar.SetValue(Mathf.Lerp(EnergyFrontBar.Value, npc.EnergyLvl, percentComplete));
+        }
+
+        // Update joy
+        if (JoyBackBar.Value > npc.JoyLvl)
+        {
+            lerpTimer += Time.deltaTime;
+            percentComplete = Mathf.Pow(lerpTimer / chipSpeed, 2);
+            JoyFrontBar.SetValue(npc.JoyLvl);
+            JoyBackBar.SetValue(Mathf.Lerp(JoyBackBar.Value, npc.JoyLvl, percentComplete));
+        }
+
+        if (JoyFrontBar.Value < npc.JoyLvl)
+        {
+            lerpTimer += Time.deltaTime;
+            percentComplete = Mathf.Pow(lerpTimer / chipSpeed, 2);
+            JoyBackBar.SetValue(npc.JoyLvl);
+            JoyFrontBar.SetValue(Mathf.Lerp(JoyFrontBar.Value, npc.JoyLvl, percentComplete));
+        }
+
+        // Update sadness
+        if (SadnessBackBar.Value > npc.SadnessLvl)
+        {
+            lerpTimer += Time.deltaTime;
+            percentComplete = Mathf.Pow(lerpTimer / chipSpeed, 2);
+            SadnessFrontBar.SetValue(npc.SadnessLvl);
+            SadnessBackBar.SetValue(Mathf.Lerp(SadnessBackBar.Value, npc.SadnessLvl, percentComplete));
+        }
+
+        if (SadnessFrontBar.Value < npc.SadnessLvl)
+        {
+            lerpTimer += Time.deltaTime;
+            percentComplete = Mathf.Pow(lerpTimer / chipSpeed, 2);
+            SadnessBackBar.SetValue(npc.SadnessLvl);
+            SadnessFrontBar.SetValue(Mathf.Lerp(SadnessFrontBar.Value, npc.SadnessLvl, percentComplete));
+        }
+
+        // Update fear
+        if (FearBackBar.Value > npc.FearLvl)
+        {
+            lerpTimer += Time.deltaTime;
+            percentComplete = Mathf.Pow(lerpTimer / chipSpeed, 2);
+            FearFrontBar.SetValue(npc.FearLvl);
+            FearBackBar.SetValue(Mathf.Lerp(FearBackBar.Value, npc.FearLvl, percentComplete));
+        }
+
+        if (FearFrontBar.Value < npc.FearLvl)
+        {
+            lerpTimer += Time.deltaTime;
+            percentComplete = Mathf.Pow(lerpTimer / chipSpeed, 2);
+            FearBackBar.SetValue(npc.FearLvl);
+            FearFrontBar.SetValue(Mathf.Lerp(FearFrontBar.Value, npc.FearLvl, percentComplete));
+        }
+
+        // Update anger
+        if (AngerBackBar.Value > npc.AngerLvl)
+        {
+            lerpTimer += Time.deltaTime;
+            percentComplete = Mathf.Pow(lerpTimer / chipSpeed, 2);
+            AngerFrontBar.SetValue(npc.AngerLvl);
+            AngerBackBar.SetValue(Mathf.Lerp(AngerBackBar.Value, npc.AngerLvl, percentComplete));
+        }
+
+        if (AngerFrontBar.Value < npc.AngerLvl)
+        {
+            lerpTimer += Time.deltaTime;
+            percentComplete = Mathf.Pow(lerpTimer / chipSpeed, 2);
+            AngerBackBar.SetValue(npc.AngerLvl);
+            AngerFrontBar.SetValue(Mathf.Lerp(AngerFrontBar.Value, npc.AngerLvl, percentComplete));
+        }
+    }
+
+    // Apply energy or emotion effects on NPC + text
+    public void ApplyEffect(LevelType type, int effectValue)
+    {
+        if (type == LevelType.Energy)
+        {
+            npc.EnergyLvl += effectValue;
+            energyText.text = npc.EnergyLvl.ToString();
+        }
+        else if (type == LevelType.Joy)
+        {
+            npc.JoyLvl += effectValue;
+            joyText.text = npc.JoyLvl.ToString();
+        }
+        else if (type == LevelType.Sadness)
+        {
+            npc.SadnessLvl += effectValue;
+            sadnessText.text = npc.SadnessLvl.ToString();
+        }
+        else if (type == LevelType.Fear)
+        {
+            npc.FearLvl += effectValue;
+            fearText.text = npc.FearLvl.ToString();
+        }
+        else if (type == LevelType.Anger)
+        {
+            npc.AngerLvl += effectValue;
+            angerText.text = npc.AngerLvl.ToString();
+        }
+
+        lerpTimer = 0f;
     }
 }
