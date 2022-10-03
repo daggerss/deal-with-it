@@ -24,7 +24,7 @@ public class EventCardDisplay : MonoBehaviour
 
     // Round Variables
     public GameObject RoundObject;
-    private roundController roundController;
+    private RoundController roundController;
     private int currentRound = -1;
 
     /* ----------------------------- Default Methods ---------------------------- */
@@ -32,7 +32,7 @@ public class EventCardDisplay : MonoBehaviour
     void Start()
     {
         // Initializing the roundController variable to access the roundController from the roundController Object (kinda confusing to type it xd)
-        roundController = (roundController)RoundObject.GetComponent(typeof(roundController));
+        roundController = (RoundController)RoundObject.GetComponent(typeof(RoundController));
 
         // Initialize the NPC
         NPCDisplay = (NPCDisplay)GameObject.FindGameObjectWithTag("NPC").GetComponent(typeof(NPCDisplay));
