@@ -11,37 +11,37 @@ public class EventCardDisplay : MonoBehaviour
     /* -------------------------------- Variables ------------------------------- */
     // Arrays storing event cards
     public Event[] EventCard;
-    private int[] selectedEventCards;
+    private int[] _selectedEventCards;
 
     // NPC 
     public NPCDisplay NPCDisplay;
 
     // Displays the current event card being played
-    private Event currentEventCard;
+    private Event _currentEventCard;
     public TMP_Text CardTypeText, CardNameText, CardDescriptionText, EnergyText, JoyText, SadnessText, FearText, AngerText;
     public Image EnergyImage, JoyImage, SadnessImage, FearImage, AngerImage;
     public GameObject ThisObject;
 
     // Round Variables
     public GameObject RoundObject;
-    private RoundController roundController;
-    private int currentRound = -1;
+    private RoundController _roundController;
+    private int _currentRound = -1;
 
     /* ----------------------------- Default Methods ---------------------------- */
     // Start is called before the first frame update
     void Start()
     {
-        // Initializing the roundController variable to access the roundController from the roundController Object (kinda confusing to type it xd)
-        roundController = (RoundController)RoundObject.GetComponent(typeof(RoundController));
+        // Initializing the _roundController variable to access the _roundController from the _roundController Object (kinda confusing to type it xd)
+        _roundController = (RoundController)RoundObject.GetComponent(typeof(RoundController));
 
         // Initialize the NPC
         NPCDisplay = (NPCDisplay)GameObject.FindGameObjectWithTag("NPC").GetComponent(typeof(NPCDisplay));
 
-        // Updating array size of selectedEventCards to match the array size of the total number of EventCards
-        Array.Resize(ref selectedEventCards, EventCard.Length);
-        // Set all elements in selectedEventCards to -1 (Can't make it null)
-        for(int i = 0; i < selectedEventCards.Length; i++){
-            selectedEventCards[i] = -1;
+        // Updating array size of _selectedEventCards to match the array size of the total number of EventCards
+        Array.Resize(ref _selectedEventCards, EventCard.Length);
+        // Set all elements in _selectedEventCards to -1 (Can't make it null)
+        for(int i = 0; i < _selectedEventCards.Length; i++){
+            _selectedEventCards[i] = -1;
         }
     }
 
@@ -49,31 +49,31 @@ public class EventCardDisplay : MonoBehaviour
     void Update()
     {
         // If round is changed then select a new card from array
-        if(roundController.Round != currentRound){
+        if(_roundController.Round != _currentRound){
             ThisObject.SetActive(true);
-            currentRound = roundController.Round;
+            _currentRound = _roundController.Round;
 
             // Select New Card
-            currentEventCard = EventCard[GetRandomCard()];
+            _currentEventCard = EventCard[GetRandomCard()];
             //Format Text of New Card
-            CardTypeText.text = currentEventCard.GetType().Name;
-            CardNameText.text = currentEventCard.CardName;
-            CardDescriptionText.text = currentEventCard.CardDescription;
+            CardTypeText.text = _currentEventCard.GetType().Name;
+            CardNameText.text = _currentEventCard.CardName;
+            CardDescriptionText.text = _currentEventCard.CardDescription;
 
-            EnergyText.text = FormatText(currentEventCard.EnergyVal);
-            EnergyImage.gameObject.SetActive(ShowImage(currentEventCard.EnergyVal));
+            EnergyText.text = FormatText(_currentEventCard.EnergyVal);
+            EnergyImage.gameObject.SetActive(ShowImage(_currentEventCard.EnergyVal));
 
-            JoyText.text = FormatText(currentEventCard.JoyVal);
-            JoyImage.gameObject.SetActive(ShowImage(currentEventCard.JoyVal));
+            JoyText.text = FormatText(_currentEventCard.JoyVal);
+            JoyImage.gameObject.SetActive(ShowImage(_currentEventCard.JoyVal));
 
-            SadnessText.text = FormatText(currentEventCard.SadnessVal);
-            SadnessImage.gameObject.SetActive(ShowImage(currentEventCard.SadnessVal));
+            SadnessText.text = FormatText(_currentEventCard.SadnessVal);
+            SadnessImage.gameObject.SetActive(ShowImage(_currentEventCard.SadnessVal));
 
-            FearText.text = FormatText(currentEventCard.FearVal);
-            FearImage.gameObject.SetActive(ShowImage(currentEventCard.FearVal));
+            FearText.text = FormatText(_currentEventCard.FearVal);
+            FearImage.gameObject.SetActive(ShowImage(_currentEventCard.FearVal));
 
-            AngerText.text = FormatText(currentEventCard.AngerVal);
-            AngerImage.gameObject.SetActive(ShowImage(currentEventCard.AngerVal));
+            AngerText.text = FormatText(_currentEventCard.AngerVal);
+            AngerImage.gameObject.SetActive(ShowImage(_currentEventCard.AngerVal));
         }
     }
 
@@ -83,25 +83,25 @@ public class EventCardDisplay : MonoBehaviour
         // Getting random number
         int output = UnityEngine.Random.Range(0, EventCard.Length);
 
-        int IndexOfEmptyElement = Array.IndexOf(selectedEventCards, -1);
+        int IndexOfEmptyElement = Array.IndexOf(_selectedEventCards, -1);
 
-        // If selectedEventCards is not full
+        // If _selectedEventCards is not full
         if(IndexOfEmptyElement != -1){
             // Checking if the card has already been used
-            while(Array.IndexOf(selectedEventCards, output) != -1){
+            while(Array.IndexOf(_selectedEventCards, output) != -1){
                 output = UnityEngine.Random.Range(0, EventCard.Length);
             }
-        // selectedEventCards is full
+        // _selectedEventCards is full
         }else{
-            // Clear selectedEventCards Array
-            for(int i = 0; i < selectedEventCards.Length; i++){
-                selectedEventCards[i] = -1;
+            // Clear _selectedEventCards Array
+            for(int i = 0; i < _selectedEventCards.Length; i++){
+                _selectedEventCards[i] = -1;
             }
-            IndexOfEmptyElement = Array.IndexOf(selectedEventCards, -1);
+            IndexOfEmptyElement = Array.IndexOf(_selectedEventCards, -1);
         }
 
         // Output
-        selectedEventCards[IndexOfEmptyElement] = output;
+        _selectedEventCards[IndexOfEmptyElement] = output;
         return output;
     }
 
@@ -110,11 +110,11 @@ public class EventCardDisplay : MonoBehaviour
         ThisObject.SetActive(false);
 
         // Apply Event Effects
-        NPCDisplay.ApplyEffect(NPCDisplay.LevelType.Energy, currentEventCard.EnergyVal);
-        NPCDisplay.ApplyEffect(NPCDisplay.LevelType.Joy, currentEventCard.JoyVal);
-        NPCDisplay.ApplyEffect(NPCDisplay.LevelType.Sadness, currentEventCard.SadnessVal);
-        NPCDisplay.ApplyEffect(NPCDisplay.LevelType.Fear, currentEventCard.FearVal);
-        NPCDisplay.ApplyEffect(NPCDisplay.LevelType.Anger, currentEventCard.AngerVal);
+        NPCDisplay.ApplyEffect(NPCDisplay.LevelType.Energy, _currentEventCard.EnergyVal);
+        NPCDisplay.ApplyEffect(NPCDisplay.LevelType.Joy, _currentEventCard.JoyVal);
+        NPCDisplay.ApplyEffect(NPCDisplay.LevelType.Sadness, _currentEventCard.SadnessVal);
+        NPCDisplay.ApplyEffect(NPCDisplay.LevelType.Fear, _currentEventCard.FearVal);
+        NPCDisplay.ApplyEffect(NPCDisplay.LevelType.Anger, _currentEventCard.AngerVal);
 
         // Debug.Log(NPCDisplay.npc.EnergyLvl);
     }
