@@ -56,6 +56,8 @@ public class ActionCardDisplay : MonoBehaviour
     private string FormatText(int Value){
         if(Value == 0){
             return null;
+        }else if(Value > 0){
+            return "+" + Value.ToString();
         }else{
             return Value.ToString();
         }
