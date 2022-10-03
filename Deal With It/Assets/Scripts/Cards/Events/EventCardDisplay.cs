@@ -13,6 +13,9 @@ public class EventCardDisplay : MonoBehaviour
     public Event[] EventCard;
     private int[] SelectedEventCards;
 
+    // NPC 
+    public NPCDisplay NPCDisplay;
+
     // Displays the current event card being played
     private Event CurrentEventCard;
     public TMP_Text CardTypeText, CardNameText, CardDescriptionText, EnergyText, JoyText, SadnessText, FearText, AngerText;
@@ -30,6 +33,9 @@ public class EventCardDisplay : MonoBehaviour
     {
         // Initializing the RoundController variable to access the RoundController from the RoundController Object (kinda confusing to type it xd)
         RoundController = (RoundController)RoundObject.GetComponent(typeof(RoundController));
+
+        // Initialize the NPC
+        NPCDisplay = (NPCDisplay)GameObject.FindGameObjectWithTag("NPC").GetComponent(typeof(NPCDisplay));
 
         // Updating array size of SelectedEventCards to match the array size of the total number of EventCards
         Array.Resize(ref SelectedEventCards, EventCard.Length);
@@ -99,9 +105,18 @@ public class EventCardDisplay : MonoBehaviour
         return output;
     }
 
-    // Hides the card
+    // Hides the card (Event Effects are applied here so that changes can be seen (?))
     public void HideCard(){
         ThisObject.SetActive(false);
+
+        // Apply Event Effects
+        NPCDisplay.npc.EnergyLvl += CurrentEventCard.EnergyVal;
+        // NPCDisplay.npc.JoyLvl += CurrentEventCard.JoyVal;
+        // NPCDisplay.npc.SadnessLvl += CurrentEventCard.SadnessVal;
+        // NPCDisplay.npc.FearLvl += CurrentEventCard.FearVal;
+        // NPCDisplay.npc.AngerLvl += CurrentEventCard.AngerVal;
+
+        Debug.Log(NPCDisplay.npc.EnergyLvl);
     }
 
     // Returns null if value is 0 (for printing values of energy etc.)
