@@ -10,8 +10,8 @@ public class ActionCardDisplay : MonoBehaviour
     public int CardNumber;
 
     // UI Variables
-    public TMP_Text CardTypeText, CardNameText, CardDescriptionText, EnergyText, JoyText, SadnessText, FearText, AngerText;
-    public Image EnergyImage, JoyImage, SadnessImage, FearImage, AngerImage;
+    public TMP_Text CardTypeText, CardNameText, CardDescriptionText, EnergyText, JoyText, SadnessText, FearText, AngerText, ActionTypeText;
+    public Image EnergyImage, JoyImage, SadnessImage, FearImage, AngerImage, ActionTypeImage;
     
 
     //public Text CardNameText, CardDescriptionText;
@@ -31,6 +31,7 @@ public class ActionCardDisplay : MonoBehaviour
             CardTypeText.text = ThisCard.GetType().Name;
             CardNameText.text = ThisCard.CardName;
             CardDescriptionText.text = ThisCard.CardDescription;
+            ActionTypeText.text = ThisCard.ActionType;
 
             EnergyText.text = FormatText(ThisCard.EnergyVal);
             EnergyImage.gameObject.SetActive(ShowImage(ThisCard.EnergyVal));
