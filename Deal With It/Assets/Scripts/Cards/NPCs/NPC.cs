@@ -29,7 +29,7 @@ public class NPC : Card
         }
         set
         {
-            _energyLvl = Mathf.Clamp(value, 0, 20);
+            _energyLvl = Mathf.Clamp(value, 0, 50);
         }
     }
 
