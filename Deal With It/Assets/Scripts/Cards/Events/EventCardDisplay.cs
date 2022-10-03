@@ -16,6 +16,7 @@ public class EventCardDisplay : MonoBehaviour
     // Displays the current event card being played
     private Event CurrentEventCard;
     public TMP_Text CardTypeText, CardNameText, CardDescriptionText, EnergyText, JoyText, SadnessText, FearText, AngerText;
+    public Image EnergyImage, JoyImage, SadnessImage, FearImage, AngerImage;
     public GameObject ThisObject;
 
     // Round Variables
@@ -52,11 +53,21 @@ public class EventCardDisplay : MonoBehaviour
             CardTypeText.text = CurrentEventCard.GetType().Name;
             CardNameText.text = CurrentEventCard.CardName;
             CardDescriptionText.text = CurrentEventCard.CardDescription;
+
             EnergyText.text = FormatText(CurrentEventCard.EnergyVal);
+            EnergyImage.gameObject.SetActive(ShowImage(CurrentEventCard.EnergyVal));
+
             JoyText.text = FormatText(CurrentEventCard.JoyVal);
+            JoyImage.gameObject.SetActive(ShowImage(CurrentEventCard.JoyVal));
+
             SadnessText.text = FormatText(CurrentEventCard.SadnessVal);
+            SadnessImage.gameObject.SetActive(ShowImage(CurrentEventCard.SadnessVal));
+
             FearText.text = FormatText(CurrentEventCard.FearVal);
+            FearImage.gameObject.SetActive(ShowImage(CurrentEventCard.FearVal));
+
             AngerText.text = FormatText(CurrentEventCard.AngerVal);
+            AngerImage.gameObject.SetActive(ShowImage(CurrentEventCard.AngerVal));
         }
     }
 
@@ -99,6 +110,17 @@ public class EventCardDisplay : MonoBehaviour
             return null;
         }else{
             return Value.ToString();
+        }
+    }
+
+    // Show or hide image
+    private bool ShowImage(int Value){
+        string EmotionPoints = FormatText(Value);
+
+        if(EmotionPoints == null){
+            return false;
+        }else{
+            return true;
         }
     }
 }

@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour
 
     // Array of cards in a player's hand (public if we're adding feature when other players can look into ur hand)
     public Action[] CardsInHand = new Action[5];
-    public Text[] CardsInHandText = new Text[5];
     public Button[] CardsInHandButton = new Button[5];
 
     // ActionCardDeck
@@ -58,9 +57,6 @@ public class PlayerController : MonoBehaviour
                 // Puts card in player's hand
                 CardsInHand[IndexOfEmptyElement] = PickedCard;
 
-                // Writes down the card name for a button
-                CardsInHandText[IndexOfEmptyElement].text = PickedCard.CardName;
-
                 // Check for empty slot again for the while loop
                 IndexOfEmptyElement = Array.IndexOf(CardsInHand, null);
             }
@@ -95,7 +91,7 @@ public class PlayerController : MonoBehaviour
         for(int i = 0; i < CardsInHandButton.Length; i++){
             Button CurrentButton = CardsInHandButton[i];
             if(SelectedCard == i){
-                CurrentButton.transform.position = new Vector2(CurrentButton.transform.position.x, CurrentButton.transform.position.y + 2f);
+                CurrentButton.transform.position = new Vector2(CurrentButton.transform.position.x, CurrentButton.transform.position.y + 50f);
             }else{
                 CurrentButton.transform.position = OriginalButtonPosition[i];
             }
