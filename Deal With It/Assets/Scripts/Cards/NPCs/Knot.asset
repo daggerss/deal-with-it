@@ -19,7 +19,7 @@ MonoBehaviour:
   _cardGoals:
   - Maintain less than 6 points of anger and fear for 7 rounds
   - Keep all other emotions within 6-8 points for 7 rounds
-  - Don't use more than 3 expression cards in succession in a round
+  - Don't use more than 3 expression cards in total in a round
   _joyAddend: 0
   _sadnessAddend: 0
   _fearAddend: 2
