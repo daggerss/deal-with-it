@@ -129,11 +129,11 @@ public class EventCardDisplay : MonoBehaviour
         ThisObject.SetActive(false);
 
         // Apply Event Effects
-        npcDisplay.ApplyEffect(LevelType.Energy, _currentEventCard.EnergyVal);
-        npcDisplay.ApplyEffect(LevelType.Joy, _currentEventCard.JoyVal);
-        npcDisplay.ApplyEffect(LevelType.Sadness, _currentEventCard.SadnessVal);
-        npcDisplay.ApplyEffect(LevelType.Fear, _currentEventCard.FearVal);
-        npcDisplay.ApplyEffect(LevelType.Anger, _currentEventCard.AngerVal);
+        npcDisplay.ApplyEffect(LevelType.Energy, _currentEventCard.EnergyVal, ActionType.None);
+        npcDisplay.ApplyEffect(LevelType.Joy, _currentEventCard.JoyVal, ActionType.None);
+        npcDisplay.ApplyEffect(LevelType.Sadness, _currentEventCard.SadnessVal, ActionType.None);
+        npcDisplay.ApplyEffect(LevelType.Fear, _currentEventCard.FearVal, ActionType.None);
+        npcDisplay.ApplyEffect(LevelType.Anger, _currentEventCard.AngerVal, ActionType.None);
 
         if(_extraEventCards > 0){
             DrawCard();

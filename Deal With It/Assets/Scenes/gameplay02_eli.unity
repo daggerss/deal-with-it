@@ -270,7 +270,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Force Next Round
 --- !u!222 &260135022
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1357,7 +1357,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4dc55b47c790d994ea915490a486c913, type: 2}
   - {fileID: 11400000, guid: b8f969e45819ef045bb57952f1da794c, type: 2}
   - {fileID: 11400000, guid: b619a8340710bee4e8cf982f072de300, type: 2}
-  NPCDisplay: {fileID: 0}
+  npcDisplay: {fileID: 0}
   CardTypeText: {fileID: 185976039}
   CardNameText: {fileID: 975326946}
   CardDescriptionText: {fileID: 68119042}

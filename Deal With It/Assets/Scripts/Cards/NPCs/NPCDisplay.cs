@@ -218,31 +218,266 @@ public class NPCDisplay : MonoBehaviour
     }
 
     // Apply energy or emotion effects on NPC + text
-    public void ApplyEffect(LevelType type, int effectValue)
+    public void ApplyEffect(LevelType levelType, int effectValue, ActionType actionType)
     {
-        if (type == LevelType.Energy)
+        if (levelType == LevelType.Energy)
         {
             npc.EnergyLvl += effectValue;
+
+            // NPC x Strategy
+            // Distraction
+            if (actionType == ActionType.Distraction && effectValue > 0)
+            {
+                npc.EnergyLvl += npc.DistractionEnergyAddend;
+            }
+            else if (actionType == ActionType.Distraction && effectValue < 0)
+            {
+                npc.EnergyLvl -= npc.DistractionEnergyAddend;
+            }
+            // Expression
+            if (actionType == ActionType.Expression && effectValue > 0)
+            {
+                npc.EnergyLvl += npc.ExpressionEnergyAddend;
+            }
+            else if (actionType == ActionType.Expression && effectValue < 0)
+            {
+                npc.EnergyLvl -= npc.ExpressionEnergyAddend;
+            }
+            // Processing
+            if (actionType == ActionType.Processing && effectValue > 0)
+            {
+                npc.EnergyLvl += npc.ProcessingEnergyAddend;
+            }
+            else if (actionType == ActionType.Processing && effectValue < 0)
+            {
+                npc.EnergyLvl -= npc.ProcessingEnergyAddend;
+            }
+            // Reappraisal
+            if (actionType == ActionType.Reappraisal && effectValue > 0)
+            {
+                npc.EnergyLvl += npc.ReappraisalEnergyAddend;
+            }
+            else if (actionType == ActionType.Reappraisal && effectValue < 0)
+            {
+                npc.EnergyLvl -= npc.ReappraisalEnergyAddend;
+            }
+
             energyText.text = npc.EnergyLvl.ToString();
         }
-        else if (type == LevelType.Joy)
+        else if (levelType == LevelType.Joy)
         {
             npc.JoyLvl += effectValue;
+
+            // NPC x Events
+            if (actionType == ActionType.None && effectValue > 0)
+            {
+                npc.JoyLvl += npc.JoyAddend;
+            }
+            else if (actionType == ActionType.None && effectValue < 0)
+            {
+                npc.JoyLvl -= npc.JoyAddend;
+            }
+
+            // NPC x Strategy
+            // Distraction
+            else if (actionType == ActionType.Distraction && effectValue > 0)
+            {
+                npc.JoyLvl += npc.DistractionEmotionAddend;
+            }
+            else if (actionType == ActionType.Distraction && effectValue < 0)
+            {
+                npc.JoyLvl -= npc.DistractionEmotionAddend;
+            }
+            // Expression
+            else if (actionType == ActionType.Expression && effectValue > 0)
+            {
+                npc.JoyLvl += npc.ExpressionEmotionAddend;
+            }
+            else if (actionType == ActionType.Expression && effectValue < 0)
+            {
+                npc.JoyLvl -= npc.ExpressionEmotionAddend;
+            }
+            // Processing
+            else if (actionType == ActionType.Processing && effectValue > 0)
+            {
+                npc.JoyLvl += npc.ProcessingEmotionAddend;
+            }
+            else if (actionType == ActionType.Processing && effectValue < 0)
+            {
+                npc.JoyLvl -= npc.ProcessingEmotionAddend;
+            }
+            // Reappraisal
+            else if (actionType == ActionType.Reappraisal && effectValue > 0)
+            {
+                npc.JoyLvl += npc.ReappraisalEmotionAddend;
+            }
+            else if (actionType == ActionType.Reappraisal && effectValue < 0)
+            {
+                npc.JoyLvl -= npc.ReappraisalEmotionAddend;
+            }
+
             joyText.text = npc.JoyLvl.ToString();
         }
-        else if (type == LevelType.Sadness)
+        else if (levelType == LevelType.Sadness)
         {
             npc.SadnessLvl += effectValue;
+
+            // NPC x Events
+            if (actionType == ActionType.None && effectValue > 0)
+            {
+                npc.SadnessLvl += npc.SadnessAddend;
+            }
+            else if (actionType == ActionType.None && effectValue < 0)
+            {
+                npc.SadnessLvl -= npc.SadnessAddend;
+            }
+
+            // NPC x Strategy
+            // Distraction
+            else if (actionType == ActionType.Distraction && effectValue > 0)
+            {
+                npc.SadnessLvl += npc.DistractionEmotionAddend;
+            }
+            else if (actionType == ActionType.Distraction && effectValue < 0)
+            {
+                npc.SadnessLvl -= npc.DistractionEmotionAddend;
+            }
+            // Expression
+            else if (actionType == ActionType.Expression && effectValue > 0)
+            {
+                npc.SadnessLvl += npc.ExpressionEmotionAddend;
+            }
+            else if (actionType == ActionType.Expression && effectValue < 0)
+            {
+                npc.SadnessLvl -= npc.ExpressionEmotionAddend;
+            }
+            // Processing
+            else if (actionType == ActionType.Processing && effectValue > 0)
+            {
+                npc.SadnessLvl += npc.ProcessingEmotionAddend;
+            }
+            else if (actionType == ActionType.Processing && effectValue < 0)
+            {
+                npc.SadnessLvl -= npc.ProcessingEmotionAddend;
+            }
+            // Reappraisal
+            else if (actionType == ActionType.Reappraisal && effectValue > 0)
+            {
+                npc.SadnessLvl += npc.ReappraisalEmotionAddend;
+            }
+            else if (actionType == ActionType.Reappraisal && effectValue < 0)
+            {
+                npc.SadnessLvl -= npc.ReappraisalEmotionAddend;
+            }
+
             sadnessText.text = npc.SadnessLvl.ToString();
         }
-        else if (type == LevelType.Fear)
+        else if (levelType == LevelType.Fear)
         {
             npc.FearLvl += effectValue;
+
+            // NPC x Events
+            if (actionType == ActionType.None && effectValue > 0)
+            {
+                npc.FearLvl += npc.FearAddend;
+            }
+            else if (actionType == ActionType.None && effectValue < 0)
+            {
+                npc.FearLvl -= npc.FearAddend;
+            }
+
+            // NPC x Strategy
+            // Distraction
+            else if (actionType == ActionType.Distraction && effectValue > 0)
+            {
+                npc.FearLvl += npc.DistractionEmotionAddend;
+            }
+            else if (actionType == ActionType.Distraction && effectValue < 0)
+            {
+                npc.FearLvl -= npc.DistractionEmotionAddend;
+            }
+            // Expression
+            else if (actionType == ActionType.Expression && effectValue > 0)
+            {
+                npc.FearLvl += npc.ExpressionEmotionAddend;
+            }
+            else if (actionType == ActionType.Expression && effectValue < 0)
+            {
+                npc.FearLvl -= npc.ExpressionEmotionAddend;
+            }
+            // Processing
+            else if (actionType == ActionType.Processing && effectValue > 0)
+            {
+                npc.FearLvl += npc.ProcessingEmotionAddend;
+            }
+            else if (actionType == ActionType.Processing && effectValue < 0)
+            {
+                npc.FearLvl -= npc.ProcessingEmotionAddend;
+            }
+            // Reappraisal
+            else if (actionType == ActionType.Reappraisal && effectValue > 0)
+            {
+                npc.FearLvl += npc.ReappraisalEmotionAddend;
+            }
+            else if (actionType == ActionType.Reappraisal && effectValue < 0)
+            {
+                npc.FearLvl -= npc.ReappraisalEmotionAddend;
+            }
+
             fearText.text = npc.FearLvl.ToString();
         }
-        else if (type == LevelType.Anger)
+        else if (levelType == LevelType.Anger)
         {
             npc.AngerLvl += effectValue;
+
+            // NPC x Events
+            if (actionType == ActionType.None && effectValue > 0)
+            {
+                npc.AngerLvl += npc.AngerAddend;
+            }
+            else if (actionType == ActionType.None && effectValue < 0)
+            {
+                npc.AngerLvl -= npc.AngerAddend;
+            }
+
+            // NPC x Strategy
+            // Distraction
+            else if (actionType == ActionType.Distraction && effectValue > 0)
+            {
+                npc.AngerLvl += npc.DistractionEmotionAddend;
+            }
+            else if (actionType == ActionType.Distraction && effectValue < 0)
+            {
+                npc.AngerLvl -= npc.DistractionEmotionAddend;
+            }
+            // Expression
+            else if (actionType == ActionType.Expression && effectValue > 0)
+            {
+                npc.AngerLvl += npc.ExpressionEmotionAddend;
+            }
+            else if (actionType == ActionType.Expression && effectValue < 0)
+            {
+                npc.AngerLvl -= npc.ExpressionEmotionAddend;
+            }
+            // Processing
+            else if (actionType == ActionType.Processing && effectValue > 0)
+            {
+                npc.AngerLvl += npc.ProcessingEmotionAddend;
+            }
+            else if (actionType == ActionType.Processing && effectValue < 0)
+            {
+                npc.AngerLvl -= npc.ProcessingEmotionAddend;
+            }
+            // Reappraisal
+            else if (actionType == ActionType.Reappraisal && effectValue > 0)
+            {
+                npc.AngerLvl += npc.ReappraisalEmotionAddend;
+            }
+            else if (actionType == ActionType.Reappraisal && effectValue < 0)
+            {
+                npc.AngerLvl -= npc.ReappraisalEmotionAddend;
+            }
+
             angerText.text = npc.AngerLvl.ToString();
         }
 
