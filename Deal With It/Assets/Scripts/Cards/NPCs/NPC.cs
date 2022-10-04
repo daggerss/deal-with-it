@@ -15,6 +15,8 @@ public class NPC : Card
     // The energy and emotion levels are capped accordingly.
     // Serialization is causing issues, but it's not necessary since emotions are
     // set within a range for each game.
+    public enum LevelType {Energy, Joy, Sadness, Fear, Anger};
+    
     private int _energyLvl = 20;
     private int _joyLvl = 7;
     private int _sadnessLvl = 7;
@@ -139,4 +141,35 @@ public class NPC : Card
     [SerializeField]
     private int _reappraisalEnergyAddend;
     public int ReappraisalEnergyAddend => _reappraisalEnergyAddend;
+
+    /* -------------------------------- Level Bar ------------------------------- */
+    public float LerpTimer {get; set;}
+
+    /* ----------------------------- Custom Methods ----------------------------- */
+    // Apply energy or emotion effects
+    public void ApplyEffect(LevelType type, int effectValue)
+    {
+        if (type == LevelType.Energy)
+        {
+            EnergyLvl += effectValue;
+        }
+        else if (type == LevelType.Joy)
+        {
+            JoyLvl += effectValue;
+        }
+        else if (type == LevelType.Sadness)
+        {
+            SadnessLvl += effectValue;
+        }
+        else if (type == LevelType.Fear)
+        {
+            FearLvl += effectValue;
+        }
+        else if (type == LevelType.Anger)
+        {
+            AngerLvl += effectValue;
+        }
+        
+        LerpTimer = 0f;
+    }
 }
