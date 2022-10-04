@@ -133,7 +133,11 @@ public class PlayerController : MonoBehaviour
             // Remove card from hand
             CardsInHand[SelectedCard] = null;
 
-            //npcDisplay.ApplyEffect(LevelType.Energy, playedActionCard.EnergyVal);
+            npcDisplay.ApplyEffect(LevelType.Energy, playedActionCard.EnergyVal, playedActionCard.CardActionType);
+            npcDisplay.ApplyEffect(LevelType.Joy, playedActionCard.JoyVal, playedActionCard.CardActionType);
+            npcDisplay.ApplyEffect(LevelType.Sadness, playedActionCard.SadnessVal, playedActionCard.CardActionType);
+            npcDisplay.ApplyEffect(LevelType.Fear, playedActionCard.FearVal, playedActionCard.CardActionType);
+            npcDisplay.ApplyEffect(LevelType.Anger, playedActionCard.AngerVal, playedActionCard.CardActionType);
         }
 
         RoundController.NextPlayer();
