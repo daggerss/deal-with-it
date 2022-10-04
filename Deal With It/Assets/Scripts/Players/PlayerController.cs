@@ -60,10 +60,10 @@ public class PlayerController : MonoBehaviour
             // Makes sure that players have 5 cards every round
             // While there is an empty slot in the player's hand
             while(IndexOfEmptyElement != -1){
-                Action PickedCard = ActionCardDeck.GetRandomCard();
+                Action pickedCard = ActionCardDeck.GetRandomCard();
 
                 // Puts card in player's hand
-                CardsInHand[IndexOfEmptyElement] = PickedCard;
+                CardsInHand[IndexOfEmptyElement] = pickedCard;
 
                 // Check for empty slot again for the while loop
                 IndexOfEmptyElement = Array.IndexOf(CardsInHand, null);

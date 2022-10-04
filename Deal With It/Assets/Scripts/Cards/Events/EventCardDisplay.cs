@@ -91,6 +91,15 @@ public class EventCardDisplay : MonoBehaviour
         // Select New Card
         _currentEventCard = EventCard[GetRandomCard()];
 
+        if(_currentEventCard.Randomize){
+            // Clone current event card so that it doesn't change the original values
+            Event tempCurrentEventCard = (Event) _currentEventCard.Clone();
+            _currentEventCard = tempCurrentEventCard;
+
+            // Randomize
+            _currentEventCard.RandomVariation();
+        }
+
         //Format Text of New Card
         CardTypeText.text = _currentEventCard.GetType().Name;
         CardNameText.text = _currentEventCard.CardName;
