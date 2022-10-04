@@ -13,6 +13,7 @@ public class Event : Card
     [SerializeField] private int _sadnessVal;
     [SerializeField] private int _fearVal;
     [SerializeField] private int _angerVal;
+    [SerializeField] private int _extraEventCards;
 
     public int EnergyVal
     {
@@ -71,6 +72,18 @@ public class Event : Card
         set
         {
             _angerVal = Mathf.Clamp(value, -13, 13);
+        }
+    }
+
+    public int ExtraEventCards
+    {
+        get
+        {
+            return _extraEventCards;
+        }
+        set
+        {
+            _extraEventCards = value;
         }
     }
 }

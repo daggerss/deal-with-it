@@ -18,6 +18,7 @@ public class EventCardDisplay : MonoBehaviour
 
     // Displays the current event card being played
     private Event _currentEventCard;
+    private int _extraEventCards = 0;
     public TMP_Text CardTypeText, CardNameText, CardDescriptionText, EnergyText, JoyText, SadnessText, FearText, AngerText;
     public Image EnergyImage, JoyImage, SadnessImage, FearImage, AngerImage;
     public GameObject ThisObject;
@@ -50,30 +51,9 @@ public class EventCardDisplay : MonoBehaviour
     {
         // If round is changed then select a new card from array
         if(_roundController.Round != _currentRound){
-            ThisObject.SetActive(true);
             _currentRound = _roundController.Round;
 
-            // Select New Card
-            _currentEventCard = EventCard[GetRandomCard()];
-            //Format Text of New Card
-            CardTypeText.text = _currentEventCard.GetType().Name;
-            CardNameText.text = _currentEventCard.CardName;
-            CardDescriptionText.text = _currentEventCard.CardDescription;
-
-            EnergyText.text = FormatText(_currentEventCard.EnergyVal);
-            EnergyImage.gameObject.SetActive(ShowImage(_currentEventCard.EnergyVal));
-
-            JoyText.text = FormatText(_currentEventCard.JoyVal);
-            JoyImage.gameObject.SetActive(ShowImage(_currentEventCard.JoyVal));
-
-            SadnessText.text = FormatText(_currentEventCard.SadnessVal);
-            SadnessImage.gameObject.SetActive(ShowImage(_currentEventCard.SadnessVal));
-
-            FearText.text = FormatText(_currentEventCard.FearVal);
-            FearImage.gameObject.SetActive(ShowImage(_currentEventCard.FearVal));
-
-            AngerText.text = FormatText(_currentEventCard.AngerVal);
-            AngerImage.gameObject.SetActive(ShowImage(_currentEventCard.AngerVal));
+            DrawCard();
         }
     }
 
@@ -105,6 +85,36 @@ public class EventCardDisplay : MonoBehaviour
         return output;
     }
 
+    // Draw Card
+    private void DrawCard(){
+        ThisObject.SetActive(true);
+        // Select New Card
+        _currentEventCard = EventCard[GetRandomCard()];
+
+        //Format Text of New Card
+        CardTypeText.text = _currentEventCard.GetType().Name;
+        CardNameText.text = _currentEventCard.CardName;
+        CardDescriptionText.text = _currentEventCard.CardDescription;
+
+        EnergyText.text = FormatText(_currentEventCard.EnergyVal);
+        EnergyImage.gameObject.SetActive(ShowImage(_currentEventCard.EnergyVal));
+
+        JoyText.text = FormatText(_currentEventCard.JoyVal);
+        JoyImage.gameObject.SetActive(ShowImage(_currentEventCard.JoyVal));
+
+        SadnessText.text = FormatText(_currentEventCard.SadnessVal);
+        SadnessImage.gameObject.SetActive(ShowImage(_currentEventCard.SadnessVal));
+
+        FearText.text = FormatText(_currentEventCard.FearVal);
+        FearImage.gameObject.SetActive(ShowImage(_currentEventCard.FearVal));
+
+        AngerText.text = FormatText(_currentEventCard.AngerVal);
+        AngerImage.gameObject.SetActive(ShowImage(_currentEventCard.AngerVal));
+
+        // Extra Event Cards
+        _extraEventCards += _currentEventCard.ExtraEventCards;
+    }
+
     // Hides the card (Event Effects are applied here so that changes can be seen (?))
     public void HideCard(){
         ThisObject.SetActive(false);
@@ -115,6 +125,13 @@ public class EventCardDisplay : MonoBehaviour
         NPCDisplay.npc.ApplyEffect(NPC.LevelType.Sadness, _currentEventCard.SadnessVal);
         NPCDisplay.npc.ApplyEffect(NPC.LevelType.Fear, _currentEventCard.FearVal);
         NPCDisplay.npc.ApplyEffect(NPC.LevelType.Anger, _currentEventCard.AngerVal);
+
+        if(_extraEventCards > 0){
+            DrawCard();
+            _extraEventCards--;
+        }else{
+            _roundController.NextPlayer();
+        }
     }
 
     // Returns null if value is 0 (for printing values of energy etc.)

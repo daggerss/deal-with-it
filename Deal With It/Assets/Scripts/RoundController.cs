@@ -17,7 +17,9 @@ public class RoundController : MonoBehaviour
         }
     }
 
-    private int _playerTurn = 0;
+    // Initial is -1
+    // -1 is when event cards are drawn
+    private int _playerTurn = -1;
     public int PlayerTurn
     {
         get
@@ -50,7 +52,7 @@ public class RoundController : MonoBehaviour
         _playerTurn++;
         if(_playerTurn == _numberOfPlayers){
             NextRound();
-            _playerTurn = 0;
+            _playerTurn = -1;
         }
     }
 

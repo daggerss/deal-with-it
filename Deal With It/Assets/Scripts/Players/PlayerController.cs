@@ -79,26 +79,22 @@ public class PlayerController : MonoBehaviour
 
             //If player is AI
             if(!Playable){
+                /* -------------------------------------------------------------------------- */
+                /* ------- Can we add a buffer here so the cards don't play instantly ------- */
+                /* -------------------------------------------------------------------------- */
+
                 // Random Number
                 int rng = UnityEngine.Random.Range(0, CardsInHand.Length);
                 SelectedCard = rng;
                 PlayCard();
             }
         }else{
+            // So player can't play card when it's not their turn
             ConfirmButton.gameObject.SetActive(false);
         }
     }
 
-    // Check If Player Has Card Buttons
-    private bool PlayerHasButtons(){
-        foreach(Button btn in CardsInHandButton){
-            if(btn != null){
-                return true;
-            }
-        }
-
-        return false;
-    }
+    /* ----------------------------- Custom Methods ----------------------------- */
 
     // Select Card
     public void SelectCard(int CardIndex){
@@ -132,8 +128,6 @@ public class PlayerController : MonoBehaviour
         }else{
             Action playedActionCard = CardsInHand[SelectedCard];
 
-            RoundController.NextPlayer();
-
             Debug.Log("Player " + PlayerNumber + " played " + playedActionCard.CardName);
 
             // Remove card from hand
@@ -141,5 +135,7 @@ public class PlayerController : MonoBehaviour
 
             //NPCDisplay.ApplyEffect(NPCDisplay.LevelType.Energy, playedActionCard.EnergyVal);
         }
+
+        RoundController.NextPlayer();
     }
 }
