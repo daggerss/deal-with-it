@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     private int CurrentRound = -1;
 
     // NPC
-    public NPCDisplay NPCDisplay;
+    public NPCDisplay npcDisplay;
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
         RoundController = (RoundController)GameObject.FindGameObjectWithTag("Round Controller").GetComponent(typeof(RoundController));
 
         // Initializing NPC
-        NPCDisplay = (NPCDisplay)GameObject.FindGameObjectWithTag("NPC").GetComponent(typeof(NPCDisplay));
+        npcDisplay = (NPCDisplay)GameObject.FindGameObjectWithTag("NPC").GetComponent(typeof(NPCDisplay));
 
         // Initializing OriginalButtonSize
         for(int i = 0; i < OriginalButtonPosition.Length; i++){
@@ -133,7 +133,7 @@ public class PlayerController : MonoBehaviour
             // Remove card from hand
             CardsInHand[SelectedCard] = null;
 
-            //NPCDisplay.ApplyEffect(NPCDisplay.LevelType.Energy, playedActionCard.EnergyVal);
+            //npcDisplay.ApplyEffect(LevelType.Energy, playedActionCard.EnergyVal);
         }
 
         RoundController.NextPlayer();

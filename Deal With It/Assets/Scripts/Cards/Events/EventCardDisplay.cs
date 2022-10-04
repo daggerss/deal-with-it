@@ -14,7 +14,7 @@ public class EventCardDisplay : MonoBehaviour
     private int[] _selectedEventCards;
 
     // NPC 
-    public NPCDisplay NPCDisplay;
+    public NPCDisplay npcDisplay;
 
     // Displays the current event card being played
     private Event _currentEventCard;
@@ -36,7 +36,7 @@ public class EventCardDisplay : MonoBehaviour
         _roundController = (RoundController)RoundObject.GetComponent(typeof(RoundController));
 
         // Initialize the NPC
-        NPCDisplay = (NPCDisplay)GameObject.FindGameObjectWithTag("NPC").GetComponent(typeof(NPCDisplay));
+        npcDisplay = (NPCDisplay)GameObject.FindGameObjectWithTag("NPC").GetComponent(typeof(NPCDisplay));
 
         // Updating array size of _selectedEventCards to match the array size of the total number of EventCards
         Array.Resize(ref _selectedEventCards, EventCard.Length);
@@ -129,11 +129,11 @@ public class EventCardDisplay : MonoBehaviour
         ThisObject.SetActive(false);
 
         // Apply Event Effects
-        NPCDisplay.ApplyEffect(LevelType.Energy, _currentEventCard.EnergyVal);
-        NPCDisplay.ApplyEffect(LevelType.Joy, _currentEventCard.JoyVal);
-        NPCDisplay.ApplyEffect(LevelType.Sadness, _currentEventCard.SadnessVal);
-        NPCDisplay.ApplyEffect(LevelType.Fear, _currentEventCard.FearVal);
-        NPCDisplay.ApplyEffect(LevelType.Anger, _currentEventCard.AngerVal);
+        npcDisplay.ApplyEffect(LevelType.Energy, _currentEventCard.EnergyVal);
+        npcDisplay.ApplyEffect(LevelType.Joy, _currentEventCard.JoyVal);
+        npcDisplay.ApplyEffect(LevelType.Sadness, _currentEventCard.SadnessVal);
+        npcDisplay.ApplyEffect(LevelType.Fear, _currentEventCard.FearVal);
+        npcDisplay.ApplyEffect(LevelType.Anger, _currentEventCard.AngerVal);
 
         if(_extraEventCards > 0){
             DrawCard();
