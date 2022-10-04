@@ -18,35 +18,34 @@ public class ActionCardDisplay : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        Action thisCard = Owner.CardsInHand[CardNumber];
+        Action currentActionCard = Owner.CardsInHand[CardNumber];
 
-        if(thisCard != null){
+        if(currentActionCard != null){
 
-            CardTypeText.text = thisCard.GetType().Name;
-            CardNameText.text = thisCard.CardName;
-            CardDescriptionText.text = thisCard.CardDescription;
-            ActionTypeText.text = thisCard.ActionType;
+            CardTypeText.text = currentActionCard.GetType().Name;
+            CardNameText.text = currentActionCard.CardName;
+            CardDescriptionText.text = currentActionCard.CardDescription;
+            ActionTypeText.text = currentActionCard.ActionType;
 
-            EnergyText.text = FormatText(thisCard.EnergyVal);
-            EnergyImage.gameObject.SetActive(ShowImage(thisCard.EnergyVal));
+            EnergyText.text = FormatText(currentActionCard.EnergyVal);
+            EnergyImage.gameObject.SetActive(ShowImage(currentActionCard.EnergyVal));
 
-            JoyText.text = FormatText(thisCard.JoyVal);
-            JoyImage.gameObject.SetActive(ShowImage(thisCard.JoyVal));
+            JoyText.text = FormatText(currentActionCard.JoyVal);
+            JoyImage.gameObject.SetActive(ShowImage(currentActionCard.JoyVal));
 
-            SadnessText.text = FormatText(thisCard.SadnessVal);
-            SadnessImage.gameObject.SetActive(ShowImage(thisCard.SadnessVal));
+            SadnessText.text = FormatText(currentActionCard.SadnessVal);
+            SadnessImage.gameObject.SetActive(ShowImage(currentActionCard.SadnessVal));
 
-            FearText.text = FormatText(thisCard.FearVal);
-            FearImage.gameObject.SetActive(ShowImage(thisCard.FearVal));
+            FearText.text = FormatText(currentActionCard.FearVal);
+            FearImage.gameObject.SetActive(ShowImage(currentActionCard.FearVal));
 
-            AngerText.text = FormatText(thisCard.AngerVal);
-            AngerImage.gameObject.SetActive(ShowImage(thisCard.AngerVal));
+            AngerText.text = FormatText(currentActionCard.AngerVal);
+            AngerImage.gameObject.SetActive(ShowImage(currentActionCard.AngerVal));
         }else{
         }
     }

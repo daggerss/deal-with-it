@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     // Player Variables
     public int PlayerNumber;
     private int SelectedCard = -1;
+    public bool Playable;
 
     // Misc
     private Vector2[] OriginalButtonPosition = new Vector2[5];
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour
     // Array of cards in a player's hand (public if we're adding feature when other players can look into ur hand)
     public Action[] CardsInHand = new Action[5];
     public Button[] CardsInHandButton = new Button[5];
+    public Button ConfirmButton;
 
     // ActionCardDeck
     private ActionCardDeck ActionCardDeck;
@@ -23,6 +25,9 @@ public class PlayerController : MonoBehaviour
     // Round Counter
     private RoundController RoundController;
     private int CurrentRound = -1;
+
+    // NPC
+    public NPCDisplay NPCDisplay;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +37,9 @@ public class PlayerController : MonoBehaviour
 
         // Initializing the RoundController 
         RoundController = (RoundController)GameObject.FindGameObjectWithTag("Round Controller").GetComponent(typeof(RoundController));
+
+        // Initializing NPC
+        NPCDisplay = (NPCDisplay)GameObject.FindGameObjectWithTag("NPC").GetComponent(typeof(NPCDisplay));
 
         // Initializing OriginalButtonSize
         for(int i = 0; i < OriginalButtonPosition.Length; i++){
@@ -60,6 +68,24 @@ public class PlayerController : MonoBehaviour
                 // Check for empty slot again for the while loop
                 IndexOfEmptyElement = Array.IndexOf(CardsInHand, null);
             }
+
+            // Reset Cards to Original Position at the start of every round
+            SelectCard(-1);
+        }
+
+        // If it is this player's turn
+        if(RoundController.PlayerTurn == PlayerNumber){
+            ConfirmButton.gameObject.SetActive(true);
+
+            //If player is AI
+            if(!Playable){
+                // Random Number
+                int rng = UnityEngine.Random.Range(0, CardsInHand.Length);
+                SelectedCard = rng;
+                PlayCard();
+            }
+        }else{
+            ConfirmButton.gameObject.SetActive(false);
         }
     }
 
@@ -95,6 +121,22 @@ public class PlayerController : MonoBehaviour
             }else{
                 CurrentButton.transform.position = OriginalButtonPosition[i];
             }
+        }
+    }
+
+    // Play Card
+    public void PlayCard(){
+        if(SelectedCard == -1){
+            // Do nothing skip turn
+            Debug.Log("Player " + PlayerNumber + " played no card");
+        }else{
+            Action playedActionCard = CardsInHand[SelectedCard];
+
+            RoundController.NextPlayer();
+
+            Debug.Log("Player " + PlayerNumber + " played " + playedActionCard.CardName);
+
+            //NPCDisplay.ApplyEffect(NPCDisplay.LevelType.Energy, playedActionCard.EnergyVal);
         }
     }
 }

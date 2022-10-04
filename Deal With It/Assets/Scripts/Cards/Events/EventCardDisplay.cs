@@ -115,8 +115,6 @@ public class EventCardDisplay : MonoBehaviour
         NPCDisplay.ApplyEffect(NPCDisplay.LevelType.Sadness, _currentEventCard.SadnessVal);
         NPCDisplay.ApplyEffect(NPCDisplay.LevelType.Fear, _currentEventCard.FearVal);
         NPCDisplay.ApplyEffect(NPCDisplay.LevelType.Anger, _currentEventCard.AngerVal);
-
-        // Debug.Log(NPCDisplay.npc.EnergyLvl);
     }
 
     // Returns null if value is 0 (for printing values of energy etc.)

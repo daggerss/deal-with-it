@@ -7,6 +7,7 @@ TagManager:
   - Action Card Deck
   - Round Controller
   - NPC
+  - PlayerTag
   layers:
   - Default
   - TransparentFX
