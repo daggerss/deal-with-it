@@ -19,3 +19,6 @@ public class Card : ScriptableObject
     [field: SerializeField]
     public Sprite Illustration {get; private set;}
 }
+
+/* ------------------------------- Level Types ------------------------------ */
+public enum LevelType {Energy, Joy, Sadness, Fear, Anger};
