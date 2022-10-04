@@ -4,33 +4,60 @@ using UnityEngine;
 
 public class RoundController : MonoBehaviour
 {
-    private int _Round = 0;
+    private int _round = 0;
     public int Round
     {
         get
         {
-            return _Round;
+            return _round;
         }
         set
         {
-            _Round = value;
+            _round = value;
         }
     }
 
-    // Executes on next round
-    public void NextRound(){
-        _Round++;
+    // Initial is -1
+    // -1 is when event cards are drawn
+    private int _playerTurn = -1;
+    public int PlayerTurn
+    {
+        get
+        {
+            return _playerTurn;
+        }
+        set
+        {
+            _playerTurn = value;
+        }
     }
+
+    private int _numberOfPlayers;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        _numberOfPlayers = GameObject.FindGameObjectsWithTag("PlayerTag").Length;
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    /* ---------------------------- Custom Functions ---------------------------- */
+    // Goes to next player's turn
+    public void NextPlayer(){
+        _playerTurn++;
+        if(_playerTurn == _numberOfPlayers){
+            NextRound();
+            _playerTurn = -1;
+        }
+    }
+
+    // Executes on next round
+    public void NextRound(){
+        _round++;
     }
 }

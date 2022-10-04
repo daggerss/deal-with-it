@@ -7,6 +7,7 @@ using TMPro;
 public class NPCDisplay : MonoBehaviour
 {
     public NPC npc;
+    public enum LevelType {Energy, Joy, Sadness, Fear, Anger};
 
     /* ---------------------------- Card Information ---------------------------- */
     public TMP_Text cardTypeText;

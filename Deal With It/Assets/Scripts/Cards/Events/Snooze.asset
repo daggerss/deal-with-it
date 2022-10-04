@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6af4158c31e9d04da24e92c4b1aa214, type: 3}
-  m_Name: Free Cut
+  m_Name: Snooze
   m_EditorClassIdentifier: 
-  _cardName: Free Cut
-  _cardDescription: One of your classes got cancelled! You suddenly have some free
-    time.
+  _cardName: Snooze
+  _cardDescription: You overslept! Your schedule for the day is now messed up.
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: 1
-  _joyVal: 0
-  _sadnessVal: 0
-  _fearVal: 0
-  _angerVal: 0
-  _extraEventCards: 2
+  _energyVal: -2
+  _joyVal: -1
+  _sadnessVal: 1
+  _fearVal: 1
+  _angerVal: 1
+  _extraEventCards: 0
+  _randomize: 1
