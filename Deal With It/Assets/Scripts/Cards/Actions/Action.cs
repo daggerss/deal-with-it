@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Action Card", menuName = "Deal With It/Cards/Action Card", order = 0)]
 public class Action : Card
 {
+    /* ------------------------- Energy & Emotion Values ------------------------ */
     // The energy and emotion levels are capped accordingly.
     // Serialization is causing issues, but it's not necessary since emotions
     // are set within a range for each game.
@@ -13,7 +14,6 @@ public class Action : Card
     [SerializeField] private int _sadnessVal;
     [SerializeField] private int _fearVal;
     [SerializeField] private int _angerVal;
-    [SerializeField] private string _actionType;
 
     public int EnergyVal
     {
@@ -75,11 +75,11 @@ public class Action : Card
         }
     }
 
-    public string ActionType
-    {
-        get
-        {
-            return _actionType.ToUpper();
-        }
-    }
+    /* ---------------------------- Card Action Type ---------------------------- */
+    [SerializeField]
+    private ActionType _actionType;
+    public ActionType CardActionType => _actionType;
 }
+
+/* ------------------------------- Action Type ------------------------------ */
+public enum ActionType {None, Distraction, Expression, Processing, Reappraisal};

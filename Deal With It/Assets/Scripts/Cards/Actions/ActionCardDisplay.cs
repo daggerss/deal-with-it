@@ -30,7 +30,7 @@ public class ActionCardDisplay : MonoBehaviour
             CardTypeText.text = currentActionCard.GetType().Name;
             CardNameText.text = currentActionCard.CardName;
             CardDescriptionText.text = currentActionCard.CardDescription;
-            ActionTypeText.text = currentActionCard.ActionType;
+            ActionTypeText.text = currentActionCard.CardActionType.ToString();
 
             EnergyText.text = FormatText(currentActionCard.EnergyVal);
             EnergyImage.gameObject.SetActive(ShowImage(currentActionCard.EnergyVal));

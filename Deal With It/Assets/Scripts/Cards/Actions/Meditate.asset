@@ -21,4 +21,4 @@ MonoBehaviour:
   _sadnessVal: 0
   _fearVal: -1
   _angerVal: -1
-  _actionType: Processing
+  _actionType: 3

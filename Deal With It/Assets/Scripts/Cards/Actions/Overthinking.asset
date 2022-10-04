@@ -21,4 +21,4 @@ MonoBehaviour:
   _sadnessVal: -1
   _fearVal: -1
   _angerVal: 0
-  _actionType: Reappraisal
+  _actionType: 4

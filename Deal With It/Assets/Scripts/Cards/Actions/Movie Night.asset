@@ -21,4 +21,4 @@ MonoBehaviour:
   _sadnessVal: -2
   _fearVal: 0
   _angerVal: 0
-  _actionType: Distraction
+  _actionType: 1
