@@ -110,11 +110,11 @@ public class EventCardDisplay : MonoBehaviour
         ThisObject.SetActive(false);
 
         // Apply Event Effects
-        NPCDisplay.ApplyEffect(NPCDisplay.LevelType.Energy, _currentEventCard.EnergyVal);
-        NPCDisplay.ApplyEffect(NPCDisplay.LevelType.Joy, _currentEventCard.JoyVal);
-        NPCDisplay.ApplyEffect(NPCDisplay.LevelType.Sadness, _currentEventCard.SadnessVal);
-        NPCDisplay.ApplyEffect(NPCDisplay.LevelType.Fear, _currentEventCard.FearVal);
-        NPCDisplay.ApplyEffect(NPCDisplay.LevelType.Anger, _currentEventCard.AngerVal);
+        NPCDisplay.npc.ApplyEffect(NPC.LevelType.Energy, _currentEventCard.EnergyVal);
+        NPCDisplay.npc.ApplyEffect(NPC.LevelType.Joy, _currentEventCard.JoyVal);
+        NPCDisplay.npc.ApplyEffect(NPC.LevelType.Sadness, _currentEventCard.SadnessVal);
+        NPCDisplay.npc.ApplyEffect(NPC.LevelType.Fear, _currentEventCard.FearVal);
+        NPCDisplay.npc.ApplyEffect(NPC.LevelType.Anger, _currentEventCard.AngerVal);
     }
 
     // Returns null if value is 0 (for printing values of energy etc.)

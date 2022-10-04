@@ -36,7 +36,6 @@ public class RoundController : MonoBehaviour
     void Start()
     {
         _numberOfPlayers = GameObject.FindGameObjectsWithTag("PlayerTag").Length;
-        Debug.Log(_numberOfPlayers);
     }
 
     // Update is called once per frame
@@ -53,8 +52,6 @@ public class RoundController : MonoBehaviour
             NextRound();
             _playerTurn = 0;
         }
-        
-        Debug.Log(_playerTurn);
     }
 
     // Executes on next round

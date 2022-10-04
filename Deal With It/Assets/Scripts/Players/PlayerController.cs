@@ -136,6 +136,9 @@ public class PlayerController : MonoBehaviour
 
             Debug.Log("Player " + PlayerNumber + " played " + playedActionCard.CardName);
 
+            // Remove card from hand
+            CardsInHand[SelectedCard] = null;
+
             //NPCDisplay.ApplyEffect(NPCDisplay.LevelType.Energy, playedActionCard.EnergyVal);
         }
     }
