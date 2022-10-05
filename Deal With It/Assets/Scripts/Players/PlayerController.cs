@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour
                 /* -------------------------------------------------------------------------- */
 
                 // Random Number
-                int rng = UnityEngine.Random.Range(0, CardsInHand.Length);
+                int rng = UnityEngine.Random.Range(-1, CardsInHand.Length);
                 SelectedCard = rng;
                 PlayCard();
             }
