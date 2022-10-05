@@ -103,6 +103,11 @@ MonoBehaviour:
   sadnessText: {fileID: 1809592773745124691}
   fearText: {fileID: 8237909097670763106}
   angerText: {fileID: 2870941321823670228}
+  energyEffectText: {fileID: 6327439993044290844}
+  joyEffectText: {fileID: 7719325769410996591}
+  sadnessEffectText: {fileID: 8999423506216552652}
+  fearEffectText: {fileID: 1705252755485511677}
+  angerEffectText: {fileID: 4769040558858297931}
   EnergyFrontBar: {fileID: 8582505317519521440}
   EnergyBackBar: {fileID: 6104025495320543077}
   JoyFrontBar: {fileID: 5473060848180482771}
@@ -730,6 +735,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Joy Front Slider
       objectReference: {fileID: 0}
+    - target: {fileID: 6380623259990449316, guid: ee8e4727d59b1cc4c8b15fe16b2a285e, type: 3}
+      propertyPath: m_Name
+      value: Joy Effect Text
+      objectReference: {fileID: 0}
     - target: {fileID: 7732009465825763440, guid: ee8e4727d59b1cc4c8b15fe16b2a285e, type: 3}
       propertyPath: m_text
       value: Joy
@@ -828,11 +837,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee8e4727d59b1cc4c8b15fe16b2a285e, type: 3}
---- !u!224 &8790145881363574938 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8208475224404182977, guid: ee8e4727d59b1cc4c8b15fe16b2a285e, type: 3}
-  m_PrefabInstance: {fileID: 582797936631297883}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1069645689046516976 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 490512705608250283, guid: ee8e4727d59b1cc4c8b15fe16b2a285e, type: 3}
@@ -842,6 +846,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7519535960892218134 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6938993416419978317, guid: ee8e4727d59b1cc4c8b15fe16b2a285e, type: 3}
+  m_PrefabInstance: {fileID: 582797936631297883}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c3cf6e29d8e6d248bf2de235b5b988c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &5473060848180482771 stripped
@@ -855,15 +870,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c3cf6e29d8e6d248bf2de235b5b988c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7519535960892218134 stripped
+--- !u!224 &8790145881363574938 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8208475224404182977, guid: ee8e4727d59b1cc4c8b15fe16b2a285e, type: 3}
+  m_PrefabInstance: {fileID: 582797936631297883}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7719325769410996591 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6938993416419978317, guid: ee8e4727d59b1cc4c8b15fe16b2a285e, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7148917134121229876, guid: ee8e4727d59b1cc4c8b15fe16b2a285e, type: 3}
   m_PrefabInstance: {fileID: 582797936631297883}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c3cf6e29d8e6d248bf2de235b5b988c, type: 3}
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &2292985039801636600
@@ -936,6 +956,10 @@ PrefabInstance:
     - target: {fileID: 5983796392107060495, guid: ee8e4727d59b1cc4c8b15fe16b2a285e, type: 3}
       propertyPath: m_Name
       value: Sadness Front Slider
+      objectReference: {fileID: 0}
+    - target: {fileID: 6380623259990449316, guid: ee8e4727d59b1cc4c8b15fe16b2a285e, type: 3}
+      propertyPath: m_Name
+      value: Sadness Effect Text
       objectReference: {fileID: 0}
     - target: {fileID: 7732009465825763440, guid: ee8e4727d59b1cc4c8b15fe16b2a285e, type: 3}
       propertyPath: m_text
@@ -1040,6 +1064,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8208475224404182977, guid: ee8e4727d59b1cc4c8b15fe16b2a285e, type: 3}
   m_PrefabInstance: {fileID: 2292985039801636600}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8999423506216552652 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7148917134121229876, guid: ee8e4727d59b1cc4c8b15fe16b2a285e, type: 3}
+  m_PrefabInstance: {fileID: 2292985039801636600}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1809592773745124691 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 490512705608250283, guid: ee8e4727d59b1cc4c8b15fe16b2a285e, type: 3}
@@ -1144,6 +1179,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Anger Front Slider
       objectReference: {fileID: 0}
+    - target: {fileID: 6380623259990449316, guid: ee8e4727d59b1cc4c8b15fe16b2a285e, type: 3}
+      propertyPath: m_Name
+      value: Anger Effect Text
+      objectReference: {fileID: 0}
     - target: {fileID: 7732009465825763440, guid: ee8e4727d59b1cc4c8b15fe16b2a285e, type: 3}
       propertyPath: m_text
       value: Anger
@@ -1247,6 +1286,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8208475224404182977, guid: ee8e4727d59b1cc4c8b15fe16b2a285e, type: 3}
   m_PrefabInstance: {fileID: 2384945583041428607}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4769040558858297931 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7148917134121229876, guid: ee8e4727d59b1cc4c8b15fe16b2a285e, type: 3}
+  m_PrefabInstance: {fileID: 2384945583041428607}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2870941321823670228 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 490512705608250283, guid: ee8e4727d59b1cc4c8b15fe16b2a285e, type: 3}
@@ -1347,6 +1397,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Energy Front Slider
       objectReference: {fileID: 0}
+    - target: {fileID: 6380623259990449316, guid: ee8e4727d59b1cc4c8b15fe16b2a285e, type: 3}
+      propertyPath: m_Name
+      value: Energy Effect Text
+      objectReference: {fileID: 0}
     - target: {fileID: 7732009465825763440, guid: ee8e4727d59b1cc4c8b15fe16b2a285e, type: 3}
       propertyPath: m_text
       value: Energy
@@ -1445,9 +1499,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee8e4727d59b1cc4c8b15fe16b2a285e, type: 3}
---- !u!114 &6104025495320543077 stripped
+--- !u!224 &4977541771262842089 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8208475224404182977, guid: ee8e4727d59b1cc4c8b15fe16b2a285e, type: 3}
+  m_PrefabInstance: {fileID: 3817253028021310248}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6327439993044290844 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6938993416419978317, guid: ee8e4727d59b1cc4c8b15fe16b2a285e, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7148917134121229876, guid: ee8e4727d59b1cc4c8b15fe16b2a285e, type: 3}
+  m_PrefabInstance: {fileID: 3817253028021310248}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8582505317519521440 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4891670584533476744, guid: ee8e4727d59b1cc4c8b15fe16b2a285e, type: 3}
   m_PrefabInstance: {fileID: 3817253028021310248}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -1456,14 +1526,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c3cf6e29d8e6d248bf2de235b5b988c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &4977541771262842089 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8208475224404182977, guid: ee8e4727d59b1cc4c8b15fe16b2a285e, type: 3}
-  m_PrefabInstance: {fileID: 3817253028021310248}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8582505317519521440 stripped
+--- !u!114 &6104025495320543077 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4891670584533476744, guid: ee8e4727d59b1cc4c8b15fe16b2a285e, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6938993416419978317, guid: ee8e4727d59b1cc4c8b15fe16b2a285e, type: 3}
   m_PrefabInstance: {fileID: 3817253028021310248}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -1557,6 +1622,10 @@ PrefabInstance:
     - target: {fileID: 5983796392107060495, guid: ee8e4727d59b1cc4c8b15fe16b2a285e, type: 3}
       propertyPath: m_Name
       value: Fear Front Slider
+      objectReference: {fileID: 0}
+    - target: {fileID: 6380623259990449316, guid: ee8e4727d59b1cc4c8b15fe16b2a285e, type: 3}
+      propertyPath: m_Name
+      value: Fear Effect Text
       objectReference: {fileID: 0}
     - target: {fileID: 7732009465825763440, guid: ee8e4727d59b1cc4c8b15fe16b2a285e, type: 3}
       propertyPath: m_text
@@ -1656,9 +1725,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee8e4727d59b1cc4c8b15fe16b2a285e, type: 3}
---- !u!114 &8237909097670763106 stripped
+--- !u!224 &393524697271326216 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8208475224404182977, guid: ee8e4727d59b1cc4c8b15fe16b2a285e, type: 3}
+  m_PrefabInstance: {fileID: 8402670278672880073}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1705252755485511677 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 490512705608250283, guid: ee8e4727d59b1cc4c8b15fe16b2a285e, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7148917134121229876, guid: ee8e4727d59b1cc4c8b15fe16b2a285e, type: 3}
   m_PrefabInstance: {fileID: 8402670278672880073}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -1689,8 +1763,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c3cf6e29d8e6d248bf2de235b5b988c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &393524697271326216 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8208475224404182977, guid: ee8e4727d59b1cc4c8b15fe16b2a285e, type: 3}
+--- !u!114 &8237909097670763106 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 490512705608250283, guid: ee8e4727d59b1cc4c8b15fe16b2a285e, type: 3}
   m_PrefabInstance: {fileID: 8402670278672880073}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

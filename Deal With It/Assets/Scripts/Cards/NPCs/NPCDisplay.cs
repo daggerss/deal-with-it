@@ -21,6 +21,12 @@ public class NPCDisplay : MonoBehaviour
     public TMP_Text fearText;
     public TMP_Text angerText;
 
+    public TMP_Text energyEffectText;
+    public TMP_Text joyEffectText;
+    public TMP_Text sadnessEffectText;
+    public TMP_Text fearEffectText;
+    public TMP_Text angerEffectText;
+
     /* --------------------------------- Bar UI --------------------------------- */
     public LevelBar EnergyFrontBar;
     public LevelBar EnergyBackBar;
@@ -248,7 +254,9 @@ public class NPCDisplay : MonoBehaviour
             }
 
             npc.EnergyLvl += effectValue + addend;
+
             energyText.text = npc.EnergyLvl.ToString();
+            energyEffectText.text = FormatText(effectValue + addend);
         }
         // Emotion
         else
@@ -288,6 +296,7 @@ public class NPCDisplay : MonoBehaviour
                 npc.JoyLvl += effectValue + addend;
 
                 joyText.text = npc.JoyLvl.ToString();
+                joyEffectText.text = FormatText(effectValue + addend);
             }
             // Sadness
             if (levelType == LevelType.Sadness)
@@ -301,6 +310,7 @@ public class NPCDisplay : MonoBehaviour
                 npc.SadnessLvl += effectValue + addend;
 
                 sadnessText.text = npc.SadnessLvl.ToString();
+                sadnessEffectText.text = FormatText(effectValue + addend);
             }
             // Fear
             if (levelType == LevelType.Fear)
@@ -314,6 +324,7 @@ public class NPCDisplay : MonoBehaviour
                 npc.FearLvl += effectValue + addend;
 
                 fearText.text = npc.FearLvl.ToString();
+                fearEffectText.text = FormatText(effectValue + addend);
             }
             // Anger
             if (levelType == LevelType.Anger)
@@ -327,12 +338,14 @@ public class NPCDisplay : MonoBehaviour
                 npc.AngerLvl += effectValue + addend;
 
                 angerText.text = npc.AngerLvl.ToString();
+                angerEffectText.text = FormatText(effectValue + addend);
             }
         }
 
         _lerpTimer = 0f;
     }
 
+    // Adds or subtracts the addend according to energy/emotion value
     private int AddExtraEffect(int original, int addend)
     {
         if (original > 0)
@@ -345,5 +358,16 @@ public class NPCDisplay : MonoBehaviour
         }
 
         return 0;
+    }
+
+    // Returns null if value is 0 (for printing values of energy etc.)
+    private string FormatText(int value){
+        if(value == 0){
+            return null;
+        }else if(value > 0){
+            return "+" + value.ToString();
+        }else{
+            return value.ToString();
+        }
     }
 }
