@@ -285,7 +285,7 @@ public class NPCDisplay : MonoBehaviour
 
             // Per emotion
             // Joy
-            if (levelType == LevelType.Joy)
+            if (levelType == LevelType.Joy && effectValue != 0)
             {
                 // NPC x Events
                 if (actionType == ActionType.None)
@@ -299,7 +299,7 @@ public class NPCDisplay : MonoBehaviour
                 joyEffectText.text = FormatText(effectValue + addend);
             }
             // Sadness
-            if (levelType == LevelType.Sadness)
+            if (levelType == LevelType.Sadness && effectValue != 0)
             {
                 // NPC x Events
                 if (actionType == ActionType.None)
@@ -313,7 +313,7 @@ public class NPCDisplay : MonoBehaviour
                 sadnessEffectText.text = FormatText(effectValue + addend);
             }
             // Fear
-            if (levelType == LevelType.Fear)
+            if (levelType == LevelType.Fear && effectValue != 0)
             {
                 // NPC x Events
                 if (actionType == ActionType.None)
@@ -327,7 +327,7 @@ public class NPCDisplay : MonoBehaviour
                 fearEffectText.text = FormatText(effectValue + addend);
             }
             // Anger
-            if (levelType == LevelType.Anger)
+            if (levelType == LevelType.Anger && effectValue != 0)
             {
                 // NPC x Events
                 if (actionType == ActionType.None)
