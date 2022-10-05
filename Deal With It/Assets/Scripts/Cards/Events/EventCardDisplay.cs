@@ -142,15 +142,4 @@ public class EventCardDisplay : CardDisplay
             _roundController.NextPlayer();
         }
     }
-
-    // Show or hide image
-    private bool ShowImage(int value){
-        string EmotionPoints = FormatText(value);
-
-        if(EmotionPoints == null){
-            return false;
-        }else{
-            return true;
-        }
-    }
 }

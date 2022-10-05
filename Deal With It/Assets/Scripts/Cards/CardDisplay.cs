@@ -14,4 +14,15 @@ public class CardDisplay : MonoBehaviour
             return value.ToString();
         }
     }
+
+    // Show or hide image
+    public bool ShowImage(int value){
+        string EmotionPoints = FormatText(value);
+
+        if(EmotionPoints == null){
+            return false;
+        }else{
+            return true;
+        }
+    }
 }
