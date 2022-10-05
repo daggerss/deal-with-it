@@ -8,8 +8,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] 
     public List<ActionCard> deck = new List<ActionCard>();
     public List<ActionCard> discardPile = new List<ActionCard>();
+    public List<ActionCard> playingCards = new List<ActionCard>();
+
     public Transform[] cardSlots;
     public bool[] availableCardSlots;
+    public Transform[] playingSlots;
+    public bool[] availablePlayingSlots;
 
     public void DrawCard()
     {
@@ -29,6 +33,16 @@ public class GameManager : MonoBehaviour
                     return;
                 }
             }
+        }
+    }
+
+    public void ConfirmCard()
+    {
+        foreach(ActionCard card in playingCards) 
+        {
+            // Affect NPC here 
+
+            card.MoveToDiscardPile();
         }
     }
 

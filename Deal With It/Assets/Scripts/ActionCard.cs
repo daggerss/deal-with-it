@@ -39,11 +39,25 @@ public class ActionCard : MonoBehaviour
             transform.position += Vector3.up * 35;
             hasBeenPlayed = true;
             gm.availableCardSlots[handIndex] = true;
-            Invoke("MoveToDiscardPile", 2f);
+            Invoke("MoveToCardPlayed", 2f);
         }
     }
 
-    void MoveToDiscardPile()
+    void MoveToCardPlayed()
+    {
+        gm.playingCards.Add(this);
+        for(int i = 0; i < gm.availablePlayingSlots.Length; i++)
+        {
+            if(gm.availablePlayingSlots[i] == true)
+            {
+                transform.position = gm.playingSlots[i].position;
+                gm.availablePlayingSlots[i] = false;
+                return;
+            }
+        }
+    }
+
+    public void MoveToDiscardPile()
     {
         gm.discardPile.Add(this);
         gameObject.SetActive(false);
