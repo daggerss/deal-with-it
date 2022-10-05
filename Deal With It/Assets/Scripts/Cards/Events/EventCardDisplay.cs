@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class EventCardDisplay : MonoBehaviour
+public class EventCardDisplay : CardDisplay
 {
     /* -------------------------------- Variables ------------------------------- */
     // Arrays storing event cards
@@ -140,17 +140,6 @@ public class EventCardDisplay : MonoBehaviour
             _extraEventCards--;
         }else{
             _roundController.NextPlayer();
-        }
-    }
-
-    // Returns null if value is 0 (for printing values of energy etc.)
-    private string FormatText(int value){
-        if(value == 0){
-            return null;
-        }else if(value > 0){
-            return "+" + value.ToString();
-        }else{
-            return value.ToString();
         }
     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class NPCDisplay : MonoBehaviour
+public class NPCDisplay : CardDisplay
 {
     public NPC npc;
 
@@ -358,16 +358,5 @@ public class NPCDisplay : MonoBehaviour
         }
 
         return 0;
-    }
-
-    // Returns null if value is 0 (for printing values of energy etc.)
-    private string FormatText(int value){
-        if(value == 0){
-            return null;
-        }else if(value > 0){
-            return "+" + value.ToString();
-        }else{
-            return value.ToString();
-        }
     }
 }
