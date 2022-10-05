@@ -7,8 +7,6 @@ public class Action : Card
 {
     /* ------------------------- Energy & Emotion Values ------------------------ */
     // The energy and emotion levels are capped accordingly.
-    // Serialization is causing issues, but it's not necessary since emotions
-    // are set within a range for each game.
     [SerializeField] private int _energyVal;
     [SerializeField] private int _joyVal;
     [SerializeField] private int _sadnessVal;
