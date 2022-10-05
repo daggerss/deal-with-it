@@ -124,8 +124,8 @@ public class EventCardDisplay : MonoBehaviour
         _extraEventCards += _currentEventCard.ExtraEventCards;
     }
 
-    // Hides the card (Event Effects are applied here so that changes can be seen (?))
-    public void HideCard(){
+    // Hides and applies the card
+    public void ApplyCard(){
         ThisObject.SetActive(false);
 
         // Apply Event Effects
