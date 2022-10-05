@@ -16,7 +16,7 @@ MonoBehaviour:
   _cardDescription: Let others know you're emotionally unavailable at the moment
     and can come back to them later. It's okay to take time for yourself.
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: 0
+  _energyVal: -5
   _joyVal: 0
   _sadnessVal: 0
   _fearVal: 0

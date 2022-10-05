@@ -16,7 +16,7 @@ MonoBehaviour:
   _cardDescription: What lessons did you learn? How can you grow and develop from
     your situation
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: 0
+  _energyVal: -7
   _joyVal: 0
   _sadnessVal: -1
   _fearVal: -1

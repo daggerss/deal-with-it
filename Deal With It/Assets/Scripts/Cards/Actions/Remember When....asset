@@ -15,7 +15,7 @@ MonoBehaviour:
   _cardName: Remember When...
   _cardDescription: Share a happy memory with a friend. You had some good times!
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: 0
+  _energyVal: -5
   _joyVal: 2
   _sadnessVal: 0
   _fearVal: 0
