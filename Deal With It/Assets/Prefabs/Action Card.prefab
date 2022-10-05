@@ -297,6 +297,8 @@ GameObject:
   - component: {fileID: 3320498390333178162}
   - component: {fileID: 3320498390333178160}
   - component: {fileID: 3320498390333178163}
+  - component: {fileID: 1718692280708535890}
+  - component: {fileID: 6804266688788270319}
   m_Layer: 5
   m_Name: Action Card
   m_TagString: Untagged
@@ -368,6 +370,91 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1718692280708535890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3320498390333178173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32fc2bba384c69145bdcd8ebd0e85c0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Owner: {fileID: 0}
+  CardNumber: 0
+  CardTypeText: {fileID: 21348674597079792}
+  CardNameText: {fileID: 5115929361229770920}
+  CardDescriptionText: {fileID: 4243942955121425073}
+  EnergyText: {fileID: 8744269388292320113}
+  JoyText: {fileID: 8460323670061551150}
+  SadnessText: {fileID: 8881832550749856273}
+  FearText: {fileID: 4604852467125164616}
+  AngerText: {fileID: 3288325920117768115}
+  ActionTypeText: {fileID: 5848750440724855454}
+  EnergyImage: {fileID: 3320498388725921290}
+  JoyImage: {fileID: 5713002508276772069}
+  SadnessImage: {fileID: 2303488433957769719}
+  FearImage: {fileID: 2350534554768517442}
+  AngerImage: {fileID: 5072699332497496811}
+  ActionTypeImage: {fileID: 6165640153138801658}
+--- !u!114 &6804266688788270319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3320498390333178173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 3320498390333178163}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: SelectCard
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3358728972076522163
 GameObject:
   m_ObjectHideFlags: 0
