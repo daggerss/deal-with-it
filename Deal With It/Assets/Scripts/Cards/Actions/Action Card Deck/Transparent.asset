@@ -17,8 +17,8 @@ MonoBehaviour:
     who hurt you. People don't read minds, so it's important to be clear!
   <Illustration>k__BackingField: {fileID: 0}
   _energyVal: -5
-  _joyVal: 0
-  _sadnessVal: -1
-  _fearVal: 0
-  _angerVal: -2
+  _joyConstVal: 0
+  _sadnessConstVal: -1
+  _fearConstVal: 0
+  _angerConstVal: -2
   _actionType: 2

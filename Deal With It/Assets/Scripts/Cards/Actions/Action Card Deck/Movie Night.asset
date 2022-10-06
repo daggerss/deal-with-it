@@ -17,8 +17,8 @@ MonoBehaviour:
     a long day.
   <Illustration>k__BackingField: {fileID: 0}
   _energyVal: -3
-  _joyVal: 0
-  _sadnessVal: -2
-  _fearVal: 0
-  _angerVal: 0
+  _joyConstVal: 0
+  _sadnessConstVal: -2
+  _fearConstVal: 0
+  _angerConstVal: 0
   _actionType: 1

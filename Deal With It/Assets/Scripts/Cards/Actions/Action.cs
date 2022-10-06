@@ -7,11 +7,9 @@ public class Action : Card
 {
     /* ------------------------- Energy & Emotion Values ------------------------ */
     // The energy and emotion levels are capped accordingly.
+
+    // Energy
     [SerializeField] private int _energyVal;
-    [SerializeField] private int _joyVal;
-    [SerializeField] private int _sadnessVal;
-    [SerializeField] private int _fearVal;
-    [SerializeField] private int _angerVal;
 
     public int EnergyVal
     {
@@ -24,6 +22,18 @@ public class Action : Card
             _energyVal = Mathf.Clamp(value, -20, 20);
         }
     }
+
+    // Emotion constants - basis for range, no getter/setter
+    [SerializeField] private int _joyConstVal;
+    [SerializeField] private int _sadnessConstVal;
+    [SerializeField] private int _fearConstVal;
+    [SerializeField] private int _angerConstVal;
+
+    // Emotion random values - set during gameplay
+    private int _joyVal;
+    private int _sadnessVal;
+    private int _fearVal;
+    private int _angerVal;
 
     public int JoyVal
     {
@@ -77,6 +87,36 @@ public class Action : Card
     [SerializeField]
     private ActionType _actionType;
     public ActionType CardActionType => _actionType;
+
+    /* ----------------------------- Custom Methods ----------------------------- */
+
+    // Set random emotion values
+    public void SetRandomEmotions()
+    {
+        JoyVal = RandomizeValue(_joyConstVal);
+        SadnessVal = RandomizeValue(_sadnessConstVal);
+        FearVal = RandomizeValue(_fearConstVal);
+        AngerVal = RandomizeValue(_angerConstVal);
+    }
+
+    // Set random value based on constant
+    private int RandomizeValue(int value)
+    {
+        if (value == 0)
+        {
+            return value;
+        }
+        else if (value == 1)
+        {
+            return Random.Range(value, value+3);
+        }
+        else if (value == -1)
+        {
+            return Random.Range(value-2, 0);
+        }
+
+        return Random.Range(value-1, value+2);
+    }
 }
 
 /* ------------------------------- Action Type ------------------------------ */

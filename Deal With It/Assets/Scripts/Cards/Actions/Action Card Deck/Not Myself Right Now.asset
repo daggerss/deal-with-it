@@ -17,8 +17,8 @@ MonoBehaviour:
     and can come back to them later. It's okay to take time for yourself.
   <Illustration>k__BackingField: {fileID: 0}
   _energyVal: -5
-  _joyVal: 0
-  _sadnessVal: 0
-  _fearVal: 0
-  _angerVal: -2
+  _joyConstVal: 0
+  _sadnessConstVal: 0
+  _fearConstVal: 0
+  _angerConstVal: -2
   _actionType: 2

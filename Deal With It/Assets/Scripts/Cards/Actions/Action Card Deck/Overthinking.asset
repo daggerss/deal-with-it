@@ -17,8 +17,8 @@ MonoBehaviour:
     your thoughts facts or opinions?
   <Illustration>k__BackingField: {fileID: 0}
   _energyVal: -7
-  _joyVal: 0
-  _sadnessVal: -1
-  _fearVal: -1
-  _angerVal: 0
+  _joyConstVal: 0
+  _sadnessConstVal: -1
+  _fearConstVal: -1
+  _angerConstVal: 0
   _actionType: 4

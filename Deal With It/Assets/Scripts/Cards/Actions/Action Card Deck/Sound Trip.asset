@@ -17,8 +17,8 @@ MonoBehaviour:
     into your comb and let it all out!
   <Illustration>k__BackingField: {fileID: 0}
   _energyVal: -5
-  _joyVal: 0
-  _sadnessVal: -1
-  _fearVal: 0
-  _angerVal: -1
+  _joyConstVal: 0
+  _sadnessConstVal: -1
+  _fearConstVal: 0
+  _angerConstVal: -1
   _actionType: 2

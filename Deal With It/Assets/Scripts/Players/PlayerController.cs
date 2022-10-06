@@ -62,6 +62,9 @@ public class PlayerController : MonoBehaviour
             while(IndexOfEmptyElement != -1){
                 Action pickedCard = ActionCardDeck.GetRandomCard();
 
+                // Randomize card's emotion values
+                pickedCard.SetRandomEmotions();
+
                 // Puts card in player's hand
                 CardsInHand[IndexOfEmptyElement] = pickedCard;
 
