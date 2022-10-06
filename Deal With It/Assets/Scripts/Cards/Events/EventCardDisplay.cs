@@ -23,6 +23,13 @@ public class EventCardDisplay : CardDisplay
     public Image EnergyImage, JoyImage, SadnessImage, FearImage, AngerImage;
     public GameObject ThisObject;
 
+    // Arrows UI
+    public Image EnergyArrowUpImage, EnergyArrowDownImage;
+    public Image JoyArrowUpImage, JoyArrowDownImage;
+    public Image SadnessArrowUpImage, SadnessArrowDownImage;
+    public Image FearArrowUpImage, FearArrowDownImage;
+    public Image AngerArrowUpImage, AngerArrowDownImage;
+
     // Round Variables
     public GameObject RoundObject;
     private RoundController _roundController;
@@ -100,6 +107,16 @@ public class EventCardDisplay : CardDisplay
             _currentEventCard.RandomVariation();
         }
 
+        // Save
+        _currentEventCard.SaveValues();
+
+        // Apply NPC trait effects
+        _currentEventCard.EnergyVal = npcDisplay.ProjectTraitEffect(LevelType.Energy, _currentEventCard.EnergyVal, ActionType.None);
+        _currentEventCard.JoyVal = npcDisplay.ProjectTraitEffect(LevelType.Joy, _currentEventCard.JoyVal, ActionType.None);
+        _currentEventCard.SadnessVal = npcDisplay.ProjectTraitEffect(LevelType.Sadness, _currentEventCard.SadnessVal, ActionType.None);
+        _currentEventCard.FearVal = npcDisplay.ProjectTraitEffect(LevelType.Fear, _currentEventCard.FearVal, ActionType.None);
+        _currentEventCard.AngerVal = npcDisplay.ProjectTraitEffect(LevelType.Anger, _currentEventCard.AngerVal, ActionType.None);
+
         //Format Text of New Card
         CardTypeText.text = _currentEventCard.GetType().Name;
         CardNameText.text = _currentEventCard.CardName;
@@ -120,6 +137,18 @@ public class EventCardDisplay : CardDisplay
         AngerText.text = FormatText(_currentEventCard.AngerVal);
         AngerImage.gameObject.SetActive(ShowImage(_currentEventCard.AngerVal));
 
+        EnergyArrowUpImage.gameObject.SetActive(ShouldShowArrow(0, _currentEventCard.EnergyOriginalVal, _currentEventCard.EnergyVal));
+        JoyArrowUpImage.gameObject.SetActive(ShouldShowArrow(0, _currentEventCard.JoyOriginalVal, _currentEventCard.JoyVal));
+        SadnessArrowUpImage.gameObject.SetActive(ShouldShowArrow(0, _currentEventCard.SadnessOriginalVal, _currentEventCard.SadnessVal));
+        FearArrowUpImage.gameObject.SetActive(ShouldShowArrow(0, _currentEventCard.FearOriginalVal, _currentEventCard.FearVal));
+        AngerArrowUpImage.gameObject.SetActive(ShouldShowArrow(0, _currentEventCard.AngerOriginalVal, _currentEventCard.AngerVal));
+
+        EnergyArrowDownImage.gameObject.SetActive(ShouldShowArrow(1, _currentEventCard.EnergyOriginalVal, _currentEventCard.EnergyVal));
+        JoyArrowDownImage.gameObject.SetActive(ShouldShowArrow(1, _currentEventCard.JoyOriginalVal, _currentEventCard.JoyVal));
+        SadnessArrowDownImage.gameObject.SetActive(ShouldShowArrow(1, _currentEventCard.SadnessOriginalVal, _currentEventCard.SadnessVal));
+        FearArrowDownImage.gameObject.SetActive(ShouldShowArrow(1, _currentEventCard.FearOriginalVal, _currentEventCard.FearVal));
+        AngerArrowDownImage.gameObject.SetActive(ShouldShowArrow(1, _currentEventCard.AngerOriginalVal, _currentEventCard.AngerVal));
+
         // Extra Event Cards
         _extraEventCards += _currentEventCard.ExtraEventCards;
     }
@@ -127,6 +156,8 @@ public class EventCardDisplay : CardDisplay
     // Hides and applies the card
     public void ApplyCard(){
         ThisObject.SetActive(false);
+
+        _currentEventCard.Revert();
 
         // Apply Event Effects
         npcDisplay.ApplyEffect(LevelType.Energy, _currentEventCard.EnergyVal, ActionType.None);

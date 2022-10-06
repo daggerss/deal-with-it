@@ -6,14 +6,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Event Card", menuName = "Deal With It/Cards/Event Card", order = 1)]
 public class Event : Card
 {
+    /* ------------------------- Energy & Emotion Values ------------------------ */
     // The energy and emotion levels are capped accordingly.
     [SerializeField] private int _energyVal;
     [SerializeField] private int _joyVal;
     [SerializeField] private int _sadnessVal;
     [SerializeField] private int _fearVal;
     [SerializeField] private int _angerVal;
-    [SerializeField] private int _extraEventCards;
-    [SerializeField] private bool _randomize;
 
     public int EnergyVal
     {
@@ -75,6 +74,26 @@ public class Event : Card
         }
     }
 
+    // Saved values for switching between original and projected
+    private int _energyOriginalVal;
+    public int EnergyOriginalVal => _energyOriginalVal;
+
+    private int _joyOriginalVal;
+    public int JoyOriginalVal => _joyOriginalVal;
+
+    private int _sadnessOriginalVal;
+    public int SadnessOriginalVal => _sadnessOriginalVal;
+
+    private int _fearOriginalVal;
+    public int FearOriginalVal => _fearOriginalVal;
+
+    private int _angerOriginalVal;
+    public int AngerOriginalVal => _angerOriginalVal;
+
+    /* -------------------------- Additional Mechanics -------------------------- */
+    [SerializeField] private int _extraEventCards;
+    [SerializeField] private bool _randomize;
+    
     public int ExtraEventCards
     {
         get
@@ -95,6 +114,7 @@ public class Event : Card
         }
     }
 
+    /* ----------------------------- Custom Methods ----------------------------- */
     public void RandomVariation(){
         int[] values = {_joyVal, _sadnessVal, _fearVal, _angerVal};
 
@@ -121,5 +141,25 @@ public class Event : Card
     // Returns a clone of this object
     public object Clone(){
         return this.MemberwiseClone();
+    }
+
+    // Save original values
+    public void SaveValues()
+    {
+        _energyOriginalVal = EnergyVal;
+        _joyOriginalVal = JoyVal;
+        _sadnessOriginalVal = SadnessVal;
+        _fearOriginalVal = FearVal;
+        _angerOriginalVal = AngerVal;
+    }
+
+    // Revert to the original set
+    public void Revert()
+    {
+        EnergyVal = _energyOriginalVal;
+        JoyVal = _joyOriginalVal;
+        SadnessVal = _sadnessOriginalVal;
+        FearVal = _fearOriginalVal;
+        AngerVal = _angerOriginalVal;
     }
 }
