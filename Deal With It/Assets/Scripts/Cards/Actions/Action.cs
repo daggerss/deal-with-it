@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Action Card", menuName = "Deal With It/Cards/Action Card", order = 0)]
+[CreateAssetMenu(fileName = "Action Card", menuName = "Deal With It/Cards/Action Card", order = 2)]
 public class Action : Card
 {
     /* ------------------------- Energy & Emotion Values ------------------------ */

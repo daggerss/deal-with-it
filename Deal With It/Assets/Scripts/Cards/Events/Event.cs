@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Event Card", menuName = "Deal With It/Cards/Event Card", order = 0)]
+[CreateAssetMenu(fileName = "Event Card", menuName = "Deal With It/Cards/Event Card", order = 1)]
 public class Event : Card
 {
     // The energy and emotion levels are capped accordingly.
