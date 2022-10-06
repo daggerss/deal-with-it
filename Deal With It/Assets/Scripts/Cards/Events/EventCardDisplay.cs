@@ -160,6 +160,12 @@ public class EventCardDisplay : CardDisplay
     public void ApplyCard(){
         ThisObject.SetActive(false);
 
+        // Replenish energy
+        if(npcDisplay.npc.EnergyLvl < 20)
+        {
+            npcDisplay.npc.EnergyLvl = 20;
+        }
+
         // Apply Event Effects
         npcDisplay.ApplyEffect(LevelType.Energy, _currentEventCard.EnergyVal, ActionType.None);
         npcDisplay.ApplyEffect(LevelType.Joy, _currentEventCard.JoyVal, ActionType.None);
