@@ -78,7 +78,18 @@ public class PlayerController : MonoBehaviour
 
         // If it is this player's turn
         if(RoundController.PlayerTurn == PlayerNumber){
-            ConfirmButton.gameObject.SetActive(true);
+
+            // Skip if out of energy
+            if (npcDisplay.npc.EnergyLvl < GetLowestEnergy())
+            {
+                SelectedCard = -2;
+                PlayCard();
+            }
+
+            else
+            {
+                ConfirmButton.gameObject.SetActive(true);
+            }
 
             //If player is AI
             if(!Playable){
@@ -142,7 +153,12 @@ public class PlayerController : MonoBehaviour
         if(SelectedCard == -1){
             // Do nothing skip turn
             Debug.Log("Player " + PlayerNumber + " played no card");
-        }else{
+        }
+        else if (SelectedCard == -2){
+            // Energy exhausted force skip
+            Debug.Log("Out of energy! Player " + PlayerNumber + " is skipped.");
+        }
+        else{
             Action playedActionCard = CardsInHand[SelectedCard];
 
             Debug.Log("Player " + PlayerNumber + " played " + playedActionCard.CardName);
@@ -160,5 +176,25 @@ public class PlayerController : MonoBehaviour
         }
 
         RoundController.NextPlayer();
+    }
+
+    // Get lowest energy cost in hand
+    private int GetLowestEnergy()
+    {
+        int lowest = -50;
+
+        foreach (Action card in CardsInHand)
+        {
+            if (card.EnergyVal > 0)
+            {
+                return -card.EnergyVal; // Always negative
+            }
+            else if (card.EnergyVal < 0 && card.EnergyVal > lowest)
+            {
+                lowest = card.EnergyVal;
+            }
+        }
+
+        return -lowest;
     }
 }
