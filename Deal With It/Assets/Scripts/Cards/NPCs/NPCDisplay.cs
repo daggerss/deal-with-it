@@ -258,87 +258,91 @@ public class NPCDisplay : CardDisplay
             energyText.text = npc.EnergyLvl.ToString();
             energyEffectText.text = FormatText(effectValue + addend);
         }
+
         // Emotion
         else
         {
-            // NPC x Strategy
-            // Distraction
-            if (actionType == ActionType.Distraction)
+            if (effectValue != 0)
             {
-                addend += AddExtraEffect(effectValue, npc.DistractionEmotionAddend);
-            }
-            // Expression
-            else if (actionType == ActionType.Expression)
-            {
-                addend += AddExtraEffect(effectValue, npc.ExpressionEmotionAddend);
-            }
-            // Processing
-            else if (actionType == ActionType.Processing)
-            {
-                addend += AddExtraEffect(effectValue, npc.ProcessingEmotionAddend);
-            }
-            // Reappraisal
-            else if (actionType == ActionType.Reappraisal)
-            {
-                addend += AddExtraEffect(effectValue, npc.ReappraisalEmotionAddend);
-            }
-
-            // Per emotion
-            // Joy
-            if (levelType == LevelType.Joy && effectValue != 0)
-            {
-                // NPC x Events
-                if (actionType == ActionType.None)
+                // NPC x Strategy
+                // Distraction
+                if (actionType == ActionType.Distraction)
                 {
-                    addend += AddExtraEffect(effectValue, npc.JoyAddend);
+                    addend += AddExtraEffect(effectValue, npc.DistractionEmotionAddend);
+                }
+                // Expression
+                else if (actionType == ActionType.Expression)
+                {
+                    addend += AddExtraEffect(effectValue, npc.ExpressionEmotionAddend);
+                }
+                // Processing
+                else if (actionType == ActionType.Processing)
+                {
+                    addend += AddExtraEffect(effectValue, npc.ProcessingEmotionAddend);
+                }
+                // Reappraisal
+                else if (actionType == ActionType.Reappraisal)
+                {
+                    addend += AddExtraEffect(effectValue, npc.ReappraisalEmotionAddend);
                 }
 
-                npc.JoyLvl += effectValue + addend;
-
-                joyText.text = npc.JoyLvl.ToString();
-                joyEffectText.text = FormatText(effectValue + addend);
-            }
-            // Sadness
-            if (levelType == LevelType.Sadness && effectValue != 0)
-            {
-                // NPC x Events
-                if (actionType == ActionType.None)
+                // Per emotion
+                // Joy
+                if (levelType == LevelType.Joy)
                 {
-                    addend += AddExtraEffect(effectValue, npc.SadnessAddend);
+                    // NPC x Events
+                    if (actionType == ActionType.None)
+                    {
+                        addend += AddExtraEffect(effectValue, npc.JoyAddend);
+                    }
+
+                    npc.JoyLvl += effectValue + addend;
+
+                    joyText.text = npc.JoyLvl.ToString();
+                    joyEffectText.text = FormatText(effectValue + addend);
                 }
-
-                npc.SadnessLvl += effectValue + addend;
-
-                sadnessText.text = npc.SadnessLvl.ToString();
-                sadnessEffectText.text = FormatText(effectValue + addend);
-            }
-            // Fear
-            if (levelType == LevelType.Fear && effectValue != 0)
-            {
-                // NPC x Events
-                if (actionType == ActionType.None)
+                // Sadness
+                else if (levelType == LevelType.Sadness)
                 {
-                    addend += AddExtraEffect(effectValue, npc.FearAddend);
+                    // NPC x Events
+                    if (actionType == ActionType.None)
+                    {
+                        addend += AddExtraEffect(effectValue, npc.SadnessAddend);
+                    }
+
+                    npc.SadnessLvl += effectValue + addend;
+
+                    sadnessText.text = npc.SadnessLvl.ToString();
+                    sadnessEffectText.text = FormatText(effectValue + addend);
                 }
-
-                npc.FearLvl += effectValue + addend;
-
-                fearText.text = npc.FearLvl.ToString();
-                fearEffectText.text = FormatText(effectValue + addend);
-            }
-            // Anger
-            if (levelType == LevelType.Anger && effectValue != 0)
-            {
-                // NPC x Events
-                if (actionType == ActionType.None)
+                // Fear
+                else if (levelType == LevelType.Fear)
                 {
-                    addend += AddExtraEffect(effectValue, npc.AngerAddend);
+                    // NPC x Events
+                    if (actionType == ActionType.None)
+                    {
+                        addend += AddExtraEffect(effectValue, npc.FearAddend);
+                    }
+
+                    npc.FearLvl += effectValue + addend;
+
+                    fearText.text = npc.FearLvl.ToString();
+                    fearEffectText.text = FormatText(effectValue + addend);
                 }
+                // Anger
+                else if (levelType == LevelType.Anger)
+                {
+                    // NPC x Events
+                    if (actionType == ActionType.None)
+                    {
+                        addend += AddExtraEffect(effectValue, npc.AngerAddend);
+                    }
 
-                npc.AngerLvl += effectValue + addend;
+                    npc.AngerLvl += effectValue + addend;
 
-                angerText.text = npc.AngerLvl.ToString();
-                angerEffectText.text = FormatText(effectValue + addend);
+                    angerText.text = npc.AngerLvl.ToString();
+                    angerEffectText.text = FormatText(effectValue + addend);
+                }
             }
         }
 
