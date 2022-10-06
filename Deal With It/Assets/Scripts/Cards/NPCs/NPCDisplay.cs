@@ -266,6 +266,94 @@ public class NPCDisplay : CardDisplay
         effectTexts.alpha = 1;
     }
 
+    // Get projected energy or emotion values
+    public int ProjectTraitEffect(LevelType levelType, int effectValue, ActionType actionType)
+    {
+        int addend = 0;
+
+        // Energy
+        if (levelType == LevelType.Energy)
+        {
+            // NPC x Strategy
+            // Distraction
+            if (actionType == ActionType.Distraction)
+            {
+                addend += AddExtraEffect(effectValue, npc.DistractionEnergyAddend);
+            }
+            // Expression
+            else if (actionType == ActionType.Expression)
+            {
+                addend += AddExtraEffect(effectValue, npc.ExpressionEnergyAddend);
+            }
+            // Processing
+            else if (actionType == ActionType.Processing)
+            {
+                addend += AddExtraEffect(effectValue, npc.ProcessingEnergyAddend);
+            }
+            // Reappraisal
+            else if (actionType == ActionType.Reappraisal)
+            {
+                addend += AddExtraEffect(effectValue, npc.ReappraisalEnergyAddend);
+            }
+        }
+
+        // Emotion
+        else
+        {
+            if (effectValue != 0)
+            {
+                // NPC x Strategy
+                // Distraction
+                if (actionType == ActionType.Distraction)
+                {
+                    addend += AddExtraEffect(effectValue, npc.DistractionEmotionAddend);
+                }
+                // Expression
+                else if (actionType == ActionType.Expression)
+                {
+                    addend += AddExtraEffect(effectValue, npc.ExpressionEmotionAddend);
+                }
+                // Processing
+                else if (actionType == ActionType.Processing)
+                {
+                    addend += AddExtraEffect(effectValue, npc.ProcessingEmotionAddend);
+                }
+                // Reappraisal
+                else if (actionType == ActionType.Reappraisal)
+                {
+                    addend += AddExtraEffect(effectValue, npc.ReappraisalEmotionAddend);
+                }
+
+                // NPC x Events
+                else if (actionType == ActionType.None)
+                {
+                    // Joy
+                    if (levelType == LevelType.Joy)
+                    {
+                        addend += AddExtraEffect(effectValue, npc.JoyAddend);
+                    }
+                    // Sadness
+                    else if (levelType == LevelType.Sadness)
+                    {
+                        addend += AddExtraEffect(effectValue, npc.SadnessAddend);
+                    }
+                    // Fear
+                    else if (levelType == LevelType.Fear)
+                    {
+                        addend += AddExtraEffect(effectValue, npc.FearAddend);
+                    }
+                    // Anger
+                    else if (levelType == LevelType.Anger)
+                    {
+                        addend += AddExtraEffect(effectValue, npc.AngerAddend);
+                    }
+                }
+            }
+        }
+
+        return effectValue + addend;
+    }
+
     // Adds or subtracts the addend according to energy/emotion value
     private int AddExtraEffect(int original, int addend)
     {

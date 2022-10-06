@@ -83,6 +83,22 @@ public class Action : Card
         }
     }
 
+    // Saved values for switching between original and projected
+    private int _energyOriginalVal;
+    public int EnergyOriginalVal => _energyOriginalVal;
+
+    private int _joyOriginalVal;
+    public int JoyOriginalVal => _joyOriginalVal;
+
+    private int _sadnessOriginalVal;
+    public int SadnessOriginalVal => _sadnessOriginalVal;
+
+    private int _fearOriginalVal;
+    public int FearOriginalVal => _fearOriginalVal;
+
+    private int _angerOriginalVal;
+    public int AngerOriginalVal => _angerOriginalVal;
+
     /* ---------------------------- Card Action Type ---------------------------- */
     [SerializeField]
     private ActionType _actionType;
@@ -97,6 +113,13 @@ public class Action : Card
         SadnessVal = RandomizeValue(_sadnessConstVal);
         FearVal = RandomizeValue(_fearConstVal);
         AngerVal = RandomizeValue(_angerConstVal);
+        
+        // Save
+        _energyOriginalVal = EnergyVal;
+        _joyOriginalVal = JoyVal;
+        _sadnessOriginalVal = SadnessVal;
+        _fearOriginalVal = FearVal;
+        _angerOriginalVal = AngerVal;
     }
 
     // Set random value based on constant
@@ -119,6 +142,16 @@ public class Action : Card
 
         // Range: x-1, x, x+1
         return Random.Range(value-1, value+2);
+    }
+
+    // Revert to the original set
+    public void Revert()
+    {
+        EnergyVal = _energyOriginalVal;
+        JoyVal = _joyOriginalVal;
+        SadnessVal = _sadnessOriginalVal;
+        FearVal = _fearOriginalVal;
+        AngerVal = _angerOriginalVal;
     }
 }
 

@@ -12,6 +12,13 @@ public class ActionCardDisplay : CardDisplay
     // UI Variables
     public TMP_Text CardTypeText, CardNameText, CardDescriptionText, EnergyText, JoyText, SadnessText, FearText, AngerText, ActionTypeText;
     public Image EnergyImage, JoyImage, SadnessImage, FearImage, AngerImage, ActionTypeImage;
+
+    // Arrows UI
+    public Image EnergyArrowUpImage, EnergyArrowDownImage;
+    public Image JoyArrowUpImage, JoyArrowDownImage;
+    public Image SadnessArrowUpImage, SadnessArrowDownImage;
+    public Image FearArrowUpImage, FearArrowDownImage;
+    public Image AngerArrowUpImage, AngerArrowDownImage;
     
     // Start is called before the first frame update
     void Start()
@@ -44,6 +51,18 @@ public class ActionCardDisplay : CardDisplay
 
             AngerText.text = FormatText(currentActionCard.AngerVal);
             AngerImage.gameObject.SetActive(ShowImage(currentActionCard.AngerVal));
+
+            EnergyArrowUpImage.gameObject.SetActive(ShouldShowArrow(0, currentActionCard.EnergyOriginalVal, currentActionCard.EnergyVal));
+            JoyArrowUpImage.gameObject.SetActive(ShouldShowArrow(0, currentActionCard.JoyOriginalVal, currentActionCard.JoyVal));
+            SadnessArrowUpImage.gameObject.SetActive(ShouldShowArrow(0, currentActionCard.SadnessOriginalVal, currentActionCard.SadnessVal));
+            FearArrowUpImage.gameObject.SetActive(ShouldShowArrow(0, currentActionCard.FearOriginalVal, currentActionCard.FearVal));
+            AngerArrowUpImage.gameObject.SetActive(ShouldShowArrow(0, currentActionCard.AngerOriginalVal, currentActionCard.AngerVal));
+
+            EnergyArrowDownImage.gameObject.SetActive(ShouldShowArrow(1, currentActionCard.EnergyOriginalVal, currentActionCard.EnergyVal));
+            JoyArrowDownImage.gameObject.SetActive(ShouldShowArrow(1, currentActionCard.JoyOriginalVal, currentActionCard.JoyVal));
+            SadnessArrowDownImage.gameObject.SetActive(ShouldShowArrow(1, currentActionCard.SadnessOriginalVal, currentActionCard.SadnessVal));
+            FearArrowDownImage.gameObject.SetActive(ShouldShowArrow(1, currentActionCard.FearOriginalVal, currentActionCard.FearVal));
+            AngerArrowDownImage.gameObject.SetActive(ShouldShowArrow(1, currentActionCard.AngerOriginalVal, currentActionCard.AngerVal));
         }else{
         }
     }
