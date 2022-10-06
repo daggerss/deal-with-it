@@ -48,7 +48,7 @@ public class NPCDisplay : CardDisplay
     public LevelBar AngerBackBar;
 
     private float _lerpTimer;
-    private float _chipSpeed = 0.5f;
+    private float _chipSpeed = 1f;
     private float _percentComplete;
 
     /* --------------------------------- Methods -------------------------------- */
@@ -314,19 +314,18 @@ public class NPCDisplay : CardDisplay
     // Apply energy and emotion effects on bars
     IEnumerator UpdateLevelBars()
     {
+        _lerpTimer += Time.deltaTime;
+        _percentComplete = Mathf.Pow(_lerpTimer / _chipSpeed, 2);
+
         // Update energy
         if (EnergyBackBar.Value > npc.EnergyLvl)
         {
-            _lerpTimer += Time.deltaTime;
-            _percentComplete = Mathf.Pow(_lerpTimer / _chipSpeed, 2);
             EnergyFrontBar.SetValue(npc.EnergyLvl);
             EnergyBackBar.SetValue(Mathf.Lerp(EnergyBackBar.Value, npc.EnergyLvl, _percentComplete));
         }
 
         if (EnergyFrontBar.Value < npc.EnergyLvl)
         {
-            _lerpTimer += Time.deltaTime;
-            _percentComplete = Mathf.Pow(_lerpTimer / _chipSpeed, 2);
             EnergyBackBar.SetValue(npc.EnergyLvl);
             EnergyFrontBar.SetValue(Mathf.Lerp(EnergyFrontBar.Value, npc.EnergyLvl, _percentComplete));
         }
@@ -334,16 +333,12 @@ public class NPCDisplay : CardDisplay
         // Update joy
         if (JoyBackBar.Value > npc.JoyLvl)
         {
-            _lerpTimer += Time.deltaTime;
-            _percentComplete = Mathf.Pow(_lerpTimer / _chipSpeed, 2);
             JoyFrontBar.SetValue(npc.JoyLvl);
             JoyBackBar.SetValue(Mathf.Lerp(JoyBackBar.Value, npc.JoyLvl, _percentComplete));
         }
 
         if (JoyFrontBar.Value < npc.JoyLvl)
         {
-            _lerpTimer += Time.deltaTime;
-            _percentComplete = Mathf.Pow(_lerpTimer / _chipSpeed, 2);
             JoyBackBar.SetValue(npc.JoyLvl);
             JoyFrontBar.SetValue(Mathf.Lerp(JoyFrontBar.Value, npc.JoyLvl, _percentComplete));
         }
@@ -351,16 +346,12 @@ public class NPCDisplay : CardDisplay
         // Update sadness
         if (SadnessBackBar.Value > npc.SadnessLvl)
         {
-            _lerpTimer += Time.deltaTime;
-            _percentComplete = Mathf.Pow(_lerpTimer / _chipSpeed, 2);
             SadnessFrontBar.SetValue(npc.SadnessLvl);
             SadnessBackBar.SetValue(Mathf.Lerp(SadnessBackBar.Value, npc.SadnessLvl, _percentComplete));
         }
 
         if (SadnessFrontBar.Value < npc.SadnessLvl)
         {
-            _lerpTimer += Time.deltaTime;
-            _percentComplete = Mathf.Pow(_lerpTimer / _chipSpeed, 2);
             SadnessBackBar.SetValue(npc.SadnessLvl);
             SadnessFrontBar.SetValue(Mathf.Lerp(SadnessFrontBar.Value, npc.SadnessLvl, _percentComplete));
         }
@@ -368,16 +359,12 @@ public class NPCDisplay : CardDisplay
         // Update fear
         if (FearBackBar.Value > npc.FearLvl)
         {
-            _lerpTimer += Time.deltaTime;
-            _percentComplete = Mathf.Pow(_lerpTimer / _chipSpeed, 2);
             FearFrontBar.SetValue(npc.FearLvl);
             FearBackBar.SetValue(Mathf.Lerp(FearBackBar.Value, npc.FearLvl, _percentComplete));
         }
 
         if (FearFrontBar.Value < npc.FearLvl)
         {
-            _lerpTimer += Time.deltaTime;
-            _percentComplete = Mathf.Pow(_lerpTimer / _chipSpeed, 2);
             FearBackBar.SetValue(npc.FearLvl);
             FearFrontBar.SetValue(Mathf.Lerp(FearFrontBar.Value, npc.FearLvl, _percentComplete));
         }
@@ -385,21 +372,17 @@ public class NPCDisplay : CardDisplay
         // Update anger
         if (AngerBackBar.Value > npc.AngerLvl)
         {
-            _lerpTimer += Time.deltaTime;
-            _percentComplete = Mathf.Pow(_lerpTimer / _chipSpeed, 2);
             AngerFrontBar.SetValue(npc.AngerLvl);
             AngerBackBar.SetValue(Mathf.Lerp(AngerBackBar.Value, npc.AngerLvl, _percentComplete));
         }
 
         if (AngerFrontBar.Value < npc.AngerLvl)
         {
-            _lerpTimer += Time.deltaTime;
-            _percentComplete = Mathf.Pow(_lerpTimer / _chipSpeed, 2);
             AngerBackBar.SetValue(npc.AngerLvl);
             AngerFrontBar.SetValue(Mathf.Lerp(AngerFrontBar.Value, npc.AngerLvl, _percentComplete));
         }
 
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(1f);
     }
 
     // Fade out effects text UI
