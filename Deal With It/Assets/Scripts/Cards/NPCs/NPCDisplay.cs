@@ -21,11 +21,16 @@ public class NPCDisplay : CardDisplay
     public TMP_Text fearText;
     public TMP_Text angerText;
 
+    /* ------------------------------- Effects UI ------------------------------- */
+    [SerializeField] private CanvasGroup effectTexts;
     public TMP_Text energyEffectText;
     public TMP_Text joyEffectText;
     public TMP_Text sadnessEffectText;
     public TMP_Text fearEffectText;
     public TMP_Text angerEffectText;
+
+    private bool _fadeEffectTexts = false;
+    private float _fadeSpeed = 0.001f;
 
     /* --------------------------------- Bar UI --------------------------------- */
     public LevelBar EnergyFrontBar;
@@ -131,6 +136,7 @@ public class NPCDisplay : CardDisplay
     void Update()
     {
         UpdateLevelBars();
+        StartCoroutine(FadeOutEffects());
     }
 
     /* ----------------------------- Custom Methods ----------------------------- */
@@ -347,6 +353,7 @@ public class NPCDisplay : CardDisplay
         }
 
         _lerpTimer = 0f;
+        _fadeEffectTexts = true;
     }
 
     // Adds or subtracts the addend according to energy/emotion value
@@ -362,5 +369,36 @@ public class NPCDisplay : CardDisplay
         }
 
         return 0;
+    }
+
+    // Reset effect texts to null
+    private void ResetEffectTexts()
+    {
+        energyEffectText.text = null;
+        joyEffectText.text = null;
+        sadnessEffectText.text = null;
+        fearEffectText.text = null;
+        angerEffectText.text = null;
+        effectTexts.alpha = 1;
+    }
+
+    /* ------------------------------- Coroutines ------------------------------- */
+    // Fade out effects text UI
+    IEnumerator FadeOutEffects()
+    {
+        if (_fadeEffectTexts)
+        {
+            if (effectTexts.alpha >= 0)
+            {
+                effectTexts.alpha -= (Time.deltaTime - _fadeSpeed);
+                if (effectTexts.alpha == 0)
+                {
+                    ResetEffectTexts();
+                    _fadeEffectTexts = false;
+                }
+
+                yield return new WaitForSeconds(0.1f);
+            }
+        }
     }
 }
