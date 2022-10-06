@@ -155,6 +155,8 @@ public class PlayerController : MonoBehaviour
             npcDisplay.ApplyEffect(LevelType.Sadness, playedActionCard.SadnessVal, playedActionCard.CardActionType);
             npcDisplay.ApplyEffect(LevelType.Fear, playedActionCard.FearVal, playedActionCard.CardActionType);
             npcDisplay.ApplyEffect(LevelType.Anger, playedActionCard.AngerVal, playedActionCard.CardActionType);
+
+            playedActionCard.Revert();
         }
 
         RoundController.NextPlayer();

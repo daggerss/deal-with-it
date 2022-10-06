@@ -98,6 +98,9 @@ public class EventCardDisplay : CardDisplay
         // Select New Card
         _currentEventCard = EventCard[GetRandomCard()];
 
+        // Save
+        _currentEventCard.SaveValues();
+
         if(_currentEventCard.Randomize){
             // Clone current event card so that it doesn't change the original values
             Event tempCurrentEventCard = (Event) _currentEventCard.Clone();
@@ -105,10 +108,10 @@ public class EventCardDisplay : CardDisplay
 
             // Randomize
             _currentEventCard.RandomVariation();
-        }
 
-        // Save
-        _currentEventCard.SaveValues();
+            // Save new
+            _currentEventCard.SaveValues();
+        }
 
         // Apply NPC trait effects
         _currentEventCard.EnergyVal = npcDisplay.ProjectTraitEffect(LevelType.Energy, _currentEventCard.EnergyVal, ActionType.None);
@@ -163,6 +166,8 @@ public class EventCardDisplay : CardDisplay
         npcDisplay.ApplyEffect(LevelType.Sadness, _currentEventCard.SadnessVal, ActionType.None);
         npcDisplay.ApplyEffect(LevelType.Fear, _currentEventCard.FearVal, ActionType.None);
         npcDisplay.ApplyEffect(LevelType.Anger, _currentEventCard.AngerVal, ActionType.None);
+
+        _currentEventCard.Revert();
 
         if(_extraEventCards > 0){
             DrawCard();
