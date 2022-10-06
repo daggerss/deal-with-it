@@ -29,8 +29,7 @@ public class NPCDisplay : CardDisplay
     public TMP_Text fearEffectText;
     public TMP_Text angerEffectText;
 
-    private bool _fadeEffectTexts = false;
-    private float _fadeSpeed = 0.001f;
+    private float _fadeSpeed = 0.00025f;
 
     /* --------------------------------- Bar UI --------------------------------- */
     public LevelBar EnergyFrontBar;
@@ -264,7 +263,7 @@ public class NPCDisplay : CardDisplay
         }
 
         _lerpTimer = 0f;
-        _fadeEffectTexts = true;
+        effectTexts.alpha = 1;
     }
 
     // Adds or subtracts the addend according to energy/emotion value
@@ -290,7 +289,6 @@ public class NPCDisplay : CardDisplay
         sadnessEffectText.text = null;
         fearEffectText.text = null;
         angerEffectText.text = null;
-        effectTexts.alpha = 1;
     }
 
     /* ------------------------------- Coroutines ------------------------------- */
@@ -382,25 +380,19 @@ public class NPCDisplay : CardDisplay
             AngerFrontBar.SetValue(Mathf.Lerp(AngerFrontBar.Value, npc.AngerLvl, _percentComplete));
         }
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
     }
 
     // Fade out effects text UI
     IEnumerator FadeOutEffects()
     {
-        if (_fadeEffectTexts)
-        {
-            if (effectTexts.alpha >= 0)
-            {
-                effectTexts.alpha -= (Time.deltaTime - _fadeSpeed);
-                if (effectTexts.alpha == 0)
-                {
-                    ResetEffectTexts();
-                    _fadeEffectTexts = false;
-                }
+        yield return new WaitUntil(() => effectTexts.alpha >= 0);
 
-                yield return new WaitForSeconds(0.1f);
-            }
+        effectTexts.alpha -= (Time.deltaTime - _fadeSpeed);
+
+        if (effectTexts.alpha == 0)
+        {
+            ResetEffectTexts();
         }
     }
 }
