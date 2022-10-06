@@ -86,13 +86,8 @@ public class PlayerController : MonoBehaviour
                 PlayCard();
             }
 
-            else
-            {
-                ConfirmButton.gameObject.SetActive(true);
-            }
-
             //If player is AI
-            if(!Playable){
+            else if(!Playable){
                 /* -------------------------------------------------------------------------- */
                 /* ------- Can we add a buffer here so the cards don't play instantly ------- */
                 /* -------------------------------------------------------------------------- */
@@ -101,6 +96,12 @@ public class PlayerController : MonoBehaviour
                 int rng = UnityEngine.Random.Range(-1, CardsInHand.Length);
                 SelectedCard = rng;
                 PlayCard();
+            }
+
+            // Allow user player to play
+            else
+            {
+                ConfirmButton.gameObject.SetActive(true);
             }
         }else{
             // So player can't play card when it's not their turn
