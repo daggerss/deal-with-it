@@ -21,3 +21,5 @@ MonoBehaviour:
   _sadnessVal: 0
   _fearVal: 0
   _angerVal: 1
+  _extraEventCards: 0
+  _randomize: 0
