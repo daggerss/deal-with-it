@@ -113,20 +113,17 @@ public class PlayerController : MonoBehaviour
         // If a player clicks on a card slot with a value inside
         }else if(CardsInHand[CardIndex] != null){
             SelectedCard = CardIndex;
-        // If a player clicks on a card slot with no value inside
-        }else{
-            // Do nothing
-        }
 
-        // Get projected effects
-        if (SelectedCard >= 0 && SelectedCard < CardsInHand.Length)
-        {
+            // Apply NPC trait effects
             Action projectedCard = CardsInHand[SelectedCard];
             projectedCard.EnergyVal = npcDisplay.ProjectTraitEffect(LevelType.Energy, projectedCard.EnergyVal, projectedCard.CardActionType);
             projectedCard.JoyVal = npcDisplay.ProjectTraitEffect(LevelType.Joy, projectedCard.JoyVal, projectedCard.CardActionType);
             projectedCard.SadnessVal = npcDisplay.ProjectTraitEffect(LevelType.Sadness, projectedCard.SadnessVal, projectedCard.CardActionType);
             projectedCard.FearVal = npcDisplay.ProjectTraitEffect(LevelType.Fear, projectedCard.FearVal, projectedCard.CardActionType);
             projectedCard.AngerVal = npcDisplay.ProjectTraitEffect(LevelType.Anger, projectedCard.AngerVal, projectedCard.CardActionType);
+        // If a player clicks on a card slot with no value inside
+        }else{
+            // Do nothing
         }
 
         // Flare for selected card and non-flare for non selected cards
@@ -147,7 +144,6 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Player " + PlayerNumber + " played no card");
         }else{
             Action playedActionCard = CardsInHand[SelectedCard];
-            playedActionCard.Revert();
 
             Debug.Log("Player " + PlayerNumber + " played " + playedActionCard.CardName);
 

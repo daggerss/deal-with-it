@@ -147,28 +147,6 @@ public class NPCDisplay : CardDisplay
         // Energy
         if (levelType == LevelType.Energy)
         {
-            // NPC x Strategy
-            // Distraction
-            if (actionType == ActionType.Distraction)
-            {
-                addend += AddExtraEffect(effectValue, npc.DistractionEnergyAddend);
-            }
-            // Expression
-            else if (actionType == ActionType.Expression)
-            {
-                addend += AddExtraEffect(effectValue, npc.ExpressionEnergyAddend);
-            }
-            // Processing
-            else if (actionType == ActionType.Processing)
-            {
-                addend += AddExtraEffect(effectValue, npc.ProcessingEnergyAddend);
-            }
-            // Reappraisal
-            else if (actionType == ActionType.Reappraisal)
-            {
-                addend += AddExtraEffect(effectValue, npc.ReappraisalEnergyAddend);
-            }
-
             npc.EnergyLvl += effectValue + addend;
 
             energyText.text = npc.EnergyLvl.ToString();
@@ -180,38 +158,9 @@ public class NPCDisplay : CardDisplay
         {
             if (effectValue != 0)
             {
-                // NPC x Strategy
-                // Distraction
-                if (actionType == ActionType.Distraction)
-                {
-                    addend += AddExtraEffect(effectValue, npc.DistractionEmotionAddend);
-                }
-                // Expression
-                else if (actionType == ActionType.Expression)
-                {
-                    addend += AddExtraEffect(effectValue, npc.ExpressionEmotionAddend);
-                }
-                // Processing
-                else if (actionType == ActionType.Processing)
-                {
-                    addend += AddExtraEffect(effectValue, npc.ProcessingEmotionAddend);
-                }
-                // Reappraisal
-                else if (actionType == ActionType.Reappraisal)
-                {
-                    addend += AddExtraEffect(effectValue, npc.ReappraisalEmotionAddend);
-                }
-
-                // Per emotion
                 // Joy
                 if (levelType == LevelType.Joy)
                 {
-                    // NPC x Events
-                    if (actionType == ActionType.None)
-                    {
-                        addend += AddExtraEffect(effectValue, npc.JoyAddend);
-                    }
-
                     npc.JoyLvl += effectValue + addend;
 
                     joyText.text = npc.JoyLvl.ToString();
@@ -220,12 +169,6 @@ public class NPCDisplay : CardDisplay
                 // Sadness
                 else if (levelType == LevelType.Sadness)
                 {
-                    // NPC x Events
-                    if (actionType == ActionType.None)
-                    {
-                        addend += AddExtraEffect(effectValue, npc.SadnessAddend);
-                    }
-
                     npc.SadnessLvl += effectValue + addend;
 
                     sadnessText.text = npc.SadnessLvl.ToString();
@@ -234,12 +177,6 @@ public class NPCDisplay : CardDisplay
                 // Fear
                 else if (levelType == LevelType.Fear)
                 {
-                    // NPC x Events
-                    if (actionType == ActionType.None)
-                    {
-                        addend += AddExtraEffect(effectValue, npc.FearAddend);
-                    }
-
                     npc.FearLvl += effectValue + addend;
 
                     fearText.text = npc.FearLvl.ToString();
@@ -248,12 +185,6 @@ public class NPCDisplay : CardDisplay
                 // Anger
                 else if (levelType == LevelType.Anger)
                 {
-                    // NPC x Events
-                    if (actionType == ActionType.None)
-                    {
-                        addend += AddExtraEffect(effectValue, npc.AngerAddend);
-                    }
-
                     npc.AngerLvl += effectValue + addend;
 
                     angerText.text = npc.AngerLvl.ToString();
