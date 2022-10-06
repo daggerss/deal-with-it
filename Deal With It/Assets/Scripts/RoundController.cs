@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RoundController : MonoBehaviour
 {
+    public NPCDisplay npcDisplay;
+    
     private int _round = 0;
     public int Round
     {
@@ -38,6 +40,9 @@ public class RoundController : MonoBehaviour
     void Start()
     {
         _numberOfPlayers = GameObject.FindGameObjectsWithTag("PlayerTag").Length;
+
+        // Initializing NPC
+        npcDisplay = (NPCDisplay)GameObject.FindGameObjectWithTag("NPC").GetComponent(typeof(NPCDisplay));
     }
 
     // Update is called once per frame
@@ -58,6 +63,10 @@ public class RoundController : MonoBehaviour
 
     // Executes on next round
     public void NextRound(){
+        if(npcDisplay.npc.EnergyLvl < 20)
+        {
+            npcDisplay.npc.EnergyLvl = 20;
+        }
         _round++;
     }
 }
