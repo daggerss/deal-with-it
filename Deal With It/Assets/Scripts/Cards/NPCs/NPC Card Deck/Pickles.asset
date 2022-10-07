@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc03cd37f96abe54ca195cfd60c3f0d1, type: 3}
+  m_Name: Pickles
+  m_EditorClassIdentifier: 
+  _cardName: Pickles
+  _cardDescription: Though they tend to procrastinate and bottle up emotions, they
+    find it easier to look at the silver lining.
+  <Illustration>k__BackingField: {fileID: 0}
+  _cardGoals:
+  - Keep all emotions below 11 points after the first round
+  - Use 10 expression cards in total
+  _joyAddend: 0
+  _sadnessAddend: 0
+  _fearAddend: 0
+  _angerAddend: 0
+  _distractionEmotionAddend: -1
+  _expressionEmotionAddend: 0
+  _processingEmotionAddend: 0
+  _reappraisalEmotionAddend: 0
+  _distractionEnergyAddend: 0
+  _expressionEnergyAddend: 0
+  _processingEnergyAddend: 0
+  _reappraisalEnergyAddend: -1

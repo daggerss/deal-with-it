@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Action Card Deck
+  - Round Controller
+  - NPC
+  - PlayerTag
   layers:
   - Default
   - TransparentFX
