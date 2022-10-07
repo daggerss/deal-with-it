@@ -145,6 +145,8 @@ public class PlayerController : MonoBehaviour
                 CurrentButton.transform.position = new Vector2(CurrentButton.transform.position.x, CurrentButton.transform.position.y + 50f);
             }else{
                 CurrentButton.transform.position = OriginalButtonPosition[i];
+                // Reset the card to original
+                CardsInHand[i].Revert();
             }
         }
     }
