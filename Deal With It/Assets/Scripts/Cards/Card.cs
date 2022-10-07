@@ -27,15 +27,15 @@ public class Card : ScriptableObject
         {
             return value;
         }
-        // Range: 1, 2, 3
+        // Range: 1, 2
         else if (value == 1)
         {
-            return Random.Range(1, 4);
+            return Random.Range(1, 3);
         }
-        // Range: -3, -2, -1
+        // Range: -2, -1
         else if (value == -1)
         {
-            return Random.Range(-3, 0);
+            return Random.Range(-2, 0);
         }
 
         // Range: x-1, x, x+1
