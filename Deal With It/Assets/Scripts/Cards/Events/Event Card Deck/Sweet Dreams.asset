@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardName: Sweet Dreams
   _cardDescription: You had a good dream last night. Woke up on the right side of
-    the bed.
+    the bed!
   <Illustration>k__BackingField: {fileID: 0}
   _energyVal: 2
-  _joyVal: 1
-  _sadnessVal: 0
-  _fearVal: 0
-  _angerVal: 0
+  _joyConstVal: 1
+  _sadnessConstVal: 0
+  _fearConstVal: 0
+  _angerConstVal: 0
+  <ExtraEventCards>k__BackingField: 0
+  _randomize: 0

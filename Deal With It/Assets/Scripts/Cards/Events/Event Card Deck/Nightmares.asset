@@ -17,9 +17,9 @@ MonoBehaviour:
     up in a sweat at 3am.
   <Illustration>k__BackingField: {fileID: 0}
   _energyVal: -2
-  _joyVal: 0
-  _sadnessVal: 0
-  _fearVal: 3
-  _angerVal: 0
-  _extraEventCards: 0
+  _joyConstVal: 0
+  _sadnessConstVal: 0
+  _fearConstVal: 3
+  _angerConstVal: 0
+  <ExtraEventCards>k__BackingField: 0
   _randomize: 0

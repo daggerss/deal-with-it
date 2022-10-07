@@ -17,9 +17,9 @@ MonoBehaviour:
     to be hectic!
   <Illustration>k__BackingField: {fileID: 0}
   _energyVal: 0
-  _joyVal: -1
-  _sadnessVal: 0
-  _fearVal: 2
-  _angerVal: 0
-  _extraEventCards: 0
+  _joyConstVal: -1
+  _sadnessConstVal: 0
+  _fearConstVal: 2
+  _angerConstVal: 0
+  <ExtraEventCards>k__BackingField: 0
   _randomize: 0

@@ -8,11 +8,9 @@ public class Event : Card
 {
     /* ------------------------- Energy & Emotion Values ------------------------ */
     // The energy and emotion levels are capped accordingly.
+
+    // Energy
     [SerializeField] private int _energyVal;
-    [SerializeField] private int _joyVal;
-    [SerializeField] private int _sadnessVal;
-    [SerializeField] private int _fearVal;
-    [SerializeField] private int _angerVal;
 
     public int EnergyVal
     {
@@ -25,6 +23,18 @@ public class Event : Card
             _energyVal = Mathf.Clamp(value, -20, 20);
         }
     }
+
+    // Emotion constants - basis for range, no getter/setter
+    [SerializeField] private int _joyConstVal;
+    [SerializeField] private int _sadnessConstVal;
+    [SerializeField] private int _fearConstVal;
+    [SerializeField] private int _angerConstVal;
+
+    // Emotion random values - set during gameplay
+    private int _joyVal;
+    private int _sadnessVal;
+    private int _fearVal;
+    private int _angerVal;
 
     public int JoyVal
     {
@@ -91,28 +101,12 @@ public class Event : Card
     public int AngerOriginalVal => _angerOriginalVal;
 
     /* -------------------------- Additional Mechanics -------------------------- */
-    [SerializeField] private int _extraEventCards;
-    [SerializeField] private bool _randomize;
-    
-    public int ExtraEventCards
-    {
-        get
-        {
-            return _extraEventCards;
-        }
-        set
-        {
-            _extraEventCards = value;
-        }
-    }
+    [field: SerializeField]
+    public int ExtraEventCards {get; private set;}
 
-    public bool Randomize
-    {
-        get
-        {
-            return _randomize;
-        }
-    }
+    [SerializeField]
+    private bool _randomize;
+    public bool Randomize => _randomize;
 
     /* ----------------------------- Custom Methods ----------------------------- */
     public void RandomVariation(){
@@ -141,6 +135,15 @@ public class Event : Card
     // Returns a clone of this object
     public object Clone(){
         return this.MemberwiseClone();
+    }
+
+    // Set random emotion values
+    public void SetRandomEmotions()
+    {
+        JoyVal = RandomizeValue(_joyConstVal);
+        SadnessVal = RandomizeValue(_sadnessConstVal);
+        FearVal = RandomizeValue(_fearConstVal);
+        AngerVal = RandomizeValue(_angerConstVal);
     }
 
     // Save original values

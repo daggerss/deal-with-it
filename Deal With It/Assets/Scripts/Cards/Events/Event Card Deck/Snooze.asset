@@ -16,9 +16,9 @@ MonoBehaviour:
   _cardDescription: You overslept! Your schedule for the day is now messed up.
   <Illustration>k__BackingField: {fileID: 0}
   _energyVal: -2
-  _joyVal: -1
-  _sadnessVal: 1
-  _fearVal: 1
-  _angerVal: 1
-  _extraEventCards: 0
+  _joyConstVal: -1
+  _sadnessConstVal: 1
+  _fearConstVal: 1
+  _angerConstVal: 1
+  <ExtraEventCards>k__BackingField: 0
   _randomize: 1

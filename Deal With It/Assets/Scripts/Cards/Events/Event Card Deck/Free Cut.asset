@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardName: Free Cut
   _cardDescription: One of your classes got cancelled! You suddenly have some free
-    time.
+    time. (Pulls 2 more event cards)
   <Illustration>k__BackingField: {fileID: 0}
   _energyVal: 1
-  _joyVal: 0
-  _sadnessVal: 0
-  _fearVal: 0
-  _angerVal: 0
-  _extraEventCards: 2
+  _joyConstVal: 0
+  _sadnessConstVal: 0
+  _fearConstVal: 0
+  _angerConstVal: 0
+  <ExtraEventCards>k__BackingField: 2
+  _randomize: 0

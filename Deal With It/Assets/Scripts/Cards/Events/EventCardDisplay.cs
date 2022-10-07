@@ -98,8 +98,8 @@ public class EventCardDisplay : CardDisplay
         // Select New Card
         _currentEventCard = EventCard[GetRandomCard()];
 
-        // Save
-        _currentEventCard.SaveValues();
+        // Randomize card's emotion values
+        _currentEventCard.SetRandomEmotions();
 
         if(_currentEventCard.Randomize){
             // Clone current event card so that it doesn't change the original values
@@ -108,10 +108,9 @@ public class EventCardDisplay : CardDisplay
 
             // Randomize
             _currentEventCard.RandomVariation();
-
-            // Save new
-            _currentEventCard.SaveValues();
         }
+
+        _currentEventCard.SaveValues();
 
         // Apply NPC trait effects
         _currentEventCard.EnergyVal = npcDisplay.ProjectTraitEffect(LevelType.Energy, _currentEventCard.EnergyVal, ActionType.None);

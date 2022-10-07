@@ -16,9 +16,9 @@ MonoBehaviour:
   _cardDescription: Your friend is being unusually icy. Did you do something wrong?
   <Illustration>k__BackingField: {fileID: 0}
   _energyVal: 0
-  _joyVal: 0
-  _sadnessVal: 0
-  _fearVal: 2
-  _angerVal: 0
-  _extraEventCards: 0
+  _joyConstVal: 0
+  _sadnessConstVal: 0
+  _fearConstVal: 2
+  _angerConstVal: 0
+  <ExtraEventCards>k__BackingField: 0
   _randomize: 0

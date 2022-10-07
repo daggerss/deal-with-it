@@ -122,28 +122,6 @@ public class Action : Card
         _angerOriginalVal = AngerVal;
     }
 
-    // Set random value based on constant
-    private int RandomizeValue(int value)
-    {
-        if (value == 0)
-        {
-            return value;
-        }
-        // Range: 1, 2, 3
-        else if (value == 1)
-        {
-            return Random.Range(1, 4);
-        }
-        // Range: -3, -2, -1
-        else if (value == -1)
-        {
-            return Random.Range(-3, 0);
-        }
-
-        // Range: x-1, x, x+1
-        return Random.Range(value-1, value+2);
-    }
-
     // Revert to the original set
     public void Revert()
     {

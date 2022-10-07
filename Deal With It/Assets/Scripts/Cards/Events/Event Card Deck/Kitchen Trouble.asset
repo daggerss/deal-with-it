@@ -16,7 +16,9 @@ MonoBehaviour:
   _cardDescription: Oh no! The food you were cooking for burnt.
   <Illustration>k__BackingField: {fileID: 0}
   _energyVal: 0
-  _joyVal: 0
-  _sadnessVal: 0
-  _fearVal: 0
-  _angerVal: 1
+  _joyConstVal: 0
+  _sadnessConstVal: 0
+  _fearConstVal: 0
+  _angerConstVal: 1
+  <ExtraEventCards>k__BackingField: 0
+  _randomize: 0
