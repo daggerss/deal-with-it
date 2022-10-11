@@ -61,6 +61,15 @@ public class PlayerController : MonoBehaviour
             // While there is an empty slot in the player's hand
             while(IndexOfEmptyElement != -1){
                 Action pickedCard = ActionCardDeck.GetRandomCard();
+                
+                // Ensures cards don't repeat
+                int indexOfPickedCard = Array.IndexOf(CardsInHand, pickedCard);
+
+                while(indexOfPickedCard != -1){
+                    pickedCard = ActionCardDeck.GetRandomCard();
+                    indexOfPickedCard = Array.IndexOf(CardsInHand, pickedCard);
+                    
+                }
 
                 // Randomize card's emotion values
                 pickedCard.SetRandomEmotions();
