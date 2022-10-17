@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Night Terror
   m_EditorClassIdentifier: 
   _cardName: Night Terror
-  _cardDescription: "You wake up sweating and breathing heavily. You\u2019re relieved
-    it was just a dream... or was it?"
+  _cardDescription: "AAAH! You wake up sweating and breathing heavily. You\u2019re
+    relieved it was just a dream... or was it?"
   <Illustration>k__BackingField: {fileID: 0}
   _energyVal: -2
   _joyConstVal: 0
   _sadnessConstVal: 0
-  _fearConstVal: 1
+  _fearConstVal: 3
   _angerConstVal: 0
   <ExtraEventCards>k__BackingField: 0
   _randomize: 0

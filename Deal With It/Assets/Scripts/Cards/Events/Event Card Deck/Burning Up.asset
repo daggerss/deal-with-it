@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardName: Burning Up
   _cardDescription: Palms are sweaty, knees weak, arms are heavy. You have developed
-    a 40 degree fever
+    a 40 degree fever.
   <Illustration>k__BackingField: {fileID: 0}
   _energyVal: -2
   _joyConstVal: 0

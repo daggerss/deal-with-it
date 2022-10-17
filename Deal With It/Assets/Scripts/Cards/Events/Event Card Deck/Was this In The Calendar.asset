@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6af4158c31e9d04da24e92c4b1aa214, type: 3}
   m_Name: Was this In The Calendar
   m_EditorClassIdentifier: 
-  _cardName: Was this In The Calendar?
+  _cardName: Was this in The Calendar?
   _cardDescription: OK, class! Take out your pens and papers. POP QUIZ!
   <Illustration>k__BackingField: {fileID: 0}
   _energyVal: 0
