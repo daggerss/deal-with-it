@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     public NPCDisplay npcDisplay;
 
     // PlayedActionCards
-    public PlayedActionCards PlayedActionCards;
+    // // public PlayedActionCards PlayedActionCards;
 
     /* --------------------------------- Methods -------------------------------- */
     // Start is called before the first frame update
@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
         npcDisplay = (NPCDisplay)GameObject.FindGameObjectWithTag("NPC").GetComponent(typeof(NPCDisplay));
 
         // Initializing PlayedActionCards
-        PlayedActionCards = (PlayedActionCards)GameObject.FindGameObjectWithTag("Played Action Cards").GetComponent(typeof(PlayedActionCards));
+        // // PlayedActionCards = (PlayedActionCardsDisplay)GameObject.FindGameObjectWithTag("Played Action Cards").GetComponent(typeof(PlayedActionCardsDisplay));
 
         // Initializing OriginalButtonSize
         for(int i = 0; i < OriginalButtonPosition.Length; i++){

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayedActionCards : CardDisplay
+public class PlayedActionCardsDisplay : CardDisplay
 {
     public Action[] PlayedActionCards = new Action[5];
 
@@ -16,7 +16,7 @@ public class PlayedActionCards : CardDisplay
         int reappraisalCount = 0;
 
         foreach(Action card in PlayedActionCards){
-            ActionType cardActionType = card.CardActionType
+            ActionType cardActionType = card.CardActionType;
             if(cardActionType == ActionType.Distraction){
                 distractionCount++;
             }else if(cardActionType == ActionType.Expression){
@@ -51,7 +51,7 @@ public class PlayedActionCards : CardDisplay
         }
 
         // In order
-        ActionType previousActionCardType = playedActionCards[currentTurn - 1].CardActionType;
+        ActionType previousActionCardType = PlayedActionCards[currentTurn - 1].CardActionType;
         if(previousActionCardType == ActionType.Distraction){
             // nested ifs
         }else if(previousActionCardType == ActionType.Expression){
@@ -61,5 +61,7 @@ public class PlayedActionCards : CardDisplay
         }else if(previousActionCardType == ActionType.Reappraisal){
             // nested ifs
         }
+
+        return 0;
     }
 }
