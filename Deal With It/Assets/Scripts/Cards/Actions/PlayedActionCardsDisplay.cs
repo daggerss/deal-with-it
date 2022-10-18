@@ -87,7 +87,7 @@ public class PlayedActionCardsDisplay : CardDisplay
         if(_distractionCount == 3){
             // Additional +1 energy
             if(levelType == LevelType.Energy) {
-                addend = 1;
+                addend = -1;
             }
         }else if(_expressionCount == 4){
             // Flips values of card (+1 becomes -1)
