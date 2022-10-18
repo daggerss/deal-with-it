@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     public NPCDisplay npcDisplay;
 
     // PlayedActionCards
+    // TODO add PlayedActionCards
     // // public PlayedActionCards PlayedActionCards;
 
     /* --------------------------------- Methods -------------------------------- */
@@ -47,6 +48,7 @@ public class PlayerController : MonoBehaviour
         npcDisplay = (NPCDisplay)GameObject.FindGameObjectWithTag("NPC").GetComponent(typeof(NPCDisplay));
 
         // Initializing PlayedActionCards
+        // TODO add PlayedActionCards
         // // PlayedActionCards = (PlayedActionCardsDisplay)GameObject.FindGameObjectWithTag("Played Action Cards").GetComponent(typeof(PlayedActionCardsDisplay));
 
         // Initializing OriginalButtonSize
