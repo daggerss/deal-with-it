@@ -29,7 +29,8 @@ public class PlayedActionCardsDisplay : CardDisplay
     /*                                   Methods                                  */
     /* -------------------------------------------------------------------------- */
     /* -------------- Start is called before the first frame update ------------- */
-    void Start(){
+    void Start()
+    {
         // Initialize RoundController
         RoundController = (RoundController)GameObject.FindGameObjectWithTag("Round Controller").GetComponent(typeof(RoundController));
 
@@ -38,13 +39,14 @@ public class PlayedActionCardsDisplay : CardDisplay
     }
 
     /* --------------------- Update is called once per frame -------------------- */
-    void Update(){
+    void Update()
+    {
         // If turn changed
         if(RoundController.PlayerTurn != _currentTurn){
             _currentTurn = RoundController.PlayerTurn;
 
             // If turn is -1 (Event Card turn (new round)) then reset count
-            if(_currentTurn = -1){
+            if(_currentTurn == -1){
                 _distractionCount = 0;
                 _expressionCount = 0;
                 _processingCount = 0;
@@ -91,20 +93,20 @@ public class PlayedActionCardsDisplay : CardDisplay
         //? Is this supposed to be for the NPC emotionLevel I'm not sure
         if(_distractionCount >= 1 && _expressionCount >= 1 && _processingCount >= 1 && _reappraisalCount >= 1){
             // All emotions move by 1 towards 7
-            if(LevelType.Joy){
+            if(levelType == LevelType.Joy){
                 return MoveTowards(NPC.JoyLvl, 7);
-            }else if(LevelType.Sadness){
+            }else if(levelType == LevelType.Sadness){
                 return MoveTowards(NPC.SadnessLvl, 7);
-            }else if(LevelType.Fear){
+            }else if(levelType == LevelType.Fear){
                 return MoveTowards(NPC.FearLvl, 7);
-            }else if(LevelType.Anger){
+            }else if(levelType == LevelType.Anger){
                 return MoveTowards(NPC.AngerLvl, 7);
             }
         }
 
         /* -------------------------------- At least -------------------------------- */
         // Check at least combos
-        private int addend = 0;
+        int addend = 0;
         if(_distractionCount == 3){
             // Additional +1 energy
             if(levelType == LevelType.Energy) {
@@ -137,7 +139,7 @@ public class PlayedActionCardsDisplay : CardDisplay
         //! Is energy not affected by any of these?
         //! We are returning the actual value not the added value SEE: Expression - Expression effect
         if(CurrentSlot != 0){
-            ActionType previousActionCardType = playedActionCards[CurrentSlot - 1].CardActionType;
+            ActionType previousActionCardType = PlayedActionCards[CurrentSlot - 1].CardActionType;
             // Previous card = Distraction
             if(previousActionCardType == ActionType.Distraction){
                 // nested ifs
@@ -155,6 +157,8 @@ public class PlayedActionCardsDisplay : CardDisplay
                 // nested ifs
             }
         }
+
+        return effectValue;
     }
 
     /* ------------------------ Count the number of cards ----------------------- */
