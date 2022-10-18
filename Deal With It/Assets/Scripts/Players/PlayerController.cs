@@ -153,7 +153,8 @@ public class PlayerController : MonoBehaviour
             projectedCard.FearVal = npcDisplay.ProjectTraitEffect(LevelType.Fear, projectedCard.FearVal, projectedCard.CardActionType);
             projectedCard.AngerVal = npcDisplay.ProjectTraitEffect(LevelType.Anger, projectedCard.AngerVal, projectedCard.CardActionType);
 
-            // int ProjectComboEffect(int currentTurn, LevelType levelType, int effectValue, ActionType actionType);
+            // TODO add projectCard values
+            // int ProjectComboEffect(LevelType levelType, int effectValue, ActionType actionType);
             // // projectedCard.EnergyVal += PlayedActionCards.CheckCombo(RoundController.PlayerTurn, LevelType.Energy, projectCard.EnergyVal, projectedCard.CardActionType);
             // // projectedCard.JoyVal += PlayedActionCards.CheckCombo(RoundController.PlayerTurn, LevelType.Joy, projectCard.JoyVal, projectedCard.CardActionType);
         // If a player clicks on a card slot with no value inside
