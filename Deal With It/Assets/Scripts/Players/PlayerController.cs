@@ -132,11 +132,17 @@ public class PlayerController : MonoBehaviour
 
     // Select Card
     public void SelectCard(int CardIndex){
+        // If you select a different card decrease the count
+        if(SelectedCard != -1 && SelectedCard != CardIndex){
+            PlayedActionCards.RemoveCurrentCard(CardsInHand[SelectedCard].CardActionType);
+        }
+
         // If a player clicks on a card twice it will deselect the card
         if(CardIndex == SelectedCard){
             // Reset the card to original
             if (SelectedCard >= 0 && SelectedCard < CardsInHand.Length)
             {
+                PlayedActionCards.RemoveCurrentCard(CardsInHand[SelectedCard].CardActionType);
                 CardsInHand[SelectedCard].Revert();
             }
             // Deselect
@@ -155,6 +161,8 @@ public class PlayerController : MonoBehaviour
             projectedCard.FearVal = NPCDisplay.ProjectTraitEffect(LevelType.Fear, projectedCard.FearVal, cardActionType);
             projectedCard.AngerVal = NPCDisplay.ProjectTraitEffect(LevelType.Anger, projectedCard.AngerVal, cardActionType);
 
+            PlayedActionCards.AddCurrentCard(cardActionType);
+
             // TODO add projectCard values
             //! Can't have it as plus anymore so we're actually setting values SEE: Expression - Expression effects
             // int ProjectComboEffect(LevelType levelType, int effectValue, ActionType actionType);
@@ -162,7 +170,7 @@ public class PlayerController : MonoBehaviour
             projectedCard.JoyVal = PlayedActionCards.ProjectComboEffect(LevelType.Joy, projectedCard.JoyVal, cardActionType);
             projectedCard.SadnessVal = PlayedActionCards.ProjectComboEffect(LevelType.Sadness, projectedCard.SadnessVal, cardActionType);
             projectedCard.FearVal = PlayedActionCards.ProjectComboEffect(LevelType.Fear, projectedCard.FearVal, cardActionType);
-            projectedCard.AngerVal = PlayedActionCards.ProjectComboEffect(LevelType.Energy, projectedCard.AngerVal, cardActionType);
+            projectedCard.AngerVal = PlayedActionCards.ProjectComboEffect(LevelType.Anger, projectedCard.AngerVal, cardActionType);
         // If a player clicks on a card slot with no value inside
         }else{
             // Do nothing
@@ -194,7 +202,8 @@ public class PlayerController : MonoBehaviour
         else{
             Action playedActionCard = CardsInHand[SelectedCard];
 
-            Debug.Log("Player " + PlayerNumber + " played " + playedActionCard.CardName);
+            Debug.Log("Player " + PlayerNumber + " played " + playedActionCard.CardActionType + " at turn " + RoundController.PlayerTurn + " in Round " + RoundController.Round);
+            PlayedActionCards.AddPlayedActionCard(playedActionCard);
 
             // Remove card from hand
             CardsInHand[SelectedCard] = null;

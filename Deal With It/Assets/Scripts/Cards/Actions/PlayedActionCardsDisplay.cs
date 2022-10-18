@@ -45,50 +45,27 @@ public class PlayedActionCardsDisplay : CardDisplay
         if(RoundController.PlayerTurn != _currentTurn){
             _currentTurn = RoundController.PlayerTurn;
 
-            // If turn is -1 (Event Card turn (new round)) then reset count
+            // If turn is -1 (Event Card turn (new round)) PlayedActionCards array
             if(_currentTurn == -1){
-                _distractionCount = 0;
-                _expressionCount = 0;
-                _processingCount = 0;
-                _reappraisalCount = 0;
+                for(int i = 0; i < PlayedActionCards.Length; i++){
+                    PlayedActionCards[i] = null;
+                }
+                CurrentSlot = 0;
             }
 
-            // Recount previous cards
-            foreach(Action card in PlayedActionCards){
-                CountCard(card.CardActionType);
-                //TODO delete if method works
-                // // ActionType cardActionType = card.CardActionType;
-                // // if(cardActionType == ActionType.Distraction){
-                // //     _distractionCount++;
-                // // }else if(cardActionType == ActionType.Expression){
-                // //     _expressionCount++;
-                // // }else if(cardActionType == ActionType.Processing){
-                // //     _processingCount++;
-                // // }else if(cardActionType == ActionType.Reappraisal){
-                // //     _reappraisalCount++;
-                // // }
+            _distractionCount = 0;
+            _expressionCount = 0;
+            _processingCount = 0;
+            _reappraisalCount = 0;
+
+            for(int i = 0; i < PlayedActionCards.Length; i++){
+                if(PlayedActionCards[i] != null) CountCard(PlayedActionCards[i].CardActionType, 1);
             }
         }
     }
 
     /* ------------------------- Combo checking methods ------------------------- */
     public int ProjectComboEffect(LevelType levelType, int effectValue, ActionType actionType){
-        // Get current empty slot
-        CurrentSlot = Array.IndexOf(PlayedActionCards, null);
-
-        // Add current card
-        CountCard(actionType);
-        //TODO delete if method works
-        // // if(actionType == ActionType.Distraction){
-        // //     _distractionCount++;
-        // // }else if(actionType == ActionType.Expression){
-        // //     _expressionCount++;
-        // // }else if(actionType == ActionType.Processing){
-        // //     _processingCount++;
-        // // }else if(actionType == ActionType.Reappraisal){
-        // //     _reappraisalCount++;
-        // // }
-
         /* ----------------------------- All strategies ----------------------------- */
         //? Is this supposed to be for the NPC emotionLevel I'm not sure
         if(_distractionCount >= 1 && _expressionCount >= 1 && _processingCount >= 1 && _reappraisalCount >= 1){
@@ -158,19 +135,29 @@ public class PlayedActionCardsDisplay : CardDisplay
             }
         }
 
-        return effectValue;
+        return effectValue + addend;
+    }
+
+    /* ------------------------------- Select Card ------------------------------ */
+    public void AddCurrentCard(ActionType cardActionType){
+        CountCard(cardActionType, 1);
+    }
+
+    /* ------------------------------ Deselect Card ----------------------------- */
+    public void RemoveCurrentCard(ActionType cardActionType){
+        CountCard(cardActionType, -1);
     }
 
     /* ------------------------ Count the number of cards ----------------------- */
-    private void CountCard(ActionType cardActionType){
+    private void CountCard(ActionType cardActionType, int increment){
         if(cardActionType == ActionType.Distraction){
-            _distractionCount++;
+            _distractionCount += increment;
         }else if(cardActionType == ActionType.Expression){
-            _expressionCount++;
+            _expressionCount += increment;
         }else if(cardActionType == ActionType.Processing){
-            _processingCount++;
+            _processingCount += increment;
         }else if(cardActionType == ActionType.Reappraisal){
-            _reappraisalCount++;
+            _reappraisalCount += increment;
         }
     }
 
@@ -185,6 +172,15 @@ public class PlayedActionCardsDisplay : CardDisplay
         // Effect is equal to reference point
         }else{
             return 0;
+        }
+    }
+
+    /* -------------------- Add card to the PlayedActionCards ------------------- */
+    public void AddPlayedActionCard(Action card){
+        if(card != null){
+            PlayedActionCards[CurrentSlot] = card;
+            Debug.Log(PlayedActionCards[CurrentSlot].CardActionType +" Card Added in " + CurrentSlot);
+            CurrentSlot++;
         }
     }
 }
