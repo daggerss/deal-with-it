@@ -39,4 +39,19 @@ public class CardDisplay : MonoBehaviour
 
         return false;
     }
+
+    // Adds or subtracts the addend according to energy/emotion value
+    public int AddExtraEffect(int original, int addend)
+    {
+        if (original > 0)
+        {
+            return addend;
+        }
+        else if (original < 0)
+        {
+            return -addend;
+        }
+
+        return 0;
+    }
 }

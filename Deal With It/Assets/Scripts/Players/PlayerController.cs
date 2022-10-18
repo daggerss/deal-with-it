@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    /* -------------------------------- Variables ------------------------------- */
     // Player Variables
     public int PlayerNumber;
     private int SelectedCard = -1;
@@ -29,6 +30,10 @@ public class PlayerController : MonoBehaviour
     // NPC
     public NPCDisplay npcDisplay;
 
+    // PlayedActionCards
+    public PlayedActionCards PlayedActionCards;
+
+    /* --------------------------------- Methods -------------------------------- */
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +45,9 @@ public class PlayerController : MonoBehaviour
 
         // Initializing NPC
         npcDisplay = (NPCDisplay)GameObject.FindGameObjectWithTag("NPC").GetComponent(typeof(NPCDisplay));
+
+        // Initializing PlayedActionCards
+        PlayedActionCards = (PlayedActionCards)GameObject.FindGameObjectWithTag("Played Action Cards").GetComponent(typeof(PlayedActionCards));
 
         // Initializing OriginalButtonSize
         for(int i = 0; i < OriginalButtonPosition.Length; i++){
@@ -142,6 +150,10 @@ public class PlayerController : MonoBehaviour
             projectedCard.SadnessVal = npcDisplay.ProjectTraitEffect(LevelType.Sadness, projectedCard.SadnessVal, projectedCard.CardActionType);
             projectedCard.FearVal = npcDisplay.ProjectTraitEffect(LevelType.Fear, projectedCard.FearVal, projectedCard.CardActionType);
             projectedCard.AngerVal = npcDisplay.ProjectTraitEffect(LevelType.Anger, projectedCard.AngerVal, projectedCard.CardActionType);
+
+            // int ProjectComboEffect(int currentTurn, LevelType levelType, int effectValue, ActionType actionType);
+            // // projectedCard.EnergyVal += PlayedActionCards.CheckCombo(RoundController.PlayerTurn, LevelType.Energy, projectCard.EnergyVal, projectedCard.CardActionType);
+            // // projectedCard.JoyVal += PlayedActionCards.CheckCombo(RoundController.PlayerTurn, LevelType.Joy, projectCard.JoyVal, projectedCard.CardActionType);
         // If a player clicks on a card slot with no value inside
         }else{
             // Do nothing

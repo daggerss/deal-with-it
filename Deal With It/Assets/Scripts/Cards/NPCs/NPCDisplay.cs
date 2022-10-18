@@ -285,21 +285,6 @@ public class NPCDisplay : CardDisplay
         return effectValue + addend;
     }
 
-    // Adds or subtracts the addend according to energy/emotion value
-    private int AddExtraEffect(int original, int addend)
-    {
-        if (original > 0)
-        {
-            return addend;
-        }
-        else if (original < 0)
-        {
-            return -addend;
-        }
-
-        return 0;
-    }
-
     // Reset effect texts to null
     private void ResetEffectTexts()
     {
