@@ -28,10 +28,11 @@ public class PlayerController : MonoBehaviour
     private int CurrentRound = -1;
 
     // NPC
-    public NPCDisplay npcDisplay;
+    public NPCDisplay NPCDisplay;
 
     // PlayedActionCards
-    // // public PlayedActionCards PlayedActionCards;
+    // TODO add PlayedActionCards
+    public PlayedActionCardsDisplay PlayedActionCards;
 
     /* --------------------------------- Methods -------------------------------- */
     // Start is called before the first frame update
@@ -44,10 +45,11 @@ public class PlayerController : MonoBehaviour
         RoundController = (RoundController)GameObject.FindGameObjectWithTag("Round Controller").GetComponent(typeof(RoundController));
 
         // Initializing NPC
-        npcDisplay = (NPCDisplay)GameObject.FindGameObjectWithTag("NPC").GetComponent(typeof(NPCDisplay));
+        NPCDisplay = (NPCDisplay)GameObject.FindGameObjectWithTag("NPC").GetComponent(typeof(NPCDisplay));
 
         // Initializing PlayedActionCards
-        // // PlayedActionCards = (PlayedActionCardsDisplay)GameObject.FindGameObjectWithTag("Played Action Cards").GetComponent(typeof(PlayedActionCardsDisplay));
+        // TODO add PlayedActionCards
+        PlayedActionCards = (PlayedActionCardsDisplay)GameObject.FindGameObjectWithTag("Played Action Cards Display").GetComponent(typeof(PlayedActionCardsDisplay));
 
         // Initializing OriginalButtonSize
         for(int i = 0; i < OriginalButtonPosition.Length; i++){
@@ -59,7 +61,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if(RoundController.Round != CurrentRound){
-            // Set Current round to roundcontroller.round so the if doesn't repeat 
+            // Set Current round to RoundController.Round so the if doesn't repeat 
             CurrentRound = RoundController.Round;
             SelectedCard = -1;
 
@@ -97,7 +99,7 @@ public class PlayerController : MonoBehaviour
         if(RoundController.PlayerTurn == PlayerNumber){
 
             // Skip if out of energy
-            if (npcDisplay.npc.EnergyLvl < GetLowestEnergy())
+            if (NPCDisplay.npc.EnergyLvl < GetLowestEnergy())
             {
                 SelectedCard = -2;
                 PlayCard();
@@ -130,11 +132,17 @@ public class PlayerController : MonoBehaviour
 
     // Select Card
     public void SelectCard(int CardIndex){
+        // If you select a different card decrease the count
+        if(SelectedCard != -1 && SelectedCard != CardIndex){
+            PlayedActionCards.RemoveCurrentCard(CardsInHand[SelectedCard].CardActionType);
+        }
+
         // If a player clicks on a card twice it will deselect the card
         if(CardIndex == SelectedCard){
             // Reset the card to original
             if (SelectedCard >= 0 && SelectedCard < CardsInHand.Length)
             {
+                PlayedActionCards.RemoveCurrentCard(CardsInHand[SelectedCard].CardActionType);
                 CardsInHand[SelectedCard].Revert();
             }
             // Deselect
@@ -145,15 +153,24 @@ public class PlayerController : MonoBehaviour
 
             // Apply NPC trait effects
             Action projectedCard = CardsInHand[SelectedCard];
-            projectedCard.EnergyVal = npcDisplay.ProjectTraitEffect(LevelType.Energy, projectedCard.EnergyVal, projectedCard.CardActionType);
-            projectedCard.JoyVal = npcDisplay.ProjectTraitEffect(LevelType.Joy, projectedCard.JoyVal, projectedCard.CardActionType);
-            projectedCard.SadnessVal = npcDisplay.ProjectTraitEffect(LevelType.Sadness, projectedCard.SadnessVal, projectedCard.CardActionType);
-            projectedCard.FearVal = npcDisplay.ProjectTraitEffect(LevelType.Fear, projectedCard.FearVal, projectedCard.CardActionType);
-            projectedCard.AngerVal = npcDisplay.ProjectTraitEffect(LevelType.Anger, projectedCard.AngerVal, projectedCard.CardActionType);
+            ActionType cardActionType = projectedCard.CardActionType;
 
-            // int ProjectComboEffect(int currentTurn, LevelType levelType, int effectValue, ActionType actionType);
-            // // projectedCard.EnergyVal += PlayedActionCards.CheckCombo(RoundController.PlayerTurn, LevelType.Energy, projectCard.EnergyVal, projectedCard.CardActionType);
-            // // projectedCard.JoyVal += PlayedActionCards.CheckCombo(RoundController.PlayerTurn, LevelType.Joy, projectCard.JoyVal, projectedCard.CardActionType);
+            projectedCard.EnergyVal = NPCDisplay.ProjectTraitEffect(LevelType.Energy, projectedCard.EnergyVal, cardActionType);
+            projectedCard.JoyVal = NPCDisplay.ProjectTraitEffect(LevelType.Joy, projectedCard.JoyVal, cardActionType);
+            projectedCard.SadnessVal = NPCDisplay.ProjectTraitEffect(LevelType.Sadness, projectedCard.SadnessVal, cardActionType);
+            projectedCard.FearVal = NPCDisplay.ProjectTraitEffect(LevelType.Fear, projectedCard.FearVal, cardActionType);
+            projectedCard.AngerVal = NPCDisplay.ProjectTraitEffect(LevelType.Anger, projectedCard.AngerVal, cardActionType);
+
+            PlayedActionCards.AddCurrentCard(cardActionType);
+
+            // TODO add projectCard values
+            //! Can't have it as plus anymore so we're actually setting values SEE: Expression - Expression effects
+            // int ProjectComboEffect(LevelType levelType, int effectValue, ActionType actionType);
+            projectedCard.EnergyVal = PlayedActionCards.ProjectComboEffect(LevelType.Energy, projectedCard.EnergyVal, cardActionType);
+            projectedCard.JoyVal = PlayedActionCards.ProjectComboEffect(LevelType.Joy, projectedCard.JoyVal, cardActionType);
+            projectedCard.SadnessVal = PlayedActionCards.ProjectComboEffect(LevelType.Sadness, projectedCard.SadnessVal, cardActionType);
+            projectedCard.FearVal = PlayedActionCards.ProjectComboEffect(LevelType.Fear, projectedCard.FearVal, cardActionType);
+            projectedCard.AngerVal = PlayedActionCards.ProjectComboEffect(LevelType.Anger, projectedCard.AngerVal, cardActionType);
         // If a player clicks on a card slot with no value inside
         }else{
             // Do nothing
@@ -185,16 +202,17 @@ public class PlayerController : MonoBehaviour
         else{
             Action playedActionCard = CardsInHand[SelectedCard];
 
-            Debug.Log("Player " + PlayerNumber + " played " + playedActionCard.CardName);
+            Debug.Log("Player " + PlayerNumber + " played " + playedActionCard.CardActionType + " at turn " + RoundController.PlayerTurn + " in Round " + RoundController.Round);
+            PlayedActionCards.AddPlayedActionCard(playedActionCard);
 
             // Remove card from hand
             CardsInHand[SelectedCard] = null;
 
-            npcDisplay.ApplyEffect(LevelType.Energy, playedActionCard.EnergyVal, playedActionCard.CardActionType);
-            npcDisplay.ApplyEffect(LevelType.Joy, playedActionCard.JoyVal, playedActionCard.CardActionType);
-            npcDisplay.ApplyEffect(LevelType.Sadness, playedActionCard.SadnessVal, playedActionCard.CardActionType);
-            npcDisplay.ApplyEffect(LevelType.Fear, playedActionCard.FearVal, playedActionCard.CardActionType);
-            npcDisplay.ApplyEffect(LevelType.Anger, playedActionCard.AngerVal, playedActionCard.CardActionType);
+            NPCDisplay.ApplyEffect(LevelType.Energy, playedActionCard.EnergyVal, playedActionCard.CardActionType);
+            NPCDisplay.ApplyEffect(LevelType.Joy, playedActionCard.JoyVal, playedActionCard.CardActionType);
+            NPCDisplay.ApplyEffect(LevelType.Sadness, playedActionCard.SadnessVal, playedActionCard.CardActionType);
+            NPCDisplay.ApplyEffect(LevelType.Fear, playedActionCard.FearVal, playedActionCard.CardActionType);
+            NPCDisplay.ApplyEffect(LevelType.Anger, playedActionCard.AngerVal, playedActionCard.CardActionType);
 
             playedActionCard.Revert();
         }

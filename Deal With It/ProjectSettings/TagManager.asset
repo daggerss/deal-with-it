@@ -8,6 +8,7 @@ TagManager:
   - Round Controller
   - NPC
   - PlayerTag
+  - Played Action Cards Display
   layers:
   - Default
   - TransparentFX
