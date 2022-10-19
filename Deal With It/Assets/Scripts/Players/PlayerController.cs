@@ -106,18 +106,8 @@ public class PlayerController : MonoBehaviour
 
         // If it is this player's turn
         if(RoundController.PlayerTurn == PlayerNumber && !_aiActionCardPlayed){
-
-            //! LEGACY Skip if out of energy     
-            // // if (NPCDisplay.npc.EnergyLvl < GetLowestEnergy())
-            // // {
-            // //     SelectedCard = -2;
-            // //     PlayCard();
-            // // }
-
             //If player is AI
             if(!Playable){
-                //! CAN WE ADD DELAY HERE SO THE CARD DOESN'T PLAY RIGHT AWAY
-
                 StartCoroutine(AIPlayActionCard());
             }
 
@@ -201,14 +191,7 @@ public class PlayerController : MonoBehaviour
         // No card picked
         if(SelectedCard == -1){
             Debug.Log("Player " + PlayerNumber + " played no card");
-        }
-        //! LEGACY right now won't trigger
-        // // else if (SelectedCard == -2){
-        // //     // Energy exhausted force skip
-        // //     Debug.Log("Out of energy! Player " + PlayerNumber + " is skipped.");
-        // // }
-        // Play card picked
-        else{
+        }else{
             Action playedActionCard = CardsInHand[SelectedCard];
 
             // Add playedActionCard to the PlayedActionCards in the middle
@@ -219,13 +202,6 @@ public class PlayerController : MonoBehaviour
             // Remove card from hand
             CardsInHand[SelectedCard] = null;
             CardsInHandButton[SelectedCard].gameObject.SetActive(false);
-
-            //! LEGACY Action cards are only gonna be applied at the end of the round
-            NPCDisplay.ApplyEffect(LevelType.Energy, playedActionCard.EnergyVal, playedActionCard.CardActionType);
-            NPCDisplay.ApplyEffect(LevelType.Joy, playedActionCard.JoyVal, playedActionCard.CardActionType);
-            NPCDisplay.ApplyEffect(LevelType.Sadness, playedActionCard.SadnessVal, playedActionCard.CardActionType);
-            NPCDisplay.ApplyEffect(LevelType.Fear, playedActionCard.FearVal, playedActionCard.CardActionType);
-            NPCDisplay.ApplyEffect(LevelType.Anger, playedActionCard.AngerVal, playedActionCard.CardActionType);
         }
 
         RoundController.NextPlayer();
@@ -246,6 +222,7 @@ public class PlayerController : MonoBehaviour
 
         // Random Number
         int rng = UnityEngine.Random.Range(-1, CardsInHand.Length);
+        SelectCard(rng);
         SelectedCard = rng;
         PlayCard();
     }

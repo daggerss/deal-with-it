@@ -32,12 +32,12 @@ public class RoundController : MonoBehaviour
         }
     }
 
-    private int _numberOfPlayers;
+    public int NumberOfPlayers;
 
     // Start is called before the first frame update
     void Start()
     {
-        _numberOfPlayers = GameObject.FindGameObjectsWithTag("PlayerTag").Length;
+        NumberOfPlayers = GameObject.FindGameObjectsWithTag("PlayerTag").Length;
     }
 
     // Update is called once per frame
@@ -51,7 +51,7 @@ public class RoundController : MonoBehaviour
     /* -------------------------------------------------------------------------- */
     /* ----------------------- Goes to next player's turn ----------------------- */
     public void NextPlayer(){
-        if(_playerTurn == _numberOfPlayers - 1){
+        if(_playerTurn == NumberOfPlayers){
             StartCoroutine(NextRound());
         }else{
             _playerTurn++;
@@ -60,7 +60,6 @@ public class RoundController : MonoBehaviour
 
     /* ------------------------- Executes on next round ------------------------- */
     public IEnumerator NextRound(){
-        //! Add delay to not move to next round right away
         yield return new WaitForSeconds(3f);
         _round++;
         _playerTurn = -1;

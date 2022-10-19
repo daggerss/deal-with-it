@@ -28,6 +28,7 @@ public class PlayedActionCardsDisplay : CardDisplay
     private int _reappraisalCount = 0;
 
     /* --------------------------- Effect Value Totals -------------------------- */
+    public int TotalEnergyVal = 0;
     public int TotalJoyVal = 0;
     public int TotalSadnessVal = 0;
     public int TotalFearVal = 0;
@@ -38,7 +39,11 @@ public class PlayedActionCardsDisplay : CardDisplay
     private int _currentTurn = -2;
 
     /* ----------------------------------- NPC ---------------------------------- */
+    public NPCDisplay NPCDisplay;
     public NPC NPC;
+
+    /* ---------------------------------- Misc ---------------------------------- */
+    private bool _effectsApplied = false;
 
     /* -------------------------------------------------------------------------- */
     /*                                   Methods                                  */
@@ -50,7 +55,8 @@ public class PlayedActionCardsDisplay : CardDisplay
         RoundController = (RoundController)GameObject.FindGameObjectWithTag("Round Controller").GetComponent(typeof(RoundController));
 
         // Initializing NPC
-        NPC = ((NPCDisplay)GameObject.FindGameObjectWithTag("NPC").GetComponent(typeof(NPCDisplay))).npc;
+        NPCDisplay = (NPCDisplay)GameObject.FindGameObjectWithTag("NPC").GetComponent(typeof(NPCDisplay));
+        NPC = NPCDisplay.npc;
     }
 
     /* --------------------- Update is called once per frame -------------------- */
@@ -67,6 +73,9 @@ public class PlayedActionCardsDisplay : CardDisplay
                 _expressionCount = 0;
                 _processingCount = 0;
                 _reappraisalCount = 0;
+
+                // Reset _effectsApplied
+                _effectsApplied = false;
 
                 // Clear PlayedActionCards and all properties
                 for(int i = 0; i < PlayedActionCards.Length; i++){
@@ -86,6 +95,21 @@ public class PlayedActionCardsDisplay : CardDisplay
 
                 // Reset Current Slot
                 CurrentSlot = 0;
+
+            // Apply PlayedActionCards
+            }else if(_currentTurn == RoundController.NumberOfPlayers && !_effectsApplied){
+                _effectsApplied = true;
+
+                GetTotalValues();
+                NPCDisplay.ApplyEffect(LevelType.Energy, TotalEnergyVal, ActionType.None);
+                NPCDisplay.ApplyEffect(LevelType.Joy, TotalJoyVal, ActionType.None);
+                NPCDisplay.ApplyEffect(LevelType.Sadness, TotalSadnessVal, ActionType.None);
+                NPCDisplay.ApplyEffect(LevelType.Fear, TotalFearVal, ActionType.None);
+                NPCDisplay.ApplyEffect(LevelType.Anger, TotalAngerVal, ActionType.None);
+
+                // Go next turn
+                RoundController.NextPlayer();
+                Debug.Log("Effects Applied!");
             }
         }
     }
@@ -123,6 +147,7 @@ public class PlayedActionCardsDisplay : CardDisplay
                     if(playedActionCard == null){
                         break;
                     }else if(playedActionCard.CardActionType != ActionType.Distraction){
+                        Debug.Log("Hello?");
                         playedActionCard.EnergyVal -= 1;
                     }
                 }
@@ -289,7 +314,7 @@ public class PlayedActionCardsDisplay : CardDisplay
             _angerOriginalVals[CurrentSlot] = actionCard.AngerVal;
 
             // Increment count
-            CountCard(actionCard.CardActionType, 1);
+            Debug.Log("d" + _distractionCount + " e " + _expressionCount + " p " + _processingCount + " r " + _reappraisalCount);
             CurrentSlot++;
         }
     }
@@ -305,6 +330,29 @@ public class PlayedActionCardsDisplay : CardDisplay
                 PlayedActionCards[i].AngerVal = _angerOriginalVals[i];
             }else{
                 break;
+            }
+        }
+    }
+
+    /* ---------------- Get Total Values of all PlayedActionCards --------------- */
+    private void GetTotalValues(){
+        //Reset Total
+        TotalEnergyVal = 0;
+        TotalJoyVal = 0;
+        TotalSadnessVal = 0;
+        TotalFearVal = 0;
+        TotalAngerVal = 0;
+
+        for(int i = 0; i < PlayedActionCards.Length; i++){
+            Action playedActionCard = PlayedActionCards[i];
+            if(playedActionCard == null){
+                break;
+            }else{
+                TotalEnergyVal += playedActionCard.EnergyVal;
+                TotalJoyVal += playedActionCard.JoyVal;
+                TotalSadnessVal += playedActionCard.SadnessVal;
+                TotalFearVal += playedActionCard.FearVal;
+                TotalAngerVal += playedActionCard.AngerVal;
             }
         }
     }
