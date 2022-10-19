@@ -64,19 +64,24 @@ public class PlayerController : MonoBehaviour
             // Set Current round to RoundController.Round so the if doesn't repeat 
             CurrentRound = RoundController.Round;
             SelectedCard = -1;
-            _aiActionCardPlayed = false;
 
-            int IndexOfEmptyElement = Array.IndexOf(CardsInHand, null);
+            // Set _aiActionCardPlayed to false so that all of the AI are ready to play a card
+            _aiActionCardPlayed = false;
 
             // Makes sure that players have 5 cards every round
             // While there is an empty slot in the player's hand
+            int IndexOfEmptyElement = Array.IndexOf(CardsInHand, null);
+
             while(IndexOfEmptyElement != -1){
+                // Pick a card
                 Action pickedCard = ActionCardDeck.GetRandomCard();
                 
                 // Ensures cards don't repeat
                 int indexOfPickedCard = Array.IndexOf(CardsInHand, pickedCard);
 
+                // Card already in hand
                 while(indexOfPickedCard != -1){
+                    // Pick another card
                     pickedCard = ActionCardDeck.GetRandomCard();
                     indexOfPickedCard = Array.IndexOf(CardsInHand, pickedCard);
                 }
@@ -84,6 +89,7 @@ public class PlayerController : MonoBehaviour
                 // Randomize card's emotion values
                 pickedCard.SetRandomEmotions();
 
+                // Make sure card is using its original values
                 pickedCard.Revert();
 
                 // Puts card in player's hand
@@ -141,6 +147,7 @@ public class PlayerController : MonoBehaviour
             if (SelectedCard >= 0 && SelectedCard < CardsInHand.Length)
             {
                 PlayedActionCards.RemoveCurrentCard(CardsInHand[SelectedCard].CardActionType);
+                PlayedActionCards.RevertAll();
                 CardsInHand[SelectedCard].Revert();
             }
             // Deselect
@@ -159,9 +166,12 @@ public class PlayerController : MonoBehaviour
             projectedCard.FearVal = NPCDisplay.ProjectTraitEffect(LevelType.Fear, projectedCard.FearVal, cardActionType);
             projectedCard.AngerVal = NPCDisplay.ProjectTraitEffect(LevelType.Anger, projectedCard.AngerVal, cardActionType);
 
+            // Add current card type to the card count
             PlayedActionCards.AddCurrentCard(cardActionType);
 
-            //! Can't have it as plus anymore so we're actually setting values SEE: Expression - Expression effects
+            // Set all PlayedActionCards to original value before applying new effects
+            PlayedActionCards.RevertAll();
+
             // int ProjectComboEffect(LevelType levelType, int effectValue, ActionType actionType);
             projectedCard.EnergyVal = PlayedActionCards.ProjectComboEffect(LevelType.Energy, projectedCard.EnergyVal, cardActionType);
             projectedCard.JoyVal = PlayedActionCards.ProjectComboEffect(LevelType.Joy, projectedCard.JoyVal, cardActionType);

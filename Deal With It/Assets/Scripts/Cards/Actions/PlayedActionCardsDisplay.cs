@@ -14,6 +14,13 @@ public class PlayedActionCardsDisplay : CardDisplay
     public Button[] PlayedActionCardsButton = new Button[5];
     public int CurrentSlot = 0;
 
+    // Original values
+    private int[] _energyOriginalVals = new int[5];
+    private int[] _joyOriginalVals = new int[5];
+    private int[] _sadnessOriginalVals = new int[5];
+    private int[] _fearOriginalVals = new int[5];
+    private int[] _angerOriginalVals = new int[5];
+
     /* ---------------------------------- Count --------------------------------- */
     private int _distractionCount = 0;
     private int _expressionCount = 0;
@@ -61,10 +68,20 @@ public class PlayedActionCardsDisplay : CardDisplay
                 _processingCount = 0;
                 _reappraisalCount = 0;
 
-                // Clear PlayedActionCards
+                // Clear PlayedActionCards and all properties
                 for(int i = 0; i < PlayedActionCards.Length; i++){
+                    // Remove card
                     PlayedActionCards[i] = null;
-                    PlayedActionCardsButton[i].gameObject.SetActive(false); // Hide Card
+
+                    // Hide card
+                    PlayedActionCardsButton[i].gameObject.SetActive(false);
+
+                    // Reset original
+                    _energyOriginalVals[i] = 0;
+                    _joyOriginalVals[i] = 0;
+                    _sadnessOriginalVals[i] = 0;
+                    _fearOriginalVals[i] = 0;
+                    _angerOriginalVals[i] = 0;
                 }
 
                 // Reset Current Slot
@@ -93,28 +110,99 @@ public class PlayedActionCardsDisplay : CardDisplay
         /* -------------------------------- At least -------------------------------- */
         // Check at least combos
         int addend = 0;
-        if(_distractionCount == 3){
-            // Additional +1 energy
-            if(levelType == LevelType.Energy) {
+        int flip = 1;
+        /* -------------------- 3 Distraction Cards in one round -------------------- */
+        //* Checked
+        if(_distractionCount >= 3){
+            // Additional +1 energy to all non distraction cards
+
+            // Project on the cards already played
+            if(levelType == LevelType.Energy){ // To make sure this only runs once or else the value will keep changing
+                for(int i = 0; i < PlayedActionCards.Length; i++){
+                    Action playedActionCard = PlayedActionCards[i];
+                    if(playedActionCard == null){
+                        break;
+                    }else if(playedActionCard.CardActionType != ActionType.Distraction){
+                        playedActionCard.EnergyVal -= 1;
+                    }
+                }
+            }
+
+            // Project on the selected card
+            if(actionType != ActionType.Distraction && levelType == LevelType.Energy){
                 addend = -1;
             }
-        }else if(_expressionCount == 4){
-            // Flips values of card (+1 becomes -1)
-            //* I'll return this because if this moves on to the In order then the whole thing gets messed up
-            if(levelType != LevelType.Energy){ 
-                return effectValue * -1; 
-            }else{ 
-                return effectValue;
+
+        /* --------------------- 4 Expression cards in one round -------------------- */
+        // * checked
+        }else if(_expressionCount >= 4){
+            // Flips values of expression card (+1 becomes -1)
+
+            //Project on the cards already played
+            if(levelType == LevelType.Energy){ // To make sure this only runs once or else the value will keep changing
+                for(int i = 0; i < PlayedActionCards.Length; i++){
+                    Action playedActionCard = PlayedActionCards[i];
+                    if(playedActionCard == null){
+                        break;
+                    }else if(playedActionCard.CardActionType == ActionType.Expression){
+                        playedActionCard.EnergyVal *= -1;
+                        playedActionCard.JoyVal *= -1;
+                        playedActionCard.SadnessVal *= -1;
+                        playedActionCard.FearVal *= -1;
+                        playedActionCard.AngerVal *= -1;
+                    }
+                }
             }
-        }else if(_processingCount == 3){
+
+            // Project on the selected card
+            if(levelType != LevelType.Energy){ 
+                flip = -1;
+            }
+
+        /* --------------------- 3 Processing Cards in one round -------------------- */
+        // * Checked
+        }else if(_processingCount >= 3){
             // Increases negative emotion effects by 2
-            //? Should this be => Sadness -2 becomes Sadness -4 or => Sadness -2 becomes Sadness -0 
+
+            // Project on the cards already played
+            if(levelType == LevelType.Energy){ // To make sure this only runs once or else the value will keep changing
+                for(int i = 0; i < PlayedActionCards.Length; i++){
+                    Action playedActionCard = PlayedActionCards[i];
+                    if(playedActionCard == null){
+                        break;
+                    }else if(playedActionCard.CardActionType == ActionType.Processing){
+                        playedActionCard.SadnessVal += 2;
+                        playedActionCard.FearVal += 2;
+                        playedActionCard.AngerVal += 2;
+                    }
+                }
+            }
+
+            // Project on the selected card
             if(levelType != LevelType.Energy && levelType != LevelType.Joy){
-                // // addend = AddExtraEffect(effectValue, 2); //? Sadness -2  becomes Sadness -4
                 addend = 2; //? Sadness -2 becomes Sadness -0
             }
-        }else if(_reappraisalCount == 3){
-            // Decreases efficacy of the cards by 1
+        
+        /* -------------------- 3 Reappraisal Cards in one round -------------------- */
+        }else if(_reappraisalCount >= 3){
+            // Decreases efficacy of the reappraisal cards by 1
+
+            // Project on the cards already played
+            if(levelType == LevelType.Energy){ // To make sure this only runs once or else the value will keep changing
+                for(int i = 0; i < PlayedActionCards.Length; i++){
+                    Action playedActionCard = PlayedActionCards[i];
+                    if(playedActionCard == null){
+                        break;
+                    }else if(playedActionCard.CardActionType == ActionType.Reappraisal){
+                        playedActionCard.JoyVal += AddExtraEffect(playedActionCard.JoyVal, -1);
+                        playedActionCard.SadnessVal += AddExtraEffect(playedActionCard.SadnessVal, -1);
+                        playedActionCard.FearVal += AddExtraEffect(playedActionCard.FearVal, -1);
+                        playedActionCard.AngerVal += AddExtraEffect(playedActionCard.AngerVal, -1);
+                    }
+                }
+            }
+
+
             if(levelType != LevelType.Energy){
                 addend = AddExtraEffect(effectValue, -1);
             }
@@ -144,7 +232,7 @@ public class PlayedActionCardsDisplay : CardDisplay
             }
         }
 
-        return effectValue + addend;
+        return (effectValue + addend) * flip;
     }
 
     /* ------------------------------- Select Card ------------------------------ */
@@ -185,12 +273,39 @@ public class PlayedActionCardsDisplay : CardDisplay
     }
 
     /* -------------------- Add card to the PlayedActionCards ------------------- */
-    public void AddPlayedActionCard(Action card){
-        if(card != null){
-            PlayedActionCards[CurrentSlot] = card; // Put card in PlayedActionCards
-            PlayedActionCardsButton[CurrentSlot].gameObject.SetActive(true); // Show card
-            CountCard(card.CardActionType, 1); // Increment count
+    public void AddPlayedActionCard(Action actionCard){
+        if(actionCard != null){
+            // Put card in PlayedActionCards
+            PlayedActionCards[CurrentSlot] = actionCard;
+
+            // Show card
+            PlayedActionCardsButton[CurrentSlot].gameObject.SetActive(true);
+
+            // Save original values
+            _energyOriginalVals[CurrentSlot] = actionCard.EnergyVal;
+            _joyOriginalVals[CurrentSlot] = actionCard.JoyVal;
+            _sadnessOriginalVals[CurrentSlot] = actionCard.SadnessVal;
+            _fearOriginalVals[CurrentSlot] = actionCard.FearVal;
+            _angerOriginalVals[CurrentSlot] = actionCard.AngerVal;
+
+            // Increment count
+            CountCard(actionCard.CardActionType, 1);
             CurrentSlot++;
+        }
+    }
+
+    /* -------------------------- Revert all cards back ------------------------- */
+    public void RevertAll(){
+        for(int i = 0; i < PlayedActionCards.Length; i++){
+            if(PlayedActionCards[i] != null){
+                PlayedActionCards[i].EnergyVal = _energyOriginalVals[i];
+                PlayedActionCards[i].JoyVal = _joyOriginalVals[i];
+                PlayedActionCards[i].SadnessVal = _sadnessOriginalVals[i];
+                PlayedActionCards[i].FearVal = _fearOriginalVals[i];
+                PlayedActionCards[i].AngerVal = _angerOriginalVals[i];
+            }else{
+                break;
+            }
         }
     }
 }
