@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2aa43e862d793eb4f9dac7fb1437dbe1, type: 3}
-  m_Name: Wonder and Ponder
+  m_Name: No Words just Vibes
   m_EditorClassIdentifier: 
-  _cardName: Wonder and Ponder
-  _cardDescription: Sit and think about how you would approach the situation if it
-    happened to a friend instead.
+  _cardName: No Words just Vibes
+  _cardDescription: "Share through gestures because that lump in your throat won\u2019t
+    go away."
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: -7
+  _energyVal: 0
   _joyConstVal: 0
-  _sadnessConstVal: 2
+  _sadnessConstVal: -1
   _fearConstVal: 0
   _angerConstVal: -1
-  _actionType: 4
+  _actionType: 2

@@ -9,17 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6af4158c31e9d04da24e92c4b1aa214, type: 3}
-  m_Name: Friction
+  m_Script: {fileID: 11500000, guid: 2aa43e862d793eb4f9dac7fb1437dbe1, type: 3}
+  m_Name: Fresh Eyes
   m_EditorClassIdentifier: 
-  _cardName: Friction
-  _cardDescription: You got into an argument with someone close to you. The air is
-    tense.
+  _cardName: Fresh Eyes
+  _cardDescription: Take a new perspective. Step away and reconsider the effects
+    of the event.
   <Illustration>k__BackingField: {fileID: 0}
   _energyVal: 0
   _joyConstVal: 0
-  _sadnessConstVal: 0
-  _fearConstVal: 2
-  _angerConstVal: 1
-  <ExtraEventCards>k__BackingField: 0
-  _randomize: 0
+  _sadnessConstVal: -1
+  _fearConstVal: 0
+  _angerConstVal: -1
+  _actionType: 4

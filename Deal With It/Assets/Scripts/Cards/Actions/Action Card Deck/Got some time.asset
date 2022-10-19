@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Got some time
   m_EditorClassIdentifier: 
   _cardName: Got some time?
-  _cardDescription: "Set a consult with a mentor to talk about the challenges you\u2019re
-    facing. No advice needed, just an ear will do!"
+  _cardDescription: Consult with a mentor about your thoughts and feelings. Maybe
+    they have helpful insights!
   <Illustration>k__BackingField: {fileID: 0}
   _energyVal: -5
   _joyConstVal: 0

@@ -10,16 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6af4158c31e9d04da24e92c4b1aa214, type: 3}
-  m_Name: You Make Me Feel Special
+  m_Name: Last Man Standing is a Woman
   m_EditorClassIdentifier: 
-  _cardName: You Make Me Feel Special
-  _cardDescription: "Your friend is going to your favorite artists\u2019 concert..
-    and you\u2019re going with!"
+  _cardName: Last Man Standing is a Woman
+  _cardDescription: A landslide victory for the most capable candidate in the election!
   <Illustration>k__BackingField: {fileID: 0}
   _energyVal: 0
   _joyConstVal: 3
   _sadnessConstVal: 0
-  _fearConstVal: 0
+  _fearConstVal: -2
   _angerConstVal: 0
   <ExtraEventCards>k__BackingField: 0
   _randomize: 0
