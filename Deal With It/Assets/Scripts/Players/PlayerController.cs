@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
 
     // PlayedActionCards
     public PlayedActionCardsDisplay PlayedActionCards;
+    private bool _aiActionCardPlayed = false;
 
     /* --------------------------------- Methods -------------------------------- */
     // Start is called before the first frame update
@@ -58,10 +59,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // New round
         if(RoundController.Round != CurrentRound){
             // Set Current round to RoundController.Round so the if doesn't repeat 
             CurrentRound = RoundController.Round;
             SelectedCard = -1;
+            _aiActionCardPlayed = false;
 
             int IndexOfEmptyElement = Array.IndexOf(CardsInHand, null);
 
@@ -81,6 +84,8 @@ public class PlayerController : MonoBehaviour
                 // Randomize card's emotion values
                 pickedCard.SetRandomEmotions();
 
+                pickedCard.Revert();
+
                 // Puts card in player's hand
                 CardsInHand[IndexOfEmptyElement] = pickedCard;
                 CardsInHandButton[IndexOfEmptyElement].gameObject.SetActive(true);
@@ -94,7 +99,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // If it is this player's turn
-        if(RoundController.PlayerTurn == PlayerNumber){
+        if(RoundController.PlayerTurn == PlayerNumber && !_aiActionCardPlayed){
 
             //! LEGACY Skip if out of energy     
             // // if (NPCDisplay.npc.EnergyLvl < GetLowestEnergy())
@@ -107,10 +112,7 @@ public class PlayerController : MonoBehaviour
             if(!Playable){
                 //! CAN WE ADD DELAY HERE SO THE CARD DOESN'T PLAY RIGHT AWAY
 
-                // Random Number
-                int rng = UnityEngine.Random.Range(-1, CardsInHand.Length);
-                SelectedCard = rng;
-                PlayCard();
+                StartCoroutine(AIPlayActionCard());
             }
 
             // Allow user player to play
@@ -186,8 +188,8 @@ public class PlayerController : MonoBehaviour
 
     // Play Card
     public void PlayCard(){
+        // No card picked
         if(SelectedCard == -1){
-            // Do nothing skip turn
             Debug.Log("Player " + PlayerNumber + " played no card");
         }
         //! LEGACY right now won't trigger
@@ -195,6 +197,7 @@ public class PlayerController : MonoBehaviour
         // //     // Energy exhausted force skip
         // //     Debug.Log("Out of energy! Player " + PlayerNumber + " is skipped.");
         // // }
+        // Play card picked
         else{
             Action playedActionCard = CardsInHand[SelectedCard];
 
@@ -208,13 +211,11 @@ public class PlayerController : MonoBehaviour
             CardsInHandButton[SelectedCard].gameObject.SetActive(false);
 
             //! LEGACY Action cards are only gonna be applied at the end of the round
-            // // NPCDisplay.ApplyEffect(LevelType.Energy, playedActionCard.EnergyVal, playedActionCard.CardActionType);
-            // // NPCDisplay.ApplyEffect(LevelType.Joy, playedActionCard.JoyVal, playedActionCard.CardActionType);
-            // // NPCDisplay.ApplyEffect(LevelType.Sadness, playedActionCard.SadnessVal, playedActionCard.CardActionType);
-            // // NPCDisplay.ApplyEffect(LevelType.Fear, playedActionCard.FearVal, playedActionCard.CardActionType);
-            // // NPCDisplay.ApplyEffect(LevelType.Anger, playedActionCard.AngerVal, playedActionCard.CardActionType);
-
-            playedActionCard.Revert();
+            NPCDisplay.ApplyEffect(LevelType.Energy, playedActionCard.EnergyVal, playedActionCard.CardActionType);
+            NPCDisplay.ApplyEffect(LevelType.Joy, playedActionCard.JoyVal, playedActionCard.CardActionType);
+            NPCDisplay.ApplyEffect(LevelType.Sadness, playedActionCard.SadnessVal, playedActionCard.CardActionType);
+            NPCDisplay.ApplyEffect(LevelType.Fear, playedActionCard.FearVal, playedActionCard.CardActionType);
+            NPCDisplay.ApplyEffect(LevelType.Anger, playedActionCard.AngerVal, playedActionCard.CardActionType);
         }
 
         RoundController.NextPlayer();
@@ -223,6 +224,20 @@ public class PlayerController : MonoBehaviour
     /* --------------------- Apply PlayedActionCards effects -------------------- */
     private void ApplyPlayedActionCardsEffects(){
         
+    }
+
+    /* --------------------- AI Play Action Card With Delay --------------------- */
+    private IEnumerator AIPlayActionCard(){
+        // _aiActionCardPlayed
+        _aiActionCardPlayed = true;
+        
+        //Wait 
+        yield return new WaitForSeconds(3f);
+
+        // Random Number
+        int rng = UnityEngine.Random.Range(-1, CardsInHand.Length);
+        SelectedCard = rng;
+        PlayCard();
     }
 
     //! LEGACY Get lowest energy cost in hand

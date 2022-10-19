@@ -51,17 +51,18 @@ public class RoundController : MonoBehaviour
     /* -------------------------------------------------------------------------- */
     /* ----------------------- Goes to next player's turn ----------------------- */
     public void NextPlayer(){
-        //! Add delay to not move to next turn right away
-        _playerTurn++;
-        if(_playerTurn == _numberOfPlayers){
-            NextRound();
-            _playerTurn = -1;
+        if(_playerTurn == _numberOfPlayers - 1){
+            StartCoroutine(NextRound());
+        }else{
+            _playerTurn++;
         }
     }
 
     /* ------------------------- Executes on next round ------------------------- */
-    public void NextRound(){
+    public IEnumerator NextRound(){
         //! Add delay to not move to next round right away
+        yield return new WaitForSeconds(3f);
         _round++;
+        _playerTurn = -1;
     }
 }
