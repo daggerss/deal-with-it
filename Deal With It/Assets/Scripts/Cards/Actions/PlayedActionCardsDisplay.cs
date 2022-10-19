@@ -67,19 +67,19 @@ public class PlayedActionCardsDisplay : CardDisplay
     /* ------------------------- Combo checking methods ------------------------- */
     public int ProjectComboEffect(LevelType levelType, int effectValue, ActionType actionType){
         /* ----------------------------- All strategies ----------------------------- */
-        //? Is this supposed to be for the NPC emotionLevel I'm not sure
-        if(_distractionCount >= 1 && _expressionCount >= 1 && _processingCount >= 1 && _reappraisalCount >= 1){
-            // All emotions move by 1 towards 7
-            if(levelType == LevelType.Joy){
-                return MoveTowards(NPC.JoyLvl, 7);
-            }else if(levelType == LevelType.Sadness){
-                return MoveTowards(NPC.SadnessLvl, 7);
-            }else if(levelType == LevelType.Fear){
-                return MoveTowards(NPC.FearLvl, 7);
-            }else if(levelType == LevelType.Anger){
-                return MoveTowards(NPC.AngerLvl, 7);
-            }
-        }
+        //! LEGACY All strategies :(
+        // // if(_distractionCount >= 1 && _expressionCount >= 1 && _processingCount >= 1 && _reappraisalCount >= 1){
+        // //     // All emotions move by 1 towards 7
+        // //     if(levelType == LevelType.Joy){
+        // //         return MoveTowards(NPC.JoyLvl, 7);
+        // //     }else if(levelType == LevelType.Sadness){
+        // //         return MoveTowards(NPC.SadnessLvl, 7);
+        // //     }else if(levelType == LevelType.Fear){
+        // //         return MoveTowards(NPC.FearLvl, 7);
+        // //     }else if(levelType == LevelType.Anger){
+        // //         return MoveTowards(NPC.AngerLvl, 7);
+        // //     }
+        // // }
 
         /* -------------------------------- At least -------------------------------- */
         // Check at least combos

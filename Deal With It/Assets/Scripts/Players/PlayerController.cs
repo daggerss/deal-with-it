@@ -31,7 +31,6 @@ public class PlayerController : MonoBehaviour
     public NPCDisplay NPCDisplay;
 
     // PlayedActionCards
-    // TODO add PlayedActionCards
     public PlayedActionCardsDisplay PlayedActionCards;
 
     /* --------------------------------- Methods -------------------------------- */
@@ -48,7 +47,6 @@ public class PlayerController : MonoBehaviour
         NPCDisplay = (NPCDisplay)GameObject.FindGameObjectWithTag("NPC").GetComponent(typeof(NPCDisplay));
 
         // Initializing PlayedActionCards
-        // TODO add PlayedActionCards
         PlayedActionCards = (PlayedActionCardsDisplay)GameObject.FindGameObjectWithTag("Played Action Cards Display").GetComponent(typeof(PlayedActionCardsDisplay));
 
         // Initializing OriginalButtonSize
@@ -98,18 +96,16 @@ public class PlayerController : MonoBehaviour
         // If it is this player's turn
         if(RoundController.PlayerTurn == PlayerNumber){
 
-            // Skip if out of energy
-            if (NPCDisplay.npc.EnergyLvl < GetLowestEnergy())
-            {
-                SelectedCard = -2;
-                PlayCard();
-            }
+            //! LEGACY Skip if out of energy     
+            // // if (NPCDisplay.npc.EnergyLvl < GetLowestEnergy())
+            // // {
+            // //     SelectedCard = -2;
+            // //     PlayCard();
+            // // }
 
             //If player is AI
             else if(!Playable){
-                /* -------------------------------------------------------------------------- */
-                /* ------- Can we add a buffer here so the cards don't play instantly ------- */
-                /* -------------------------------------------------------------------------- */
+                //! CAN WE ADD DELAY HERE SO THE CARD DOESN'T PLAY RIGHT AWAY
 
                 // Random Number
                 int rng = UnityEngine.Random.Range(-1, CardsInHand.Length);
@@ -195,6 +191,7 @@ public class PlayerController : MonoBehaviour
             // Do nothing skip turn
             Debug.Log("Player " + PlayerNumber + " played no card");
         }
+        //! LEGACY right now won't trigger
         else if (SelectedCard == -2){
             // Energy exhausted force skip
             Debug.Log("Out of energy! Player " + PlayerNumber + " is skipped.");

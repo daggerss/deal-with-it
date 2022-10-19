@@ -60,6 +60,23 @@ public class EventCardDisplay : CardDisplay
         if(_roundController.Round != _currentRound){
             _currentRound = _roundController.Round;
 
+            // Replenish energy
+            // If negative
+            if(npcDisplay.npc.EnergyLvl < 0){
+                npcDisplay.npc.EnergyLvl += 20;
+
+            // If not negative but less than 20
+            }else if(npcDisplay.npc.EnergyLvl < 20)
+            {
+                npcDisplay.npc.EnergyLvl = 20;
+
+            // 20 or more
+            }else{
+                // Nothing
+            }
+
+            npcDisplay.ApplyEffect(LevelType.Energy, 0, ActionType.None);
+
             DrawCard();
         }
     }
@@ -158,12 +175,6 @@ public class EventCardDisplay : CardDisplay
     // Hides and applies the card
     public void ApplyCard(){
         ThisObject.SetActive(false);
-
-        // Replenish energy
-        if(npcDisplay.npc.EnergyLvl < 20)
-        {
-            npcDisplay.npc.EnergyLvl = 20;
-        }
 
         // Apply Event Effects
         npcDisplay.ApplyEffect(LevelType.Energy, _currentEventCard.EnergyVal, ActionType.None);
