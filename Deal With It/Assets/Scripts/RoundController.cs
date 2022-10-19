@@ -46,9 +46,12 @@ public class RoundController : MonoBehaviour
         
     }
 
-    /* ---------------------------- Custom Functions ---------------------------- */
-    // Goes to next player's turn
+    /* -------------------------------------------------------------------------- */
+    /*                              Custom Functions                              */
+    /* -------------------------------------------------------------------------- */
+    /* ----------------------- Goes to next player's turn ----------------------- */
     public void NextPlayer(){
+        //! Add delay to not move to next turn right away
         _playerTurn++;
         if(_playerTurn == _numberOfPlayers){
             NextRound();
@@ -56,8 +59,9 @@ public class RoundController : MonoBehaviour
         }
     }
 
-    // Executes on next round
+    /* ------------------------- Executes on next round ------------------------- */
     public void NextRound(){
+        //! Add delay to not move to next round right away
         _round++;
     }
 }

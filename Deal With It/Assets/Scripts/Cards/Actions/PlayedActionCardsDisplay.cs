@@ -2,6 +2,7 @@ using System; // For Array Controllers
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayedActionCardsDisplay : CardDisplay
 {
@@ -10,6 +11,7 @@ public class PlayedActionCardsDisplay : CardDisplay
     /* -------------------------------------------------------------------------- */
     /* ---------------------------- PlayedActionCards --------------------------- */
     public Action[] PlayedActionCards = new Action[5];
+    public Button[] PlayedActionCardsButton = new Button[5];
     public int CurrentSlot = 0;
 
     /* ---------------------------------- Count --------------------------------- */
@@ -18,9 +20,15 @@ public class PlayedActionCardsDisplay : CardDisplay
     private int _processingCount = 0;
     private int _reappraisalCount = 0;
 
+    /* --------------------------- Effect Value Totals -------------------------- */
+    public int TotalJoyVal = 0;
+    public int TotalSadnessVal = 0;
+    public int TotalFearVal = 0;
+    public int TotalAngerVal = 0;
+
     /* ---------------------------- Round Controller ---------------------------- */
     private RoundController RoundController;
-    private int _currentTurn = -1;
+    private int _currentTurn = -2;
 
     /* ----------------------------------- NPC ---------------------------------- */
     public NPC NPC;
@@ -45,21 +53,22 @@ public class PlayedActionCardsDisplay : CardDisplay
         if(RoundController.PlayerTurn != _currentTurn){
             _currentTurn = RoundController.PlayerTurn;
 
-            // If turn is -1 (Event Card turn (new round)) PlayedActionCards array
+            // At the start of the next round
             if(_currentTurn == -1){
+                // Reset Counts
+                _distractionCount = 0;
+                _expressionCount = 0;
+                _processingCount = 0;
+                _reappraisalCount = 0;
+
+                // Clear PlayedActionCards
                 for(int i = 0; i < PlayedActionCards.Length; i++){
                     PlayedActionCards[i] = null;
+                    PlayedActionCardsButton[i].gameObject.SetActive(false); // Hide Card
                 }
+
+                // Reset Current Slot
                 CurrentSlot = 0;
-            }
-
-            _distractionCount = 0;
-            _expressionCount = 0;
-            _processingCount = 0;
-            _reappraisalCount = 0;
-
-            for(int i = 0; i < PlayedActionCards.Length; i++){
-                if(PlayedActionCards[i] != null) CountCard(PlayedActionCards[i].CardActionType, 1);
             }
         }
     }
@@ -178,8 +187,9 @@ public class PlayedActionCardsDisplay : CardDisplay
     /* -------------------- Add card to the PlayedActionCards ------------------- */
     public void AddPlayedActionCard(Action card){
         if(card != null){
-            PlayedActionCards[CurrentSlot] = card;
-            Debug.Log(PlayedActionCards[CurrentSlot].CardActionType +" Card Added in " + CurrentSlot);
+            PlayedActionCards[CurrentSlot] = card; // Put card in PlayedActionCards
+            PlayedActionCardsButton[CurrentSlot].gameObject.SetActive(true); // Show card
+            CountCard(card.CardActionType, 1); // Increment count
             CurrentSlot++;
         }
     }

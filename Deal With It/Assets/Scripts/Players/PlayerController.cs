@@ -76,7 +76,6 @@ public class PlayerController : MonoBehaviour
                 while(indexOfPickedCard != -1){
                     pickedCard = ActionCardDeck.GetRandomCard();
                     indexOfPickedCard = Array.IndexOf(CardsInHand, pickedCard);
-                    
                 }
 
                 // Randomize card's emotion values
@@ -84,6 +83,7 @@ public class PlayerController : MonoBehaviour
 
                 // Puts card in player's hand
                 CardsInHand[IndexOfEmptyElement] = pickedCard;
+                CardsInHandButton[IndexOfEmptyElement].gameObject.SetActive(true);
 
                 // Check for empty slot again for the while loop
                 IndexOfEmptyElement = Array.IndexOf(CardsInHand, null);
@@ -104,7 +104,7 @@ public class PlayerController : MonoBehaviour
             // // }
 
             //If player is AI
-            else if(!Playable){
+            if(!Playable){
                 //! CAN WE ADD DELAY HERE SO THE CARD DOESN'T PLAY RIGHT AWAY
 
                 // Random Number
@@ -159,7 +159,6 @@ public class PlayerController : MonoBehaviour
 
             PlayedActionCards.AddCurrentCard(cardActionType);
 
-            // TODO add projectCard values
             //! Can't have it as plus anymore so we're actually setting values SEE: Expression - Expression effects
             // int ProjectComboEffect(LevelType levelType, int effectValue, ActionType actionType);
             projectedCard.EnergyVal = PlayedActionCards.ProjectComboEffect(LevelType.Energy, projectedCard.EnergyVal, cardActionType);
@@ -192,24 +191,28 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Player " + PlayerNumber + " played no card");
         }
         //! LEGACY right now won't trigger
-        else if (SelectedCard == -2){
-            // Energy exhausted force skip
-            Debug.Log("Out of energy! Player " + PlayerNumber + " is skipped.");
-        }
+        // // else if (SelectedCard == -2){
+        // //     // Energy exhausted force skip
+        // //     Debug.Log("Out of energy! Player " + PlayerNumber + " is skipped.");
+        // // }
         else{
             Action playedActionCard = CardsInHand[SelectedCard];
 
-            Debug.Log("Player " + PlayerNumber + " played " + playedActionCard.CardActionType + " at turn " + RoundController.PlayerTurn + " in Round " + RoundController.Round);
+            // Add playedActionCard to the PlayedActionCards in the middle
             PlayedActionCards.AddPlayedActionCard(playedActionCard);
+
+            Debug.Log("Player " + PlayerNumber + " played " + playedActionCard.CardActionType);
 
             // Remove card from hand
             CardsInHand[SelectedCard] = null;
+            CardsInHandButton[SelectedCard].gameObject.SetActive(false);
 
-            NPCDisplay.ApplyEffect(LevelType.Energy, playedActionCard.EnergyVal, playedActionCard.CardActionType);
-            NPCDisplay.ApplyEffect(LevelType.Joy, playedActionCard.JoyVal, playedActionCard.CardActionType);
-            NPCDisplay.ApplyEffect(LevelType.Sadness, playedActionCard.SadnessVal, playedActionCard.CardActionType);
-            NPCDisplay.ApplyEffect(LevelType.Fear, playedActionCard.FearVal, playedActionCard.CardActionType);
-            NPCDisplay.ApplyEffect(LevelType.Anger, playedActionCard.AngerVal, playedActionCard.CardActionType);
+            //! LEGACY Action cards are only gonna be applied at the end of the round
+            // // NPCDisplay.ApplyEffect(LevelType.Energy, playedActionCard.EnergyVal, playedActionCard.CardActionType);
+            // // NPCDisplay.ApplyEffect(LevelType.Joy, playedActionCard.JoyVal, playedActionCard.CardActionType);
+            // // NPCDisplay.ApplyEffect(LevelType.Sadness, playedActionCard.SadnessVal, playedActionCard.CardActionType);
+            // // NPCDisplay.ApplyEffect(LevelType.Fear, playedActionCard.FearVal, playedActionCard.CardActionType);
+            // // NPCDisplay.ApplyEffect(LevelType.Anger, playedActionCard.AngerVal, playedActionCard.CardActionType);
 
             playedActionCard.Revert();
         }
@@ -217,23 +220,28 @@ public class PlayerController : MonoBehaviour
         RoundController.NextPlayer();
     }
 
-    // Get lowest energy cost in hand
-    private int GetLowestEnergy()
-    {
-        int lowest = -50;
-
-        foreach (Action card in CardsInHand)
-        {
-            if (card.EnergyVal > 0)
-            {
-                return -card.EnergyVal; // Always negative
-            }
-            else if (card.EnergyVal < 0 && card.EnergyVal > lowest)
-            {
-                lowest = card.EnergyVal;
-            }
-        }
-
-        return -lowest;
+    /* --------------------- Apply PlayedActionCards effects -------------------- */
+    private void ApplyPlayedActionCardsEffects(){
+        
     }
+
+    //! LEGACY Get lowest energy cost in hand
+    // // private int GetLowestEnergy()
+    // // {
+    // //     int lowest = -50;
+
+    // //     foreach (Action card in CardsInHand)
+    // //     {
+    // //         if (card.EnergyVal > 0)
+    // //         {
+    // //             return -card.EnergyVal; // Always negative
+    // //         }
+    // //         else if (card.EnergyVal < 0 && card.EnergyVal > lowest)
+    // //         {
+    // //             lowest = card.EnergyVal;
+    // //         }
+    // //     }
+
+    // //     return -lowest;
+    // // }
 }

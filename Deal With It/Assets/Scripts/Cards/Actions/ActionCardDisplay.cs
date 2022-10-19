@@ -7,6 +7,7 @@ using TMPro;
 public class ActionCardDisplay : CardDisplay
 {
     public PlayerController Owner;
+    public PlayedActionCardsDisplay Owner1;
     public int CardNumber;
 
     // UI Variables
@@ -28,10 +29,20 @@ public class ActionCardDisplay : CardDisplay
     // Update is called once per frame
     void Update()
     {
-        Action currentActionCard = Owner.CardsInHand[CardNumber];
+        Action currentActionCard;
+
+        // ActionCardDisplay is under PlayerController
+        if(Owner != null){
+            currentActionCard = Owner.CardsInHand[CardNumber];
+        
+        // ActionCardDisplay is under PlayedActionCardsDisplay
+        }else if(Owner1 != null){
+            currentActionCard = Owner1.PlayedActionCards[CardNumber];
+        }else{
+            currentActionCard = null;
+        }
 
         if(currentActionCard != null){
-
             CardTypeText.text = currentActionCard.GetType().Name;
             CardNameText.text = currentActionCard.CardName;
             CardDescriptionText.text = currentActionCard.CardDescription;
