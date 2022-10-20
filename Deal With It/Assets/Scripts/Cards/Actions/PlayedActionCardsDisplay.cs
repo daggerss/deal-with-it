@@ -313,8 +313,6 @@ public class PlayedActionCardsDisplay : CardDisplay
             _fearOriginalVals[CurrentSlot] = actionCard.FearVal;
             _angerOriginalVals[CurrentSlot] = actionCard.AngerVal;
 
-            // Increment count
-            Debug.Log("d" + _distractionCount + " e " + _expressionCount + " p " + _processingCount + " r " + _reappraisalCount);
             CurrentSlot++;
         }
     }

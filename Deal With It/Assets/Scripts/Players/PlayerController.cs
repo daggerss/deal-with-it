@@ -126,62 +126,64 @@ public class PlayerController : MonoBehaviour
 
     // Select Card
     public void SelectCard(int CardIndex){
-        // If you select a different card decrease the count
-        if(SelectedCard != -1 && SelectedCard != CardIndex){
-            PlayedActionCards.RemoveCurrentCard(CardsInHand[SelectedCard].CardActionType);
-        }
-
-        // If a player clicks on a card twice it will deselect the card
-        if(CardIndex == SelectedCard){
-            // Reset the card to original
-            if (SelectedCard >= 0 && SelectedCard < CardsInHand.Length)
-            {
+        if(RoundController.PlayerTurn == PlayerNumber){ // You can only select card when it is your turn
+            // If you select a different card decrease the count
+            if(SelectedCard != -1 && SelectedCard != CardIndex){
                 PlayedActionCards.RemoveCurrentCard(CardsInHand[SelectedCard].CardActionType);
-                PlayedActionCards.RevertAll();
-                CardsInHand[SelectedCard].Revert();
             }
-            // Deselect
-            SelectedCard = -1;
-        // If a player clicks on a card slot with a value inside
-        }else if(CardsInHand[CardIndex] != null){
-            SelectedCard = CardIndex;
 
-            // Apply NPC trait effects
-            Action projectedCard = CardsInHand[SelectedCard];
-            ActionType cardActionType = projectedCard.CardActionType;
-
-            projectedCard.EnergyVal = NPCDisplay.ProjectTraitEffect(LevelType.Energy, projectedCard.EnergyVal, cardActionType);
-            projectedCard.JoyVal = NPCDisplay.ProjectTraitEffect(LevelType.Joy, projectedCard.JoyVal, cardActionType);
-            projectedCard.SadnessVal = NPCDisplay.ProjectTraitEffect(LevelType.Sadness, projectedCard.SadnessVal, cardActionType);
-            projectedCard.FearVal = NPCDisplay.ProjectTraitEffect(LevelType.Fear, projectedCard.FearVal, cardActionType);
-            projectedCard.AngerVal = NPCDisplay.ProjectTraitEffect(LevelType.Anger, projectedCard.AngerVal, cardActionType);
-
-            // Add current card type to the card count
-            PlayedActionCards.AddCurrentCard(cardActionType);
-
-            // Set all PlayedActionCards to original value before applying new effects
-            PlayedActionCards.RevertAll();
-
-            // int ProjectComboEffect(LevelType levelType, int effectValue, ActionType actionType);
-            projectedCard.EnergyVal = PlayedActionCards.ProjectComboEffect(LevelType.Energy, projectedCard.EnergyVal, cardActionType);
-            projectedCard.JoyVal = PlayedActionCards.ProjectComboEffect(LevelType.Joy, projectedCard.JoyVal, cardActionType);
-            projectedCard.SadnessVal = PlayedActionCards.ProjectComboEffect(LevelType.Sadness, projectedCard.SadnessVal, cardActionType);
-            projectedCard.FearVal = PlayedActionCards.ProjectComboEffect(LevelType.Fear, projectedCard.FearVal, cardActionType);
-            projectedCard.AngerVal = PlayedActionCards.ProjectComboEffect(LevelType.Anger, projectedCard.AngerVal, cardActionType);
-        // If a player clicks on a card slot with no value inside
-        }else{
-            // Do nothing
-        }
-
-        // Flare for selected card and non-flare for non selected cards
-        for(int i = 0; i < CardsInHandButton.Length; i++){
-            Button CurrentButton = CardsInHandButton[i];
-            if(SelectedCard == i){
-                CurrentButton.transform.position = new Vector2(CurrentButton.transform.position.x, CurrentButton.transform.position.y + 50f);
-            }else{
-                CurrentButton.transform.position = OriginalButtonPosition[i];
+            // If a player clicks on a card twice it will deselect the card
+            if(CardIndex == SelectedCard){
                 // Reset the card to original
-                CardsInHand[i].Revert();
+                if (SelectedCard >= 0 && SelectedCard < CardsInHand.Length)
+                {
+                    PlayedActionCards.RemoveCurrentCard(CardsInHand[SelectedCard].CardActionType);
+                    PlayedActionCards.RevertAll();
+                    CardsInHand[SelectedCard].Revert();
+                }
+                // Deselect
+                SelectedCard = -1;
+            // If a player clicks on a card slot with a value inside
+            }else if(CardsInHand[CardIndex] != null){
+                SelectedCard = CardIndex;
+
+                // Apply NPC trait effects
+                Action projectedCard = CardsInHand[SelectedCard];
+                ActionType cardActionType = projectedCard.CardActionType;
+
+                projectedCard.EnergyVal = NPCDisplay.ProjectTraitEffect(LevelType.Energy, projectedCard.EnergyVal, cardActionType);
+                projectedCard.JoyVal = NPCDisplay.ProjectTraitEffect(LevelType.Joy, projectedCard.JoyVal, cardActionType);
+                projectedCard.SadnessVal = NPCDisplay.ProjectTraitEffect(LevelType.Sadness, projectedCard.SadnessVal, cardActionType);
+                projectedCard.FearVal = NPCDisplay.ProjectTraitEffect(LevelType.Fear, projectedCard.FearVal, cardActionType);
+                projectedCard.AngerVal = NPCDisplay.ProjectTraitEffect(LevelType.Anger, projectedCard.AngerVal, cardActionType);
+
+                // Add current card type to the card count
+                PlayedActionCards.AddCurrentCard(cardActionType);
+
+                // Set all PlayedActionCards to original value before applying new effects
+                PlayedActionCards.RevertAll();
+
+                // int ProjectComboEffect(LevelType levelType, int effectValue, ActionType actionType);
+                projectedCard.EnergyVal = PlayedActionCards.ProjectComboEffect(LevelType.Energy, projectedCard.EnergyVal, cardActionType);
+                projectedCard.JoyVal = PlayedActionCards.ProjectComboEffect(LevelType.Joy, projectedCard.JoyVal, cardActionType);
+                projectedCard.SadnessVal = PlayedActionCards.ProjectComboEffect(LevelType.Sadness, projectedCard.SadnessVal, cardActionType);
+                projectedCard.FearVal = PlayedActionCards.ProjectComboEffect(LevelType.Fear, projectedCard.FearVal, cardActionType);
+                projectedCard.AngerVal = PlayedActionCards.ProjectComboEffect(LevelType.Anger, projectedCard.AngerVal, cardActionType);
+            // If a player clicks on a card slot with no value inside
+            }else{
+                // Do nothing
+            }
+
+            // Flare for selected card and non-flare for non selected cards
+            for(int i = 0; i < CardsInHandButton.Length; i++){
+                Button currentButton = CardsInHandButton[i];
+                if(SelectedCard == i){
+                    currentButton.transform.position = new Vector2(currentButton.transform.position.x, currentButton.transform.position.y + 50f);
+                }else{
+                    currentButton.transform.position = OriginalButtonPosition[i];
+                    // Reset the card to original
+                    CardsInHand[i].Revert();
+                }
             }
         }
     }
@@ -225,6 +227,23 @@ public class PlayerController : MonoBehaviour
         SelectCard(rng);
         SelectedCard = rng;
         PlayCard();
+    }
+
+    /* -------------------------- Toggle Card Position -------------------------- */
+    public void ToggleCardPosition(){
+        SelectCard(-1);
+        for(int i = 0; i < CardsInHandButton.Length; i++){
+            Button currentButton = CardsInHandButton[i];
+
+            // Cards Down
+            if(currentButton.transform.position.y >= OriginalButtonPosition[i].y){
+                currentButton.transform.position = new Vector2(currentButton.transform.position.x, currentButton.transform.position.y - 300f);
+
+            // Cards Up
+            }else{
+                currentButton.transform.position = new Vector2(currentButton.transform.position.x, currentButton.transform.position.y + 300f);
+            }
+        }
     }
 
     //! LEGACY Get lowest energy cost in hand
