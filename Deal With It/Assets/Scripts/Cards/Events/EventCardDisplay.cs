@@ -130,11 +130,11 @@ public class EventCardDisplay : CardDisplay
         _currentEventCard.SaveValues();
 
         // Apply NPC trait effects
-        _currentEventCard.EnergyVal = npcDisplay.ProjectTraitEffect(LevelType.Energy, _currentEventCard.EnergyVal, ActionType.None);
-        _currentEventCard.JoyVal = npcDisplay.ProjectTraitEffect(LevelType.Joy, _currentEventCard.JoyVal, ActionType.None);
-        _currentEventCard.SadnessVal = npcDisplay.ProjectTraitEffect(LevelType.Sadness, _currentEventCard.SadnessVal, ActionType.None);
-        _currentEventCard.FearVal = npcDisplay.ProjectTraitEffect(LevelType.Fear, _currentEventCard.FearVal, ActionType.None);
-        _currentEventCard.AngerVal = npcDisplay.ProjectTraitEffect(LevelType.Anger, _currentEventCard.AngerVal, ActionType.None);
+        _currentEventCard.EnergyVal += npcDisplay.ProjectTraitEffect(LevelType.Energy, _currentEventCard.EnergyVal, ActionType.None);
+        _currentEventCard.JoyVal += npcDisplay.ProjectTraitEffect(LevelType.Joy, _currentEventCard.JoyVal, ActionType.None);
+        _currentEventCard.SadnessVal += npcDisplay.ProjectTraitEffect(LevelType.Sadness, _currentEventCard.SadnessVal, ActionType.None);
+        _currentEventCard.FearVal += npcDisplay.ProjectTraitEffect(LevelType.Fear, _currentEventCard.FearVal, ActionType.None);
+        _currentEventCard.AngerVal += npcDisplay.ProjectTraitEffect(LevelType.Anger, _currentEventCard.AngerVal, ActionType.None);
 
         //Format Text of New Card
         CardTypeText.text = _currentEventCard.GetType().Name;

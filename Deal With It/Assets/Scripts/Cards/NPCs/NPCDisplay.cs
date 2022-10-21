@@ -282,7 +282,7 @@ public class NPCDisplay : CardDisplay
             }
         }
 
-        return effectValue + addend;
+        return addend;
     }
 
     // Reset effect texts to null
