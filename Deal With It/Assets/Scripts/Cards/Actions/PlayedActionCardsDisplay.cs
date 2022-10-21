@@ -193,7 +193,7 @@ public class PlayedActionCardsDisplay : CardDisplay
         /* --------------------- 3 Processing Cards in one round -------------------- */
         // * Checked
         }else if(_processingCount >= 3){
-            // Increases negative emotion effects by 2
+            // Decreases the efficacy of the Processing cards’ negative emotion effects by 2
 
             // Project on the cards already played
             if(levelType == LevelType.Energy){ // To make sure this only runs once or else the value will keep changing
@@ -202,16 +202,16 @@ public class PlayedActionCardsDisplay : CardDisplay
                     if(playedActionCard == null){
                         break;
                     }else if(playedActionCard.CardActionType == ActionType.Processing){
-                        playedActionCard.SadnessVal += 2;
-                        playedActionCard.FearVal += 2;
-                        playedActionCard.AngerVal += 2;
+                        playedActionCard.SadnessVal += AddExtraEffect(playedActionCard.SadnessVal, -2);
+                        playedActionCard.FearVal += AddExtraEffect(playedActionCard.FearVal, -2);
+                        playedActionCard.AngerVal += AddExtraEffect(playedActionCard.AngerVal, -2);
                     }
                 }
             }
 
             // Project on the selected card
             if(levelType != LevelType.Energy && levelType != LevelType.Joy && actionType == ActionType.Processing){
-                addend = 2; //? Sadness -2 becomes Sadness -0
+                addend = AddExtraEffect(playedActionCard.AngerVal, -2); //? Sadness -2 becomes Sadness -0
             }
         
         /* -------------------- 3 Reappraisal Cards in one round -------------------- */
