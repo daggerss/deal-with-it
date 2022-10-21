@@ -16,7 +16,7 @@ MonoBehaviour:
   _cardDescription: Be aware of your thoughts, emotions, and sensations. Let it flow
     through you.
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: -5
+  _energyConstVal: -5
   _joyConstVal: 0
   _sadnessConstVal: 0
   _fearConstVal: -1

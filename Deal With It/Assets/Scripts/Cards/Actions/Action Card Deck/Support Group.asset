@@ -16,7 +16,7 @@ MonoBehaviour:
   _cardDescription: "You have a lot in common with others more than you think. Sort
     out your concerns with someone who understands what you\u2019re going through."
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: 0
+  _energyConstVal: -5
   _joyConstVal: 1
   _sadnessConstVal: 0
   _fearConstVal: -2

@@ -16,7 +16,7 @@ MonoBehaviour:
   _cardDescription: "Take note of the strongest emotion you feel. Can you locate
     where you\u2019re feeling this in your body?"
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: -5
+  _energyConstVal: -5
   _joyConstVal: 0
   _sadnessConstVal: 0
   _fearConstVal: -1

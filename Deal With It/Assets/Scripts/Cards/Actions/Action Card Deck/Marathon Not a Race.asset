@@ -16,7 +16,7 @@ MonoBehaviour:
   _cardDescription: "Take all the time you need to understand what\u2019s going on.
     If you aren\u2019t fully ready to confront what happened, take it step by step."
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: -5
+  _energyConstVal: -5
   _joyConstVal: 0
   _sadnessConstVal: 0
   _fearConstVal: -1

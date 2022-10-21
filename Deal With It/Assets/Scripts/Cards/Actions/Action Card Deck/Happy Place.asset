@@ -16,7 +16,7 @@ MonoBehaviour:
   _cardDescription: "Mentally go to your happy place for a few minutes to recover.
     See y\u2019all later."
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: -3
+  _energyConstVal: -3
   _joyConstVal: 1
   _sadnessConstVal: -1
   _fearConstVal: -1

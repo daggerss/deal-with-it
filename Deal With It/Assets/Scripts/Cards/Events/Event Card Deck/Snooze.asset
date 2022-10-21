@@ -15,7 +15,7 @@ MonoBehaviour:
   _cardName: Snooze
   _cardDescription: You overslept! Your schedule for the day is now messed up.
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: -2
+  _energyConstVal: -2
   _joyConstVal: -1
   _sadnessConstVal: 1
   _fearConstVal: 1

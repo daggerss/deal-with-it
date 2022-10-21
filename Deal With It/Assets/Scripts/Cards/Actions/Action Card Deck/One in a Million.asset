@@ -16,7 +16,7 @@ MonoBehaviour:
   _cardDescription: You never walk alone. Realize that you always have someone who
     is there ready to support you.
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: -7
+  _energyConstVal: -7
   _joyConstVal: 1
   _sadnessConstVal: -2
   _fearConstVal: 0

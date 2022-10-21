@@ -16,7 +16,7 @@ MonoBehaviour:
   _cardDescription: 'After ending the day with a very stressful situation, recall
     the good things that did happen that day. '
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: -7
+  _energyConstVal: -7
   _joyConstVal: 1
   _sadnessConstVal: -2
   _fearConstVal: 0

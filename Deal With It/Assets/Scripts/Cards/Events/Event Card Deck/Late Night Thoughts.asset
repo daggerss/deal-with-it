@@ -16,7 +16,7 @@ MonoBehaviour:
   _cardDescription: "You can\u2019t sleep. Thoughts about your plans and your future
     keep filling your head. Are you on the right track?"
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: -1
+  _energyConstVal: -1
   _joyConstVal: 0
   _sadnessConstVal: 0
   _fearConstVal: 3

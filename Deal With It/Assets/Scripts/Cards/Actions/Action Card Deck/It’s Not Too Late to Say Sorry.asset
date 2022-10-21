@@ -16,7 +16,7 @@ MonoBehaviour:
   _cardDescription: Identify who could have hurt you. Think about whether you want
     them to apologize or not.
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: -5
+  _energyConstVal: -5
   _joyConstVal: 0
   _sadnessConstVal: 0
   _fearConstVal: 0

@@ -16,7 +16,7 @@ MonoBehaviour:
   _cardDescription: "Sometimes it\u2019s okay to sit down with your own feelings
     and let yourself grieve the losses in your life."
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: -5
+  _energyConstVal: -5
   _joyConstVal: 0
   _sadnessConstVal: 2
   _fearConstVal: 0

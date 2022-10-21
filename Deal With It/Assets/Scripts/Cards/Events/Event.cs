@@ -10,7 +10,8 @@ public class Event : Card
     // The energy and emotion levels are capped accordingly.
 
     // Energy
-    [SerializeField] private int _energyVal;
+    [SerializeField] private int _energyConstVal;
+    private int _energyVal;
 
     public int EnergyVal
     {
@@ -140,6 +141,7 @@ public class Event : Card
     // Set random emotion values
     public void SetRandomEmotions()
     {
+        EnergyVal = _energyConstVal;
         JoyVal = RandomizeValue(_joyConstVal);
         SadnessVal = RandomizeValue(_sadnessConstVal);
         FearVal = RandomizeValue(_fearConstVal);

@@ -16,7 +16,7 @@ MonoBehaviour:
   _cardDescription: "It sucks to miss out on a good opportunity, but it won\u2019t
     be the last! Remember that so many other doors can open for you."
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: -7
+  _energyConstVal: -7
   _joyConstVal: 2
   _sadnessConstVal: -1
   _fearConstVal: 0

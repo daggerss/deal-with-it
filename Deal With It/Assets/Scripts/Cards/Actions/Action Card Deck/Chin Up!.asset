@@ -16,7 +16,7 @@ MonoBehaviour:
   _cardDescription: "You might think you\u2019re weak, but you\u2019re a lot stronger
     than you give yourself credit for!"
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: -7
+  _energyConstVal: -7
   _joyConstVal: 1
   _sadnessConstVal: -1
   _fearConstVal: -1

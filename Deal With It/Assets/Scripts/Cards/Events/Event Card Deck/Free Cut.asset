@@ -16,7 +16,7 @@ MonoBehaviour:
   _cardDescription: One of your classes got cancelled! You suddenly have some free
     time. (Pulls 2 more event cards)
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: 1
+  _energyConstVal: 1
   _joyConstVal: 0
   _sadnessConstVal: 0
   _fearConstVal: 0

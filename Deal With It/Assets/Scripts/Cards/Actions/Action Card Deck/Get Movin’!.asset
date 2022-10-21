@@ -16,7 +16,7 @@ MonoBehaviour:
   _cardDescription: Channel your negative emotions into physical activities! Sports
     and outdoor games keep the body moving.
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: -3
+  _energyConstVal: -3
   _joyConstVal: 0
   _sadnessConstVal: -1
   _fearConstVal: 0

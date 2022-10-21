@@ -15,7 +15,7 @@ MonoBehaviour:
   _cardName: Thank You!
   _cardDescription: You received an unexpected gift. Time to unbox!
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: 1
+  _energyConstVal: 1
   _joyConstVal: 2
   _sadnessConstVal: 0
   _fearConstVal: 0

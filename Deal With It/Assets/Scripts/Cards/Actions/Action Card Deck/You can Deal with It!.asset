@@ -15,7 +15,7 @@ MonoBehaviour:
   _cardName: You can Deal With It!
   _cardDescription: Play a card game with friends!
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: -3
+  _energyConstVal: -3
   _joyConstVal: 2
   _sadnessConstVal: 0
   _fearConstVal: 0

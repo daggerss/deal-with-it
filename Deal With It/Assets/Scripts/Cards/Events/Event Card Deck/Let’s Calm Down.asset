@@ -16,7 +16,7 @@ MonoBehaviour:
   _cardDescription: "Two of your friends are currently fighting. You have been acting
     as mediator between the two.\r"
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: -2
+  _energyConstVal: -2
   _joyConstVal: 0
   _sadnessConstVal: 0
   _fearConstVal: 1

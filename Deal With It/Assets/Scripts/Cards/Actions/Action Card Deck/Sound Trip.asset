@@ -16,7 +16,7 @@ MonoBehaviour:
   _cardDescription: Rock your heart out to music you relate to at this moment. Sing
     into your comb and let it all out!
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: -5
+  _energyConstVal: -5
   _joyConstVal: 0
   _sadnessConstVal: -1
   _fearConstVal: 0

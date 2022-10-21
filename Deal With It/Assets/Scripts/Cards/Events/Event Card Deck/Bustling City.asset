@@ -16,7 +16,7 @@ MonoBehaviour:
   _cardDescription: "You didn\u2019t get enough sleep last night. The cars and trucks
     driving past were too loud."
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: -2
+  _energyConstVal: -2
   _joyConstVal: 0
   _sadnessConstVal: 0
   _fearConstVal: 1

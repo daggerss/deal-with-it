@@ -16,7 +16,7 @@ MonoBehaviour:
   _cardDescription: Think about what a trusted friend would tell you right now. Are
     your thoughts facts or opinions?
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: -7
+  _energyConstVal: -7
   _joyConstVal: 0
   _sadnessConstVal: -1
   _fearConstVal: -1

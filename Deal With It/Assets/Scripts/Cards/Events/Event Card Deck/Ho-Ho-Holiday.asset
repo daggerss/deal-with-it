@@ -16,7 +16,7 @@ MonoBehaviour:
   _cardDescription: "How refreshing! The atmosphere is very busy and there\u2019s
     many things to do. (Pulls 2 more event cards)"
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: 3
+  _energyConstVal: 3
   _joyConstVal: 0
   _sadnessConstVal: 0
   _fearConstVal: 0

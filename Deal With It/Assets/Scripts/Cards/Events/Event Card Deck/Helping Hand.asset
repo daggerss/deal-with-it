@@ -16,7 +16,7 @@ MonoBehaviour:
   _cardDescription: "Your friend asks for your help with something as a favor but
     it has taken up most of your day!  \r"
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: -2
+  _energyConstVal: -2
   _joyConstVal: 0
   _sadnessConstVal: 0
   _fearConstVal: 0

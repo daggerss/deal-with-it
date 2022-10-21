@@ -16,7 +16,7 @@ MonoBehaviour:
   _cardDescription: "Tired and stressed. But don\u2019t worry! The doctor recommends
     playing with your pet!"
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: 0
+  _energyConstVal: -3
   _joyConstVal: 2
   _sadnessConstVal: -1
   _fearConstVal: 0

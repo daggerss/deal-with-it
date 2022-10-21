@@ -16,7 +16,7 @@ MonoBehaviour:
   _cardDescription: Try to see how the situation impacts both you and the other party.
     Maybe a compromise can be reached?
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: -7
+  _energyConstVal: -7
   _joyConstVal: 0
   _sadnessConstVal: 0
   _fearConstVal: 0

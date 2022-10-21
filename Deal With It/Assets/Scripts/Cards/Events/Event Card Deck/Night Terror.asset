@@ -16,7 +16,7 @@ MonoBehaviour:
   _cardDescription: "AAAH! You wake up sweating and breathing heavily. You\u2019re
     relieved it was just a dream... or was it?"
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: -2
+  _energyConstVal: -2
   _joyConstVal: 0
   _sadnessConstVal: 0
   _fearConstVal: 3

@@ -16,7 +16,7 @@ MonoBehaviour:
   _cardDescription: "Don\u2019t run away from your problems anymore. Admit that something
     is wrong, and that it\u2019s okay if you aren\u2019t fine all the time."
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: -5
+  _energyConstVal: -5
   _joyConstVal: 0
   _sadnessConstVal: 0
   _fearConstVal: -2

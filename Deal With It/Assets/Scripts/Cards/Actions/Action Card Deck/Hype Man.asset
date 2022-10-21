@@ -15,7 +15,7 @@ MonoBehaviour:
   _cardName: Hype Man
   _cardDescription: Hype yourself up! Try and give yourself some positive affirmations.
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: -7
+  _energyConstVal: -7
   _joyConstVal: 1
   _sadnessConstVal: -1
   _fearConstVal: -1

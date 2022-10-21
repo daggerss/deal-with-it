@@ -9,7 +9,8 @@ public class Action : Card
     // The energy and emotion levels are capped accordingly.
 
     // Energy
-    [SerializeField] private int _energyVal;
+    [SerializeField] private int _energyConstVal;
+    private int _energyVal;
 
     public int EnergyVal
     {
@@ -23,7 +24,7 @@ public class Action : Card
         }
     }
 
-    // Emotion constants - basis for range, no getter/setter
+    // Constants - basis for range, no getter/setter
     [SerializeField] private int _joyConstVal;
     [SerializeField] private int _sadnessConstVal;
     [SerializeField] private int _fearConstVal;
@@ -109,6 +110,7 @@ public class Action : Card
     // Set random emotion values
     public void SetRandomEmotions()
     {
+        EnergyVal = _energyConstVal;
         JoyVal = RandomizeValue(_joyConstVal);
         SadnessVal = RandomizeValue(_sadnessConstVal);
         FearVal = RandomizeValue(_fearConstVal);

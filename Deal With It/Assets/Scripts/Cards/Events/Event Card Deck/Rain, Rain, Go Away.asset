@@ -16,7 +16,7 @@ MonoBehaviour:
   _cardDescription: "Oh no! It started pouring outside but you didn\u2019t bring
     an umbrella. Rihanna can\u2019t save you. (Pulls 1 more event card)"
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: -2
+  _energyConstVal: -2
   _joyConstVal: 0
   _sadnessConstVal: 2
   _fearConstVal: 0

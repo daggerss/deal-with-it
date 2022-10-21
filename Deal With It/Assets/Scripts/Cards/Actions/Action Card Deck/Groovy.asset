@@ -15,7 +15,7 @@ MonoBehaviour:
   _cardName: Groovy
   _cardDescription: Bust out a move
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: -5
+  _energyConstVal: -5
   _joyConstVal: 2
   _sadnessConstVal: -1
   _fearConstVal: 1

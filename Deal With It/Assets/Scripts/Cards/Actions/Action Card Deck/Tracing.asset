@@ -16,7 +16,7 @@ MonoBehaviour:
   _cardDescription: Run through what happened. Try to remember the situation for
     what it was.
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: -5
+  _energyConstVal: -5
   _joyConstVal: 0
   _sadnessConstVal: 0
   _fearConstVal: -2

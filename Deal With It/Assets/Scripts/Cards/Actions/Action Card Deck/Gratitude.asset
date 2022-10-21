@@ -16,7 +16,7 @@ MonoBehaviour:
   _cardDescription: Take time to note big and small wins and see if the issue is
     as bad as you thought it was.
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: -7
+  _energyConstVal: -7
   _joyConstVal: 0
   _sadnessConstVal: -2
   _fearConstVal: 0

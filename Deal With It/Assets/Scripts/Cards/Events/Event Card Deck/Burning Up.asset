@@ -16,7 +16,7 @@ MonoBehaviour:
   _cardDescription: Palms are sweaty, knees weak, arms are heavy. You have developed
     a 40 degree fever.
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: -2
+  _energyConstVal: -2
   _joyConstVal: 0
   _sadnessConstVal: 1
   _fearConstVal: 0

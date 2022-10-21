@@ -16,7 +16,7 @@ MonoBehaviour:
   _cardDescription: Speak quietly instead of yelling to help halt an intense emotion
     from escalating. But it's still important to let your voice be heard!
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: -5
+  _energyConstVal: -5
   _joyConstVal: 0
   _sadnessConstVal: 0
   _fearConstVal: 0

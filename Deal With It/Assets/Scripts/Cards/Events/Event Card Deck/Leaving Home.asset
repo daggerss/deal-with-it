@@ -16,7 +16,7 @@ MonoBehaviour:
   _cardDescription: All your bags are packed, are you ready to go? Time to adjust
     to your new environment.
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: -1
+  _energyConstVal: -1
   _joyConstVal: 0
   _sadnessConstVal: 2
   _fearConstVal: 1

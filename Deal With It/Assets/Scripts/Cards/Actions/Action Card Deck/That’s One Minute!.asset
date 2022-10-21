@@ -16,7 +16,7 @@ MonoBehaviour:
   _cardDescription: 'Post a vlog on your day. Time to share your experiences! With
     sponsors, maybe. '
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: -5
+  _energyConstVal: -5
   _joyConstVal: 2
   _sadnessConstVal: 0
   _fearConstVal: 1

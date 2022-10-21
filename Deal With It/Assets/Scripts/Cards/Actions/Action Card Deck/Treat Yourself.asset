@@ -16,7 +16,7 @@ MonoBehaviour:
   _cardDescription: Head to the nearest mall or browse your shopping apps to buy
     things you deserve.
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: -3
+  _energyConstVal: -3
   _joyConstVal: 1
   _sadnessConstVal: -1
   _fearConstVal: 1

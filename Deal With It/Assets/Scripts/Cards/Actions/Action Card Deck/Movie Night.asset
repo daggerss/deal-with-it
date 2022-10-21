@@ -16,7 +16,7 @@ MonoBehaviour:
   _cardDescription: Stay in bed and watch a fun movie! You deserve to relax after
     a long day.
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: -3
+  _energyConstVal: -3
   _joyConstVal: 0
   _sadnessConstVal: -2
   _fearConstVal: 0

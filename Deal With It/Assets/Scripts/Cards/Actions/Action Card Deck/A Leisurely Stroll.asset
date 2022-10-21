@@ -16,7 +16,7 @@ MonoBehaviour:
   _cardDescription: Have a change in scenery! Go for a walk outside to take your
     mind off things.
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: -3
+  _energyConstVal: -3
   _joyConstVal: 0
   _sadnessConstVal: -1
   _fearConstVal: 0

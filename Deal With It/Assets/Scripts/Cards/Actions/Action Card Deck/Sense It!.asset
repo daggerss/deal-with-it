@@ -16,7 +16,7 @@ MonoBehaviour:
   _cardDescription: Take a deep breath and notice three things you can hear, smell,
     see, touch, and taste.
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: -3
+  _energyConstVal: -3
   _joyConstVal: 0
   _sadnessConstVal: -1
   _fearConstVal: -1

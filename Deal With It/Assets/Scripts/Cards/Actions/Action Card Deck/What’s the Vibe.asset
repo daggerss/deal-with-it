@@ -15,7 +15,7 @@ MonoBehaviour:
   _cardName: "What\u2019s the Vibe?"
   _cardDescription: What are you feeling right now? How strong is it?
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: -5
+  _energyConstVal: -5
   _joyConstVal: 0
   _sadnessConstVal: -1
   _fearConstVal: -1

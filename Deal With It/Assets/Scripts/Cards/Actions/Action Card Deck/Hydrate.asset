@@ -15,7 +15,7 @@ MonoBehaviour:
   _cardName: Hydrate
   _cardDescription: Drink a big glass of water to calm your nerves.
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: -3
+  _energyConstVal: -3
   _joyConstVal: 0
   _sadnessConstVal: 0
   _fearConstVal: -2

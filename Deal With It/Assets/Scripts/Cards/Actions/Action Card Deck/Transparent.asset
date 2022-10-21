@@ -16,7 +16,7 @@ MonoBehaviour:
   _cardDescription: Calmly explain your feelings to a trusted friend or the person
     who hurt you. People don't read minds, so it's important to be clear!
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: -5
+  _energyConstVal: -5
   _joyConstVal: 0
   _sadnessConstVal: -1
   _fearConstVal: 0

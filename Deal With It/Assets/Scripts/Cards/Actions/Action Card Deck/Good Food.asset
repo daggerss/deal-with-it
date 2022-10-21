@@ -16,7 +16,7 @@ MonoBehaviour:
   _cardDescription: "Nothing\u2019s good on an empty stomach! Cook or order your
     favorite meal and get some energy."
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: 0
+  _energyConstVal: 1
   _joyConstVal: 2
   _sadnessConstVal: 0
   _fearConstVal: 0

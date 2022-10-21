@@ -16,7 +16,7 @@ MonoBehaviour:
   _cardDescription: You had a good dream last night. Woke up on the right side of
     the bed!
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: 2
+  _energyConstVal: 2
   _joyConstVal: 1
   _sadnessConstVal: 0
   _fearConstVal: 0

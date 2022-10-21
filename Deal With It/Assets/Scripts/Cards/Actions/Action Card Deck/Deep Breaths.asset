@@ -15,7 +15,7 @@ MonoBehaviour:
   _cardName: Deep Breaths
   _cardDescription: In... and out.... In.... and out
   <Illustration>k__BackingField: {fileID: 0}
-  _energyVal: -3
+  _energyConstVal: -3
   _joyConstVal: 0
   _sadnessConstVal: -1
   _fearConstVal: -1
