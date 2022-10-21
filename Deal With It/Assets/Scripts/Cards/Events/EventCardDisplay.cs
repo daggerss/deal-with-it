@@ -141,20 +141,20 @@ public class EventCardDisplay : CardDisplay
         CardNameText.text = _currentEventCard.CardName;
         CardDescriptionText.text = _currentEventCard.CardDescription;
 
-        EnergyText.text = FormatText(_currentEventCard.EnergyVal);
-        EnergyImage.gameObject.SetActive(ShowImage(_currentEventCard.EnergyVal));
+        EnergyText.text = FormatText(_currentEventCard.EnergyVal, _currentEventCard.EnergyOriginalVal);
+        EnergyImage.gameObject.SetActive(ShowImage(_currentEventCard.EnergyVal, _currentEventCard.EnergyOriginalVal));
 
-        JoyText.text = FormatText(_currentEventCard.JoyVal);
-        JoyImage.gameObject.SetActive(ShowImage(_currentEventCard.JoyVal));
+        JoyText.text = FormatText(_currentEventCard.JoyVal, _currentEventCard.JoyOriginalVal);
+        JoyImage.gameObject.SetActive(ShowImage(_currentEventCard.JoyVal, _currentEventCard.JoyOriginalVal));
 
-        SadnessText.text = FormatText(_currentEventCard.SadnessVal);
-        SadnessImage.gameObject.SetActive(ShowImage(_currentEventCard.SadnessVal));
+        SadnessText.text = FormatText(_currentEventCard.SadnessVal, _currentEventCard.SadnessOriginalVal);
+        SadnessImage.gameObject.SetActive(ShowImage(_currentEventCard.SadnessVal, _currentEventCard.SadnessOriginalVal));
 
-        FearText.text = FormatText(_currentEventCard.FearVal);
-        FearImage.gameObject.SetActive(ShowImage(_currentEventCard.FearVal));
+        FearText.text = FormatText(_currentEventCard.FearVal, _currentEventCard.FearOriginalVal);
+        FearImage.gameObject.SetActive(ShowImage(_currentEventCard.FearVal, _currentEventCard.FearOriginalVal));
 
-        AngerText.text = FormatText(_currentEventCard.AngerVal);
-        AngerImage.gameObject.SetActive(ShowImage(_currentEventCard.AngerVal));
+        AngerText.text = FormatText(_currentEventCard.AngerVal, _currentEventCard.AngerOriginalVal);
+        AngerImage.gameObject.SetActive(ShowImage(_currentEventCard.AngerVal, _currentEventCard.AngerOriginalVal));
 
         EnergyArrowUpImage.gameObject.SetActive(ShouldShowArrow(0, _currentEventCard.EnergyOriginalVal, _currentEventCard.EnergyVal));
         JoyArrowUpImage.gameObject.SetActive(ShouldShowArrow(0, _currentEventCard.JoyOriginalVal, _currentEventCard.JoyVal));
