@@ -167,7 +167,7 @@ public class PlayedActionCardsDisplay : CardDisplay
         /* --------------------- 4 Expression cards in one round -------------------- */
         // * checked
         }else if(_expressionCount >= 4){
-            // Flips values of expression card (+1 becomes -1)
+            // Flips emotion values of expression card (+1 becomes -1)
 
             //Project on the cards already played
             if(levelType == LevelType.Energy){ // To make sure this only runs once or else the value will keep changing
@@ -176,7 +176,6 @@ public class PlayedActionCardsDisplay : CardDisplay
                     if(playedActionCard == null){
                         break;
                     }else if(playedActionCard.CardActionType == ActionType.Expression){
-                        playedActionCard.EnergyVal *= -1;
                         playedActionCard.JoyVal *= -1;
                         playedActionCard.SadnessVal *= -1;
                         playedActionCard.FearVal *= -1;
@@ -234,7 +233,7 @@ public class PlayedActionCardsDisplay : CardDisplay
             }
 
 
-            if(levelType != LevelType.Energy && actionType == ActionType.Processing){
+            if(levelType != LevelType.Energy && actionType == ActionType.Reappraisal){
                 addend = AddExtraEffect(effectValue, -1);
             }
         }
