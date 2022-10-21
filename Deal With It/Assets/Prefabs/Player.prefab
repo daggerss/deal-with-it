@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7978952799172644711}
   - component: {fileID: 7245269611172149985}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Confirm Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -337,6 +337,7 @@ MonoBehaviour:
   - {fileID: 8885100052634990429}
   - {fileID: 8885100052000350118}
   ConfirmButton: {fileID: 7245269611172149985}
+  ToggleCardsButton: {fileID: 4474337009856204129}
   NPCDisplay: {fileID: 0}
   PlayedActionCards: {fileID: 0}
 --- !u!1 &5836276690056182568
@@ -486,7 +487,7 @@ GameObject:
   - component: {fileID: 585421436788579140}
   - component: {fileID: 4474337009856204129}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Toggle Cards Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -509,7 +510,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0, y: -150}
+  m_AnchoredPosition: {x: -772, y: -150}
   m_SizeDelta: {x: 147, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5414250978653375675

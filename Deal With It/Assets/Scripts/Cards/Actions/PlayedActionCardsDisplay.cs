@@ -186,7 +186,7 @@ public class PlayedActionCardsDisplay : CardDisplay
             }
 
             // Project on the selected card
-            if(levelType != LevelType.Energy){ 
+            if(levelType != LevelType.Energy && actionType == ActionType.Expression){ 
                 flip = -1;
             }
 
@@ -210,7 +210,7 @@ public class PlayedActionCardsDisplay : CardDisplay
             }
 
             // Project on the selected card
-            if(levelType != LevelType.Energy && levelType != LevelType.Joy){
+            if(levelType != LevelType.Energy && levelType != LevelType.Joy && actionType == ActionType.Processing){
                 addend = 2; //? Sadness -2 becomes Sadness -0
             }
         
@@ -234,7 +234,7 @@ public class PlayedActionCardsDisplay : CardDisplay
             }
 
 
-            if(levelType != LevelType.Energy){
+            if(levelType != LevelType.Energy && actionType == ActionType.Processing){
                 addend = AddExtraEffect(effectValue, -1);
             }
         }
