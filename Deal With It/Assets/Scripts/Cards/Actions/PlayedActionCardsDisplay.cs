@@ -110,6 +110,9 @@ public class PlayedActionCardsDisplay : CardDisplay
                 NPCDisplay.ApplyEffect(LevelType.Fear, TotalFearVal);
                 NPCDisplay.ApplyEffect(LevelType.Anger, TotalAngerVal);
 
+                // Revert values
+                RevertAll();
+
                 // Go next turn
                 RoundController.NextPlayer();
                 Debug.Log("Effects Applied!");
@@ -244,19 +247,63 @@ public class PlayedActionCardsDisplay : CardDisplay
             ActionType previousActionCardType = PlayedActionCards[CurrentSlot - 1].CardActionType;
             // Previous card = Distraction
             if(previousActionCardType == ActionType.Distraction){
-                // nested ifs
+                // Distraction -> Processing
+                if(actionType == ActionType.Processing)
+                {
+                    //
+                }
+
+                // Distraction -> Reappraisal
+                // Increases the efficacy of the Reappraisal card by 1
+                else if(actionType == ActionType.Reappraisal)
+                {
+                    if(levelType != LevelType.Energy)
+                    {
+                        addend += AddExtraEffect(effectValue, 1);
+                    }
+                }
 
             // Previous card = Expression
             }else if(previousActionCardType == ActionType.Expression){
-                //nested ifs
+                // Expression -> Processing
+                if(actionType == ActionType.Processing)
+                {
+                    //
+                }
+
+                // Expression -> Reappraisal
+                // Descreases the energy of the Reappraisal card by 1
+                else if(actionType == ActionType.Reappraisal)
+                {
+                    if(levelType == LevelType.Energy)
+                    {
+                        addend += AddExtraEffect(effectValue, -1);
+                    }
+                }
 
             // Previous card = Processing
             }else if(previousActionCardType == ActionType.Processing){
-                // nested ifs
+                // Processing -> Expression
+                if(actionType == ActionType.Expression)
+                {
+                    //
+                }
 
-            // Previous card = Reappraisal
-            }else if(previousActionCardType == ActionType.Reappraisal){
-                // nested ifs
+                // Processing -> Reappraisal
+                // Increases the efficacy of the Reappraisal card by 2
+                // But requires an additional +1 energy
+                else if(actionType == ActionType.Reappraisal)
+                {
+                    if(levelType == LevelType.Energy)
+                    {
+                        addend += AddExtraEffect(effectValue, 1);
+                    }
+
+                    else
+                    {
+                        addend += AddExtraEffect(effectValue, 2);
+                    }
+                }
             }
         }
 
