@@ -210,7 +210,7 @@ public class PlayedActionCardsDisplay : CardDisplay
 
             // Project on the selected card
             if(levelType != LevelType.Energy && levelType != LevelType.Joy && actionType == ActionType.Processing){
-                addend = AddExtraEffect(effectValue, -2); //? Sadness -2 becomes Sadness -0
+                addend = AddExtraEffect(effectValue, -2);
             }
         
         /* -------------------- 3 Reappraisal Cards in one round -------------------- */
