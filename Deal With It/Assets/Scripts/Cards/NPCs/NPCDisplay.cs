@@ -140,7 +140,7 @@ public class NPCDisplay : CardDisplay
 
     /* ----------------------------- Custom Methods ----------------------------- */
     // Apply energy or emotion effects on NPC + text
-    public void ApplyEffect(LevelType levelType, int effectValue, ActionType actionType)
+    public void ApplyEffect(LevelType levelType, int effectValue)
     {
         int addend = 0;
 
