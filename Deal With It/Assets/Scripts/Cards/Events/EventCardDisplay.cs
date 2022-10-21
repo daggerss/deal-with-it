@@ -75,7 +75,7 @@ public class EventCardDisplay : CardDisplay
                 // Nothing
             }
 
-            npcDisplay.ApplyEffect(LevelType.Energy, 0, ActionType.None);
+            npcDisplay.ApplyEffect(LevelType.Energy, 0);
 
             DrawCard();
         }
@@ -177,11 +177,11 @@ public class EventCardDisplay : CardDisplay
         ThisObject.SetActive(false);
 
         // Apply Event Effects
-        npcDisplay.ApplyEffect(LevelType.Energy, _currentEventCard.EnergyVal, ActionType.None);
-        npcDisplay.ApplyEffect(LevelType.Joy, _currentEventCard.JoyVal, ActionType.None);
-        npcDisplay.ApplyEffect(LevelType.Sadness, _currentEventCard.SadnessVal, ActionType.None);
-        npcDisplay.ApplyEffect(LevelType.Fear, _currentEventCard.FearVal, ActionType.None);
-        npcDisplay.ApplyEffect(LevelType.Anger, _currentEventCard.AngerVal, ActionType.None);
+        npcDisplay.ApplyEffect(LevelType.Energy, _currentEventCard.EnergyVal);
+        npcDisplay.ApplyEffect(LevelType.Joy, _currentEventCard.JoyVal);
+        npcDisplay.ApplyEffect(LevelType.Sadness, _currentEventCard.SadnessVal);
+        npcDisplay.ApplyEffect(LevelType.Fear, _currentEventCard.FearVal);
+        npcDisplay.ApplyEffect(LevelType.Anger, _currentEventCard.AngerVal);
 
         _currentEventCard.Revert();
 

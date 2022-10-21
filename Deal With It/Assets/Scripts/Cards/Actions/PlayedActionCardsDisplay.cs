@@ -40,7 +40,9 @@ public class PlayedActionCardsDisplay : CardDisplay
 
     /* ----------------------------------- NPC ---------------------------------- */
     public NPCDisplay NPCDisplay;
-    public NPC NPC;
+
+    // ! LEGACY only used on all strats
+    // // public NPC NPC;
 
     /* ---------------------------------- Misc ---------------------------------- */
     private bool _effectsApplied = false;
@@ -56,7 +58,8 @@ public class PlayedActionCardsDisplay : CardDisplay
 
         // Initializing NPC
         NPCDisplay = (NPCDisplay)GameObject.FindGameObjectWithTag("NPC").GetComponent(typeof(NPCDisplay));
-        NPC = NPCDisplay.npc;
+        // ! LEGACY only used on all strats
+        // // NPC = NPCDisplay.npc;
     }
 
     /* --------------------- Update is called once per frame -------------------- */
@@ -101,11 +104,11 @@ public class PlayedActionCardsDisplay : CardDisplay
                 _effectsApplied = true;
 
                 GetTotalValues();
-                NPCDisplay.ApplyEffect(LevelType.Energy, TotalEnergyVal, ActionType.None);
-                NPCDisplay.ApplyEffect(LevelType.Joy, TotalJoyVal, ActionType.None);
-                NPCDisplay.ApplyEffect(LevelType.Sadness, TotalSadnessVal, ActionType.None);
-                NPCDisplay.ApplyEffect(LevelType.Fear, TotalFearVal, ActionType.None);
-                NPCDisplay.ApplyEffect(LevelType.Anger, TotalAngerVal, ActionType.None);
+                NPCDisplay.ApplyEffect(LevelType.Energy, TotalEnergyVal);
+                NPCDisplay.ApplyEffect(LevelType.Joy, TotalJoyVal);
+                NPCDisplay.ApplyEffect(LevelType.Sadness, TotalSadnessVal);
+                NPCDisplay.ApplyEffect(LevelType.Fear, TotalFearVal);
+                NPCDisplay.ApplyEffect(LevelType.Anger, TotalAngerVal);
 
                 // Go next turn
                 RoundController.NextPlayer();
