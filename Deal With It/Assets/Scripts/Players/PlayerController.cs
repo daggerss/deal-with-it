@@ -13,12 +13,16 @@ public class PlayerController : MonoBehaviour
     public bool Playable;
 
     // Misc
-    private Vector2[] OriginalButtonPosition = new Vector2[5];
 
     // Array of cards in a player's hand (public if we're adding feature when other players can look into ur hand)
     public Action[] CardsInHand = new Action[5];
     public Button[] CardsInHandButton = new Button[5];
+    private Vector2[] OriginalButtonPosition = new Vector2[5];
+    private Vector2 OriginalToggleCardsButtonPosition;
     public Button ConfirmButton;
+
+    // Show hide card button
+    public Button ToggleCardsButton;
 
     // ActionCardDeck
     private ActionCardDeck ActionCardDeck;
@@ -50,10 +54,13 @@ public class PlayerController : MonoBehaviour
         // Initializing PlayedActionCards
         PlayedActionCards = (PlayedActionCardsDisplay)GameObject.FindGameObjectWithTag("Played Action Cards Display").GetComponent(typeof(PlayedActionCardsDisplay));
 
-        // Initializing OriginalButtonSize
+        // Initializing OriginalButtonPosition
         for(int i = 0; i < OriginalButtonPosition.Length; i++){
             OriginalButtonPosition[i] = CardsInHandButton[i].transform.position;
         }
+        
+        // Initializing ToggleCardButtonPosition
+        OriginalToggleCardsButtonPosition = ToggleCardsButton.transform.position;
     }
 
     // Update is called once per frame
@@ -178,18 +185,25 @@ public class PlayerController : MonoBehaviour
             for(int i = 0; i < CardsInHandButton.Length; i++){
                 Button currentButton = CardsInHandButton[i];
                 if(SelectedCard == i){
-                    currentButton.transform.position = new Vector2(currentButton.transform.position.x, currentButton.transform.position.y + 50f);
+                    currentButton.transform.position = new Vector2(currentButton.transform.position.x, OriginalButtonPosition[i].y + 50f);
                 }else{
                     currentButton.transform.position = OriginalButtonPosition[i];
                     // Reset the card to original
                     CardsInHand[i].Revert();
                 }
             }
+
+            // Make sure show button is at its original position
+            // * Because when you click a card while it's in the tray, the show card button doesn't go up with it
+            ToggleCardsButton.transform.position = OriginalToggleCardsButtonPosition;
         }
     }
 
     // Play Card
     public void PlayCard(){
+        // Hide confirm button
+        ConfirmButton.gameObject.SetActive(false);
+
         // No card picked
         if(SelectedCard == -1){
             Debug.Log("Player " + PlayerNumber + " played no card");
@@ -204,14 +218,12 @@ public class PlayerController : MonoBehaviour
             // Remove card from hand
             CardsInHand[SelectedCard] = null;
             CardsInHandButton[SelectedCard].gameObject.SetActive(false);
+
+            // Move played card button back to the original position
+            CardsInHandButton[SelectedCard].transform.position = OriginalButtonPosition[SelectedCard];
         }
 
         RoundController.NextPlayer();
-    }
-
-    /* --------------------- Apply PlayedActionCards effects -------------------- */
-    private void ApplyPlayedActionCardsEffects(){
-        
     }
 
     /* --------------------- AI Play Action Card With Delay --------------------- */
@@ -231,17 +243,23 @@ public class PlayerController : MonoBehaviour
 
     /* -------------------------- Toggle Card Position -------------------------- */
     public void ToggleCardPosition(){
-        SelectCard(-1);
+        // Make sure that all cards are in line and unselected
+        if(SelectedCard != -1){
+            CardsInHand[SelectedCard].Revert();
+        }
+        SelectedCard = -1; 
         for(int i = 0; i < CardsInHandButton.Length; i++){
             Button currentButton = CardsInHandButton[i];
 
             // Cards Down
             if(currentButton.transform.position.y >= OriginalButtonPosition[i].y){
-                currentButton.transform.position = new Vector2(currentButton.transform.position.x, currentButton.transform.position.y - 300f);
+                currentButton.transform.position = new Vector2(currentButton.transform.position.x, OriginalButtonPosition[i].y - 300f);
+                ToggleCardsButton.transform.position = new Vector2(OriginalToggleCardsButtonPosition.x, OriginalToggleCardsButtonPosition.y - 300f);
 
             // Cards Up
             }else{
-                currentButton.transform.position = new Vector2(currentButton.transform.position.x, currentButton.transform.position.y + 300f);
+                currentButton.transform.position = OriginalButtonPosition[i];
+                ToggleCardsButton.transform.position = OriginalToggleCardsButtonPosition;
             }
         }
     }
