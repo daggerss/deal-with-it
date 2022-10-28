@@ -249,7 +249,10 @@ public class PlayedActionCardsDisplay : CardDisplay
                 // Distraction -> Processing
                 if(actionType == ActionType.Processing)
                 {
-                    //
+                    if(levelType != LevelType.Energy)
+                    {
+                        addend += AddExtraEffect(effectValue, -1);
+                    }   
                 }
 
                 // Distraction -> Reappraisal
@@ -267,7 +270,10 @@ public class PlayedActionCardsDisplay : CardDisplay
                 // Expression -> Processing
                 if(actionType == ActionType.Processing)
                 {
-                    //
+                    if(levelType != LevelType.Energy)
+                    {
+                        addend += AddExtraEffect(effectValue, 1);
+                    }
                 }
 
                 // Expression -> Reappraisal
@@ -285,7 +291,10 @@ public class PlayedActionCardsDisplay : CardDisplay
                 // Processing -> Expression
                 if(actionType == ActionType.Expression)
                 {
-                    //
+                    if(levelType != LevelType.Energy)
+                    {
+                        addend += AddExtraEffect(effectValue, 1);
+                    }
                 }
 
                 // Processing -> Reappraisal
