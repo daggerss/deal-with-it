@@ -32,6 +32,7 @@ public class NPCDisplay : CardDisplay
     private float _fadeSpeed = 0.00025f;
 
     /* --------------------------------- Bar UI --------------------------------- */
+    public Image EnergyBarOutline;
     public LevelBar EnergyFrontBar;
     public LevelBar EnergyBackBar;
 
@@ -136,6 +137,8 @@ public class NPCDisplay : CardDisplay
     {
         StartCoroutine(UpdateLevelBars());
         StartCoroutine(FadeOutEffects());
+        StartCoroutine(ShowEnergySignal());
+        StartCoroutine(HideEnergySignal());
     }
 
     /* ----------------------------- Custom Methods ----------------------------- */
@@ -381,5 +384,33 @@ public class NPCDisplay : CardDisplay
         {
             ResetEffectTexts();
         }
+    }
+
+    // Show indicator on negative or surplus energy
+    IEnumerator ShowEnergySignal()
+    {
+        yield return new WaitUntil(() => npc.EnergyLvl > 20 || npc.EnergyLvl < 0);
+
+        // Show image
+        EnergyBarOutline.enabled = true;
+
+        // Change color
+        if (npc.EnergyLvl > 20)
+        {
+            EnergyBarOutline.color = new Color32(0,171,109,255);
+        }
+        else if (npc.EnergyLvl < 0)
+        {
+            EnergyBarOutline.color = new Color32(249,151,60,255);
+        }
+    }
+
+    // Hide indicator on energy within bounds
+    IEnumerator HideEnergySignal()
+    {
+        yield return new WaitUntil(() => npc.EnergyLvl < 20 && npc.EnergyLvl > 0);
+
+        // Hide image
+        EnergyBarOutline.enabled = false;
     }
 }
