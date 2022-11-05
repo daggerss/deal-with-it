@@ -32,7 +32,7 @@ public class NPCDisplay : CardDisplay
     private float _fadeSpeed = 0.00025f;
 
     /* --------------------------------- Bar UI --------------------------------- */
-    public Image EnergyBarOutline;
+    public Image EnergyBarGlow;
     public LevelBar EnergyFrontBar;
     public LevelBar EnergyBackBar;
 
@@ -51,6 +51,25 @@ public class NPCDisplay : CardDisplay
     private float _lerpTimer;
     private float _chipSpeed = 1f;
     private float _percentComplete;
+
+    /* --------------------------- Project Effects UI --------------------------- */
+    public TMP_Text energyProjectText;
+    public TMP_Text joyProjectText;
+    public TMP_Text sadnessProjectText;
+    public TMP_Text fearProjectText;
+    public TMP_Text angerProjectText;
+
+    public Image energySlash;
+    public Image joySlash;
+    public Image sadnessSlash;
+    public Image fearSlash;
+    public Image angerSlash;
+
+    public LevelBar energyProjectLine;
+    public LevelBar joyProjectLine;
+    public LevelBar sadnessProjectLine;
+    public LevelBar fearProjectLine;
+    public LevelBar angerProjectLine;
 
     /* --------------------------------- Methods -------------------------------- */
     // Start is called before the first frame update
@@ -117,6 +136,19 @@ public class NPCDisplay : CardDisplay
         SadnessBackBar.SetValue(npc.SadnessLvl);
         FearBackBar.SetValue(npc.FearLvl);
         AngerBackBar.SetValue(npc.AngerLvl);
+
+        // Set project line
+        energyProjectLine.SetMaxValue(20);
+        joyProjectLine.SetMaxValue(13);
+        sadnessProjectLine.SetMaxValue(13);
+        fearProjectLine.SetMaxValue(13);
+        angerProjectLine.SetMaxValue(13);
+
+        energyProjectLine.SetValue(20);
+        joyProjectLine.SetValue(npc.JoyLvl);
+        sadnessProjectLine.SetValue(npc.SadnessLvl);
+        fearProjectLine.SetValue(npc.FearLvl);
+        angerProjectLine.SetValue(npc.AngerLvl);
 
         // Set text UI
         cardTypeText.text = npc.GetType().Name;
@@ -298,6 +330,76 @@ public class NPCDisplay : CardDisplay
         angerEffectText.text = null;
     }
 
+    // Project effect UI
+    public void ProjectEffectUI(LevelType levelType, int projectedValue)
+    {
+        // Energy
+        if (levelType == LevelType.Energy && projectedValue != npc.EnergyLvl)
+        {
+            energyProjectText.text = projectedValue.ToString();
+            energySlash.enabled = true;
+            energyProjectLine.gameObject.SetActive(true);
+            energyProjectLine.SetValue(projectedValue);
+        }
+        // Joy
+        else if (levelType == LevelType.Joy && projectedValue != npc.JoyLvl)
+        {
+            joyProjectText.text = projectedValue.ToString();
+            joySlash.enabled = true;
+            joyProjectLine.gameObject.SetActive(true);
+            joyProjectLine.SetValue(projectedValue);
+        }
+        // Sadness
+        else if (levelType == LevelType.Sadness && projectedValue != npc.SadnessLvl)
+        {
+            sadnessProjectText.text = projectedValue.ToString();
+            sadnessSlash.enabled = true;
+            sadnessProjectLine.gameObject.SetActive(true);
+            sadnessProjectLine.SetValue(projectedValue);
+        }
+        // Fear
+        else if (levelType == LevelType.Fear && projectedValue != npc.FearLvl)
+        {
+            fearProjectText.text = projectedValue.ToString();
+            fearSlash.enabled = true;
+            fearProjectLine.gameObject.SetActive(true);
+            fearProjectLine.SetValue(projectedValue);
+        }
+        // Anger
+        else if (levelType == LevelType.Anger && projectedValue != npc.AngerLvl)
+        {
+            angerProjectText.text = projectedValue.ToString();
+            angerSlash.enabled = true;
+            angerProjectLine.gameObject.SetActive(true);
+            angerProjectLine.SetValue(projectedValue);
+        }
+    }
+
+    // Reset project effect UI
+    public void ResetProjectedUI()
+    {
+        // Text
+        energyProjectText.text = null;
+        joyProjectText.text = null;
+        sadnessProjectText.text = null;
+        fearProjectText.text = null;
+        angerProjectText.text = null;
+
+        // Slash
+        energySlash.enabled = false;
+        joySlash.enabled = false;
+        sadnessSlash.enabled = false;
+        fearSlash.enabled = false;
+        angerSlash.enabled = false;
+
+        // Project Line
+        energyProjectLine.gameObject.SetActive(false);
+        joyProjectLine.gameObject.SetActive(false);
+        sadnessProjectLine.gameObject.SetActive(false);
+        fearProjectLine.gameObject.SetActive(false);
+        angerProjectLine.gameObject.SetActive(false);
+    }
+
     /* ------------------------------- Coroutines ------------------------------- */
     // Apply energy and emotion effects on bars
     IEnumerator UpdateLevelBars()
@@ -392,16 +494,16 @@ public class NPCDisplay : CardDisplay
         yield return new WaitUntil(() => npc.EnergyLvl > 20 || npc.EnergyLvl < 0);
 
         // Show image
-        EnergyBarOutline.enabled = true;
+        EnergyBarGlow.enabled = true;
 
         // Change color
         if (npc.EnergyLvl > 20)
         {
-            EnergyBarOutline.color = new Color32(0,171,109,255);
+            EnergyBarGlow.color = new Color32(0,171,109,255);
         }
         else if (npc.EnergyLvl < 0)
         {
-            EnergyBarOutline.color = new Color32(249,151,60,255);
+            EnergyBarGlow.color = new Color32(249,151,60,255);
         }
     }
 
@@ -411,6 +513,6 @@ public class NPCDisplay : CardDisplay
         yield return new WaitUntil(() => npc.EnergyLvl < 20 && npc.EnergyLvl > 0);
 
         // Hide image
-        EnergyBarOutline.enabled = false;
+        EnergyBarGlow.enabled = false;
     }
 }

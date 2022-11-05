@@ -34,15 +34,20 @@ public class PlayedActionCardsDisplay : CardDisplay
     public int TotalFearVal = 0;
     public int TotalAngerVal = 0;
 
+    /* ---------------------------- Projected Values ---------------------------- */
+    private int _energyProjectedVal = 0;
+    private int _joyProjectedVal = 0;
+    private int _sadnessProjectedVal = 0;
+    private int _fearProjectedVal = 0;
+    private int _angerProjectedVal = 0;
+
     /* ---------------------------- Round Controller ---------------------------- */
     private RoundController RoundController;
     private int _currentTurn = -2;
 
     /* ----------------------------------- NPC ---------------------------------- */
     public NPCDisplay NPCDisplay;
-
-    // ! LEGACY only used on all strats
-    // // public NPC NPC;
+    public NPC NPC;
 
     /* ---------------------------------- Misc ---------------------------------- */
     private bool _effectsApplied = false;
@@ -58,13 +63,15 @@ public class PlayedActionCardsDisplay : CardDisplay
 
         // Initializing NPC
         NPCDisplay = (NPCDisplay)GameObject.FindGameObjectWithTag("NPC").GetComponent(typeof(NPCDisplay));
-        // ! LEGACY only used on all strats
-        // // NPC = NPCDisplay.npc;
+        NPC = NPCDisplay.npc;
     }
 
     /* --------------------- Update is called once per frame -------------------- */
     void Update()
     {
+        // Project effects on NPC level bars
+        StartCoroutine(ProjectOnNPC());
+
         // If turn changed
         if(RoundController.PlayerTurn != _currentTurn){
             _currentTurn = RoundController.PlayerTurn;
@@ -81,20 +88,7 @@ public class PlayedActionCardsDisplay : CardDisplay
                 _effectsApplied = false;
 
                 // Clear PlayedActionCards and all properties
-                for(int i = 0; i < PlayedActionCards.Length; i++){
-                    // Remove card
-                    PlayedActionCards[i] = null;
-
-                    // Hide card
-                    PlayedActionCardsButton[i].gameObject.SetActive(false);
-
-                    // Reset original
-                    _energyOriginalVals[i] = 0;
-                    _joyOriginalVals[i] = 0;
-                    _sadnessOriginalVals[i] = 0;
-                    _fearOriginalVals[i] = 0;
-                    _angerOriginalVals[i] = 0;
-                }
+                ClearCards();
 
                 // Reset Current Slot
                 CurrentSlot = 0;
@@ -103,6 +97,9 @@ public class PlayedActionCardsDisplay : CardDisplay
             }else if(_currentTurn == RoundController.NumberOfPlayers && !_effectsApplied){
                 _effectsApplied = true;
 
+                // Reset projected effects UI
+                NPCDisplay.ResetProjectedUI();
+
                 GetTotalValues();
                 NPCDisplay.ApplyEffect(LevelType.Energy, TotalEnergyVal);
                 NPCDisplay.ApplyEffect(LevelType.Joy, TotalJoyVal);
@@ -110,8 +107,9 @@ public class PlayedActionCardsDisplay : CardDisplay
                 NPCDisplay.ApplyEffect(LevelType.Fear, TotalFearVal);
                 NPCDisplay.ApplyEffect(LevelType.Anger, TotalAngerVal);
 
-                // Revert values
+                // Revert cards
                 RevertAll();
+                ClearCards();
 
                 // Go next turn
                 RoundController.NextPlayer();
@@ -377,6 +375,7 @@ public class PlayedActionCardsDisplay : CardDisplay
 
     /* -------------------------- Revert all cards back ------------------------- */
     public void RevertAll(){
+        // Revert card values
         for(int i = 0; i < PlayedActionCards.Length; i++){
             if(PlayedActionCards[i] != null){
                 PlayedActionCards[i].EnergyVal = _energyOriginalVals[i];
@@ -387,6 +386,25 @@ public class PlayedActionCardsDisplay : CardDisplay
             }else{
                 break;
             }
+        }
+    }
+
+    /* ---------------------- Clear all played action cards --------------------- */
+    private void ClearCards()
+    {
+        for(int i = 0; i < PlayedActionCards.Length; i++){
+            // Remove card
+            PlayedActionCards[i] = null;
+
+            // Hide card
+            PlayedActionCardsButton[i].gameObject.SetActive(false);
+
+            // Reset original
+            _energyOriginalVals[i] = 0;
+            _joyOriginalVals[i] = 0;
+            _sadnessOriginalVals[i] = 0;
+            _fearOriginalVals[i] = 0;
+            _angerOriginalVals[i] = 0;
         }
     }
 
@@ -411,5 +429,37 @@ public class PlayedActionCardsDisplay : CardDisplay
                 TotalAngerVal += playedActionCard.AngerVal;
             }
         }
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /*                                 Coroutines                                 */
+    /* -------------------------------------------------------------------------- */
+    /* ----------------------- Activate project effect UI ----------------------- */
+    IEnumerator ProjectOnNPC()
+    {
+        // Make checks when players are playing
+        yield return new WaitUntil(() => _currentTurn >= 0);
+
+        GetTotalValues();
+
+        // Computed projected totals
+        _energyProjectedVal = Mathf.Clamp(NPC.EnergyLvl + TotalEnergyVal, -50, 50);;
+        _joyProjectedVal = Mathf.Clamp(NPC.JoyLvl + TotalJoyVal, 0, 13);
+        _sadnessProjectedVal = Mathf.Clamp(NPC.SadnessLvl + TotalSadnessVal, 0, 13);
+        _fearProjectedVal = Mathf.Clamp(NPC.FearLvl + TotalFearVal, 0, 13);
+        _angerProjectedVal = Mathf.Clamp(NPC.AngerLvl + TotalAngerVal, 0, 13);
+
+        // Project
+        yield return new WaitUntil(() => (_energyProjectedVal != NPC.EnergyLvl) ||
+                                         (_joyProjectedVal != NPC.JoyLvl) ||
+                                         (_sadnessProjectedVal != NPC.SadnessLvl) ||
+                                         (_fearProjectedVal != NPC.FearLvl) ||
+                                         (_angerProjectedVal != NPC.AngerLvl));
+
+        NPCDisplay.ProjectEffectUI(LevelType.Energy, _energyProjectedVal);
+        NPCDisplay.ProjectEffectUI(LevelType.Joy, _joyProjectedVal);
+        NPCDisplay.ProjectEffectUI(LevelType.Sadness, _sadnessProjectedVal);
+        NPCDisplay.ProjectEffectUI(LevelType.Fear, _fearProjectedVal);
+        NPCDisplay.ProjectEffectUI(LevelType.Anger, _angerProjectedVal);
     }
 }
