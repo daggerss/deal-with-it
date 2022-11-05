@@ -156,17 +156,17 @@ public class EventCardDisplay : CardDisplay
         AngerText.text = FormatText(_currentEventCard.AngerVal, _currentEventCard.AngerOriginalVal);
         AngerImage.gameObject.SetActive(ShowImage(_currentEventCard.AngerVal, _currentEventCard.AngerOriginalVal));
 
-        EnergyArrowUpImage.gameObject.SetActive(ShouldShowArrow(0, _currentEventCard.EnergyOriginalVal, _currentEventCard.EnergyVal));
-        JoyArrowUpImage.gameObject.SetActive(ShouldShowArrow(0, _currentEventCard.JoyOriginalVal, _currentEventCard.JoyVal));
-        SadnessArrowUpImage.gameObject.SetActive(ShouldShowArrow(0, _currentEventCard.SadnessOriginalVal, _currentEventCard.SadnessVal));
-        FearArrowUpImage.gameObject.SetActive(ShouldShowArrow(0, _currentEventCard.FearOriginalVal, _currentEventCard.FearVal));
-        AngerArrowUpImage.gameObject.SetActive(ShouldShowArrow(0, _currentEventCard.AngerOriginalVal, _currentEventCard.AngerVal));
+        EnergyArrowUpImage.enabled = ShouldShowArrow(0, _currentEventCard.EnergyOriginalVal, _currentEventCard.EnergyVal);
+        JoyArrowUpImage.enabled = ShouldShowArrow(0, _currentEventCard.JoyOriginalVal, _currentEventCard.JoyVal);
+        SadnessArrowUpImage.enabled = ShouldShowArrow(0, _currentEventCard.SadnessOriginalVal, _currentEventCard.SadnessVal);
+        FearArrowUpImage.enabled = ShouldShowArrow(0, _currentEventCard.FearOriginalVal, _currentEventCard.FearVal);
+        AngerArrowUpImage.enabled = ShouldShowArrow(0, _currentEventCard.AngerOriginalVal, _currentEventCard.AngerVal);
 
-        EnergyArrowDownImage.gameObject.SetActive(ShouldShowArrow(1, _currentEventCard.EnergyOriginalVal, _currentEventCard.EnergyVal));
-        JoyArrowDownImage.gameObject.SetActive(ShouldShowArrow(1, _currentEventCard.JoyOriginalVal, _currentEventCard.JoyVal));
-        SadnessArrowDownImage.gameObject.SetActive(ShouldShowArrow(1, _currentEventCard.SadnessOriginalVal, _currentEventCard.SadnessVal));
-        FearArrowDownImage.gameObject.SetActive(ShouldShowArrow(1, _currentEventCard.FearOriginalVal, _currentEventCard.FearVal));
-        AngerArrowDownImage.gameObject.SetActive(ShouldShowArrow(1, _currentEventCard.AngerOriginalVal, _currentEventCard.AngerVal));
+        EnergyArrowDownImage.enabled = ShouldShowArrow(1, _currentEventCard.EnergyOriginalVal, _currentEventCard.EnergyVal);
+        JoyArrowDownImage.enabled = ShouldShowArrow(1, _currentEventCard.JoyOriginalVal, _currentEventCard.JoyVal);
+        SadnessArrowDownImage.enabled = ShouldShowArrow(1, _currentEventCard.SadnessOriginalVal, _currentEventCard.SadnessVal);
+        FearArrowDownImage.enabled = ShouldShowArrow(1, _currentEventCard.FearOriginalVal, _currentEventCard.FearVal);
+        AngerArrowDownImage.enabled = ShouldShowArrow(1, _currentEventCard.AngerOriginalVal, _currentEventCard.AngerVal);
 
         // Extra Event Cards
         _extraEventCards += _currentEventCard.ExtraEventCards;
