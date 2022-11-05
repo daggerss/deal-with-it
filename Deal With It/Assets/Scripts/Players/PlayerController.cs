@@ -21,6 +21,18 @@ public class PlayerController : MonoBehaviour
     private Vector2 OriginalToggleCardsButtonPosition;
     public Button ConfirmButton;
 
+    // Checking card values
+    private bool _energyValChanged;
+    private bool _joyValChanged;
+    private bool _sadnessValChanged;
+    private bool _fearValChanged;
+    private bool _angerValChanged;
+    public bool energyValCanceled;
+    public bool joyValCanceled;
+    public bool sadnessValCanceled;
+    public bool fearValCanceled;
+    public bool angerValCanceled;
+
     // Show hide card button
     public Button ToggleCardsButton;
 
@@ -164,6 +176,13 @@ public class PlayerController : MonoBehaviour
                 projectedCard.FearVal = NPCDisplay.ProjectTraitEffect(LevelType.Fear, projectedCard.FearVal, cardActionType);
                 projectedCard.AngerVal = NPCDisplay.ProjectTraitEffect(LevelType.Anger, projectedCard.AngerVal, cardActionType);
 
+                // Check if values were changed
+                _energyValChanged = (projectedCard.EnergyOriginalVal != projectedCard.EnergyVal);
+                _joyValChanged = (projectedCard.JoyOriginalVal != projectedCard.JoyVal);
+                _sadnessValChanged = (projectedCard.SadnessOriginalVal != projectedCard.SadnessVal);
+                _fearValChanged = (projectedCard.FearOriginalVal != projectedCard.FearVal);
+                _angerValChanged = (projectedCard.AngerOriginalVal != projectedCard.AngerVal);
+
                 // Add current card type to the card count
                 PlayedActionCards.AddCurrentCard(cardActionType);
 
@@ -176,6 +195,16 @@ public class PlayerController : MonoBehaviour
                 projectedCard.SadnessVal = PlayedActionCards.ProjectComboEffect(LevelType.Sadness, projectedCard.SadnessVal, cardActionType);
                 projectedCard.FearVal = PlayedActionCards.ProjectComboEffect(LevelType.Fear, projectedCard.FearVal, cardActionType);
                 projectedCard.AngerVal = PlayedActionCards.ProjectComboEffect(LevelType.Anger, projectedCard.AngerVal, cardActionType);
+
+                // Check if values were canceled out
+                energyValCanceled = IsValueCanceled(_energyValChanged, projectedCard.EnergyOriginalVal, projectedCard.EnergyVal);
+                joyValCanceled = IsValueCanceled(_joyValChanged, projectedCard.JoyOriginalVal, projectedCard.JoyVal);
+                sadnessValCanceled = IsValueCanceled(_sadnessValChanged, projectedCard.SadnessOriginalVal, projectedCard.SadnessVal);
+                fearValCanceled = IsValueCanceled(_fearValChanged, projectedCard.FearOriginalVal, projectedCard.FearVal);
+                angerValCanceled = IsValueCanceled(_angerValChanged, projectedCard.AngerOriginalVal, projectedCard.AngerVal);
+
+                // Share canceled bools with played action cards
+                PlayedActionCards.ShareIsCanceled(energyValCanceled, joyValCanceled, sadnessValCanceled, fearValCanceled, angerValCanceled);
             // If a player clicks on a card slot with no value inside
             }else{
                 // Do nothing
@@ -262,6 +291,17 @@ public class PlayerController : MonoBehaviour
                 ToggleCardsButton.transform.position = OriginalToggleCardsButtonPosition;
             }
         }
+    }
+
+    // Checks if value was canceled out
+    private bool IsValueCanceled(bool valueChanged, int original, int current)
+    {
+        if (valueChanged && original == current)
+        {
+            return true;
+        }
+
+        return false;
     }
 
     //! LEGACY Get lowest energy cost in hand

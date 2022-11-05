@@ -21,6 +21,13 @@ public class PlayedActionCardsDisplay : CardDisplay
     private int[] _fearOriginalVals = new int[5];
     private int[] _angerOriginalVals = new int[5];
 
+    // Canceled out
+    public bool[] energyValCanceled = new bool[5];
+    public bool[] joyValCanceled = new bool[5];
+    public bool[] sadnessValCanceled = new bool[5];
+    public bool[] fearValCanceled = new bool[5];
+    public bool[] angerValCanceled = new bool[5];
+
     /* ---------------------------------- Count --------------------------------- */
     private int _distractionCount = 0;
     private int _expressionCount = 0;
@@ -336,6 +343,16 @@ public class PlayedActionCardsDisplay : CardDisplay
         }
     }
 
+    /* ---------------- Get canceled bools from PlayerController ---------------- */
+    public void ShareIsCanceled(bool energyBool, bool joyBool, bool sadnessBool, bool fearBool, bool angerBool)
+    {
+        energyValCanceled[CurrentSlot] = energyBool;
+        joyValCanceled[CurrentSlot] = joyBool;
+        sadnessValCanceled[CurrentSlot] = sadnessBool;
+        fearValCanceled[CurrentSlot] = fearBool;
+        angerValCanceled[CurrentSlot] = angerBool;
+    }
+
     /* --------------------------- Move towards number -------------------------- */
     private int MoveTowards(int npcLevel, int reference){
         // Effect greater than reference point
@@ -402,6 +419,13 @@ public class PlayedActionCardsDisplay : CardDisplay
             _sadnessOriginalVals[i] = 0;
             _fearOriginalVals[i] = 0;
             _angerOriginalVals[i] = 0;
+
+            // Reset canceled bools
+            energyValCanceled[i] = false;
+            joyValCanceled[i] = false;
+            sadnessValCanceled[i] = false;
+            fearValCanceled[i] = false;
+            angerValCanceled[i] = false;
         }
     }
 

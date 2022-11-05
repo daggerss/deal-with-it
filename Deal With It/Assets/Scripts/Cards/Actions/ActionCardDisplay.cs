@@ -15,11 +15,11 @@ public class ActionCardDisplay : CardDisplay
     public Image EnergyImage, JoyImage, SadnessImage, FearImage, AngerImage, ActionTypeImage;
 
     // Arrows UI
-    public Image EnergyArrowUpImage, EnergyArrowDownImage;
-    public Image JoyArrowUpImage, JoyArrowDownImage;
-    public Image SadnessArrowUpImage, SadnessArrowDownImage;
-    public Image FearArrowUpImage, FearArrowDownImage;
-    public Image AngerArrowUpImage, AngerArrowDownImage;
+    public Image EnergyArrowUpImage, EnergyArrowDownImage, EnergyEqualImage;
+    public Image JoyArrowUpImage, JoyArrowDownImage, JoyEqualImage;
+    public Image SadnessArrowUpImage, SadnessArrowDownImage, SadnessEqualImage;
+    public Image FearArrowUpImage, FearArrowDownImage, FearEqualImage;
+    public Image AngerArrowUpImage, AngerArrowDownImage, AngerEqualImage;
 
     // Start is called before the first frame update
     void Start()
@@ -74,6 +74,24 @@ public class ActionCardDisplay : CardDisplay
             SadnessArrowDownImage.gameObject.SetActive(ShouldShowArrow(1, currentActionCard.SadnessOriginalVal, currentActionCard.SadnessVal));
             FearArrowDownImage.gameObject.SetActive(ShouldShowArrow(1, currentActionCard.FearOriginalVal, currentActionCard.FearVal));
             AngerArrowDownImage.gameObject.SetActive(ShouldShowArrow(1, currentActionCard.AngerOriginalVal, currentActionCard.AngerVal));
+
+            if (Owner != null)
+            {
+                EnergyEqualImage.enabled = Owner.energyValCanceled;
+                JoyEqualImage.enabled = Owner.joyValCanceled;
+                SadnessEqualImage.enabled = Owner.sadnessValCanceled;
+                FearEqualImage.enabled = Owner.fearValCanceled;
+                AngerEqualImage.enabled = Owner.angerValCanceled;
+            }
+
+            else if (Owner1 != null)
+            {
+                EnergyEqualImage.enabled = Owner1.energyValCanceled[CardNumber];
+                JoyEqualImage.enabled = Owner1.joyValCanceled[CardNumber];
+                SadnessEqualImage.enabled = Owner1.sadnessValCanceled[CardNumber];
+                FearEqualImage.enabled = Owner1.fearValCanceled[CardNumber];
+                AngerEqualImage.enabled = Owner1.angerValCanceled[CardNumber];
+            }
         }else{
         }
     }
