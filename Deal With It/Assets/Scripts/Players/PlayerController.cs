@@ -38,6 +38,9 @@ public class PlayerController : MonoBehaviour
     public PlayedActionCardsDisplay PlayedActionCards;
     private bool _aiActionCardPlayed = false;
 
+    // PlayerTurn Indicator Objects
+    public GameObject[] PlayerTurnIndicator = new GameObject[5]; 
+
     /* --------------------------------- Methods -------------------------------- */
     // Start is called before the first frame update
     void Start()
@@ -126,6 +129,16 @@ public class PlayerController : MonoBehaviour
         }else{
             // So player can't play card when it's not their turn
             ConfirmButton.gameObject.SetActive(false);
+        }
+
+        //Player Turn Indicator
+        for (int i = 0; i < PlayerTurnIndicator.Length; i++){
+            if (i == RoundController.PlayerTurn){
+                PlayerTurnIndicator[i].GetComponent<SpriteRenderer>().color = new Color (1, 0, 0, 1);
+            }
+            else {
+                PlayerTurnIndicator[i].GetComponent<SpriteRenderer>().color = new Color (255, 255, 255, 255);
+            }
         }
     }
 
