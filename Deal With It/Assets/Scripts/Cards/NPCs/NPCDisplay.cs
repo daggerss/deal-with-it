@@ -177,15 +177,13 @@ public class NPCDisplay : CardDisplay
     // Apply energy or emotion effects on NPC + text
     public void ApplyEffect(LevelType levelType, int effectValue)
     {
-        int addend = 0;
-
         // Energy
         if (levelType == LevelType.Energy)
         {
-            npc.EnergyLvl += effectValue + addend;
+            npc.EnergyLvl += effectValue;
 
             energyText.text = npc.EnergyLvl.ToString();
-            energyEffectText.text = FormatText(effectValue + addend);
+            energyEffectText.text = FormatText(effectValue);
         }
 
         // Emotion
@@ -196,34 +194,34 @@ public class NPCDisplay : CardDisplay
                 // Joy
                 if (levelType == LevelType.Joy)
                 {
-                    npc.JoyLvl += effectValue + addend;
+                    npc.JoyLvl += effectValue;
 
                     joyText.text = npc.JoyLvl.ToString();
-                    joyEffectText.text = FormatText(effectValue + addend);
+                    joyEffectText.text = FormatText(effectValue);
                 }
                 // Sadness
                 else if (levelType == LevelType.Sadness)
                 {
-                    npc.SadnessLvl += effectValue + addend;
+                    npc.SadnessLvl += effectValue;
 
                     sadnessText.text = npc.SadnessLvl.ToString();
-                    sadnessEffectText.text = FormatText(effectValue + addend);
+                    sadnessEffectText.text = FormatText(effectValue);
                 }
                 // Fear
                 else if (levelType == LevelType.Fear)
                 {
-                    npc.FearLvl += effectValue + addend;
+                    npc.FearLvl += effectValue;
 
                     fearText.text = npc.FearLvl.ToString();
-                    fearEffectText.text = FormatText(effectValue + addend);
+                    fearEffectText.text = FormatText(effectValue);
                 }
                 // Anger
                 else if (levelType == LevelType.Anger)
                 {
-                    npc.AngerLvl += effectValue + addend;
+                    npc.AngerLvl += effectValue;
 
                     angerText.text = npc.AngerLvl.ToString();
-                    angerEffectText.text = FormatText(effectValue + addend);
+                    angerEffectText.text = FormatText(effectValue);
                 }
             }
         }

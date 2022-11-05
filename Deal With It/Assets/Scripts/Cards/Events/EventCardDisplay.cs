@@ -1,5 +1,5 @@
 using System; // For Array Controllers
-using System.Linq; // For Count() method 
+using System.Linq; // For Count() method
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,7 +13,7 @@ public class EventCardDisplay : CardDisplay
     public Event[] EventCard;
     private int[] _selectedEventCards;
 
-    // NPC 
+    // NPC
     public NPCDisplay npcDisplay;
 
     // Displays the current event card being played

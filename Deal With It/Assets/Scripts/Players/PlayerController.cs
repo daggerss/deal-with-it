@@ -42,10 +42,10 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Initializing the ActionCardDeck 
+        // Initializing the ActionCardDeck
         ActionCardDeck = (ActionCardDeck)GameObject.FindGameObjectWithTag("Action Card Deck").GetComponent(typeof(ActionCardDeck));
 
-        // Initializing the RoundController 
+        // Initializing the RoundController
         RoundController = (RoundController)GameObject.FindGameObjectWithTag("Round Controller").GetComponent(typeof(RoundController));
 
         // Initializing NPC
@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
         for(int i = 0; i < OriginalButtonPosition.Length; i++){
             OriginalButtonPosition[i] = CardsInHandButton[i].transform.position;
         }
-        
+
         // Initializing ToggleCardButtonPosition
         OriginalToggleCardsButtonPosition = ToggleCardsButton.transform.position;
     }
@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
     {
         // New round
         if(RoundController.Round != CurrentRound){
-            // Set Current round to RoundController.Round so the if doesn't repeat 
+            // Set Current round to RoundController.Round so the if doesn't repeat
             CurrentRound = RoundController.Round;
             SelectedCard = -1;
 
@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour
             while(IndexOfEmptyElement != -1){
                 // Pick a card
                 Action pickedCard = ActionCardDeck.GetRandomCard();
-                
+
                 // Ensures cards don't repeat
                 int indexOfPickedCard = Array.IndexOf(CardsInHand, pickedCard);
 
@@ -230,8 +230,8 @@ public class PlayerController : MonoBehaviour
     private IEnumerator AIPlayActionCard(){
         // _aiActionCardPlayed
         _aiActionCardPlayed = true;
-        
-        //Wait 
+
+        //Wait
         yield return new WaitForSeconds(3f);
 
         // Random Number
@@ -247,7 +247,7 @@ public class PlayerController : MonoBehaviour
         if(SelectedCard != -1){
             CardsInHand[SelectedCard].Revert();
         }
-        SelectedCard = -1; 
+        SelectedCard = -1;
         for(int i = 0; i < CardsInHandButton.Length; i++){
             Button currentButton = CardsInHandButton[i];
 

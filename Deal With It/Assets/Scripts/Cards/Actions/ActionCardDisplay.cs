@@ -20,7 +20,7 @@ public class ActionCardDisplay : CardDisplay
     public Image SadnessArrowUpImage, SadnessArrowDownImage;
     public Image FearArrowUpImage, FearArrowDownImage;
     public Image AngerArrowUpImage, AngerArrowDownImage;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +34,7 @@ public class ActionCardDisplay : CardDisplay
         // ActionCardDisplay is under PlayerController
         if(Owner != null){
             currentActionCard = Owner.CardsInHand[CardNumber];
-        
+
         // ActionCardDisplay is under PlayedActionCardsDisplay
         }else if(Owner1 != null){
             currentActionCard = Owner1.PlayedActionCards[CardNumber];

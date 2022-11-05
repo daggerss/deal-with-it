@@ -115,7 +115,7 @@ public class Action : Card
         SadnessVal = RandomizeValue(_sadnessConstVal);
         FearVal = RandomizeValue(_fearConstVal);
         AngerVal = RandomizeValue(_angerConstVal);
-        
+
         // Save
         _energyOriginalVal = EnergyVal;
         _joyOriginalVal = JoyVal;

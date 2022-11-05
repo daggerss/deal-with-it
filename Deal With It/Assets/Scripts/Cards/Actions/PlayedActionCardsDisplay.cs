@@ -151,7 +151,6 @@ public class PlayedActionCardsDisplay : CardDisplay
                     if(playedActionCard == null){
                         break;
                     }else if(playedActionCard.CardActionType != ActionType.Distraction){
-                        Debug.Log("Hello?");
                         playedActionCard.EnergyVal -= 1;
                     }
                 }
@@ -183,7 +182,7 @@ public class PlayedActionCardsDisplay : CardDisplay
             }
 
             // Project on the selected card
-            if(levelType != LevelType.Energy && actionType == ActionType.Expression){ 
+            if(levelType != LevelType.Energy && actionType == ActionType.Expression){
                 flip = -1;
             }
 
@@ -210,7 +209,7 @@ public class PlayedActionCardsDisplay : CardDisplay
             if(levelType != LevelType.Energy && levelType != LevelType.Joy && actionType == ActionType.Processing){
                 addend = AddExtraEffect(effectValue, -2);
             }
-        
+
         /* -------------------- 3 Reappraisal Cards in one round -------------------- */
         }else if(_reappraisalCount >= 3){
             // Decreases efficacy of the reappraisal cards by 1
@@ -238,8 +237,6 @@ public class PlayedActionCardsDisplay : CardDisplay
 
         /* -------------------------------- In order -------------------------------- */
         //* Not the first player because CurrentSlot -1 might have an error
-        //! Is energy not affected by any of these?
-        //! We are returning the actual value not the added value SEE: Expression - Expression effect
         if(CurrentSlot != 0){
             ActionType previousActionCardType = PlayedActionCards[CurrentSlot - 1].CardActionType;
             // Previous card = Distraction
@@ -250,7 +247,7 @@ public class PlayedActionCardsDisplay : CardDisplay
                     if(levelType != LevelType.Energy)
                     {
                         addend += AddExtraEffect(effectValue, -1);
-                    }   
+                    }
                 }
 
                 // Distraction -> Reappraisal

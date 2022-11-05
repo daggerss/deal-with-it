@@ -10,7 +10,7 @@ public class Card : ScriptableObject
     public string CardName => _cardName;
 
     /* ---------------------------- Card Description ---------------------------- */
-    [SerializeField] 
+    [SerializeField]
     [TextArea(1, 3)]
     private string _cardDescription;
     public string CardDescription => _cardDescription;

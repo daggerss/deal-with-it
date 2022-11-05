@@ -36,7 +36,7 @@ public class CardDisplay : MonoBehaviour
             return true;
         }
     }
-    
+
     // Show or hide arrows
     // dir = 0: arrow up
     // dir = 1: arrow down

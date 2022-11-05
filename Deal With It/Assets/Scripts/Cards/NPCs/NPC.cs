@@ -97,7 +97,7 @@ public class NPC : Card
     [SerializeField]
     private int _sadnessAddend;
     public int SadnessAddend => _sadnessAddend;
-    
+
     [SerializeField]
     private int _fearAddend;
     public int FearAddend => _fearAddend;
@@ -114,7 +114,7 @@ public class NPC : Card
     [SerializeField]
     private int _expressionEmotionAddend;
     public int ExpressionEmotionAddend => _expressionEmotionAddend;
-    
+
     [SerializeField]
     private int _processingEmotionAddend;
     public int ProcessingEmotionAddend => _processingEmotionAddend;
@@ -131,7 +131,7 @@ public class NPC : Card
     [SerializeField]
     private int _expressionEnergyAddend;
     public int ExpressionEnergyAddend => _expressionEnergyAddend;
-    
+
     [SerializeField]
     private int _processingEnergyAddend;
     public int ProcessingEnergyAddend => _processingEnergyAddend;
