@@ -249,6 +249,16 @@ public class PlayerController : MonoBehaviour
 
         // Random Number
         int rng = UnityEngine.Random.Range(-1, CardsInHand.Length);
+        // // int rng = 0;
+
+        // TODO Remove temporary
+        // // for(int i = 0; i < CardsInHand.Length; i++){
+        // //     if(CardsInHand[i].CardActionType == ActionType.Distraction){
+        // //         rng = i;
+        // //         break;
+        // //     }
+        // // }
+
         SelectCard(rng);
         SelectedCard = rng;
         PlayCard();

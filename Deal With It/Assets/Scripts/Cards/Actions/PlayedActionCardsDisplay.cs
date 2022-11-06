@@ -141,19 +141,19 @@ public class PlayedActionCardsDisplay : CardDisplay
         // Check at least combos
         int addend = 0;
         int flip = 1;
-        int count = 0;
+        int count = 1;
         /* -------------------- 3 Distraction Cards in one round -------------------- */
         //* Checked
         if(_distractionCount >= 3){
             // Additional +1 energy to all non distraction cards
 
             // Project on the cards already played
-            if(levelType == LevelType.Energy){ // To make sure this only runs once or else the value will keep changing
+            if(levelType == LevelType.Energy && _distractionCount == 3){ // To make sure this only runs once or else the value will keep changing
                 for(int i = 0; i < PlayedActionCards.Length; i++){
                     Action playedActionCard = PlayedActionCards[i];
-                    if(playedActionCard == null || count >= 3){
+                    if(playedActionCard == null || count > 3){
                         break;
-                    }else if(playedActionCard.CardActionType != ActionType.Distraction && count < 3){
+                    }else if(playedActionCard.CardActionType != ActionType.Distraction && count <= 3){
                         playedActionCard.EnergyVal -= 1;
                     }else{
                         count++;
@@ -172,7 +172,7 @@ public class PlayedActionCardsDisplay : CardDisplay
             // Flips emotion values of expression card (+1 becomes -1)
 
             //Project on the cards already played
-            if(levelType == LevelType.Energy){ // To make sure this only runs once or else the value will keep changing
+            if(levelType == LevelType.Energy && _expressionCount == 4){ // To make sure this only runs once or else the value will keep changing
                 for(int i = 0; i < PlayedActionCards.Length; i++){
                     Action playedActionCard = PlayedActionCards[i];
                     if(playedActionCard == null){
@@ -198,7 +198,7 @@ public class PlayedActionCardsDisplay : CardDisplay
             // Decreases the efficacy of the Processing cards’ negative emotion effects by 2
 
             // Project on the cards already played
-            if(levelType == LevelType.Energy){ // To make sure this only runs once or else the value will keep changing
+            if(levelType == LevelType.Energy && _processingCount == 3){ // To make sure this only runs once or else the value will keep changing
                 for(int i = 0; i < PlayedActionCards.Length; i++){
                     Action playedActionCard = PlayedActionCards[i];
                     if(playedActionCard == null){
@@ -207,6 +207,7 @@ public class PlayedActionCardsDisplay : CardDisplay
                         playedActionCard.SadnessVal += AddExtraEffect(playedActionCard.SadnessVal, -2);
                         playedActionCard.FearVal += AddExtraEffect(playedActionCard.FearVal, -2);
                         playedActionCard.AngerVal += AddExtraEffect(playedActionCard.AngerVal, -2);
+                        Debug.Log("Processing Card Number " + count + " changed");
                         count++;
                     }
                 }
@@ -222,7 +223,7 @@ public class PlayedActionCardsDisplay : CardDisplay
             // Decreases efficacy of the reappraisal cards by 1
 
             // Project on the cards already played
-            if(levelType == LevelType.Energy){ // To make sure this only runs once or else the value will keep changing
+            if(levelType == LevelType.Energy && _reappraisalCount == 3){ // To make sure this only runs once or else the value will keep changing
                 for(int i = 0; i < PlayedActionCards.Length; i++){
                     Action playedActionCard = PlayedActionCards[i];
                     if(playedActionCard == null){
@@ -376,7 +377,33 @@ public class PlayedActionCardsDisplay : CardDisplay
             _fearOriginalVals[CurrentSlot] = actionCard.FearVal;
             _angerOriginalVals[CurrentSlot] = actionCard.AngerVal;
 
+            // TODO add ChangeOriginalValue
+            ChangeOriginalValue(actionCard.CardActionType);
+
             CurrentSlot++;
+        }
+    }
+
+    // TODO make function
+    /* -------------------------- Change Original Value ------------------------- */
+    private void ChangeOriginalValue(ActionType cardActionType){
+        if((cardActionType == ActionType.Distraction && _distractionCount == 3) ||
+        (cardActionType == ActionType.Expression && _expressionCount == 4) ||
+        (cardActionType == ActionType.Processing && _processingCount == 3) ||
+        (cardActionType == ActionType.Reappraisal && _processingCount == 3)){
+            for(int i = 0; i < PlayedActionCards.Length; i++){
+                Action playedActionCard = PlayedActionCards[i];
+                if(playedActionCard == null){
+                    break;
+                }else{
+                    // Save original values
+                    _energyOriginalVals[i] = PlayedActionCards[i].EnergyVal;
+                    _joyOriginalVals[i] = PlayedActionCards[i].JoyVal;
+                    _sadnessOriginalVals[i] = PlayedActionCards[i].SadnessVal;
+                    _fearOriginalVals[i] = PlayedActionCards[i].FearVal;
+                    _angerOriginalVals[i] = PlayedActionCards[i].AngerVal;
+                }
+            }
         }
     }
 
@@ -390,6 +417,8 @@ public class PlayedActionCardsDisplay : CardDisplay
                 PlayedActionCards[i].FearVal = _fearOriginalVals[i];
                 PlayedActionCards[i].AngerVal = _angerOriginalVals[i];
             }else{
+                // Make sure the affected cards aren't set back to their original
+                // ProjectComboEffect(LevelType.Energy, 0, ActionType.None);
                 break;
             }
         }
