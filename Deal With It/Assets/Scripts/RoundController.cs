@@ -34,10 +34,19 @@ public class RoundController : MonoBehaviour
 
     public int NumberOfPlayers;
 
+    /* ----------------------------------- NPC ---------------------------------- */
+    public NPC NPC;
+
+    /* ------------------------------ Goal Counter ------------------------------ */
+    private int _goalCounter = 0;
+
     // Start is called before the first frame update
     void Start()
     {
         NumberOfPlayers = GameObject.FindGameObjectsWithTag("PlayerTag").Length;
+
+        NPCDisplay npcDisplay = (NPCDisplay)GameObject.FindGameObjectWithTag("NPC").GetComponent(typeof(NPCDisplay));
+        npc = npcDisplay.npc;
     }
 
     // Update is called once per frame
@@ -63,5 +72,28 @@ public class RoundController : MonoBehaviour
         yield return new WaitForSeconds(3f);
         _round++;
         _playerTurn = -1;
+    }
+
+    // Checks if NPC wins or loses or continue playing
+    private string WinLoseStatus(){
+        switch(npc.CardName.ToUpper()){
+            /* ---------------------------------- Knot ---------------------------------- */
+            case "KNOT":
+                if((npc.JoyLvl >= 6 && npc.JoyLvl <= 8) &&
+                (npc.SadnessLvl >= 6 && npc.SadnessLvl <= 8) &&
+                (npc.FearLvl < 6) &&
+                (npc.AngerLvl < 6)){
+                    _goalCounter++;
+                }else{
+                    _goalCounter = 0;
+                }
+
+                if(_goalCounter == 7){
+                    return "win";
+                }
+                break;
+            default:
+                break;
+        }
     }
 }
