@@ -141,6 +141,7 @@ public class PlayedActionCardsDisplay : CardDisplay
         // Check at least combos
         int addend = 0;
         int flip = 1;
+        int count = 0;
         /* -------------------- 3 Distraction Cards in one round -------------------- */
         //* Checked
         if(_distractionCount >= 3){
@@ -150,11 +151,12 @@ public class PlayedActionCardsDisplay : CardDisplay
             if(levelType == LevelType.Energy){ // To make sure this only runs once or else the value will keep changing
                 for(int i = 0; i < PlayedActionCards.Length; i++){
                     Action playedActionCard = PlayedActionCards[i];
-                    if(playedActionCard == null){
+                    if(playedActionCard == null || count >= 3){
                         break;
-                    }else if(playedActionCard.CardActionType != ActionType.Distraction){
-                        Debug.Log("Hello?");
+                    }else if(playedActionCard.CardActionType != ActionType.Distraction && count < 3){
                         playedActionCard.EnergyVal -= 1;
+                    }else{
+                        count++;
                     }
                 }
             }
@@ -175,11 +177,12 @@ public class PlayedActionCardsDisplay : CardDisplay
                     Action playedActionCard = PlayedActionCards[i];
                     if(playedActionCard == null){
                         break;
-                    }else if(playedActionCard.CardActionType == ActionType.Expression){
+                    }else if(playedActionCard.CardActionType == ActionType.Expression && count < 4){
                         playedActionCard.JoyVal *= -1;
                         playedActionCard.SadnessVal *= -1;
                         playedActionCard.FearVal *= -1;
                         playedActionCard.AngerVal *= -1;
+                        count++;
                     }
                 }
             }
@@ -200,10 +203,11 @@ public class PlayedActionCardsDisplay : CardDisplay
                     Action playedActionCard = PlayedActionCards[i];
                     if(playedActionCard == null){
                         break;
-                    }else if(playedActionCard.CardActionType == ActionType.Processing){
+                    }else if(playedActionCard.CardActionType == ActionType.Processing && count < 3){
                         playedActionCard.SadnessVal += AddExtraEffect(playedActionCard.SadnessVal, -2);
                         playedActionCard.FearVal += AddExtraEffect(playedActionCard.FearVal, -2);
                         playedActionCard.AngerVal += AddExtraEffect(playedActionCard.AngerVal, -2);
+                        count++;
                     }
                 }
             }
@@ -223,11 +227,12 @@ public class PlayedActionCardsDisplay : CardDisplay
                     Action playedActionCard = PlayedActionCards[i];
                     if(playedActionCard == null){
                         break;
-                    }else if(playedActionCard.CardActionType == ActionType.Reappraisal){
+                    }else if(playedActionCard.CardActionType == ActionType.Reappraisal && count < 3){
                         playedActionCard.JoyVal += AddExtraEffect(playedActionCard.JoyVal, -1);
                         playedActionCard.SadnessVal += AddExtraEffect(playedActionCard.SadnessVal, -1);
                         playedActionCard.FearVal += AddExtraEffect(playedActionCard.FearVal, -1);
                         playedActionCard.AngerVal += AddExtraEffect(playedActionCard.AngerVal, -1);
+                        count++;
                     }
                 }
             }
@@ -277,7 +282,7 @@ public class PlayedActionCardsDisplay : CardDisplay
                 }
 
                 // Expression -> Reappraisal
-                // Descreases the energy of the Reappraisal card by 1
+                // Decreases the energy of the Reappraisal card by 1
                 else if(actionType == ActionType.Reappraisal)
                 {
                     if(levelType == LevelType.Energy)
