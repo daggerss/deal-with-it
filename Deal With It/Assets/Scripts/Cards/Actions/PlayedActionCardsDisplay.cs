@@ -435,7 +435,7 @@ public class PlayedActionCardsDisplay : CardDisplay
     IEnumerator ProjectOnNPC()
     {
         // Make checks when players are playing
-        yield return new WaitUntil(() => _currentTurn >= 1);
+        yield return new WaitUntil(() => _currentTurn >= 0);
         yield return new WaitForSeconds(1f);
 
         GetTotalValues();
