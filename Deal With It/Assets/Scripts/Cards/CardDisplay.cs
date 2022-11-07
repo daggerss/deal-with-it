@@ -37,20 +37,6 @@ public class CardDisplay : MonoBehaviour
         }
     }
 
-    // Show or hide arrows
-    // dir = 0: arrow up
-    // dir = 1: arrow down
-    public bool ShouldShowArrow(int dir, int original, int current)
-    {
-        if ((dir == 0 && original < current) ||
-            (dir == 1 && original > current))
-        {
-            return true;
-        }
-
-        return false;
-    }
-
     // Adds or subtracts the addend according to energy/emotion value
     public int AddExtraEffect(int original, int addend)
     {

@@ -63,35 +63,23 @@ public class ActionCardDisplay : CardDisplay
             AngerText.text = FormatText(currentActionCard.AngerVal, currentActionCard.AngerOriginalVal);
             AngerImage.gameObject.SetActive(ShowImage(currentActionCard.AngerVal, currentActionCard.AngerOriginalVal));
 
-            EnergyArrowUpImage.enabled = ShouldShowArrow(0, currentActionCard.EnergyOriginalVal, currentActionCard.EnergyVal);
-            JoyArrowUpImage.enabled = ShouldShowArrow(0, currentActionCard.JoyOriginalVal, currentActionCard.JoyVal);
-            SadnessArrowUpImage.enabled = ShouldShowArrow(0, currentActionCard.SadnessOriginalVal, currentActionCard.SadnessVal);
-            FearArrowUpImage.enabled = ShouldShowArrow(0, currentActionCard.FearOriginalVal, currentActionCard.FearVal);
-            AngerArrowUpImage.enabled = ShouldShowArrow(0, currentActionCard.AngerOriginalVal, currentActionCard.AngerVal);
+            EnergyArrowUpImage.enabled = (currentActionCard.EnergyValChangeDir == 0);
+            JoyArrowUpImage.enabled = (currentActionCard.JoyValChangeDir == 0);
+            SadnessArrowUpImage.enabled = (currentActionCard.SadnessValChangeDir == 0);
+            FearArrowUpImage.enabled = (currentActionCard.FearValChangeDir == 0);
+            AngerArrowUpImage.enabled = (currentActionCard.AngerValChangeDir == 0);
 
-            EnergyArrowDownImage.enabled = ShouldShowArrow(1, currentActionCard.EnergyOriginalVal, currentActionCard.EnergyVal);
-            JoyArrowDownImage.enabled = ShouldShowArrow(1, currentActionCard.JoyOriginalVal, currentActionCard.JoyVal);
-            SadnessArrowDownImage.enabled = ShouldShowArrow(1, currentActionCard.SadnessOriginalVal, currentActionCard.SadnessVal);
-            FearArrowDownImage.enabled = ShouldShowArrow(1, currentActionCard.FearOriginalVal, currentActionCard.FearVal);
-            AngerArrowDownImage.enabled = ShouldShowArrow(1, currentActionCard.AngerOriginalVal, currentActionCard.AngerVal);
+            EnergyArrowDownImage.enabled = (currentActionCard.EnergyValChangeDir == 1);
+            JoyArrowDownImage.enabled = (currentActionCard.JoyValChangeDir == 1);
+            SadnessArrowDownImage.enabled = (currentActionCard.SadnessValChangeDir == 1);
+            FearArrowDownImage.enabled = (currentActionCard.FearValChangeDir == 1);
+            AngerArrowDownImage.enabled = (currentActionCard.AngerValChangeDir == 1);
 
-            if (Owner != null)
-            {
-                EnergyEqualImage.enabled = Owner.energyValCanceled;
-                JoyEqualImage.enabled = Owner.joyValCanceled;
-                SadnessEqualImage.enabled = Owner.sadnessValCanceled;
-                FearEqualImage.enabled = Owner.fearValCanceled;
-                AngerEqualImage.enabled = Owner.angerValCanceled;
-            }
-
-            else if (Owner1 != null)
-            {
-                EnergyEqualImage.enabled = Owner1.energyValCanceled[CardNumber];
-                JoyEqualImage.enabled = Owner1.joyValCanceled[CardNumber];
-                SadnessEqualImage.enabled = Owner1.sadnessValCanceled[CardNumber];
-                FearEqualImage.enabled = Owner1.fearValCanceled[CardNumber];
-                AngerEqualImage.enabled = Owner1.angerValCanceled[CardNumber];
-            }
+            EnergyEqualImage.enabled = currentActionCard.EnergyValCanceled;
+            JoyEqualImage.enabled = currentActionCard.JoyValCanceled;
+            SadnessEqualImage.enabled = currentActionCard.SadnessValCanceled;
+            FearEqualImage.enabled = currentActionCard.FearValCanceled;
+            AngerEqualImage.enabled = currentActionCard.AngerValCanceled;
         }else{
         }
     }

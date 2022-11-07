@@ -105,6 +105,25 @@ public class Action : Card
     private ActionType _actionType;
     public ActionType CardActionType => _actionType;
 
+    /* --------------------------- Card Values Change --------------------------- */
+
+    // Directions
+    // dir = 0: up
+    // dir = 1: down
+    // dir = 2: equal
+    public int EnergyValChangeDir => CheckChangeDir(_energyOriginalVal, _energyVal);
+    public int JoyValChangeDir => CheckChangeDir(_joyOriginalVal, _joyVal);
+    public int SadnessValChangeDir => CheckChangeDir(_sadnessOriginalVal, _sadnessVal);
+    public int FearValChangeDir => CheckChangeDir(_fearOriginalVal, _fearVal);
+    public int AngerValChangeDir => CheckChangeDir(_angerOriginalVal, _angerVal);
+
+    // Is canceled out
+    public bool EnergyValCanceled {get; set;}
+    public bool JoyValCanceled {get; set;}
+    public bool SadnessValCanceled {get; set;}
+    public bool FearValCanceled {get; set;}
+    public bool AngerValCanceled {get; set;}
+
     /* ----------------------------- Custom Methods ----------------------------- */
 
     // Set random emotion values
@@ -132,6 +151,23 @@ public class Action : Card
         SadnessVal = _sadnessOriginalVal;
         FearVal = _fearOriginalVal;
         AngerVal = _angerOriginalVal;
+    }
+
+    // Determine value change direction
+    private int CheckChangeDir(int original, int current)
+    {
+        if (original < current)
+        {
+            return 0;
+        }
+        else if (original > current)
+        {
+            return 1;
+        }
+        else
+        {
+            return 2;
+        }
     }
 }
 

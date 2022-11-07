@@ -156,17 +156,17 @@ public class EventCardDisplay : CardDisplay
         AngerText.text = FormatText(_currentEventCard.AngerVal, _currentEventCard.AngerOriginalVal);
         AngerImage.gameObject.SetActive(ShowImage(_currentEventCard.AngerVal, _currentEventCard.AngerOriginalVal));
 
-        EnergyArrowUpImage.enabled = ShouldShowArrow(0, _currentEventCard.EnergyOriginalVal, _currentEventCard.EnergyVal);
-        JoyArrowUpImage.enabled = ShouldShowArrow(0, _currentEventCard.JoyOriginalVal, _currentEventCard.JoyVal);
-        SadnessArrowUpImage.enabled = ShouldShowArrow(0, _currentEventCard.SadnessOriginalVal, _currentEventCard.SadnessVal);
-        FearArrowUpImage.enabled = ShouldShowArrow(0, _currentEventCard.FearOriginalVal, _currentEventCard.FearVal);
-        AngerArrowUpImage.enabled = ShouldShowArrow(0, _currentEventCard.AngerOriginalVal, _currentEventCard.AngerVal);
+        EnergyArrowUpImage.enabled = (_currentEventCard.EnergyValChangeDir == 0);
+        JoyArrowUpImage.enabled = (_currentEventCard.JoyValChangeDir == 0);
+        SadnessArrowUpImage.enabled = (_currentEventCard.SadnessValChangeDir == 0);
+        FearArrowUpImage.enabled = (_currentEventCard.FearValChangeDir == 0);
+        AngerArrowUpImage.enabled = (_currentEventCard.AngerValChangeDir == 0);
 
-        EnergyArrowDownImage.enabled = ShouldShowArrow(1, _currentEventCard.EnergyOriginalVal, _currentEventCard.EnergyVal);
-        JoyArrowDownImage.enabled = ShouldShowArrow(1, _currentEventCard.JoyOriginalVal, _currentEventCard.JoyVal);
-        SadnessArrowDownImage.enabled = ShouldShowArrow(1, _currentEventCard.SadnessOriginalVal, _currentEventCard.SadnessVal);
-        FearArrowDownImage.enabled = ShouldShowArrow(1, _currentEventCard.FearOriginalVal, _currentEventCard.FearVal);
-        AngerArrowDownImage.enabled = ShouldShowArrow(1, _currentEventCard.AngerOriginalVal, _currentEventCard.AngerVal);
+        EnergyArrowDownImage.enabled = (_currentEventCard.EnergyValChangeDir == 1);
+        JoyArrowDownImage.enabled = (_currentEventCard.JoyValChangeDir == 1);
+        SadnessArrowDownImage.enabled = (_currentEventCard.SadnessValChangeDir == 1);
+        FearArrowDownImage.enabled = (_currentEventCard.FearValChangeDir == 1);
+        AngerArrowDownImage.enabled = (_currentEventCard.AngerValChangeDir == 1);
 
         // Extra Event Cards
         _extraEventCards += _currentEventCard.ExtraEventCards;

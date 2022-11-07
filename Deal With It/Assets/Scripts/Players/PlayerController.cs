@@ -21,17 +21,12 @@ public class PlayerController : MonoBehaviour
     private Vector2 OriginalToggleCardsButtonPosition;
     public Button ConfirmButton;
 
-    // Checking card values
+    // Checking trait effect change
     private bool _energyValChanged;
     private bool _joyValChanged;
     private bool _sadnessValChanged;
     private bool _fearValChanged;
     private bool _angerValChanged;
-    public bool energyValCanceled;
-    public bool joyValCanceled;
-    public bool sadnessValCanceled;
-    public bool fearValCanceled;
-    public bool angerValCanceled;
 
     // Show hide card button
     public Button ToggleCardsButton;
@@ -177,11 +172,11 @@ public class PlayerController : MonoBehaviour
                 projectedCard.AngerVal = NPCDisplay.ProjectTraitEffect(LevelType.Anger, projectedCard.AngerVal, cardActionType);
 
                 // Check if values were changed
-                _energyValChanged = (projectedCard.EnergyOriginalVal != projectedCard.EnergyVal);
-                _joyValChanged = (projectedCard.JoyOriginalVal != projectedCard.JoyVal);
-                _sadnessValChanged = (projectedCard.SadnessOriginalVal != projectedCard.SadnessVal);
-                _fearValChanged = (projectedCard.FearOriginalVal != projectedCard.FearVal);
-                _angerValChanged = (projectedCard.AngerOriginalVal != projectedCard.AngerVal);
+                _energyValChanged = (projectedCard.EnergyValChangeDir < 2) ? true : false;
+                _joyValChanged = (projectedCard.JoyValChangeDir < 2) ? true : false;
+                _sadnessValChanged = (projectedCard.SadnessValChangeDir < 2) ? true : false;
+                _fearValChanged = (projectedCard.FearValChangeDir < 2) ? true : false;
+                _angerValChanged = (projectedCard.AngerValChangeDir < 2) ? true : false;
 
                 // Add current card type to the card count
                 PlayedActionCards.AddCurrentCard(cardActionType);
@@ -197,14 +192,12 @@ public class PlayerController : MonoBehaviour
                 projectedCard.AngerVal = PlayedActionCards.ProjectComboEffect(LevelType.Anger, projectedCard.AngerVal, cardActionType);
 
                 // Check if values were canceled out
-                energyValCanceled = IsValueCanceled(_energyValChanged, projectedCard.EnergyOriginalVal, projectedCard.EnergyVal);
-                joyValCanceled = IsValueCanceled(_joyValChanged, projectedCard.JoyOriginalVal, projectedCard.JoyVal);
-                sadnessValCanceled = IsValueCanceled(_sadnessValChanged, projectedCard.SadnessOriginalVal, projectedCard.SadnessVal);
-                fearValCanceled = IsValueCanceled(_fearValChanged, projectedCard.FearOriginalVal, projectedCard.FearVal);
-                angerValCanceled = IsValueCanceled(_angerValChanged, projectedCard.AngerOriginalVal, projectedCard.AngerVal);
+                projectedCard.EnergyValCanceled = (_energyValChanged && projectedCard.EnergyOriginalVal == projectedCard.EnergyVal) ? true : false;
+                projectedCard.JoyValCanceled = (_joyValChanged && projectedCard.JoyOriginalVal == projectedCard.JoyVal) ? true : false;
+                projectedCard.SadnessValCanceled = (_sadnessValChanged && projectedCard.SadnessOriginalVal == projectedCard.SadnessVal) ? true : false;
+                projectedCard.FearValCanceled = (_fearValChanged && projectedCard.FearOriginalVal == projectedCard.FearVal) ? true : false;
+                projectedCard.AngerValCanceled = (_angerValChanged && projectedCard.AngerOriginalVal == projectedCard.AngerVal) ? true : false;
 
-                // Share canceled bools with played action cards
-                PlayedActionCards.ShareIsCanceled(energyValCanceled, joyValCanceled, sadnessValCanceled, fearValCanceled, angerValCanceled);
             // If a player clicks on a card slot with no value inside
             }else{
                 // Do nothing
@@ -291,17 +284,6 @@ public class PlayerController : MonoBehaviour
                 ToggleCardsButton.transform.position = OriginalToggleCardsButtonPosition;
             }
         }
-    }
-
-    // Checks if value was canceled out
-    private bool IsValueCanceled(bool valueChanged, int original, int current)
-    {
-        if (valueChanged && original == current)
-        {
-            return true;
-        }
-
-        return false;
     }
 
     //! LEGACY Get lowest energy cost in hand

@@ -109,6 +109,18 @@ public class Event : Card
     private bool _randomize;
     public bool Randomize => _randomize;
 
+    /* --------------------------- Card Values Change --------------------------- */
+
+    // Directions
+    // dir = 0: up
+    // dir = 1: down
+    // dir = 2: equal
+    public int EnergyValChangeDir => CheckChangeDir(_energyOriginalVal, _energyVal);
+    public int JoyValChangeDir => CheckChangeDir(_joyOriginalVal, _joyVal);
+    public int SadnessValChangeDir => CheckChangeDir(_sadnessOriginalVal, _sadnessVal);
+    public int FearValChangeDir => CheckChangeDir(_fearOriginalVal, _fearVal);
+    public int AngerValChangeDir => CheckChangeDir(_angerOriginalVal, _angerVal);
+
     /* ----------------------------- Custom Methods ----------------------------- */
     public void RandomVariation(){
         int[] values = {_joyVal, _sadnessVal, _fearVal, _angerVal};
@@ -166,5 +178,22 @@ public class Event : Card
         SadnessVal = _sadnessOriginalVal;
         FearVal = _fearOriginalVal;
         AngerVal = _angerOriginalVal;
+    }
+
+    // Determine value change direction
+    private int CheckChangeDir(int original, int current)
+    {
+        if (original < current)
+        {
+            return 0;
+        }
+        else if (original > current)
+        {
+            return 1;
+        }
+        else
+        {
+            return 2;
+        }
     }
 }
