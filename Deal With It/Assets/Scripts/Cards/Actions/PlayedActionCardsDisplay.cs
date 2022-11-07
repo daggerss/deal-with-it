@@ -460,6 +460,7 @@ public class PlayedActionCardsDisplay : CardDisplay
     {
         // Make checks when players are playing
         yield return new WaitUntil(() => _currentTurn >= 0);
+        yield return new WaitForSeconds(1f);
 
         GetTotalValues();
 
@@ -476,6 +477,7 @@ public class PlayedActionCardsDisplay : CardDisplay
                                          (_sadnessProjectedVal != NPC.SadnessLvl) ||
                                          (_fearProjectedVal != NPC.FearLvl) ||
                                          (_angerProjectedVal != NPC.AngerLvl));
+        yield return new WaitUntil(() => _currentTurn >= 0);
 
         NPCDisplay.ProjectEffectUI(LevelType.Energy, _energyProjectedVal);
         NPCDisplay.ProjectEffectUI(LevelType.Joy, _joyProjectedVal);
