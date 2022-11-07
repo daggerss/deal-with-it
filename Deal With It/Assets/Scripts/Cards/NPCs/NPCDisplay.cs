@@ -86,34 +86,10 @@ public class NPCDisplay : CardDisplay
         EnergyBackBar.SetValue(20);
 
         // Set random starting emotion levels
-        if (npc.CardName == "Knot")
-        {
-            npc.JoyLvl = Random.Range(6, 9);
-            npc.SadnessLvl = Random.Range(4, 7);
-            npc.FearLvl = Random.Range(9, 12);
-            npc.AngerLvl = Random.Range(9, 12);
-        }
-        else if (npc.CardName == "Pickles")
-        {
-            npc.JoyLvl = Random.Range(4, 7);
-            npc.SadnessLvl = Random.Range(9, 12);
-            npc.FearLvl = Random.Range(9, 12);
-            npc.AngerLvl = Random.Range(9, 12);
-        }
-        else if (npc.CardName == "Sniffles")
-        {
-            npc.JoyLvl = Random.Range(9, 12);
-            npc.SadnessLvl = Random.Range(9, 12);
-            npc.FearLvl = Random.Range(9, 12);
-            npc.AngerLvl = Random.Range(9, 12);
-        }
-        else
-        {
-            npc.JoyLvl = Random.Range(6, 9);
-            npc.SadnessLvl = Random.Range(6, 9);
-            npc.FearLvl = Random.Range(6, 9);
-            npc.AngerLvl = Random.Range(6, 9);
-        }
+        npc.JoyLvl = Random.Range(npc.JoyStartingMin, npc.JoyStartingMax+1);
+        npc.SadnessLvl = Random.Range(npc.SadnessStartingMin, npc.SadnessStartingMax+1);
+        npc.FearLvl = Random.Range(npc.FearStartingMin, npc.FearStartingMax+1);
+        npc.AngerLvl = Random.Range(npc.AngerStartingMin, npc.AngerStartingMax+1);
 
         // Set emotions front bar
         JoyFrontBar.SetMaxValue(13);
