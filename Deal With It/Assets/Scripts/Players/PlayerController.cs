@@ -172,11 +172,11 @@ public class PlayerController : MonoBehaviour
                 projectedCard.AngerVal = NPCDisplay.ProjectTraitEffect(LevelType.Anger, projectedCard.AngerVal, cardActionType);
 
                 // Check if values were changed
-                _energyValChanged = (projectedCard.EnergyValChangeDir < 2) ? true : false;
-                _joyValChanged = (projectedCard.JoyValChangeDir < 2) ? true : false;
-                _sadnessValChanged = (projectedCard.SadnessValChangeDir < 2) ? true : false;
-                _fearValChanged = (projectedCard.FearValChangeDir < 2) ? true : false;
-                _angerValChanged = (projectedCard.AngerValChangeDir < 2) ? true : false;
+                _energyValChanged = (projectedCard.EnergyValChangeDir < 2);
+                _joyValChanged = (projectedCard.JoyValChangeDir < 2);
+                _sadnessValChanged = (projectedCard.SadnessValChangeDir < 2);
+                _fearValChanged = (projectedCard.FearValChangeDir < 2);
+                _angerValChanged = (projectedCard.AngerValChangeDir < 2);
 
                 // Add current card type to the card count
                 PlayedActionCards.AddCurrentCard(cardActionType);
@@ -192,11 +192,11 @@ public class PlayerController : MonoBehaviour
                 projectedCard.AngerVal = PlayedActionCards.ProjectComboEffect(LevelType.Anger, projectedCard.AngerVal, cardActionType);
 
                 // Check if values were canceled out
-                projectedCard.EnergyValCanceled = (_energyValChanged && projectedCard.EnergyOriginalVal == projectedCard.EnergyVal) ? true : false;
-                projectedCard.JoyValCanceled = (_joyValChanged && projectedCard.JoyOriginalVal == projectedCard.JoyVal) ? true : false;
-                projectedCard.SadnessValCanceled = (_sadnessValChanged && projectedCard.SadnessOriginalVal == projectedCard.SadnessVal) ? true : false;
-                projectedCard.FearValCanceled = (_fearValChanged && projectedCard.FearOriginalVal == projectedCard.FearVal) ? true : false;
-                projectedCard.AngerValCanceled = (_angerValChanged && projectedCard.AngerOriginalVal == projectedCard.AngerVal) ? true : false;
+                projectedCard.EnergyValCanceled = (_energyValChanged && projectedCard.EnergyOriginalVal == projectedCard.EnergyVal);
+                projectedCard.JoyValCanceled = (_joyValChanged && projectedCard.JoyOriginalVal == projectedCard.JoyVal);
+                projectedCard.SadnessValCanceled = (_sadnessValChanged && projectedCard.SadnessOriginalVal == projectedCard.SadnessVal);
+                projectedCard.FearValCanceled = (_fearValChanged && projectedCard.FearOriginalVal == projectedCard.FearVal);
+                projectedCard.AngerValCanceled = (_angerValChanged && projectedCard.AngerOriginalVal == projectedCard.AngerVal);
 
             // If a player clicks on a card slot with no value inside
             }else{
