@@ -384,6 +384,13 @@ public class PlayedActionCardsDisplay : CardDisplay
                 break;
             }
         }
+
+        // Reset projected values
+        _energyProjectedVal = NPC.EnergyLvl;
+        _joyProjectedVal = NPC.JoyLvl;
+        _sadnessProjectedVal = NPC.SadnessLvl;
+        _fearProjectedVal = NPC.FearLvl;
+        _angerProjectedVal = NPC.AngerLvl;
     }
 
     /* ---------------------- Clear all played action cards --------------------- */
