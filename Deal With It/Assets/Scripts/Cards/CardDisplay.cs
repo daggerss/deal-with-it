@@ -27,6 +27,17 @@ public class CardDisplay : MonoBehaviour
     }
 
     // Show or hide image
+    public bool ShowImage(int value){
+        string EmotionPoints = FormatText(value);
+
+        if(EmotionPoints == null){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    // Show or hide image
     public bool ShowImage(int value, int original){
         string EmotionPoints = FormatText(value, original);
 

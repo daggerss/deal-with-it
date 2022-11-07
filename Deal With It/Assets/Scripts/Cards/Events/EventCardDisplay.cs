@@ -19,8 +19,8 @@ public class EventCardDisplay : CardDisplay
     // Displays the current event card being played
     private Event _currentEventCard;
     private int _extraEventCards = 0;
-    public TMP_Text CardTypeText, CardNameText, CardDescriptionText, EnergyText, JoyText, SadnessText, FearText, AngerText;
-    public Image EnergyImage, JoyImage, SadnessImage, FearImage, AngerImage;
+    public TMP_Text CardTypeText, CardNameText, CardDescriptionText, EnergyText, ExtraEventsText, JoyText, SadnessText, FearText, AngerText;
+    public Image EnergyImage, ExtraEventsImage, JoyImage, SadnessImage, FearImage, AngerImage;
     public GameObject ThisObject;
 
     // Arrows UI
@@ -143,6 +143,8 @@ public class EventCardDisplay : CardDisplay
 
         EnergyText.text = FormatText(_currentEventCard.EnergyVal, _currentEventCard.EnergyOriginalVal);
         EnergyImage.gameObject.SetActive(ShowImage(_currentEventCard.EnergyVal, _currentEventCard.EnergyOriginalVal));
+        ExtraEventsText.text = FormatText(_currentEventCard.ExtraEventCards);
+        ExtraEventsImage.gameObject.SetActive(ShowImage(_currentEventCard.ExtraEventCards));
 
         JoyText.text = FormatText(_currentEventCard.JoyVal, _currentEventCard.JoyOriginalVal);
         JoyImage.gameObject.SetActive(ShowImage(_currentEventCard.JoyVal, _currentEventCard.JoyOriginalVal));
