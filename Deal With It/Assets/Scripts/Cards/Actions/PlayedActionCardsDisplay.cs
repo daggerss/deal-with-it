@@ -198,9 +198,9 @@ public class PlayedActionCardsDisplay : CardDisplay
                     if(playedActionCard == null){
                         break;
                     }else if(playedActionCard.CardActionType == ActionType.Processing){
-                        playedActionCard.SadnessVal += AddExtraEffect(playedActionCard.SadnessVal, -2);
-                        playedActionCard.FearVal += AddExtraEffect(playedActionCard.FearVal, -2);
-                        playedActionCard.AngerVal += AddExtraEffect(playedActionCard.AngerVal, -2);
+                        playedActionCard.SadnessVal += AddExtraEffect(playedActionCard.SadnessOriginalVal, -2);
+                        playedActionCard.FearVal += AddExtraEffect(playedActionCard.FearOriginalVal, -2);
+                        playedActionCard.AngerVal += AddExtraEffect(playedActionCard.AngerOriginalVal, -2);
                     }
                 }
             }
@@ -221,10 +221,10 @@ public class PlayedActionCardsDisplay : CardDisplay
                     if(playedActionCard == null){
                         break;
                     }else if(playedActionCard.CardActionType == ActionType.Reappraisal){
-                        playedActionCard.JoyVal += AddExtraEffect(playedActionCard.JoyVal, -1);
-                        playedActionCard.SadnessVal += AddExtraEffect(playedActionCard.SadnessVal, -1);
-                        playedActionCard.FearVal += AddExtraEffect(playedActionCard.FearVal, -1);
-                        playedActionCard.AngerVal += AddExtraEffect(playedActionCard.AngerVal, -1);
+                        playedActionCard.JoyVal += AddExtraEffect(playedActionCard.JoyOriginalVal, -1);
+                        playedActionCard.SadnessVal += AddExtraEffect(playedActionCard.SadnessOriginalVal, -1);
+                        playedActionCard.FearVal += AddExtraEffect(playedActionCard.FearOriginalVal, -1);
+                        playedActionCard.AngerVal += AddExtraEffect(playedActionCard.AngerOriginalVal, -1);
                     }
                 }
             }
