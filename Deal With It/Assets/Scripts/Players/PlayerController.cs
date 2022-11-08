@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     private Vector2[] OriginalButtonPosition = new Vector2[5];
     private Vector2 OriginalToggleCardsButtonPosition;
     public Button ConfirmButton;
+    public Button SwapButton;
 
     // Show hide card button
     public Button ToggleCardsButton;
@@ -120,15 +121,22 @@ public class PlayerController : MonoBehaviour
             if(!Playable){
                 StartCoroutine(AIPlayActionCard());
             }
-
             // Allow user player to play
             else
             {
                 ConfirmButton.gameObject.SetActive(true);
+                SwapButton.gameObject.SetActive(true);
+            }
+
+            // Timer Countdown
+            if(!RoundController.CountdownActive){
+                Debug.Log("CountdownActive = false");
+                StartCoroutine(RoundController.Skip);
             }
         }else{
             // So player can't play card when it's not their turn
             ConfirmButton.gameObject.SetActive(false);
+            SwapButton.gameObject.SetActive(false);
         }
 
         //Player Turn Indicator
@@ -216,6 +224,7 @@ public class PlayerController : MonoBehaviour
     public void PlayCard(){
         // Hide confirm button
         ConfirmButton.gameObject.SetActive(false);
+        SwapButton.gameObject.SetActive(false);
 
         // No card picked
         if(SelectedCard == -1){
@@ -237,6 +246,30 @@ public class PlayerController : MonoBehaviour
         }
 
         RoundController.NextPlayer();
+        StopCoroutine(RoundController.Skip);
+    }
+
+    public void SwapCard(){
+        // Hide swap button
+        ConfirmButton.gameObject.SetActive(false);
+        SwapButton.gameObject.SetActive(false);
+
+        // No card picked
+        if(SelectedCard == -1){
+            Debug.Log("Player " + PlayerNumber + " played no card");
+        }else{
+            Debug.Log("Player " + PlayerNumber + " swapped " + CardsInHand[SelectedCard].CardActionType);
+
+            // Remove card from hand
+            CardsInHand[SelectedCard] = null;
+            CardsInHandButton[SelectedCard].gameObject.SetActive(false);
+
+            // Move played card button back to the original position
+            CardsInHandButton[SelectedCard].transform.position = OriginalButtonPosition[SelectedCard];
+        }
+
+        RoundController.NextPlayer();
+        StopCoroutine(RoundController.Skip);
     }
 
     /* --------------------- AI Play Action Card With Delay --------------------- */
@@ -249,9 +282,9 @@ public class PlayerController : MonoBehaviour
 
         // Random Number
         int rng = UnityEngine.Random.Range(-1, CardsInHand.Length);
-        // // int rng = 0;
 
         // TODO Remove temporary
+        // // int rng = 0;
         // // for(int i = 0; i < CardsInHand.Length; i++){
         // //     if(CardsInHand[i].CardActionType == ActionType.Distraction){
         // //         rng = i;

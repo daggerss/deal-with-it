@@ -238,7 +238,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Show
+  m_text: Swap Card
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 970d1f5ac84ef7d418d70cd27625c12a, type: 2}
   m_sharedMaterial: {fileID: 3554651669760030930, guid: 970d1f5ac84ef7d418d70cd27625c12a, type: 2}
@@ -373,6 +373,7 @@ MonoBehaviour:
   - {fileID: 8885100052634990429}
   - {fileID: 8885100052000350118}
   ConfirmButton: {fileID: 7245269611172149985}
+  SwapButton: {fileID: 4474337009856204129}
   ToggleCardsButton: {fileID: 4474337009856204129}
   NPCDisplay: {fileID: 0}
   PlayedActionCards: {fileID: 0}
@@ -447,7 +448,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Confirm
+  m_text: Play Card
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 970d1f5ac84ef7d418d70cd27625c12a, type: 2}
   m_sharedMaterial: {fileID: 3554651669760030930, guid: 970d1f5ac84ef7d418d70cd27625c12a, type: 2}
@@ -529,7 +530,7 @@ GameObject:
   - component: {fileID: 585421436788579140}
   - component: {fileID: 4474337009856204129}
   m_Layer: 5
-  m_Name: Toggle Cards Button
+  m_Name: Swap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -552,7 +553,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -772, y: -150}
+  m_AnchoredPosition: {x: 822, y: -412}
   m_SizeDelta: {x: 147, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5414250978653375675
@@ -639,7 +640,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2676171637884503650}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: ToggleCardPosition
+        m_MethodName: SwapCard
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
