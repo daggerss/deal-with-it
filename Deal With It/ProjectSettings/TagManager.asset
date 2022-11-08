@@ -9,6 +9,7 @@ TagManager:
   - NPC
   - PlayerTag
   - Played Action Cards Display
+  - Player Cards
   layers:
   - Default
   - TransparentFX
