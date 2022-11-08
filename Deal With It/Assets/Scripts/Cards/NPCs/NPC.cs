@@ -81,6 +81,35 @@ public class NPC : Card
         }
     }
 
+    /* ---------------------------- Starting Emotions --------------------------- */
+    [SerializeField]
+    private int _joyStartingMin;
+    public int JoyStartingMin => _joyStartingMin;
+    [SerializeField]
+    private int _joyStartingMax;
+    public int JoyStartingMax => _joyStartingMax;
+
+    [SerializeField]
+    private int _sadnessStartingMin;
+    public int SadnessStartingMin => _sadnessStartingMin;
+    [SerializeField]
+    private int _sadnessStartingMax;
+    public int SadnessStartingMax => _sadnessStartingMax;
+
+    [SerializeField]
+    private int _fearStartingMin;
+    public int FearStartingMin => _fearStartingMin;
+    [SerializeField]
+    private int _fearStartingMax;
+    public int FearStartingMax => _fearStartingMax;
+
+    [SerializeField]
+    private int _angerStartingMin;
+    public int AngerStartingMin => _angerStartingMin;
+    [SerializeField]
+    private int _angerStartingMax;
+    public int AngerStartingMax => _angerStartingMax;
+
     /* ------------------------------ Trait Effects ----------------------------- */
 
     // [GUIDE]
@@ -97,7 +126,7 @@ public class NPC : Card
     [SerializeField]
     private int _sadnessAddend;
     public int SadnessAddend => _sadnessAddend;
-    
+
     [SerializeField]
     private int _fearAddend;
     public int FearAddend => _fearAddend;
@@ -114,7 +143,7 @@ public class NPC : Card
     [SerializeField]
     private int _expressionEmotionAddend;
     public int ExpressionEmotionAddend => _expressionEmotionAddend;
-    
+
     [SerializeField]
     private int _processingEmotionAddend;
     public int ProcessingEmotionAddend => _processingEmotionAddend;
@@ -131,7 +160,7 @@ public class NPC : Card
     [SerializeField]
     private int _expressionEnergyAddend;
     public int ExpressionEnergyAddend => _expressionEnergyAddend;
-    
+
     [SerializeField]
     private int _processingEnergyAddend;
     public int ProcessingEnergyAddend => _processingEnergyAddend;

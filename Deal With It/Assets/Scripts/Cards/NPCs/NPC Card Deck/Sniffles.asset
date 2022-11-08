@@ -18,6 +18,14 @@ MonoBehaviour:
   <Illustration>k__BackingField: {fileID: 0}
   _cardGoals:
   - Reach 6-8 points on all emotions
+  _joyStartingMin: 9
+  _joyStartingMax: 11
+  _sadnessStartingMin: 9
+  _sadnessStartingMax: 11
+  _fearStartingMin: 9
+  _fearStartingMax: 11
+  _angerStartingMin: 9
+  _angerStartingMax: 11
   _joyAddend: 2
   _sadnessAddend: 2
   _fearAddend: 2

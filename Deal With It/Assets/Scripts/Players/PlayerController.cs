@@ -22,6 +22,13 @@ public class PlayerController : MonoBehaviour
     public Button ConfirmButton;
     public Button SwapButton;
 
+    // Checking trait effect change
+    private bool _energyValChanged;
+    private bool _joyValChanged;
+    private bool _sadnessValChanged;
+    private bool _fearValChanged;
+    private bool _angerValChanged;
+
     // Show hide card button
     public Button ToggleCardsButton;
 
@@ -46,10 +53,10 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Initializing the ActionCardDeck 
+        // Initializing the ActionCardDeck
         ActionCardDeck = (ActionCardDeck)GameObject.FindGameObjectWithTag("Action Card Deck").GetComponent(typeof(ActionCardDeck));
 
-        // Initializing the RoundController 
+        // Initializing the RoundController
         RoundController = (RoundController)GameObject.FindGameObjectWithTag("Round Controller").GetComponent(typeof(RoundController));
 
         // Initializing NPC
@@ -62,7 +69,7 @@ public class PlayerController : MonoBehaviour
         for(int i = 0; i < OriginalButtonPosition.Length; i++){
             OriginalButtonPosition[i] = CardsInHandButton[i].transform.position;
         }
-        
+
         // Initializing ToggleCardButtonPosition
         OriginalToggleCardsButtonPosition = ToggleCardsButton.transform.position;
     }
@@ -72,7 +79,7 @@ public class PlayerController : MonoBehaviour
     {
         // New round
         if(RoundController.Round != CurrentRound){
-            // Set Current round to RoundController.Round so the if doesn't repeat 
+            // Set Current round to RoundController.Round so the if doesn't repeat
             CurrentRound = RoundController.Round;
             SelectedCard = -1;
 
@@ -86,7 +93,7 @@ public class PlayerController : MonoBehaviour
             while(IndexOfEmptyElement != -1){
                 // Pick a card
                 Action pickedCard = ActionCardDeck.GetRandomCard();
-                
+
                 // Ensures cards don't repeat
                 int indexOfPickedCard = Array.IndexOf(CardsInHand, pickedCard);
 
@@ -185,6 +192,13 @@ public class PlayerController : MonoBehaviour
                 projectedCard.FearVal = NPCDisplay.ProjectTraitEffect(LevelType.Fear, projectedCard.FearVal, cardActionType);
                 projectedCard.AngerVal = NPCDisplay.ProjectTraitEffect(LevelType.Anger, projectedCard.AngerVal, cardActionType);
 
+                // Check if values were changed
+                _energyValChanged = (projectedCard.EnergyValChangeDir < 2);
+                _joyValChanged = (projectedCard.JoyValChangeDir < 2);
+                _sadnessValChanged = (projectedCard.SadnessValChangeDir < 2);
+                _fearValChanged = (projectedCard.FearValChangeDir < 2);
+                _angerValChanged = (projectedCard.AngerValChangeDir < 2);
+
                 // Add current card type to the card count
                 PlayedActionCards.AddCurrentCard(cardActionType);
 
@@ -197,6 +211,14 @@ public class PlayerController : MonoBehaviour
                 projectedCard.SadnessVal = PlayedActionCards.ProjectComboEffect(LevelType.Sadness, projectedCard.SadnessVal, cardActionType);
                 projectedCard.FearVal = PlayedActionCards.ProjectComboEffect(LevelType.Fear, projectedCard.FearVal, cardActionType);
                 projectedCard.AngerVal = PlayedActionCards.ProjectComboEffect(LevelType.Anger, projectedCard.AngerVal, cardActionType);
+
+                // Check if values were canceled out
+                projectedCard.EnergyValCanceled = (_energyValChanged && projectedCard.EnergyOriginalVal == projectedCard.EnergyVal);
+                projectedCard.JoyValCanceled = (_joyValChanged && projectedCard.JoyOriginalVal == projectedCard.JoyVal);
+                projectedCard.SadnessValCanceled = (_sadnessValChanged && projectedCard.SadnessOriginalVal == projectedCard.SadnessVal);
+                projectedCard.FearValCanceled = (_fearValChanged && projectedCard.FearOriginalVal == projectedCard.FearVal);
+                projectedCard.AngerValCanceled = (_angerValChanged && projectedCard.AngerOriginalVal == projectedCard.AngerVal);
+
             // If a player clicks on a card slot with no value inside
             }else{
                 // Do nothing
@@ -276,8 +298,8 @@ public class PlayerController : MonoBehaviour
     private IEnumerator AIPlayActionCard(){
         // _aiActionCardPlayed
         _aiActionCardPlayed = true;
-        
-        //Wait 
+
+        //Wait
         yield return new WaitForSeconds(3f);
 
         // Random Number
@@ -303,7 +325,7 @@ public class PlayerController : MonoBehaviour
         if(SelectedCard != -1){
             CardsInHand[SelectedCard].Revert();
         }
-        SelectedCard = -1; 
+        SelectedCard = -1;
         for(int i = 0; i < CardsInHandButton.Length; i++){
             Button currentButton = CardsInHandButton[i];
 

@@ -15,12 +15,12 @@ public class ActionCardDisplay : CardDisplay
     public Image EnergyImage, JoyImage, SadnessImage, FearImage, AngerImage, ActionTypeImage;
 
     // Arrows UI
-    public Image EnergyArrowUpImage, EnergyArrowDownImage;
-    public Image JoyArrowUpImage, JoyArrowDownImage;
-    public Image SadnessArrowUpImage, SadnessArrowDownImage;
-    public Image FearArrowUpImage, FearArrowDownImage;
-    public Image AngerArrowUpImage, AngerArrowDownImage;
-    
+    public Image EnergyArrowUpImage, EnergyArrowDownImage, EnergyEqualImage;
+    public Image JoyArrowUpImage, JoyArrowDownImage, JoyEqualImage;
+    public Image SadnessArrowUpImage, SadnessArrowDownImage, SadnessEqualImage;
+    public Image FearArrowUpImage, FearArrowDownImage, FearEqualImage;
+    public Image AngerArrowUpImage, AngerArrowDownImage, AngerEqualImage;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +34,7 @@ public class ActionCardDisplay : CardDisplay
         // ActionCardDisplay is under PlayerController
         if(Owner != null){
             currentActionCard = Owner.CardsInHand[CardNumber];
-        
+
         // ActionCardDisplay is under PlayedActionCardsDisplay
         }else if(Owner1 != null){
             currentActionCard = Owner1.PlayedActionCards[CardNumber];
@@ -63,17 +63,23 @@ public class ActionCardDisplay : CardDisplay
             AngerText.text = FormatText(currentActionCard.AngerVal, currentActionCard.AngerOriginalVal);
             AngerImage.gameObject.SetActive(ShowImage(currentActionCard.AngerVal, currentActionCard.AngerOriginalVal));
 
-            EnergyArrowUpImage.gameObject.SetActive(ShouldShowArrow(0, currentActionCard.EnergyOriginalVal, currentActionCard.EnergyVal));
-            JoyArrowUpImage.gameObject.SetActive(ShouldShowArrow(0, currentActionCard.JoyOriginalVal, currentActionCard.JoyVal));
-            SadnessArrowUpImage.gameObject.SetActive(ShouldShowArrow(0, currentActionCard.SadnessOriginalVal, currentActionCard.SadnessVal));
-            FearArrowUpImage.gameObject.SetActive(ShouldShowArrow(0, currentActionCard.FearOriginalVal, currentActionCard.FearVal));
-            AngerArrowUpImage.gameObject.SetActive(ShouldShowArrow(0, currentActionCard.AngerOriginalVal, currentActionCard.AngerVal));
+            EnergyArrowUpImage.enabled = (currentActionCard.EnergyValChangeDir == 0);
+            JoyArrowUpImage.enabled = (currentActionCard.JoyValChangeDir == 0);
+            SadnessArrowUpImage.enabled = (currentActionCard.SadnessValChangeDir == 0);
+            FearArrowUpImage.enabled = (currentActionCard.FearValChangeDir == 0);
+            AngerArrowUpImage.enabled = (currentActionCard.AngerValChangeDir == 0);
 
-            EnergyArrowDownImage.gameObject.SetActive(ShouldShowArrow(1, currentActionCard.EnergyOriginalVal, currentActionCard.EnergyVal));
-            JoyArrowDownImage.gameObject.SetActive(ShouldShowArrow(1, currentActionCard.JoyOriginalVal, currentActionCard.JoyVal));
-            SadnessArrowDownImage.gameObject.SetActive(ShouldShowArrow(1, currentActionCard.SadnessOriginalVal, currentActionCard.SadnessVal));
-            FearArrowDownImage.gameObject.SetActive(ShouldShowArrow(1, currentActionCard.FearOriginalVal, currentActionCard.FearVal));
-            AngerArrowDownImage.gameObject.SetActive(ShouldShowArrow(1, currentActionCard.AngerOriginalVal, currentActionCard.AngerVal));
+            EnergyArrowDownImage.enabled = (currentActionCard.EnergyValChangeDir == 1);
+            JoyArrowDownImage.enabled = (currentActionCard.JoyValChangeDir == 1);
+            SadnessArrowDownImage.enabled = (currentActionCard.SadnessValChangeDir == 1);
+            FearArrowDownImage.enabled = (currentActionCard.FearValChangeDir == 1);
+            AngerArrowDownImage.enabled = (currentActionCard.AngerValChangeDir == 1);
+
+            EnergyEqualImage.enabled = currentActionCard.EnergyValCanceled;
+            JoyEqualImage.enabled = currentActionCard.JoyValCanceled;
+            SadnessEqualImage.enabled = currentActionCard.SadnessValCanceled;
+            FearEqualImage.enabled = currentActionCard.FearValCanceled;
+            AngerEqualImage.enabled = currentActionCard.AngerValCanceled;
         }else{
         }
     }

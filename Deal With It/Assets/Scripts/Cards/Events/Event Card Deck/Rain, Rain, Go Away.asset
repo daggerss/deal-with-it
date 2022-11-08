@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardName: Rain, Rain, Go Away
   _cardDescription: "Oh no! It started pouring outside but you didn\u2019t bring
-    an umbrella. Rihanna can\u2019t save you. (Pulls 1 more event card)"
+    an umbrella. Rihanna can\u2019t save you."
   <Illustration>k__BackingField: {fileID: 0}
   _energyConstVal: -2
   _joyConstVal: 0

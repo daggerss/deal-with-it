@@ -27,6 +27,17 @@ public class CardDisplay : MonoBehaviour
     }
 
     // Show or hide image
+    public bool ShowImage(int value){
+        string EmotionPoints = FormatText(value);
+
+        if(EmotionPoints == null){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    // Show or hide image
     public bool ShowImage(int value, int original){
         string EmotionPoints = FormatText(value, original);
 
@@ -35,20 +46,6 @@ public class CardDisplay : MonoBehaviour
         }else{
             return true;
         }
-    }
-    
-    // Show or hide arrows
-    // dir = 0: arrow up
-    // dir = 1: arrow down
-    public bool ShouldShowArrow(int dir, int original, int current)
-    {
-        if ((dir == 0 && original < current) ||
-            (dir == 1 && original > current))
-        {
-            return true;
-        }
-
-        return false;
     }
 
     // Adds or subtracts the addend according to energy/emotion value
