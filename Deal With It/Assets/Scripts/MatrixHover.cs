@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class MatrixHover : MonoBehaviour , IPointerClickHandler, IPointerExitHandler
+public class MatrixHover : MonoBehaviour , IPointerEnterHandler, IPointerExitHandler
 {
     public GameObject HoverPanel;
 
-    public void OnPointerClick(PointerEventData eventData){
+    public void OnPointerEnter(PointerEventData eventData){
         HoverPanel.SetActive(true);
     }
 
