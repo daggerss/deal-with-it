@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class RoundController : MonoBehaviour
 {
@@ -45,6 +46,7 @@ public class RoundController : MonoBehaviour
     private int _totalProcessingCount = 0;
     private int _totalReappraisalCount = 0;
 
+    public TextMeshProUGUI conditionText;
     /* ------------------------------- Skip Player ------------------------------ */
     public IEnumerator Skip; 
     public bool CountdownActive = false;
@@ -67,6 +69,7 @@ public class RoundController : MonoBehaviour
 
         // Initialize _skipPlayer
         Skip = SkipPlayer(10f);
+        
     }
 
     // Update is called once per frame
@@ -146,6 +149,9 @@ public class RoundController : MonoBehaviour
         switch(NPC.CardName.ToUpper()){
             /* ---------------------------------- Knot ---------------------------------- */
             case "KNOT":
+
+                conditionText.text = "Keep Joy and Sadness neutral (6-8) while limiting Fear and Anger (Below 6) " + _goalCounter;
+
                 if((NPC.JoyLvl >= 6 && NPC.JoyLvl <= 8) &&
                 (NPC.SadnessLvl >= 6 && NPC.SadnessLvl <= 8) &&
                 (NPC.FearLvl < 6) &&
@@ -162,6 +168,7 @@ public class RoundController : MonoBehaviour
                 if(_goalCounter == 7){
                     return "win";
                 }
+
 
                 break;
 
