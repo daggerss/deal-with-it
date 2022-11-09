@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public int PlayerNumber;
     private int SelectedCard = -1;
     public bool Playable;
+    [SerializeField] private GameObject _playerTurnIndicator;
 
     // Misc
 
@@ -44,10 +45,7 @@ public class PlayerController : MonoBehaviour
 
     // PlayedActionCards
     public PlayedActionCardsDisplay PlayedActionCards;
-    private bool _aiActionCardPlayed = false;
-
-    // PlayerTurn Indicator Objects
-    public GameObject[] PlayerTurnIndicator = new GameObject[5]; 
+    private bool _aiActionCardPlayed = false; 
 
     /* --------------------------------- Methods -------------------------------- */
     // Start is called before the first frame update
@@ -122,8 +120,18 @@ public class PlayerController : MonoBehaviour
             SelectCard(-1);
         }
 
+        // Show or hide player turn indicator
+        if (RoundController.PlayerTurn == PlayerNumber)
+        {
+            _playerTurnIndicator.SetActive(true);
+        }
+        else
+        {
+            _playerTurnIndicator.SetActive(false);
+        }
+
         // If it is this player's turn
-        if(RoundController.PlayerTurn == PlayerNumber && !_aiActionCardPlayed){
+        if(RoundController.PlayerTurn == PlayerNumber && !_aiActionCardPlayed){            
             //If player is AI
             if(!Playable){
                 StartCoroutine(AIPlayActionCard());
@@ -144,16 +152,6 @@ public class PlayerController : MonoBehaviour
             // So player can't play card when it's not their turn
             ConfirmButton.gameObject.SetActive(false);
             SwapButton.gameObject.SetActive(false);
-        }
-
-        //Player Turn Indicator
-        for (int i = 0; i < PlayerTurnIndicator.Length; i++){
-            if (i == RoundController.PlayerTurn){
-                PlayerTurnIndicator[i].GetComponent<SpriteRenderer>().color = new Color (1, 0, 0, 1);
-            }
-            else {
-                PlayerTurnIndicator[i].GetComponent<SpriteRenderer>().color = new Color (255, 255, 255, 255);
-            }
         }
     }
 
