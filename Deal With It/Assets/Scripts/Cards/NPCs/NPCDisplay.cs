@@ -322,11 +322,13 @@ public class NPCDisplay : CardDisplay
             if (projectedValue > npc.EnergyLvl)
             {
                 energyProjectUp.gameObject.SetActive(true);
+                energyProjectDown.gameObject.SetActive(false);
                 energyProjectUp.SetValue(projectedValue);
             }
             else
             {
                 energyProjectDown.gameObject.SetActive(true);
+                energyProjectUp.gameObject.SetActive(false);
                 energyProjectDown.SetValue(projectedValue);
             }
         }
@@ -339,11 +341,13 @@ public class NPCDisplay : CardDisplay
             if (projectedValue > npc.JoyLvl)
             {
                 joyProjectUp.gameObject.SetActive(true);
+                joyProjectDown.gameObject.SetActive(false);
                 joyProjectUp.SetValue(projectedValue);
             }
             else
             {
                 joyProjectDown.gameObject.SetActive(true);
+                joyProjectUp.gameObject.SetActive(false);
                 joyProjectDown.SetValue(projectedValue);
             }
         }
@@ -356,11 +360,13 @@ public class NPCDisplay : CardDisplay
             if (projectedValue > npc.SadnessLvl)
             {
                 sadnessProjectUp.gameObject.SetActive(true);
+                sadnessProjectDown.gameObject.SetActive(false);
                 sadnessProjectUp.SetValue(projectedValue);
             }
             else
             {
                 sadnessProjectDown.gameObject.SetActive(true);
+                sadnessProjectUp.gameObject.SetActive(false);
                 sadnessProjectDown.SetValue(projectedValue);
             }
         }
@@ -373,11 +379,13 @@ public class NPCDisplay : CardDisplay
             if (projectedValue > npc.FearLvl)
             {
                 fearProjectUp.gameObject.SetActive(true);
+                fearProjectDown.gameObject.SetActive(false);
                 fearProjectUp.SetValue(projectedValue);
             }
             else
             {
                 fearProjectDown.gameObject.SetActive(true);
+                fearProjectUp.gameObject.SetActive(false);
                 fearProjectDown.SetValue(projectedValue);
             }
         }
@@ -390,11 +398,13 @@ public class NPCDisplay : CardDisplay
             if (projectedValue > npc.AngerLvl)
             {
                 angerProjectUp.gameObject.SetActive(true);
+                angerProjectDown.gameObject.SetActive(false);
                 angerProjectUp.SetValue(projectedValue);
             }
             else
             {
                 angerProjectDown.gameObject.SetActive(true);
+                angerProjectUp.gameObject.SetActive(false);
                 angerProjectDown.SetValue(projectedValue);
             }
         }
