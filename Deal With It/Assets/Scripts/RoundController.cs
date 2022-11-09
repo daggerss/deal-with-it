@@ -69,7 +69,24 @@ public class RoundController : MonoBehaviour
 
         // Initialize _skipPlayer
         Skip = SkipPlayer(10f);
-        
+
+        // Display NPC win condition/s
+        switch(NPC.CardName.ToUpper()){
+            case "KNOT":
+                conditionText.text = "Keep Joy and Sadness neutral (6-8) while limiting Fear and Anger (Below 6) \n For 7 rounds! Currently: " + _goalCounter;
+
+                break;
+
+            case "Pickles":
+                conditionText.text = "Use 10 expression cards, current total: " /* + _goalCounter */ + "\n and don't forget to make sure no emotion goes above 10!";
+            
+                break;
+
+            case "Sniffles":
+                conditionText.text = "Reach neutral, between 6-8 points, for all emotions!";
+
+                break;            
+        }
     }
 
     // Update is called once per frame
@@ -144,14 +161,11 @@ public class RoundController : MonoBehaviour
             }else{
                 break;
             }
-        }
+        }   
 
         switch(NPC.CardName.ToUpper()){
             /* ---------------------------------- Knot ---------------------------------- */
             case "KNOT":
-
-                conditionText.text = "Keep Joy and Sadness neutral (6-8) while limiting Fear and Anger (Below 6) " + _goalCounter;
-
                 if((NPC.JoyLvl >= 6 && NPC.JoyLvl <= 8) &&
                 (NPC.SadnessLvl >= 6 && NPC.SadnessLvl <= 8) &&
                 (NPC.FearLvl < 6) &&
