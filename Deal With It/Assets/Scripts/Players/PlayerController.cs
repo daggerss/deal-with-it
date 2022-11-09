@@ -19,7 +19,6 @@ public class PlayerController : MonoBehaviour
     public Action[] CardsInHand = new Action[5];
     public Button[] CardsInHandButton = new Button[5];
     private Vector2[] OriginalButtonPosition = new Vector2[5];
-    private Vector2 OriginalToggleCardsButtonPosition;
     public Button ConfirmButton;
     public Button SwapButton;
 
@@ -29,9 +28,6 @@ public class PlayerController : MonoBehaviour
     private bool _sadnessValChanged;
     private bool _fearValChanged;
     private bool _angerValChanged;
-
-    // Show hide card button
-    public Button ToggleCardsButton;
 
     // ActionCardDeck
     private ActionCardDeck ActionCardDeck;
@@ -67,9 +63,6 @@ public class PlayerController : MonoBehaviour
         for(int i = 0; i < OriginalButtonPosition.Length; i++){
             OriginalButtonPosition[i] = CardsInHandButton[i].transform.position;
         }
-
-        // Initializing ToggleCardButtonPosition
-        OriginalToggleCardsButtonPosition = ToggleCardsButton.transform.position;
     }
 
     // Update is called once per frame
@@ -144,10 +137,11 @@ public class PlayerController : MonoBehaviour
             }
 
             // Timer Countdown
-            if(!RoundController.CountdownActive){
-                Debug.Log("CountdownActive = false");
-                StartCoroutine(RoundController.Skip);
-            }
+            // ! WIP
+            // if(!RoundController.CountdownActive){
+            //     Debug.Log("CountdownActive = false");
+            //     StartCoroutine(RoundController.Skip);
+            // }
         }else{
             // So player can't play card when it's not their turn
             ConfirmButton.gameObject.SetActive(false);
@@ -233,10 +227,6 @@ public class PlayerController : MonoBehaviour
                     CardsInHand[i].Revert();
                 }
             }
-
-            // Make sure show button is at its original position
-            // * Because when you click a card while it's in the tray, the show card button doesn't go up with it
-            ToggleCardsButton.transform.position = OriginalToggleCardsButtonPosition;
         }
     }
 
@@ -315,29 +305,6 @@ public class PlayerController : MonoBehaviour
         SelectCard(rng);
         SelectedCard = rng;
         PlayCard();
-    }
-
-    /* -------------------------- Toggle Card Position -------------------------- */
-    public void ToggleCardPosition(){
-        // Make sure that all cards are in line and unselected
-        if(SelectedCard != -1){
-            CardsInHand[SelectedCard].Revert();
-        }
-        SelectedCard = -1;
-        for(int i = 0; i < CardsInHandButton.Length; i++){
-            Button currentButton = CardsInHandButton[i];
-
-            // Cards Down
-            if(currentButton.transform.position.y >= OriginalButtonPosition[i].y){
-                currentButton.transform.position = new Vector2(currentButton.transform.position.x, OriginalButtonPosition[i].y - 300f);
-                ToggleCardsButton.transform.position = new Vector2(OriginalToggleCardsButtonPosition.x, OriginalToggleCardsButtonPosition.y - 300f);
-
-            // Cards Up
-            }else{
-                currentButton.transform.position = OriginalButtonPosition[i];
-                ToggleCardsButton.transform.position = OriginalToggleCardsButtonPosition;
-            }
-        }
     }
 
     //! LEGACY Get lowest energy cost in hand
