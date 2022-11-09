@@ -22,13 +22,6 @@ public class PlayerController : MonoBehaviour
     public Button ConfirmButton;
     public Button SwapButton;
 
-    // Checking trait effect change
-    private bool _energyValChanged;
-    private bool _joyValChanged;
-    private bool _sadnessValChanged;
-    private bool _fearValChanged;
-    private bool _angerValChanged;
-
     // ActionCardDeck
     private ActionCardDeck ActionCardDeck;
 
@@ -185,11 +178,7 @@ public class PlayerController : MonoBehaviour
                 projectedCard.AngerVal = NPCDisplay.ProjectTraitEffect(LevelType.Anger, projectedCard.AngerVal, cardActionType);
 
                 // Check if values were changed
-                _energyValChanged = (projectedCard.EnergyValChangeDir < 2);
-                _joyValChanged = (projectedCard.JoyValChangeDir < 2);
-                _sadnessValChanged = (projectedCard.SadnessValChangeDir < 2);
-                _fearValChanged = (projectedCard.FearValChangeDir < 2);
-                _angerValChanged = (projectedCard.AngerValChangeDir < 2);
+                projectedCard.UpdateValueChanges();
 
                 // Add current card type to the card count
                 PlayedActionCards.AddCurrentCard(cardActionType);
@@ -205,11 +194,7 @@ public class PlayerController : MonoBehaviour
                 projectedCard.AngerVal = PlayedActionCards.ProjectComboEffect(LevelType.Anger, projectedCard.AngerVal, cardActionType);
 
                 // Check if values were canceled out
-                projectedCard.EnergyValCanceled = (_energyValChanged && projectedCard.EnergyOriginalVal == projectedCard.EnergyVal);
-                projectedCard.JoyValCanceled = (_joyValChanged && projectedCard.JoyOriginalVal == projectedCard.JoyVal);
-                projectedCard.SadnessValCanceled = (_sadnessValChanged && projectedCard.SadnessOriginalVal == projectedCard.SadnessVal);
-                projectedCard.FearValCanceled = (_fearValChanged && projectedCard.FearOriginalVal == projectedCard.FearVal);
-                projectedCard.AngerValCanceled = (_angerValChanged && projectedCard.AngerOriginalVal == projectedCard.AngerVal);
+                projectedCard.UpdateValueCanceled();
 
             // If a player clicks on a card slot with no value inside
             }else{
@@ -256,7 +241,7 @@ public class PlayerController : MonoBehaviour
         }
 
         RoundController.NextPlayer();
-        StopCoroutine(RoundController.Skip);
+        // StopCoroutine(RoundController.Skip);
     }
 
     public void SwapCard(){
@@ -279,7 +264,7 @@ public class PlayerController : MonoBehaviour
         }
 
         RoundController.NextPlayer();
-        StopCoroutine(RoundController.Skip);
+        // StopCoroutine(RoundController.Skip);
     }
 
     /* --------------------- AI Play Action Card With Delay --------------------- */

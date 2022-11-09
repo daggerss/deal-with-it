@@ -117,6 +117,13 @@ public class Action : Card
     public int FearValChangeDir => CheckChangeDir(_fearOriginalVal, _fearVal);
     public int AngerValChangeDir => CheckChangeDir(_angerOriginalVal, _angerVal);
 
+    // Did value change
+    public bool EnergyValChanged {get; set;}
+    public bool JoyValChanged  {get; set;}
+    public bool SadnessValChanged  {get; set;}
+    public bool FearValChanged  {get; set;}
+    public bool AngerValChanged  {get; set;}
+
     // Is canceled out
     public bool EnergyValCanceled {get; set;}
     public bool JoyValCanceled {get; set;}
@@ -151,6 +158,12 @@ public class Action : Card
         SadnessVal = _sadnessOriginalVal;
         FearVal = _fearOriginalVal;
         AngerVal = _angerOriginalVal;
+
+        EnergyValCanceled = false;
+        JoyValCanceled = false;
+        SadnessValCanceled = false;
+        FearValCanceled = false;
+        AngerValCanceled = false;
     }
 
     // Determine value change direction
@@ -169,6 +182,35 @@ public class Action : Card
             return 2;
         }
     }
+
+    // Update bools for val changed
+    public void UpdateValueChanges()
+    {
+        EnergyValChanged = (EnergyValChangeDir < 2);
+        JoyValChanged = (JoyValChangeDir < 2);
+        SadnessValChanged = (SadnessValChangeDir < 2);
+        FearValChanged = (FearValChangeDir < 2);
+        AngerValChanged = (AngerValChangeDir < 2);
+    }
+
+    public void UpdateValueCanceled()
+    {
+        EnergyValCanceled = (EnergyValChanged && EnergyOriginalVal == EnergyVal);
+        JoyValCanceled = (JoyValChanged && JoyOriginalVal == JoyVal);
+        SadnessValCanceled = (SadnessValChanged && SadnessOriginalVal == SadnessVal);
+        FearValCanceled = (FearValChanged && FearOriginalVal == FearVal);
+        AngerValCanceled = (AngerValChanged && AngerOriginalVal == AngerVal);
+    }
+
+    // Update bools for val changed given current
+    // public bool UpdateValueChanges(int current)
+    // {
+    //     EnergyValChanged = (CheckChangeDir(_energyOriginalVal, _energyVal+current) < 2);
+    //     JoyValChanged = (JoyValChangeDir < 2);
+    //     SadnessValChanged = (SadnessValChangeDir < 2);
+    //     FearValChanged = (FearValChangeDir < 2);
+    //     AngerValChanged = (AngerValChangeDir < 2);
+    // }
 }
 
 /* ------------------------------- Action Type ------------------------------ */

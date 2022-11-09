@@ -152,7 +152,9 @@ public class PlayedActionCardsDisplay : CardDisplay
                     if(playedActionCard == null || count > 3){
                         break;
                     }else if(playedActionCard.CardActionType != ActionType.Distraction && count <= 3){
+                        playedActionCard.UpdateValueChanges();
                         playedActionCard.EnergyVal -= 1;
+                        playedActionCard.UpdateValueCanceled();
                     }else{
                         count++;
                     }
@@ -202,9 +204,11 @@ public class PlayedActionCardsDisplay : CardDisplay
                     if(playedActionCard == null){
                         break;
                     }else if(playedActionCard.CardActionType == ActionType.Processing && count < 3){
+                        playedActionCard.UpdateValueChanges();
                         playedActionCard.SadnessVal += AddExtraEffect(playedActionCard.SadnessOriginalVal, -2);
                         playedActionCard.FearVal += AddExtraEffect(playedActionCard.FearOriginalVal, -2);
                         playedActionCard.AngerVal += AddExtraEffect(playedActionCard.AngerOriginalVal, -2);
+                        playedActionCard.UpdateValueCanceled();
                     }
                 }
             }
@@ -225,10 +229,12 @@ public class PlayedActionCardsDisplay : CardDisplay
                     if(playedActionCard == null){
                         break;
                     }else if(playedActionCard.CardActionType == ActionType.Reappraisal && count < 3){
+                        playedActionCard.UpdateValueChanges();
                         playedActionCard.JoyVal += AddExtraEffect(playedActionCard.JoyOriginalVal, -1);
                         playedActionCard.SadnessVal += AddExtraEffect(playedActionCard.SadnessOriginalVal, -1);
                         playedActionCard.FearVal += AddExtraEffect(playedActionCard.FearOriginalVal, -1);
                         playedActionCard.AngerVal += AddExtraEffect(playedActionCard.AngerOriginalVal, -1);
+                        playedActionCard.UpdateValueCanceled();
                     }
                 }
             }
@@ -410,6 +416,9 @@ public class PlayedActionCardsDisplay : CardDisplay
                 PlayedActionCards[i].SadnessVal = _sadnessOriginalVals[i];
                 PlayedActionCards[i].FearVal = _fearOriginalVals[i];
                 PlayedActionCards[i].AngerVal = _angerOriginalVals[i];
+
+                PlayedActionCards[i].UpdateValueChanges();
+                PlayedActionCards[i].UpdateValueCanceled();
             }else{
                 break;
             }
