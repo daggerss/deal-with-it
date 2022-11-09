@@ -65,11 +65,17 @@ public class NPCDisplay : CardDisplay
     public Image fearSlash;
     public Image angerSlash;
 
-    public LevelBar energyProjectLine;
-    public LevelBar joyProjectLine;
-    public LevelBar sadnessProjectLine;
-    public LevelBar fearProjectLine;
-    public LevelBar angerProjectLine;
+    public LevelBar energyProjectUp;
+    public LevelBar joyProjectUp;
+    public LevelBar sadnessProjectUp;
+    public LevelBar fearProjectUp;
+    public LevelBar angerProjectUp;
+
+    public LevelBar energyProjectDown;
+    public LevelBar joyProjectDown;
+    public LevelBar sadnessProjectDown;
+    public LevelBar fearProjectDown;
+    public LevelBar angerProjectDown;
 
     /* --------------------------------- Methods -------------------------------- */
     // Start is called before the first frame update
@@ -113,18 +119,18 @@ public class NPCDisplay : CardDisplay
         FearBackBar.SetValue(npc.FearLvl);
         AngerBackBar.SetValue(npc.AngerLvl);
 
-        // Set project line
-        energyProjectLine.SetMaxValue(20);
-        joyProjectLine.SetMaxValue(13);
-        sadnessProjectLine.SetMaxValue(13);
-        fearProjectLine.SetMaxValue(13);
-        angerProjectLine.SetMaxValue(13);
+        // Set project bars
+        energyProjectUp.SetMaxValue(20);
+        joyProjectUp.SetMaxValue(13);
+        sadnessProjectUp.SetMaxValue(13);
+        fearProjectUp.SetMaxValue(13);
+        angerProjectUp.SetMaxValue(13);
 
-        energyProjectLine.SetValue(20);
-        joyProjectLine.SetValue(npc.JoyLvl);
-        sadnessProjectLine.SetValue(npc.SadnessLvl);
-        fearProjectLine.SetValue(npc.FearLvl);
-        angerProjectLine.SetValue(npc.AngerLvl);
+        energyProjectDown.SetMaxValue(20);
+        joyProjectDown.SetMaxValue(13);
+        sadnessProjectDown.SetMaxValue(13);
+        fearProjectDown.SetMaxValue(13);
+        angerProjectDown.SetMaxValue(13);
 
         // Set text UI
         cardTypeText.text = npc.GetType().Name;
@@ -312,40 +318,85 @@ public class NPCDisplay : CardDisplay
         {
             energyProjectText.text = projectedValue.ToString();
             energySlash.enabled = true;
-            energyProjectLine.gameObject.SetActive(true);
-            energyProjectLine.SetValue(projectedValue);
+
+            if (projectedValue > npc.EnergyLvl)
+            {
+                energyProjectUp.gameObject.SetActive(true);
+                energyProjectUp.SetValue(projectedValue);
+            }
+            else
+            {
+                energyProjectDown.gameObject.SetActive(true);
+                energyProjectDown.SetValue(projectedValue);
+            }
         }
         // Joy
         else if (levelType == LevelType.Joy && projectedValue != npc.JoyLvl)
         {
             joyProjectText.text = projectedValue.ToString();
             joySlash.enabled = true;
-            joyProjectLine.gameObject.SetActive(true);
-            joyProjectLine.SetValue(projectedValue);
+            
+            if (projectedValue > npc.JoyLvl)
+            {
+                joyProjectUp.gameObject.SetActive(true);
+                joyProjectUp.SetValue(projectedValue);
+            }
+            else
+            {
+                joyProjectDown.gameObject.SetActive(true);
+                joyProjectDown.SetValue(projectedValue);
+            }
         }
         // Sadness
         else if (levelType == LevelType.Sadness && projectedValue != npc.SadnessLvl)
         {
             sadnessProjectText.text = projectedValue.ToString();
             sadnessSlash.enabled = true;
-            sadnessProjectLine.gameObject.SetActive(true);
-            sadnessProjectLine.SetValue(projectedValue);
+            
+            if (projectedValue > npc.SadnessLvl)
+            {
+                sadnessProjectUp.gameObject.SetActive(true);
+                sadnessProjectUp.SetValue(projectedValue);
+            }
+            else
+            {
+                sadnessProjectDown.gameObject.SetActive(true);
+                sadnessProjectDown.SetValue(projectedValue);
+            }
         }
         // Fear
         else if (levelType == LevelType.Fear && projectedValue != npc.FearLvl)
         {
             fearProjectText.text = projectedValue.ToString();
             fearSlash.enabled = true;
-            fearProjectLine.gameObject.SetActive(true);
-            fearProjectLine.SetValue(projectedValue);
+            
+            if (projectedValue > npc.FearLvl)
+            {
+                fearProjectUp.gameObject.SetActive(true);
+                fearProjectUp.SetValue(projectedValue);
+            }
+            else
+            {
+                fearProjectDown.gameObject.SetActive(true);
+                fearProjectDown.SetValue(projectedValue);
+            }
         }
         // Anger
         else if (levelType == LevelType.Anger && projectedValue != npc.AngerLvl)
         {
             angerProjectText.text = projectedValue.ToString();
             angerSlash.enabled = true;
-            angerProjectLine.gameObject.SetActive(true);
-            angerProjectLine.SetValue(projectedValue);
+            
+            if (projectedValue > npc.AngerLvl)
+            {
+                angerProjectUp.gameObject.SetActive(true);
+                angerProjectUp.SetValue(projectedValue);
+            }
+            else
+            {
+                angerProjectDown.gameObject.SetActive(true);
+                angerProjectDown.SetValue(projectedValue);
+            }
         }
     }
 
@@ -366,12 +417,17 @@ public class NPCDisplay : CardDisplay
         fearSlash.enabled = false;
         angerSlash.enabled = false;
 
-        // Project Line
-        energyProjectLine.gameObject.SetActive(false);
-        joyProjectLine.gameObject.SetActive(false);
-        sadnessProjectLine.gameObject.SetActive(false);
-        fearProjectLine.gameObject.SetActive(false);
-        angerProjectLine.gameObject.SetActive(false);
+        // Project Bars
+        energyProjectUp.gameObject.SetActive(false);
+        joyProjectUp.gameObject.SetActive(false);
+        sadnessProjectUp.gameObject.SetActive(false);
+        fearProjectUp.gameObject.SetActive(false);
+        angerProjectUp.gameObject.SetActive(false);
+        energyProjectDown.gameObject.SetActive(false);
+        joyProjectDown.gameObject.SetActive(false);
+        sadnessProjectDown.gameObject.SetActive(false);
+        fearProjectDown.gameObject.SetActive(false);
+        angerProjectDown.gameObject.SetActive(false);
     }
 
     /* ------------------------------- Coroutines ------------------------------- */
