@@ -75,6 +75,9 @@ public class EventCardDisplay : CardDisplay
                 // Nothing
             }
 
+            // For UI
+            npcDisplay.ApplyEffect(LevelType.Energy, 0);
+
             DrawCard();
         }
     }
