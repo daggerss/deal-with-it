@@ -21,6 +21,13 @@ public class PlayedActionCardsDisplay : CardDisplay
     private int[] _fearOriginalVals = new int[5];
     private int[] _angerOriginalVals = new int[5];
 
+    // Canceled
+    private bool[] _energyOriginalCanceled = new bool[5];
+    private bool[] _joyOriginalCanceled = new bool[5];
+    private bool[] _sadnessOriginalCanceled = new bool[5];
+    private bool[] _fearOriginalCanceled = new bool[5];
+    private bool[] _angerOriginalCanceled = new bool[5];
+
     /* ---------------------------------- Count --------------------------------- */
     public int DistractionCount = 0;
     public int ExpressionCount = 0;
@@ -377,6 +384,13 @@ public class PlayedActionCardsDisplay : CardDisplay
             _fearOriginalVals[CurrentSlot] = actionCard.FearVal;
             _angerOriginalVals[CurrentSlot] = actionCard.AngerVal;
 
+            // Save canceled
+            _energyOriginalCanceled[CurrentSlot] = actionCard.EnergyValCanceled;
+            _joyOriginalCanceled[CurrentSlot] = actionCard.JoyValCanceled;
+            _sadnessOriginalCanceled[CurrentSlot] = actionCard.SadnessValCanceled;
+            _fearOriginalCanceled[CurrentSlot] = actionCard.FearValCanceled;
+            _angerOriginalCanceled[CurrentSlot] = actionCard.AngerValCanceled;
+
             // If an at least combo is triggered, the original values of the affected cards will change
             ChangeOriginalValue(actionCard.CardActionType);
 
@@ -401,6 +415,13 @@ public class PlayedActionCardsDisplay : CardDisplay
                     _sadnessOriginalVals[i] = PlayedActionCards[i].SadnessVal;
                     _fearOriginalVals[i] = PlayedActionCards[i].FearVal;
                     _angerOriginalVals[i] = PlayedActionCards[i].AngerVal;
+
+                    // Save canceled
+                    _energyOriginalCanceled[i] = PlayedActionCards[i].EnergyValCanceled;
+                    _joyOriginalCanceled[i] = PlayedActionCards[i].JoyValCanceled;
+                    _sadnessOriginalCanceled[i] = PlayedActionCards[i].SadnessValCanceled;
+                    _fearOriginalCanceled[i] = PlayedActionCards[i].FearValCanceled;
+                    _angerOriginalCanceled[i] = PlayedActionCards[i].AngerValCanceled;
                 }
             }
         }
@@ -417,8 +438,11 @@ public class PlayedActionCardsDisplay : CardDisplay
                 PlayedActionCards[i].FearVal = _fearOriginalVals[i];
                 PlayedActionCards[i].AngerVal = _angerOriginalVals[i];
 
-                PlayedActionCards[i].UpdateValueChanges();
-                PlayedActionCards[i].UpdateValueCanceled();
+                PlayedActionCards[i].EnergyValCanceled = _energyOriginalCanceled[i];
+                PlayedActionCards[i].JoyValCanceled = _joyOriginalCanceled[i];
+                PlayedActionCards[i].SadnessValCanceled = _sadnessOriginalCanceled[i];
+                PlayedActionCards[i].FearValCanceled = _fearOriginalCanceled[i];
+                PlayedActionCards[i].AngerValCanceled = _angerOriginalCanceled[i];
             }else{
                 break;
             }
