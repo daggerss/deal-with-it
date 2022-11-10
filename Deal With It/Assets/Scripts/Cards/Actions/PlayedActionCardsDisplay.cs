@@ -159,9 +159,9 @@ public class PlayedActionCardsDisplay : CardDisplay
                     if(playedActionCard == null || count > 3){
                         break;
                     }else if(playedActionCard.CardActionType != ActionType.Distraction && count <= 3){
-                        playedActionCard.UpdateValueChanges();
+                        playedActionCard.UpdateValueChanges(LevelType.Energy);
                         playedActionCard.EnergyVal -= 1;
-                        playedActionCard.UpdateValueCanceled();
+                        playedActionCard.UpdateValueCanceled(LevelType.Energy);
                     }else{
                         count++;
                     }
@@ -211,11 +211,17 @@ public class PlayedActionCardsDisplay : CardDisplay
                     if(playedActionCard == null){
                         break;
                     }else if(playedActionCard.CardActionType == ActionType.Processing && count < 3){
-                        playedActionCard.UpdateValueChanges();
+                        playedActionCard.UpdateValueChanges(LevelType.Sadness);
+                        playedActionCard.UpdateValueChanges(LevelType.Fear);
+                        playedActionCard.UpdateValueChanges(LevelType.Anger);
+
                         playedActionCard.SadnessVal += AddExtraEffect(playedActionCard.SadnessOriginalVal, -2);
                         playedActionCard.FearVal += AddExtraEffect(playedActionCard.FearOriginalVal, -2);
                         playedActionCard.AngerVal += AddExtraEffect(playedActionCard.AngerOriginalVal, -2);
-                        playedActionCard.UpdateValueCanceled();
+
+                        playedActionCard.UpdateValueCanceled(LevelType.Sadness);
+                        playedActionCard.UpdateValueCanceled(LevelType.Fear);
+                        playedActionCard.UpdateValueCanceled(LevelType.Anger);
                     }
                 }
             }
@@ -236,12 +242,20 @@ public class PlayedActionCardsDisplay : CardDisplay
                     if(playedActionCard == null){
                         break;
                     }else if(playedActionCard.CardActionType == ActionType.Reappraisal && count < 3){
-                        playedActionCard.UpdateValueChanges();
+                        playedActionCard.UpdateValueChanges(LevelType.Joy);
+                        playedActionCard.UpdateValueChanges(LevelType.Sadness);
+                        playedActionCard.UpdateValueChanges(LevelType.Fear);
+                        playedActionCard.UpdateValueChanges(LevelType.Anger);
+
                         playedActionCard.JoyVal += AddExtraEffect(playedActionCard.JoyOriginalVal, -1);
                         playedActionCard.SadnessVal += AddExtraEffect(playedActionCard.SadnessOriginalVal, -1);
                         playedActionCard.FearVal += AddExtraEffect(playedActionCard.FearOriginalVal, -1);
                         playedActionCard.AngerVal += AddExtraEffect(playedActionCard.AngerOriginalVal, -1);
-                        playedActionCard.UpdateValueCanceled();
+
+                        playedActionCard.UpdateValueCanceled(LevelType.Joy);
+                        playedActionCard.UpdateValueCanceled(LevelType.Sadness);
+                        playedActionCard.UpdateValueCanceled(LevelType.Fear);
+                        playedActionCard.UpdateValueCanceled(LevelType.Anger);
                     }
                 }
             }

@@ -193,6 +193,32 @@ public class Action : Card
         _angerValChanged = (AngerValChangeDir < 2);
     }
 
+    // Update val changed given level type
+    public void UpdateValueChanges(LevelType levelType)
+    {
+        if (levelType == LevelType.Energy)
+        {
+            _energyValChanged = (EnergyValChangeDir < 2);
+        }
+        else if (levelType == LevelType.Joy)
+        {
+            _joyValChanged = (JoyValChangeDir < 2);
+        }
+        else if (levelType == LevelType.Sadness)
+        {
+            _sadnessValChanged = (SadnessValChangeDir < 2);
+        }
+        else if (levelType == LevelType.Fear)
+        {
+            _fearValChanged = (FearValChangeDir < 2);
+        }
+        else if (levelType == LevelType.Anger)
+        {
+            _angerValChanged = (AngerValChangeDir < 2);
+        }
+    }
+
+    // Update canceled out
     public void UpdateValueCanceled()
     {
         EnergyValCanceled = (_energyValChanged && EnergyOriginalVal == EnergyVal);
@@ -200,6 +226,31 @@ public class Action : Card
         SadnessValCanceled = (_sadnessValChanged && SadnessOriginalVal == SadnessVal);
         FearValCanceled = (_fearValChanged && FearOriginalVal == FearVal);
         AngerValCanceled = (_angerValChanged && AngerOriginalVal == AngerVal);
+    }
+
+    // Update canceled out given level type
+    public void UpdateValueCanceled(LevelType levelType)
+    {
+        if (levelType == LevelType.Energy)
+        {
+            EnergyValCanceled = (_energyValChanged && EnergyOriginalVal == EnergyVal);
+        }
+        else if (levelType == LevelType.Joy)
+        {
+            JoyValCanceled = (_joyValChanged && JoyOriginalVal == JoyVal);
+        }
+        else if (levelType == LevelType.Sadness)
+        {
+            SadnessValCanceled = (_sadnessValChanged && SadnessOriginalVal == SadnessVal);
+        }
+        else if (levelType == LevelType.Fear)
+        {
+            FearValCanceled = (_fearValChanged && FearOriginalVal == FearVal);
+        }
+        else if (levelType == LevelType.Anger)
+        {
+            AngerValCanceled = (_angerValChanged && AngerOriginalVal == AngerVal);
+        }
     }
 }
 
