@@ -118,11 +118,11 @@ public class Action : Card
     public int AngerValChangeDir => CheckChangeDir(_angerOriginalVal, _angerVal);
 
     // Did value change
-    public bool EnergyValChanged {get; set;}
-    public bool JoyValChanged  {get; set;}
-    public bool SadnessValChanged  {get; set;}
-    public bool FearValChanged  {get; set;}
-    public bool AngerValChanged  {get; set;}
+    private bool _energyValChanged;
+    private bool _joyValChanged;
+    private bool _sadnessValChanged;
+    private bool _fearValChanged;
+    private bool _angerValChanged;
 
     // Is canceled out
     public bool EnergyValCanceled {get; set;}
@@ -186,31 +186,21 @@ public class Action : Card
     // Update bools for val changed
     public void UpdateValueChanges()
     {
-        EnergyValChanged = (EnergyValChangeDir < 2);
-        JoyValChanged = (JoyValChangeDir < 2);
-        SadnessValChanged = (SadnessValChangeDir < 2);
-        FearValChanged = (FearValChangeDir < 2);
-        AngerValChanged = (AngerValChangeDir < 2);
+        _energyValChanged = (EnergyValChangeDir < 2);
+        _joyValChanged = (JoyValChangeDir < 2);
+        _sadnessValChanged = (SadnessValChangeDir < 2);
+        _fearValChanged = (FearValChangeDir < 2);
+        _angerValChanged = (AngerValChangeDir < 2);
     }
 
     public void UpdateValueCanceled()
     {
-        EnergyValCanceled = (EnergyValChanged && EnergyOriginalVal == EnergyVal);
-        JoyValCanceled = (JoyValChanged && JoyOriginalVal == JoyVal);
-        SadnessValCanceled = (SadnessValChanged && SadnessOriginalVal == SadnessVal);
-        FearValCanceled = (FearValChanged && FearOriginalVal == FearVal);
-        AngerValCanceled = (AngerValChanged && AngerOriginalVal == AngerVal);
+        EnergyValCanceled = (_energyValChanged && EnergyOriginalVal == EnergyVal);
+        JoyValCanceled = (_joyValChanged && JoyOriginalVal == JoyVal);
+        SadnessValCanceled = (_sadnessValChanged && SadnessOriginalVal == SadnessVal);
+        FearValCanceled = (_fearValChanged && FearOriginalVal == FearVal);
+        AngerValCanceled = (_angerValChanged && AngerOriginalVal == AngerVal);
     }
-
-    // Update bools for val changed given current
-    // public bool UpdateValueChanges(int current)
-    // {
-    //     EnergyValChanged = (CheckChangeDir(_energyOriginalVal, _energyVal+current) < 2);
-    //     JoyValChanged = (JoyValChangeDir < 2);
-    //     SadnessValChanged = (SadnessValChangeDir < 2);
-    //     FearValChanged = (FearValChangeDir < 2);
-    //     AngerValChanged = (AngerValChangeDir < 2);
-    // }
 }
 
 /* ------------------------------- Action Type ------------------------------ */
