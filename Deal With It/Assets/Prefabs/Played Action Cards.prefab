@@ -61,10 +61,16 @@ MonoBehaviour:
   - {fileID: 5868782080564956135}
   - {fileID: 5868782079520857037}
   CurrentSlot: 0
+  DistractionCount: 0
+  ExpressionCount: 0
+  ProcessingCount: 0
+  ReappraisalCount: 0
+  TotalEnergyVal: 0
   TotalJoyVal: 0
   TotalSadnessVal: 0
   TotalFearVal: 0
   TotalAngerVal: 0
+  NPCDisplay: {fileID: 0}
   NPC: {fileID: 0}
 --- !u!1001 &1089737749365435182
 PrefabInstance:
@@ -267,6 +273,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5153114723800204371, guid: 3b300bb6a4778bb4186aac9568c14287, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6804266688788270319, guid: 3b300bb6a4778bb4186aac9568c14287, type: 3}
+      propertyPath: m_Transition
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -494,6 +504,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6804266688788270319, guid: 3b300bb6a4778bb4186aac9568c14287, type: 3}
+      propertyPath: m_Transition
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b300bb6a4778bb4186aac9568c14287, type: 3}
 --- !u!224 &2381068316873299472 stripped
@@ -717,6 +731,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5153114723800204371, guid: 3b300bb6a4778bb4186aac9568c14287, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6804266688788270319, guid: 3b300bb6a4778bb4186aac9568c14287, type: 3}
+      propertyPath: m_Transition
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -944,6 +962,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6804266688788270319, guid: 3b300bb6a4778bb4186aac9568c14287, type: 3}
+      propertyPath: m_Transition
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b300bb6a4778bb4186aac9568c14287, type: 3}
 --- !u!224 &2381068316149347565 stripped
@@ -1167,6 +1189,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5153114723800204371, guid: 3b300bb6a4778bb4186aac9568c14287, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6804266688788270319, guid: 3b300bb6a4778bb4186aac9568c14287, type: 3}
+      propertyPath: m_Transition
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
