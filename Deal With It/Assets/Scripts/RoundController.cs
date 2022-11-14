@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class RoundController : MonoBehaviour
 {
@@ -45,6 +46,8 @@ public class RoundController : MonoBehaviour
     private int _totalProcessingCount = 0;
     private int _totalReappraisalCount = 0;
 
+    public TextMeshProUGUI conditionText;
+    public TextMeshProUGUI conditionLabel;
     /* ------------------------------- Skip Player ------------------------------ */
     public IEnumerator Skip; 
     public bool CountdownActive = false;
@@ -67,12 +70,22 @@ public class RoundController : MonoBehaviour
 
         // Initialize _skipPlayer
         Skip = SkipPlayer(10f);
+
+        // Display NPC win condition/s
+        conditionLabel.text = "How to Help " + NPC.CardName + "!";
+        if (NPC.CardName == "Knot"){conditionText.text = "Keep Joy and Sadness neutral (6-8) while limiting Fear and Anger (Below 6) \n For 7 rounds! Currently: " + _goalCounter; }
+        else if (NPC.CardName == "Pickles"){conditionText.text = "Use 10 expression cards, current total: " /* + _goalCounter */ + "\n and don't forget to make sure no emotion goes above 10!";}
+        else if (NPC.CardName == "Sniffles"){conditionText.text = "Reach neutral, between 6-8 points, for all emotions!";}
+
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        // Update NPC win condition/s
+        if (NPC.CardName == "Knot"){conditionText.text = "Keep Joy and Sadness neutral (6-8) while limiting Fear and Anger (Below 6) \n For 7 rounds! Currently: " + _goalCounter; }
+        else if (NPC.CardName == "Pickles"){conditionText.text = "Use 10 expression cards, current total: " /* + _goalCounter */ + "\n and don't forget to make sure no emotion goes above 10!";}
+        else if (NPC.CardName == "Sniffles"){conditionText.text = "Reach neutral, between 6-8 points, for all emotions!";}
     }
 
     /* -------------------------------------------------------------------------- */
