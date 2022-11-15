@@ -5,15 +5,18 @@ using UnityEngine.EventSystems;
 
 public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField] private string heading;
-    [SerializeField] private string prevStrat;
-    [SerializeField] private string nextStrat;
+    [field: SerializeField] public TooltipType Type {get; set;}
+    [field: SerializeField] public string Heading {get; set;}
+    [field: SerializeField] public string PrevStrat {get; set;}
+    [field: SerializeField] public string NextStrat {get; set;}
 
-    [SerializeField] [TextArea(1,5)] private string content;
+    [field: SerializeField] [TextArea(1,5)]
+    private string _content;
+    public string Content {get; set;}
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        TooltipSystem.Show(content, heading, prevStrat, nextStrat);
+        TooltipSystem.Show(Type, Content, Heading, PrevStrat, NextStrat);
     }
 
     public void OnPointerExit(PointerEventData eventData)

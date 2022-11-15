@@ -16,9 +16,14 @@ MonoBehaviour:
   _cardDescription: Though they tend to procrastinate and bottle up emotions, they
     find it easier to look at the silver lining.
   <Illustration>k__BackingField: {fileID: 0}
-  _cardGoals:
-  - Keep all emotions below 11 points after the first round
-  - Use 10 expression cards in total
+  _cardGoals: "Keep all emotions below 11 points after the first round\r.\n\nUse
+    10 expression cards in total."
+  _eventEffects: 
+  _strategyEffects: 'Distraction is less effective by 1.
+
+
+    Reappraisal costs
+    -1 less energy.'
   _joyStartingMin: 4
   _joyStartingMax: 6
   _sadnessStartingMin: 9

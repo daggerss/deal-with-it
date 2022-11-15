@@ -7,9 +7,20 @@ public class NPC : Card
 {
     /* ---------------------- Card Goals aka Win Conditions --------------------- */
     [SerializeField]
-    [TextArea(1,5)]
-    List<string> _cardGoals = new List<string>();
-    public List<string> CardGoals => _cardGoals;
+    [TextArea(1,3)]
+    private string _cardGoals;
+    public string CardGoals => _cardGoals;
+
+    /* --------------------- Event & Strategy Effects (Copy) -------------------- */
+    [SerializeField]
+    [TextArea(1,3)]
+    private string _eventEffects;
+    public string EventEffects => _eventEffects;
+
+    [SerializeField]
+    [TextArea(1,3)]
+    private string _strategyEffects;
+    public string StrategyEffects => _strategyEffects;
 
     /* ------------------------- Energy & Emotion Levels ------------------------ */
     // The energy and emotion levels are capped accordingly.

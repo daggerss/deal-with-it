@@ -16,10 +16,21 @@ MonoBehaviour:
   _cardDescription: They're easy to anger and has high anxiety, but they're not afraid
     to express themself!
   <Illustration>k__BackingField: {fileID: 0}
-  _cardGoals:
-  - Maintain less than 6 points of anger and fear for 7 rounds
-  - Keep all other emotions within 6-8 points for 7 rounds
-  - Don't use more than 3 expression cards in total in a round
+  _cardGoals: 'Maintain less than 6 points of anger and fear for 7 rounds.
+
+
+    Keep
+    all other emotions within 6-8 points for 7 rounds.
+
+
+    Don''t use more than
+    3 expression cards in total in a round.'
+  _eventEffects: Fear and Anger events are more effective by 2.
+  _strategyEffects: 'Expression is more effective by 1.
+
+
+    Reappraisal costs +1
+    more energy.'
   _joyStartingMin: 6
   _joyStartingMax: 8
   _sadnessStartingMin: 4

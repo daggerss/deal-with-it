@@ -78,3 +78,6 @@ public class Tooltip : MonoBehaviour
         transform.position = position;
     }
 }
+
+/* ------------------------------ Tooltip Types ----------------------------- */
+public enum TooltipType {NPCGoal, NPCEvent, NPCStrategy, Trait, InOrderCombo, AtLeastCombo};
