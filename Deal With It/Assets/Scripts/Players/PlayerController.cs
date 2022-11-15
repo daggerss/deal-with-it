@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public Action[] CardsInHand = new Action[5];
     public Button[] CardsInHandButton = new Button[5];
     private Vector2[] OriginalButtonPosition = new Vector2[5];
+    private Vector3[] OriginalButtonSize = new Vector3[5];
     public Button ConfirmButton;
     public Button SwapButton;
 
@@ -55,6 +56,11 @@ public class PlayerController : MonoBehaviour
         // Initializing OriginalButtonPosition
         for(int i = 0; i < OriginalButtonPosition.Length; i++){
             OriginalButtonPosition[i] = CardsInHandButton[i].transform.position;
+        }
+
+        // Initializing OriginalButtonSize
+        for(int i = 0; i < OriginalButtonSize.Length; i++){
+            OriginalButtonSize[i] = CardsInHandButton[i].transform.localScale;
         }
     }
 
@@ -205,9 +211,11 @@ public class PlayerController : MonoBehaviour
             for(int i = 0; i < CardsInHandButton.Length; i++){
                 Button currentButton = CardsInHandButton[i];
                 if(SelectedCard == i){
-                    currentButton.transform.position = new Vector2(currentButton.transform.position.x, OriginalButtonPosition[i].y + 50f);
+                    currentButton.transform.position = new Vector2(currentButton.transform.position.x, 350F);
+                    currentButton.transform.localScale = new Vector3(1.5F, 1.5F, 1.5F);
                 }else{
                     currentButton.transform.position = OriginalButtonPosition[i];
+                    currentButton.transform.localScale = OriginalButtonSize[i]; 
                     // Reset the card to original
                     CardsInHand[i].Revert();
                 }
