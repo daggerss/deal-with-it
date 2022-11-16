@@ -144,11 +144,8 @@ public class NPCDisplay : CardDisplay
         sadnessText.text = npc.SadnessLvl.ToString();
         fearText.text = npc.FearLvl.ToString();
         angerText.text = npc.AngerLvl.ToString();
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
+        // Coroutines
         StartCoroutine(UpdateLevelBars());
         StartCoroutine(FadeOutEffects());
         StartCoroutine(ShowEnergySignal());
@@ -444,115 +441,127 @@ public class NPCDisplay : CardDisplay
     // Apply energy and emotion effects on bars
     IEnumerator UpdateLevelBars()
     {
-        _lerpTimer += Time.deltaTime;
-        _percentComplete = Mathf.Pow(_lerpTimer / _chipSpeed, 2);
-
-        // Update energy
-        if (EnergyBackBar.Value > npc.EnergyLvl)
+        while (true)
         {
-            EnergyFrontBar.SetValue(npc.EnergyLvl);
-            EnergyBackBar.SetValue(Mathf.Lerp(EnergyBackBar.Value, npc.EnergyLvl, _percentComplete));
-        }
+            _lerpTimer += Time.deltaTime;
+            _percentComplete = Mathf.Pow(_lerpTimer / _chipSpeed, 2);
 
-        if (EnergyFrontBar.Value < npc.EnergyLvl)
-        {
-            EnergyBackBar.SetValue(npc.EnergyLvl);
-            EnergyFrontBar.SetValue(Mathf.Lerp(EnergyFrontBar.Value, npc.EnergyLvl, _percentComplete));
-        }
+            // Update energy
+            if (EnergyBackBar.Value > npc.EnergyLvl)
+            {
+                EnergyFrontBar.SetValue(npc.EnergyLvl);
+                EnergyBackBar.SetValue(Mathf.Lerp(EnergyBackBar.Value, npc.EnergyLvl, _percentComplete));
+            }
 
-        // Update joy
-        if (JoyBackBar.Value > npc.JoyLvl)
-        {
-            JoyFrontBar.SetValue(npc.JoyLvl);
-            JoyBackBar.SetValue(Mathf.Lerp(JoyBackBar.Value, npc.JoyLvl, _percentComplete));
-        }
+            if (EnergyFrontBar.Value < npc.EnergyLvl)
+            {
+                EnergyBackBar.SetValue(npc.EnergyLvl);
+                EnergyFrontBar.SetValue(Mathf.Lerp(EnergyFrontBar.Value, npc.EnergyLvl, _percentComplete));
+            }
 
-        if (JoyFrontBar.Value < npc.JoyLvl)
-        {
-            JoyBackBar.SetValue(npc.JoyLvl);
-            JoyFrontBar.SetValue(Mathf.Lerp(JoyFrontBar.Value, npc.JoyLvl, _percentComplete));
-        }
+            // Update joy
+            if (JoyBackBar.Value > npc.JoyLvl)
+            {
+                JoyFrontBar.SetValue(npc.JoyLvl);
+                JoyBackBar.SetValue(Mathf.Lerp(JoyBackBar.Value, npc.JoyLvl, _percentComplete));
+            }
 
-        // Update sadness
-        if (SadnessBackBar.Value > npc.SadnessLvl)
-        {
-            SadnessFrontBar.SetValue(npc.SadnessLvl);
-            SadnessBackBar.SetValue(Mathf.Lerp(SadnessBackBar.Value, npc.SadnessLvl, _percentComplete));
-        }
+            if (JoyFrontBar.Value < npc.JoyLvl)
+            {
+                JoyBackBar.SetValue(npc.JoyLvl);
+                JoyFrontBar.SetValue(Mathf.Lerp(JoyFrontBar.Value, npc.JoyLvl, _percentComplete));
+            }
 
-        if (SadnessFrontBar.Value < npc.SadnessLvl)
-        {
-            SadnessBackBar.SetValue(npc.SadnessLvl);
-            SadnessFrontBar.SetValue(Mathf.Lerp(SadnessFrontBar.Value, npc.SadnessLvl, _percentComplete));
-        }
+            // Update sadness
+            if (SadnessBackBar.Value > npc.SadnessLvl)
+            {
+                SadnessFrontBar.SetValue(npc.SadnessLvl);
+                SadnessBackBar.SetValue(Mathf.Lerp(SadnessBackBar.Value, npc.SadnessLvl, _percentComplete));
+            }
 
-        // Update fear
-        if (FearBackBar.Value > npc.FearLvl)
-        {
-            FearFrontBar.SetValue(npc.FearLvl);
-            FearBackBar.SetValue(Mathf.Lerp(FearBackBar.Value, npc.FearLvl, _percentComplete));
-        }
+            if (SadnessFrontBar.Value < npc.SadnessLvl)
+            {
+                SadnessBackBar.SetValue(npc.SadnessLvl);
+                SadnessFrontBar.SetValue(Mathf.Lerp(SadnessFrontBar.Value, npc.SadnessLvl, _percentComplete));
+            }
 
-        if (FearFrontBar.Value < npc.FearLvl)
-        {
-            FearBackBar.SetValue(npc.FearLvl);
-            FearFrontBar.SetValue(Mathf.Lerp(FearFrontBar.Value, npc.FearLvl, _percentComplete));
-        }
+            // Update fear
+            if (FearBackBar.Value > npc.FearLvl)
+            {
+                FearFrontBar.SetValue(npc.FearLvl);
+                FearBackBar.SetValue(Mathf.Lerp(FearBackBar.Value, npc.FearLvl, _percentComplete));
+            }
 
-        // Update anger
-        if (AngerBackBar.Value > npc.AngerLvl)
-        {
-            AngerFrontBar.SetValue(npc.AngerLvl);
-            AngerBackBar.SetValue(Mathf.Lerp(AngerBackBar.Value, npc.AngerLvl, _percentComplete));
-        }
+            if (FearFrontBar.Value < npc.FearLvl)
+            {
+                FearBackBar.SetValue(npc.FearLvl);
+                FearFrontBar.SetValue(Mathf.Lerp(FearFrontBar.Value, npc.FearLvl, _percentComplete));
+            }
 
-        if (AngerFrontBar.Value < npc.AngerLvl)
-        {
-            AngerBackBar.SetValue(npc.AngerLvl);
-            AngerFrontBar.SetValue(Mathf.Lerp(AngerFrontBar.Value, npc.AngerLvl, _percentComplete));
-        }
+            // Update anger
+            if (AngerBackBar.Value > npc.AngerLvl)
+            {
+                AngerFrontBar.SetValue(npc.AngerLvl);
+                AngerBackBar.SetValue(Mathf.Lerp(AngerBackBar.Value, npc.AngerLvl, _percentComplete));
+            }
 
-        yield return new WaitForSeconds(1f);
+            if (AngerFrontBar.Value < npc.AngerLvl)
+            {
+                AngerBackBar.SetValue(npc.AngerLvl);
+                AngerFrontBar.SetValue(Mathf.Lerp(AngerFrontBar.Value, npc.AngerLvl, _percentComplete));
+            }
+
+            yield return null;
+        }
     }
 
     // Fade out effects text UI
     IEnumerator FadeOutEffects()
     {
-        yield return new WaitUntil(() => effectTexts.alpha >= 0);
-
-        effectTexts.alpha -= (Time.deltaTime - _fadeSpeed);
-
-        if (effectTexts.alpha == 0)
+        while (true)
         {
-            ResetEffectTexts();
+            yield return new WaitUntil(() => effectTexts.alpha >= 0);
+
+            effectTexts.alpha -= (Time.deltaTime - _fadeSpeed);
+
+            if (effectTexts.alpha == 0)
+            {
+                ResetEffectTexts();
+            }
         }
     }
 
     // Show indicator on negative or surplus energy
     IEnumerator ShowEnergySignal()
     {
-        yield return new WaitUntil(() => npc.EnergyLvl > 20 || npc.EnergyLvl < 0);
-
-        // Show image
-        EnergyBarGlow.enabled = true;
-
-        // Change color
-        if (npc.EnergyLvl > 20)
+        while (true)
         {
-            EnergyBarGlow.color = new Color32(0,171,109,255);
-        }
-        else if (npc.EnergyLvl < 0)
-        {
-            EnergyBarGlow.color = new Color32(249,151,60,255);
+            yield return new WaitUntil(() => npc.EnergyLvl > 20 || npc.EnergyLvl < 0);
+
+            // Show image
+            EnergyBarGlow.enabled = true;
+
+            // Change color
+            if (npc.EnergyLvl > 20)
+            {
+                EnergyBarGlow.color = new Color32(0,171,109,255);
+            }
+            else if (npc.EnergyLvl < 0)
+            {
+                EnergyBarGlow.color = new Color32(249,151,60,255);
+            }
         }
     }
 
     // Hide indicator on energy within bounds
     IEnumerator HideEnergySignal()
     {
-        yield return new WaitUntil(() => npc.EnergyLvl < 20 && npc.EnergyLvl > 0);
+        while (true)
+        {
+            yield return new WaitUntil(() => npc.EnergyLvl < 20 && npc.EnergyLvl > 0);
 
-        // Hide image
-        EnergyBarGlow.enabled = false;
+            // Hide image
+            EnergyBarGlow.enabled = false;
+        }
     }
 }
