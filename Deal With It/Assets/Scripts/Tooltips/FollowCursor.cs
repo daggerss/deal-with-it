@@ -5,6 +5,7 @@ using UnityEngine;
 public class FollowCursor : MonoBehaviour
 {
     private RectTransform rectTransform;
+    [SerializeField] private float pivotXOffset;
 
     private void Awake()
     {
@@ -17,7 +18,7 @@ public class FollowCursor : MonoBehaviour
         // Follow cursor
         Vector2 position = Input.mousePosition;
 
-        float pivotX = position.x / Screen.width - 0.25f;
+        float pivotX = position.x / Screen.width - pivotXOffset;
         float pivotY = position.y / Screen.height;
 
         rectTransform.pivot = new Vector2(pivotX, pivotY);

@@ -11480,6 +11480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dfd5486bcbab3a479f3b0e52818d5f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pivotXOffset: 0.25
 --- !u!114 &1410003673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12255,6 +12256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dfd5486bcbab3a479f3b0e52818d5f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pivotXOffset: 0.75
 --- !u!114 &1608845707
 MonoBehaviour:
   m_ObjectHideFlags: 0

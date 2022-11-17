@@ -16587,6 +16587,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dfd5486bcbab3a479f3b0e52818d5f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pivotXOffset: 0.75
 --- !u!1 &1678769120
 GameObject:
   m_ObjectHideFlags: 0
@@ -16878,6 +16879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dfd5486bcbab3a479f3b0e52818d5f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pivotXOffset: 0.25
 --- !u!1001 &1752834012
 PrefabInstance:
   m_ObjectHideFlags: 0
