@@ -62,4 +62,67 @@ public class CardDisplay : MonoBehaviour
 
         return 0;
     }
+
+    // Produce copy for extra effects
+    private string VerbalizeExtraEffect(LevelType levelType, int addend)
+    {
+        if (addend > 0)
+        {
+            if (levelType == LevelType.Energy)
+            {
+                return "costs +" + addend.ToString() + " more energy.";
+            }
+            else
+            {
+                return "more effective by " + addend.ToString() + ".";
+            }
+        }
+        else if (addend < 0)
+        {
+            if (levelType == LevelType.Energy)
+            {
+                return "costs " + addend.ToString() + " less energy.";
+            }
+            else
+            {
+                return "less effective by " + addend.ToString() + ".";
+            }
+        }
+
+        return null;
+    }
+
+    // Construct tooltip content
+    public string ComposeTooltipContent(TooltipType tooltipType, LevelType levelType,
+                                        ActionType actionType, string rationale, int addend)
+    {
+        // Compose only when has content
+        if (addend != 0)
+        {
+            // NPC Traits
+            if (tooltipType == TooltipType.Trait)
+            {
+                // NPC x Events
+                if (actionType == ActionType.None)
+                {
+                    return rationale + ", so " + levelType.ToString() + " events are " +
+                           VerbalizeExtraEffect(levelType, addend);
+                }
+                // NPC x Strategy
+                else
+                {
+                    if (levelType == LevelType.Energy)
+                    {
+                        return rationale + ", so " + actionType.ToString() + " " +
+                               VerbalizeExtraEffect(levelType, addend);
+                    }
+                    
+                    return rationale + ", so " + actionType.ToString() + " is " +
+                           VerbalizeExtraEffect(levelType, addend);
+                }
+            }
+        }
+
+        return null;
+    }
 }

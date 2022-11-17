@@ -129,54 +129,126 @@ public class NPC : Card
     // If card energy/emotion value is positive (+), add the addend
     // If card energy/emotion value is negative (-), subtract the addend
 
-    // Event Addends
+    // EVENT ADDENDS
+    // Joy
     [SerializeField]
     private int _joyAddend;
     public int JoyAddend => _joyAddend;
 
     [SerializeField]
+    [TextArea(1,3)]
+    private string _joyRationale;
+    public string JoyRationale => _joyRationale;
+
+    // Sadness
+    [SerializeField]
     private int _sadnessAddend;
     public int SadnessAddend => _sadnessAddend;
 
+    [SerializeField]
+    [TextArea(1,3)]
+    private string _sadnessRationale;
+    public string SadnessRationale => _sadnessRationale;
+
+    // Fear
     [SerializeField]
     private int _fearAddend;
     public int FearAddend => _fearAddend;
 
     [SerializeField]
+    [TextArea(1,3)]
+    private string _fearRationale;
+    public string FearRationale => _fearRationale;
+
+    // Anger
+    [SerializeField]
     private int _angerAddend;
     public int AngerAddend => _angerAddend;
 
-    // Strategy Emotion Addends
+    [SerializeField]
+    [TextArea(1,3)]
+    private string _angerRationale;
+    public string AngerRationale => _angerRationale;
+
+    // STRATEGY EMOTION ADDENDS
+    // Distraction
     [SerializeField]
     private int _distractionEmotionAddend;
     public int DistractionEmotionAddend => _distractionEmotionAddend;
 
     [SerializeField]
+    [TextArea(1,3)]
+    private string _distractionEmotionRationale;
+    public string DistractionEmotionRationale => _distractionEmotionRationale;
+
+    // Expression
+    [SerializeField]
     private int _expressionEmotionAddend;
     public int ExpressionEmotionAddend => _expressionEmotionAddend;
 
+    [SerializeField]
+    [TextArea(1,3)]
+    private string _expressionEmotionRationale;
+    public string ExpressionEmotionRationale => _expressionEmotionRationale;
+
+    // Processing
     [SerializeField]
     private int _processingEmotionAddend;
     public int ProcessingEmotionAddend => _processingEmotionAddend;
 
     [SerializeField]
+    [TextArea(1,3)]
+    private string _processingEmotionRationale;
+    public string ProcessingEmotionRationale => _processingEmotionRationale;
+
+    // Reappraisal
+    [SerializeField]
     private int _reappraisalEmotionAddend;
     public int ReappraisalEmotionAddend => _reappraisalEmotionAddend;
 
-    // Strategy Energy Addends
+    [SerializeField]
+    [TextArea(1,3)]
+    private string _reappraisalEmotionRationale;
+    public string ReappraisalEmotionRationale => _reappraisalEmotionRationale;
+
+    // STRATEGY ENERGY ADDENDS
+    // Distraction
     [SerializeField]
     private int _distractionEnergyAddend;
     public int DistractionEnergyAddend => _distractionEnergyAddend;
 
     [SerializeField]
+    [TextArea(1,3)]
+    private string _distractionEnergyRationale;
+    public string DistractionEnergyRationale => _distractionEnergyRationale;
+
+    // Expression
+    [SerializeField]
     private int _expressionEnergyAddend;
     public int ExpressionEnergyAddend => _expressionEnergyAddend;
 
+    [SerializeField]
+    [TextArea(1,3)]
+    private string _expressionEnergyRationale;
+    public string ExpressionEnergyRationale => _expressionEnergyRationale;
+
+    // Processing
     [SerializeField]
     private int _processingEnergyAddend;
     public int ProcessingEnergyAddend => _processingEnergyAddend;
 
     [SerializeField]
+    [TextArea(1,3)]
+    private string _processingEnergyRationale;
+    public string ProcessingEnergyRationale => _processingEnergyRationale;
+
+    // Reappraisal
+    [SerializeField]
     private int _reappraisalEnergyAddend;
     public int ReappraisalEnergyAddend => _reappraisalEnergyAddend;
+
+    [SerializeField]
+    [TextArea(1,3)]
+    private string _reappraisalEnergyRationale;
+    public string ReappraisalEnergyRationale => _reappraisalEnergyRationale;
 }

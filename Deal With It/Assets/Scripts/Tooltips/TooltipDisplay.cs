@@ -4,21 +4,77 @@ using UnityEngine;
 
 public class TooltipDisplay : MonoBehaviour
 {
+    /* ---------------------------- For all tooltips ---------------------------- */
+    [SerializeField] private CardType cardType;
+
+    /* ------------------------ For Event + Action Cards ------------------------ */
+    [SerializeField] private LevelType _levelType;
+
     /* ------------------------------ Info Sources ------------------------------ */
-    private NPC npc;
+    // NPC Card
+    [SerializeField] private NPC _npc;
+
+    // Event Card
+    [SerializeField] private EventCardDisplay _eventCardInfo;
+
+    // Action Card
+    [SerializeField] private Action _actionCardInfo;
 
     /* -------------------------------- Tooltips -------------------------------- */
+    // NPC Card
     private TooltipTrigger _goalTooltip;
     private TooltipTrigger _eventTooltip;
     private TooltipTrigger _strategyTooltip;
 
-    // Start is called before the first frame update
+    // Event + Action Cards
+    private TooltipTrigger _traitTooltip;
+    private TooltipTrigger _inOrderTooltip;
+    private TooltipTrigger _atLeastTooltip;
+
     void Start()
     {
-        // Get sources
-        npc = GetComponentInParent<NPCDisplay>().npc;
+        if (cardType == CardType.NPC)
+        {
+            SetUpNPCTooltips();
+        }
 
-        // Set tooltips
+        else if (cardType == CardType.Event)
+        {
+            // Get info source
+            _eventCardInfo = (EventCardDisplay)GameObject.FindGameObjectWithTag("Event Card Controller").GetComponent<EventCardDisplay>();
+
+            InitializeEffectTooltips();
+        }
+
+        else if (cardType == CardType.Action)
+        {
+            InitializeEffectTooltips();
+        }
+    }
+
+    void Update()
+    {
+        // Update tooltip contents
+        if (cardType == CardType.Event)
+        {
+            WriteEventCardTooltips();
+        }
+
+        else if (cardType == CardType.Action)
+        {
+             // Get info source
+            _actionCardInfo = this.transform.parent.gameObject.GetComponentInParent<ActionCardDisplay>().CurrentActionCard;
+
+            WriteActionCardTooltips();
+        }
+    }
+
+    private void SetUpNPCTooltips()
+    {
+        // Get info source
+        _npc = GetComponentInParent<NPCDisplay>().npc;
+
+        // Set NPC tooltips
         TooltipTrigger[] tooltips = GetComponents<TooltipTrigger>();
         for (int i = 0; i < tooltips.Length; i++)
         {
@@ -36,11 +92,91 @@ public class TooltipDisplay : MonoBehaviour
             }
         }
         
-        if (npc != null)
+        // Tooltips content
+        if (_npc != null)
         {
-            _goalTooltip.Content = npc.CardGoals;
-            _eventTooltip.Content = npc.EventEffects;
-            _strategyTooltip.Content = npc.StrategyEffects;
+            _goalTooltip.Content = _npc.CardGoals;
+            _eventTooltip.Content = _npc.EventEffects;
+            _strategyTooltip.Content = _npc.StrategyEffects;
+        }
+    }
+
+    // Get tooltip triggers
+    private void InitializeEffectTooltips()
+    {
+        TooltipTrigger[] tooltips = GetComponents<TooltipTrigger>();
+        for (int i = 0; i < tooltips.Length; i++)
+        {
+            if (tooltips[i].Type == TooltipType.Trait)
+            {
+                _traitTooltip = tooltips[i];
+            }
+            else if (tooltips[i].Type == TooltipType.InOrderCombo)
+            {
+                _inOrderTooltip = tooltips[i];
+            }
+            else if (tooltips[i].Type == TooltipType.AtLeastCombo)
+            {
+                _atLeastTooltip = tooltips[i];
+            }
+        }
+    }
+
+    // Get tooltips content for event
+    private void WriteEventCardTooltips()
+    {
+        if (_eventCardInfo != null)
+        {
+            // NPC Traits
+            if (_levelType == LevelType.Energy)
+            {
+                _traitTooltip.Content = _eventCardInfo.EnergyTraitEffectText;
+            }
+            else if (_levelType == LevelType.Joy)
+            {
+                _traitTooltip.Content = _eventCardInfo.JoyTraitEffectText;
+            }
+            else if (_levelType == LevelType.Sadness)
+            {
+                _traitTooltip.Content = _eventCardInfo.SadnessTraitEffectText;
+            }
+            else if (_levelType == LevelType.Fear)
+            {
+                _traitTooltip.Content = _eventCardInfo.FearTraitEffectText;
+            }
+            else if (_levelType == LevelType.Anger)
+            {
+                _traitTooltip.Content = _eventCardInfo.AngerTraitEffectText;
+            }
+        }
+    }
+
+    // Get tooltips content for action cards
+    private void WriteActionCardTooltips()
+    {
+        if (_actionCardInfo != null)
+        {
+            // NPC Traits
+            if (_levelType == LevelType.Energy)
+            {
+                _traitTooltip.Content = _actionCardInfo.EnergyTraitEffectText;
+            }
+            else if (_levelType == LevelType.Joy)
+            {
+                _traitTooltip.Content = _actionCardInfo.JoyTraitEffectText;
+            }
+            else if (_levelType == LevelType.Sadness)
+            {
+                _traitTooltip.Content = _actionCardInfo.SadnessTraitEffectText;
+            }
+            else if (_levelType == LevelType.Fear)
+            {
+                _traitTooltip.Content = _actionCardInfo.FearTraitEffectText;
+            }
+            else if (_levelType == LevelType.Anger)
+            {
+                _traitTooltip.Content = _actionCardInfo.AngerTraitEffectText;
+            }
         }
     }
 }

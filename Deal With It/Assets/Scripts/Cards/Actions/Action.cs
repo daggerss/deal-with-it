@@ -131,6 +131,14 @@ public class Action : Card
     public bool FearValCanceled {get; set;}
     public bool AngerValCanceled {get; set;}
 
+    /* ------------------------- Effect Tooltips Content ------------------------ */
+    // NPC Traits
+    public string EnergyTraitEffectText {get; set;}
+    public string JoyTraitEffectText {get; set;}
+    public string SadnessTraitEffectText {get; set;}
+    public string FearTraitEffectText {get; set;}
+    public string AngerTraitEffectText {get; set;}
+
     /* ----------------------------- Custom Methods ----------------------------- */
 
     // Set random emotion values

@@ -37,6 +37,13 @@ public class PlayerController : MonoBehaviour
     public PlayedActionCardsDisplay PlayedActionCards;
     private bool _aiActionCardPlayed = false; 
 
+    // Tooltip Texts: NPC Traits
+    private string _energyTraitEffectText;
+    private string _joyTraitEffectText;
+    private string _sadnessTraitEffectText;
+    private string _fearTraitEffectText;
+    private string _angerTraitEffectText;
+
     /* --------------------------------- Methods -------------------------------- */
     // Start is called before the first frame update
     void Start()
@@ -178,13 +185,29 @@ public class PlayerController : MonoBehaviour
                 ActionType cardActionType = projectedCard.CardActionType;
 
                 projectedCard.EnergyVal = NPCDisplay.ProjectTraitEffect(LevelType.Energy, projectedCard.EnergyVal, cardActionType);
+                _energyTraitEffectText = NPCDisplay.TraitEffectText;
+
                 projectedCard.JoyVal = NPCDisplay.ProjectTraitEffect(LevelType.Joy, projectedCard.JoyVal, cardActionType);
+                _joyTraitEffectText = NPCDisplay.TraitEffectText;
+
                 projectedCard.SadnessVal = NPCDisplay.ProjectTraitEffect(LevelType.Sadness, projectedCard.SadnessVal, cardActionType);
+                _sadnessTraitEffectText = NPCDisplay.TraitEffectText;
+
                 projectedCard.FearVal = NPCDisplay.ProjectTraitEffect(LevelType.Fear, projectedCard.FearVal, cardActionType);
+                _fearTraitEffectText = NPCDisplay.TraitEffectText;
+
                 projectedCard.AngerVal = NPCDisplay.ProjectTraitEffect(LevelType.Anger, projectedCard.AngerVal, cardActionType);
+                _angerTraitEffectText = NPCDisplay.TraitEffectText;
 
                 // Check if values were changed
                 projectedCard.UpdateValueChanges();
+
+                // Update tooltips content
+                projectedCard.EnergyTraitEffectText = _energyTraitEffectText;
+                projectedCard.JoyTraitEffectText = _joyTraitEffectText;
+                projectedCard.SadnessTraitEffectText = _sadnessTraitEffectText;
+                projectedCard.FearTraitEffectText = _fearTraitEffectText;
+                projectedCard.AngerTraitEffectText = _angerTraitEffectText;
 
                 // Add current card type to the card count
                 PlayedActionCards.AddCurrentCard(cardActionType);

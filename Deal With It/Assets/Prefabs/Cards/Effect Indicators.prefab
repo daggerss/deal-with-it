@@ -236,6 +236,10 @@ GameObject:
   - component: {fileID: 2943779832851835579}
   - component: {fileID: 5777161913059365223}
   - component: {fileID: 5957982926908536869}
+  - component: {fileID: 2376135815090205592}
+  - component: {fileID: 8224596280340590657}
+  - component: {fileID: 4576916902976295468}
+  - component: {fileID: 8226994921683204724}
   m_Layer: 5
   m_Name: Effect Indicators
   m_TagString: Untagged
@@ -303,3 +307,71 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2376135815090205592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8493646520619019398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35c1f5c7bfcbc3244bfb32a506d5788f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardType: 1
+  _levelType: 0
+  _npc: {fileID: 0}
+  _eventCardInfo: {fileID: 0}
+  _actionCardInfo: {fileID: 0}
+--- !u!114 &8224596280340590657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8493646520619019398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1521ac259e79286458fa9ab2204c9fac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Type>k__BackingField: 3
+  <Heading>k__BackingField: NPC Trait
+  <PrevStrat>k__BackingField: 
+  <NextStrat>k__BackingField: 
+  _content: 
+--- !u!114 &4576916902976295468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8493646520619019398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1521ac259e79286458fa9ab2204c9fac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Type>k__BackingField: 4
+  <Heading>k__BackingField: Strategy Combo
+  <PrevStrat>k__BackingField: 
+  <NextStrat>k__BackingField: 
+  _content: 
+--- !u!114 &8226994921683204724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8493646520619019398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1521ac259e79286458fa9ab2204c9fac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Type>k__BackingField: 5
+  <Heading>k__BackingField: Strategy Combo
+  <PrevStrat>k__BackingField: 
+  <NextStrat>k__BackingField: 
+  _content: 

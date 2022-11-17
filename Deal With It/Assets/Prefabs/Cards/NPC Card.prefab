@@ -1022,7 +1022,7 @@ GameObject:
   - component: {fileID: 7478382287640886773}
   - component: {fileID: 7519447705798234213}
   - component: {fileID: 9034068251410405699}
-  - component: {fileID: 3055255189868141342}
+  - component: {fileID: 4721824134705248341}
   - component: {fileID: 1466039318730039870}
   - component: {fileID: 7321961586625372411}
   - component: {fileID: 5091492102654517212}
@@ -1090,7 +1090,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3055255189868141342
+--- !u!114 &4721824134705248341
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1099,9 +1099,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5603269293444861917}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b1875ab51b79db41a13c0b0c4f5ff08, type: 3}
+  m_Script: {fileID: 11500000, guid: 35c1f5c7bfcbc3244bfb32a506d5788f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardType: 0
+  _levelType: 0
 --- !u!114 &1466039318730039870
 MonoBehaviour:
   m_ObjectHideFlags: 0

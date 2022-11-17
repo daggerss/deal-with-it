@@ -31,6 +31,10 @@ public class NPCDisplay : CardDisplay
 
     private float _fadeSpeed = 0.00025f;
 
+    /* -------------------------------- Tooltips -------------------------------- */
+    private string _traitEffectText;
+    public string TraitEffectText => _traitEffectText;
+
     /* --------------------------------- Bar UI --------------------------------- */
     public Image EnergyBarGlow;
     public LevelBar EnergyFrontBar;
@@ -221,21 +225,33 @@ public class NPCDisplay : CardDisplay
             // Distraction
             if (actionType == ActionType.Distraction)
             {
+                _traitEffectText = ComposeTooltipContent(TooltipType.Trait, levelType,
+                                                         actionType, npc.DistractionEnergyRationale,
+                                                         npc.DistractionEnergyAddend);
                 addend += AddExtraEffect(effectValue, npc.DistractionEnergyAddend);
             }
             // Expression
             else if (actionType == ActionType.Expression)
             {
+                _traitEffectText = ComposeTooltipContent(TooltipType.Trait, levelType,
+                                                         actionType, npc.ExpressionEnergyRationale,
+                                                         npc.ExpressionEnergyAddend);
                 addend += AddExtraEffect(effectValue, npc.ExpressionEnergyAddend);
             }
             // Processing
             else if (actionType == ActionType.Processing)
             {
+                _traitEffectText = ComposeTooltipContent(TooltipType.Trait, levelType,
+                                                         actionType, npc.ProcessingEnergyRationale,
+                                                         npc.ProcessingEnergyAddend);
                 addend += AddExtraEffect(effectValue, npc.ProcessingEnergyAddend);
             }
             // Reappraisal
             else if (actionType == ActionType.Reappraisal)
             {
+                _traitEffectText = ComposeTooltipContent(TooltipType.Trait, levelType,
+                                                         actionType, npc.ReappraisalEnergyRationale,
+                                                         npc.ReappraisalEnergyAddend);
                 addend += AddExtraEffect(effectValue, npc.ReappraisalEnergyAddend);
             }
         }
@@ -249,21 +265,33 @@ public class NPCDisplay : CardDisplay
                 // Distraction
                 if (actionType == ActionType.Distraction)
                 {
+                    _traitEffectText = ComposeTooltipContent(TooltipType.Trait, levelType,
+                                                             actionType, npc.DistractionEmotionRationale,
+                                                             npc.DistractionEmotionAddend);
                     addend += AddExtraEffect(effectValue, npc.DistractionEmotionAddend);
                 }
                 // Expression
                 else if (actionType == ActionType.Expression)
                 {
+                    _traitEffectText = ComposeTooltipContent(TooltipType.Trait, levelType,
+                                                             actionType, npc.ExpressionEmotionRationale,
+                                                             npc.ExpressionEmotionAddend);
                     addend += AddExtraEffect(effectValue, npc.ExpressionEmotionAddend);
                 }
                 // Processing
                 else if (actionType == ActionType.Processing)
                 {
+                    _traitEffectText = ComposeTooltipContent(TooltipType.Trait, levelType,
+                                                             actionType, npc.ProcessingEmotionRationale,
+                                                             npc.ProcessingEmotionAddend);
                     addend += AddExtraEffect(effectValue, npc.ProcessingEmotionAddend);
                 }
                 // Reappraisal
                 else if (actionType == ActionType.Reappraisal)
                 {
+                    _traitEffectText = ComposeTooltipContent(TooltipType.Trait, levelType,
+                                                             actionType, npc.ReappraisalEmotionRationale,
+                                                             npc.ReappraisalEmotionAddend);
                     addend += AddExtraEffect(effectValue, npc.ReappraisalEmotionAddend);
                 }
 
@@ -273,25 +301,50 @@ public class NPCDisplay : CardDisplay
                     // Joy
                     if (levelType == LevelType.Joy)
                     {
+                        _traitEffectText = ComposeTooltipContent(TooltipType.Trait,
+                                                                 levelType,
+                                                                 actionType,
+                                                                 npc.JoyRationale,
+                                                                 npc.JoyAddend);
                         addend += AddExtraEffect(effectValue, npc.JoyAddend);
                     }
                     // Sadness
                     else if (levelType == LevelType.Sadness)
                     {
+                        _traitEffectText = ComposeTooltipContent(TooltipType.Trait,
+                                                                 levelType,
+                                                                 actionType,
+                                                                 npc.SadnessRationale,
+                                                                 npc.SadnessAddend);
                         addend += AddExtraEffect(effectValue, npc.SadnessAddend);
                     }
                     // Fear
                     else if (levelType == LevelType.Fear)
                     {
+                        _traitEffectText = ComposeTooltipContent(TooltipType.Trait,
+                                                                 levelType,
+                                                                 actionType,
+                                                                 npc.FearRationale,
+                                                                 npc.FearAddend);
                         addend += AddExtraEffect(effectValue, npc.FearAddend);
                     }
                     // Anger
                     else if (levelType == LevelType.Anger)
                     {
+                        _traitEffectText = ComposeTooltipContent(TooltipType.Trait,
+                                                                 levelType,
+                                                                 actionType,
+                                                                 npc.AngerRationale,
+                                                                 npc.AngerAddend);
                         addend += AddExtraEffect(effectValue, npc.AngerAddend);
                     }
                 }
             }
+        }
+
+        if (addend == 0)
+        {
+            _traitEffectText = null;
         }
 
         return effectValue + addend;

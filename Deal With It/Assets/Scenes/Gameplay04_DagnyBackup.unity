@@ -12005,7 +12005,7 @@ GameObject:
   - component: {fileID: 1389650842}
   m_Layer: 0
   m_Name: Event Card Controller
-  m_TagString: Untagged
+  m_TagString: Event Card Controller
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16957,6 +16957,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1947380408007776931, guid: ac3569959c738404cba003edf9633c7d, type: 3}
+      propertyPath: _eventCardInfo
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1953407409182008274, guid: ac3569959c738404cba003edf9633c7d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -17085,6 +17089,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3338406558724236640, guid: ac3569959c738404cba003edf9633c7d, type: 3}
+      propertyPath: _eventCardInfo
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3661228827584136279, guid: ac3569959c738404cba003edf9633c7d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -17209,6 +17217,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5831526811972240754, guid: ac3569959c738404cba003edf9633c7d, type: 3}
+      propertyPath: _eventCardInfo
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6492760167621445755, guid: ac3569959c738404cba003edf9633c7d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -17232,6 +17244,10 @@ PrefabInstance:
     - target: {fileID: 6492760167621445755, guid: ac3569959c738404cba003edf9633c7d, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -152.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7361067222535693553, guid: ac3569959c738404cba003edf9633c7d, type: 3}
+      propertyPath: _eventCardInfo
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7700361990708951504, guid: ac3569959c738404cba003edf9633c7d, type: 3}
       propertyPath: m_AnchorMax.y
@@ -17304,6 +17320,10 @@ PrefabInstance:
     - target: {fileID: 8144079203440293047, guid: ac3569959c738404cba003edf9633c7d, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479642996263380090, guid: ac3569959c738404cba003edf9633c7d, type: 3}
+      propertyPath: _eventCardInfo
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac3569959c738404cba003edf9633c7d, type: 3}

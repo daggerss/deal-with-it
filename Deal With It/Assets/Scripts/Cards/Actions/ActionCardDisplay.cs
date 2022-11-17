@@ -9,6 +9,8 @@ public class ActionCardDisplay : CardDisplay
     public PlayerController Owner;
     public PlayedActionCardsDisplay Owner1;
     public int CardNumber;
+    private Action _currentActionCard;
+    public Action CurrentActionCard => _currentActionCard;
 
     // UI Variables
     public TMP_Text CardTypeText, CardNameText, CardDescriptionText, EnergyText, JoyText, SadnessText, FearText, AngerText, ActionTypeText;
@@ -29,57 +31,55 @@ public class ActionCardDisplay : CardDisplay
     // Update is called once per frame
     void Update()
     {
-        Action currentActionCard;
-
         // ActionCardDisplay is under PlayerController
         if(Owner != null){
-            currentActionCard = Owner.CardsInHand[CardNumber];
+            _currentActionCard = Owner.CardsInHand[CardNumber];
 
         // ActionCardDisplay is under PlayedActionCardsDisplay
         }else if(Owner1 != null){
-            currentActionCard = Owner1.PlayedActionCards[CardNumber];
+            _currentActionCard = Owner1.PlayedActionCards[CardNumber];
         }else{
-            currentActionCard = null;
+            _currentActionCard = null;
         }
 
-        if(currentActionCard != null){
-            CardTypeText.text = currentActionCard.GetType().Name;
-            CardNameText.text = currentActionCard.CardName;
-            CardDescriptionText.text = currentActionCard.CardDescription;
-            ActionTypeText.text = currentActionCard.CardActionType.ToString();
+        if(_currentActionCard != null){
+            CardTypeText.text = _currentActionCard.GetType().Name;
+            CardNameText.text = _currentActionCard.CardName;
+            CardDescriptionText.text = _currentActionCard.CardDescription;
+            ActionTypeText.text = _currentActionCard.CardActionType.ToString();
 
-            EnergyText.text = FormatText(currentActionCard.EnergyVal, currentActionCard.EnergyOriginalVal);
-            EnergyImage.gameObject.SetActive(ShowImage(currentActionCard.EnergyVal, currentActionCard.EnergyOriginalVal));
+            EnergyText.text = FormatText(_currentActionCard.EnergyVal, _currentActionCard.EnergyOriginalVal);
+            EnergyImage.gameObject.SetActive(ShowImage(_currentActionCard.EnergyVal, _currentActionCard.EnergyOriginalVal));
 
-            JoyText.text = FormatText(currentActionCard.JoyVal, currentActionCard.JoyOriginalVal);
-            JoyImage.gameObject.SetActive(ShowImage(currentActionCard.JoyVal, currentActionCard.JoyOriginalVal));
+            JoyText.text = FormatText(_currentActionCard.JoyVal, _currentActionCard.JoyOriginalVal);
+            JoyImage.gameObject.SetActive(ShowImage(_currentActionCard.JoyVal, _currentActionCard.JoyOriginalVal));
 
-            SadnessText.text = FormatText(currentActionCard.SadnessVal, currentActionCard.SadnessOriginalVal);
-            SadnessImage.gameObject.SetActive(ShowImage(currentActionCard.SadnessVal, currentActionCard.SadnessOriginalVal));
+            SadnessText.text = FormatText(_currentActionCard.SadnessVal, _currentActionCard.SadnessOriginalVal);
+            SadnessImage.gameObject.SetActive(ShowImage(_currentActionCard.SadnessVal, _currentActionCard.SadnessOriginalVal));
 
-            FearText.text = FormatText(currentActionCard.FearVal, currentActionCard.FearOriginalVal);
-            FearImage.gameObject.SetActive(ShowImage(currentActionCard.FearVal, currentActionCard.FearOriginalVal));
+            FearText.text = FormatText(_currentActionCard.FearVal, _currentActionCard.FearOriginalVal);
+            FearImage.gameObject.SetActive(ShowImage(_currentActionCard.FearVal, _currentActionCard.FearOriginalVal));
 
-            AngerText.text = FormatText(currentActionCard.AngerVal, currentActionCard.AngerOriginalVal);
-            AngerImage.gameObject.SetActive(ShowImage(currentActionCard.AngerVal, currentActionCard.AngerOriginalVal));
+            AngerText.text = FormatText(_currentActionCard.AngerVal, _currentActionCard.AngerOriginalVal);
+            AngerImage.gameObject.SetActive(ShowImage(_currentActionCard.AngerVal, _currentActionCard.AngerOriginalVal));
 
-            EnergyArrowUpImage.enabled = (currentActionCard.EnergyValChangeDir == 0);
-            JoyArrowUpImage.enabled = (currentActionCard.JoyValChangeDir == 0);
-            SadnessArrowUpImage.enabled = (currentActionCard.SadnessValChangeDir == 0);
-            FearArrowUpImage.enabled = (currentActionCard.FearValChangeDir == 0);
-            AngerArrowUpImage.enabled = (currentActionCard.AngerValChangeDir == 0);
+            EnergyArrowUpImage.enabled = (_currentActionCard.EnergyValChangeDir == 0);
+            JoyArrowUpImage.enabled = (_currentActionCard.JoyValChangeDir == 0);
+            SadnessArrowUpImage.enabled = (_currentActionCard.SadnessValChangeDir == 0);
+            FearArrowUpImage.enabled = (_currentActionCard.FearValChangeDir == 0);
+            AngerArrowUpImage.enabled = (_currentActionCard.AngerValChangeDir == 0);
 
-            EnergyArrowDownImage.enabled = (currentActionCard.EnergyValChangeDir == 1);
-            JoyArrowDownImage.enabled = (currentActionCard.JoyValChangeDir == 1);
-            SadnessArrowDownImage.enabled = (currentActionCard.SadnessValChangeDir == 1);
-            FearArrowDownImage.enabled = (currentActionCard.FearValChangeDir == 1);
-            AngerArrowDownImage.enabled = (currentActionCard.AngerValChangeDir == 1);
+            EnergyArrowDownImage.enabled = (_currentActionCard.EnergyValChangeDir == 1);
+            JoyArrowDownImage.enabled = (_currentActionCard.JoyValChangeDir == 1);
+            SadnessArrowDownImage.enabled = (_currentActionCard.SadnessValChangeDir == 1);
+            FearArrowDownImage.enabled = (_currentActionCard.FearValChangeDir == 1);
+            AngerArrowDownImage.enabled = (_currentActionCard.AngerValChangeDir == 1);
 
-            EnergyEqualImage.enabled = currentActionCard.EnergyValCanceled;
-            JoyEqualImage.enabled = currentActionCard.JoyValCanceled;
-            SadnessEqualImage.enabled = currentActionCard.SadnessValCanceled;
-            FearEqualImage.enabled = currentActionCard.FearValCanceled;
-            AngerEqualImage.enabled = currentActionCard.AngerValCanceled;
+            EnergyEqualImage.enabled = _currentActionCard.EnergyValCanceled;
+            JoyEqualImage.enabled = _currentActionCard.JoyValCanceled;
+            SadnessEqualImage.enabled = _currentActionCard.SadnessValCanceled;
+            FearEqualImage.enabled = _currentActionCard.FearValCanceled;
+            AngerEqualImage.enabled = _currentActionCard.AngerValCanceled;
         }else{
         }
     }
