@@ -16,6 +16,7 @@ public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        // Delay
         Invoke("Trigger", 0.25f);
     }
 

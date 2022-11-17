@@ -19,6 +19,7 @@ public class TooltipSystem : MonoBehaviour
 
     public static void Show(TooltipType tooltipType, string content, string h1 = "", string prevStrat = "", string nextStrat = "")
     {
+        // Only show if has content
         if (!string.IsNullOrEmpty(content))
         {
             // [NPC] Goal tooltip

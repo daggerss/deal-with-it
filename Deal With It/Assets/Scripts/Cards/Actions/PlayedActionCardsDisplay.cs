@@ -260,7 +260,7 @@ public class PlayedActionCardsDisplay : CardDisplay
                 }
             }
 
-
+            // Project on the selected card
             if(levelType != LevelType.Energy && actionType == ActionType.Reappraisal){
                 addend = AddExtraEffect(effectValue, -1);
             }
@@ -273,6 +273,7 @@ public class PlayedActionCardsDisplay : CardDisplay
             // Previous card = Distraction
             if(previousActionCardType == ActionType.Distraction){
                 // Distraction -> Processing
+                // Decreases the efficacy of the Processing card by 1
                 if(actionType == ActionType.Processing)
                 {
                     if(levelType != LevelType.Energy)
@@ -294,6 +295,7 @@ public class PlayedActionCardsDisplay : CardDisplay
             // Previous card = Expression
             }else if(previousActionCardType == ActionType.Expression){
                 // Expression -> Processing
+                // Increases the efficacy of the Processing card by 1
                 if(actionType == ActionType.Processing)
                 {
                     if(levelType != LevelType.Energy)
@@ -315,6 +317,7 @@ public class PlayedActionCardsDisplay : CardDisplay
             // Previous card = Processing
             }else if(previousActionCardType == ActionType.Processing){
                 // Processing -> Expression
+                // Increases the efficacy of the Expression card by 1
                 if(actionType == ActionType.Expression)
                 {
                     if(levelType != LevelType.Energy)

@@ -8,6 +8,7 @@ public class TooltipDisplay : MonoBehaviour
     [SerializeField] private CardType cardType;
 
     /* ------------------------ For Event + Action Cards ------------------------ */
+    // * Does not affect NPC card
     [SerializeField] private LevelType _levelType;
 
     /* ------------------------------ Info Sources ------------------------------ */

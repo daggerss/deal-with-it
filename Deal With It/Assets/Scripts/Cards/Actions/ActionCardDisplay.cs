@@ -23,11 +23,6 @@ public class ActionCardDisplay : CardDisplay
     public Image FearArrowUpImage, FearArrowDownImage, FearEqualImage;
     public Image AngerArrowUpImage, AngerArrowDownImage, AngerEqualImage;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -80,7 +75,6 @@ public class ActionCardDisplay : CardDisplay
             SadnessEqualImage.enabled = _currentActionCard.SadnessValCanceled;
             FearEqualImage.enabled = _currentActionCard.FearValCanceled;
             AngerEqualImage.enabled = _currentActionCard.AngerValCanceled;
-        }else{
         }
     }
 }

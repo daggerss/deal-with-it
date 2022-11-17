@@ -69,12 +69,6 @@ public class RoundController : MonoBehaviour
         Skip = SkipPlayer(10f);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     /* -------------------------------------------------------------------------- */
     /*                              Custom Functions                              */
     /* -------------------------------------------------------------------------- */
@@ -124,6 +118,7 @@ public class RoundController : MonoBehaviour
     }
 
     // Checks if NPC wins or loses or continue playing
+    // TODO: Make values dynamic within NPC
     private string WinLoseStatus(){
         // Count total number of played cards
         for(int i = 0; i < PlayedActionCards.PlayedActionCards.Length; i++){
