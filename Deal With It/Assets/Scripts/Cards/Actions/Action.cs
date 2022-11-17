@@ -139,6 +139,23 @@ public class Action : Card
     public string FearTraitEffectText {get; set;}
     public string AngerTraitEffectText {get; set;}
 
+    // In Order Combos
+    public string PrevIOStrategyText {get; set;}
+    public string NextIOStrategyText {get; set;}
+    public string EnergyInOrderEffectText {get; set;}
+    public string JoyInOrderEffectText {get; set;}
+    public string SadnessInOrderEffectText {get; set;}
+    public string FearInOrderEffectText {get; set;}
+    public string AngerInOrderEffectText {get; set;}
+
+    // At Least Combos
+    public string ALStrategyText {get; set;}
+    public string EnergyAtLeastEffectText {get; set;}
+    public string JoyAtLeastEffectText {get; set;}
+    public string SadnessAtLeastEffectText {get; set;}
+    public string FearAtLeastEffectText {get; set;}
+    public string AngerAtLeastEffectText {get; set;}
+
     /* ----------------------------- Custom Methods ----------------------------- */
 
     // Set random emotion values

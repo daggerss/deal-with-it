@@ -56,6 +56,24 @@ public class PlayedActionCardsDisplay : CardDisplay
     public NPCDisplay NPCDisplay;
     public NPC NPC;
 
+    /* -------------------------------- Tooltips -------------------------------- */
+    // In Order Combos
+    private string _prevIOStrategyText;
+    public string PrevIOStrategyText => _prevIOStrategyText;
+
+    private string _nextIOStrategyText;
+    public string NextIOStrategyText => _nextIOStrategyText;
+
+    private string _inOrderEffectText;
+    public string InOrderEffectText => _inOrderEffectText;
+
+    // At Least Combos
+    private string _ALStrategyText;
+    public string ALStrategyText => _ALStrategyText;
+
+    private string _atLeastEffectText;
+    public string AtLeastEffectText => _atLeastEffectText;
+
     /* ---------------------------------- Misc ---------------------------------- */
     private bool _effectsApplied = false;
 
@@ -127,6 +145,13 @@ public class PlayedActionCardsDisplay : CardDisplay
 
     /* ------------------------- Combo checking methods ------------------------- */
     public int ProjectComboEffect(LevelType levelType, int effectValue, ActionType actionType){
+        /* ------------------------ Compose tooltip arguments ----------------------- */
+        string rationale = "";
+        int baseAddend = 0;
+        int threshold = 0;
+        string fullTooltip = ""; // For previously played cards
+        string atLeastStrat = "";
+
         /* ----------------------------- All strategies ----------------------------- */
         //! LEGACY All strategies :(
         // // if(DistractionCount >= 1 && ExpressionCount >= 1 && ProcessingCount >= 1 && ReappraisalCount >= 1){
@@ -152,6 +177,13 @@ public class PlayedActionCardsDisplay : CardDisplay
         if(DistractionCount >= 3){
             // Additional +1 energy to all non distraction cards
 
+            // Tooltip content
+            atLeastStrat = "Distraction";
+            rationale = "keeps you from addressing the issue";
+            threshold = 3;
+            fullTooltip = ComposeTooltipContent(TooltipType.AtLeastCombo, levelType,
+                                               actionType, rationale, 1, threshold);
+
             // Project on the cards already played
             if(levelType == LevelType.Energy && DistractionCount == 3){ // To make sure this only runs once or else the value will keep changing
                 for(int i = 0; i < PlayedActionCards.Length; i++){
@@ -162,6 +194,10 @@ public class PlayedActionCardsDisplay : CardDisplay
                         playedActionCard.UpdateValueChanges(LevelType.Energy);
                         playedActionCard.EnergyVal -= 1;
                         playedActionCard.UpdateValueCanceled(LevelType.Energy);
+
+                        // Tooltip content
+                        playedActionCard.ALStrategyText = atLeastStrat;
+                        playedActionCard.EnergyAtLeastEffectText = fullTooltip;
                     }else{
                         count++;
                     }
@@ -178,6 +214,13 @@ public class PlayedActionCardsDisplay : CardDisplay
         }else if(ExpressionCount >= 4){
             // Flips emotion values of expression card (+1 becomes -1)
 
+            // Tooltip content
+            atLeastStrat = "Expression";
+            rationale = "amplifies the experience instead";
+            threshold = 4;
+            fullTooltip = ComposeTooltipContent(TooltipType.AtLeastCombo, levelType,
+                                               actionType, rationale, 1, threshold);
+
             //Project on the cards already played
             if(levelType == LevelType.Energy && ExpressionCount == 4){ // To make sure this only runs once or else the value will keep changing
                 for(int i = 0; i < PlayedActionCards.Length; i++){
@@ -190,6 +233,13 @@ public class PlayedActionCardsDisplay : CardDisplay
                         playedActionCard.FearVal *= -1;
                         playedActionCard.AngerVal *= -1;
                         count++;
+
+                        // Tooltip content
+                        playedActionCard.ALStrategyText = atLeastStrat;
+                        playedActionCard.JoyAtLeastEffectText = fullTooltip;
+                        playedActionCard.SadnessAtLeastEffectText = fullTooltip;
+                        playedActionCard.FearAtLeastEffectText = fullTooltip;
+                        playedActionCard.AngerAtLeastEffectText = fullTooltip;
                     }
                 }
             }
@@ -203,6 +253,13 @@ public class PlayedActionCardsDisplay : CardDisplay
         // * Checked
         }else if(ProcessingCount >= 3){
             // Decreases the efficacy of the Processing cards’ negative emotion effects by 2
+
+            // Tooltip content
+            atLeastStrat = "Processing";
+            rationale = "becomes brooding";
+            threshold = 3;
+            fullTooltip = ComposeTooltipContent(TooltipType.AtLeastCombo, levelType,
+                                               actionType, rationale, 1, threshold);
 
             // Project on the cards already played
             if(levelType == LevelType.Energy && ProcessingCount == 3){ // To make sure this only runs once or else the value will keep changing
@@ -222,6 +279,12 @@ public class PlayedActionCardsDisplay : CardDisplay
                         playedActionCard.UpdateValueCanceled(LevelType.Sadness);
                         playedActionCard.UpdateValueCanceled(LevelType.Fear);
                         playedActionCard.UpdateValueCanceled(LevelType.Anger);
+
+                        // Tooltip content
+                        playedActionCard.ALStrategyText = atLeastStrat;
+                        playedActionCard.SadnessAtLeastEffectText = fullTooltip;
+                        playedActionCard.FearAtLeastEffectText = fullTooltip;
+                        playedActionCard.AngerAtLeastEffectText = fullTooltip;
                     }
                 }
             }
@@ -234,6 +297,13 @@ public class PlayedActionCardsDisplay : CardDisplay
         /* -------------------- 3 Reappraisal Cards in one round -------------------- */
         }else if(ReappraisalCount >= 3){
             // Decreases efficacy of the reappraisal cards by 1
+
+            // Tooltip content
+            atLeastStrat = "Reappraisal";
+            rationale = "distorts your perspective";
+            threshold = 3;
+            fullTooltip = ComposeTooltipContent(TooltipType.AtLeastCombo, levelType,
+                                               actionType, rationale, 1, threshold);
 
             // Project on the cards already played
             if(levelType == LevelType.Energy && ReappraisalCount == 3){ // To make sure this only runs once or else the value will keep changing
@@ -256,6 +326,13 @@ public class PlayedActionCardsDisplay : CardDisplay
                         playedActionCard.UpdateValueCanceled(LevelType.Sadness);
                         playedActionCard.UpdateValueCanceled(LevelType.Fear);
                         playedActionCard.UpdateValueCanceled(LevelType.Anger);
+
+                        // Tooltip content
+                        playedActionCard.ALStrategyText = atLeastStrat;
+                        playedActionCard.JoyAtLeastEffectText = fullTooltip;
+                        playedActionCard.SadnessAtLeastEffectText = fullTooltip;
+                        playedActionCard.FearAtLeastEffectText = fullTooltip;
+                        playedActionCard.AngerAtLeastEffectText = fullTooltip;
                     }
                 }
             }
@@ -266,12 +343,22 @@ public class PlayedActionCardsDisplay : CardDisplay
             }
         }
 
+        // At least tooltip content
+        _ALStrategyText = atLeastStrat;
+        // * Addend does nothing here, but zero returns null
+        _atLeastEffectText = ComposeTooltipContent(TooltipType.AtLeastCombo,
+                                                   levelType, actionType,
+                                                   rationale, 1, threshold);
+
         /* -------------------------------- In order -------------------------------- */
         //* Not the first player because CurrentSlot -1 might have an error
         if(CurrentSlot != 0){
             ActionType previousActionCardType = PlayedActionCards[CurrentSlot - 1].CardActionType;
             // Previous card = Distraction
             if(previousActionCardType == ActionType.Distraction){
+                // Tooltip content
+                _prevIOStrategyText = "Distraction";
+
                 // Distraction -> Processing
                 // Decreases the efficacy of the Processing card by 1
                 if(actionType == ActionType.Processing)
@@ -279,6 +366,11 @@ public class PlayedActionCardsDisplay : CardDisplay
                     if(levelType != LevelType.Energy)
                     {
                         addend += AddExtraEffect(effectValue, -1);
+
+                        // Tooltip content
+                        _nextIOStrategyText = "Processing";
+                        rationale = "Distraction distances you from the emotional experience";
+                        baseAddend = -1;
                     }
                 }
 
@@ -289,11 +381,19 @@ public class PlayedActionCardsDisplay : CardDisplay
                     if(levelType != LevelType.Energy)
                     {
                         addend += AddExtraEffect(effectValue, 1);
+
+                        // Tooltip content
+                        _nextIOStrategyText = "Reappraisal";
+                        rationale = "Taking time to cool down allows you to think more clearly later on";
+                        baseAddend = 1;
                     }
                 }
 
             // Previous card = Expression
             }else if(previousActionCardType == ActionType.Expression){
+                // Tooltip content
+                _prevIOStrategyText = "Expression";
+
                 // Expression -> Processing
                 // Increases the efficacy of the Processing card by 1
                 if(actionType == ActionType.Processing)
@@ -301,6 +401,11 @@ public class PlayedActionCardsDisplay : CardDisplay
                     if(levelType != LevelType.Energy)
                     {
                         addend += AddExtraEffect(effectValue, 1);
+
+                        // Tooltip content
+                        _nextIOStrategyText = "Processing";
+                        rationale = "Expressing yourself can give you more insights";
+                        baseAddend = 1;
                     }
                 }
 
@@ -311,11 +416,19 @@ public class PlayedActionCardsDisplay : CardDisplay
                     if(levelType == LevelType.Energy)
                     {
                         addend += AddExtraEffect(effectValue, -1);
+
+                        // Tooltip content
+                        _nextIOStrategyText = "Reappraisal";
+                        rationale = "Expressing yourself can open up reflexive discussions";
+                        baseAddend = -1;
                     }
                 }
 
             // Previous card = Processing
             }else if(previousActionCardType == ActionType.Processing){
+                // Tooltip content
+                _prevIOStrategyText = "Processing";
+
                 // Processing -> Expression
                 // Increases the efficacy of the Expression card by 1
                 if(actionType == ActionType.Expression)
@@ -323,6 +436,11 @@ public class PlayedActionCardsDisplay : CardDisplay
                     if(levelType != LevelType.Energy)
                     {
                         addend += AddExtraEffect(effectValue, 1);
+
+                        // Tooltip content
+                        _nextIOStrategyText = "Expression";
+                        rationale = "Processing gives you full awareness of the experience";
+                        baseAddend = 1;
                     }
                 }
 
@@ -340,8 +458,29 @@ public class PlayedActionCardsDisplay : CardDisplay
                     {
                         addend += AddExtraEffect(effectValue, 2);
                     }
+
+                    // Tooltip content
+                    _nextIOStrategyText = "Reappraisal";
+                    rationale = "Processing gives you a view of the entire picture, but following it with Reappraisal is quite taxing";
+                    baseAddend = -13; // Designation for special tooltip text
                 }
             }
+        }
+
+        // In order tooltip content
+        _inOrderEffectText = ComposeTooltipContent(TooltipType.InOrderCombo,
+                                                   levelType, actionType,
+                                                   rationale, baseAddend);
+
+        // Tooltips are null if nothing happened
+        if (addend == 0)
+        {
+            _inOrderEffectText = null;
+        }
+
+        if (addend == 0 && flip == 1)
+        {
+            _atLeastEffectText = null;
         }
 
         return (effectValue + addend) * flip;

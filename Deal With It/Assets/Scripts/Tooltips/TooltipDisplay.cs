@@ -157,26 +157,71 @@ public class TooltipDisplay : MonoBehaviour
     {
         if (_actionCardInfo != null)
         {
-            // NPC Traits
+            // Strategy Order
+            _inOrderTooltip.PrevStrat = _actionCardInfo.PrevIOStrategyText;
+            _inOrderTooltip.NextStrat = _actionCardInfo.NextIOStrategyText;
+            _atLeastTooltip.PrevStrat = _actionCardInfo.ALStrategyText;
+            _atLeastTooltip.NextStrat = _actionCardInfo.ALStrategyText;
+
+            // Energy
             if (_levelType == LevelType.Energy)
             {
+                // NPC Traits
                 _traitTooltip.Content = _actionCardInfo.EnergyTraitEffectText;
+
+                // In Order Combos
+                _inOrderTooltip.Content = _actionCardInfo.EnergyInOrderEffectText;
+
+                // At Least Combos
+                _atLeastTooltip.Content = _actionCardInfo.EnergyAtLeastEffectText;
             }
+            // Joy
             else if (_levelType == LevelType.Joy)
             {
+                // NPC Traits
                 _traitTooltip.Content = _actionCardInfo.JoyTraitEffectText;
+
+                // In Order Combos
+                _inOrderTooltip.Content = _actionCardInfo.JoyInOrderEffectText;
+
+                // At Least Combos
+                _atLeastTooltip.Content = _actionCardInfo.JoyAtLeastEffectText;
             }
+            // Sadness
             else if (_levelType == LevelType.Sadness)
             {
+                // NPC Traits
                 _traitTooltip.Content = _actionCardInfo.SadnessTraitEffectText;
+
+                // In Order Combos
+                _inOrderTooltip.Content = _actionCardInfo.SadnessInOrderEffectText;
+
+                // At Least Combos
+                _atLeastTooltip.Content = _actionCardInfo.SadnessAtLeastEffectText;
             }
+            // Fear
             else if (_levelType == LevelType.Fear)
             {
+                // NPC Traits
                 _traitTooltip.Content = _actionCardInfo.FearTraitEffectText;
+
+                // In Order Combos
+                _inOrderTooltip.Content = _actionCardInfo.FearInOrderEffectText;
+
+                // At Least Combos
+                _atLeastTooltip.Content = _actionCardInfo.FearAtLeastEffectText;
             }
+            // Anger
             else if (_levelType == LevelType.Anger)
             {
+                // NPC Traits
                 _traitTooltip.Content = _actionCardInfo.AngerTraitEffectText;
+
+                // In Order Combos
+                _inOrderTooltip.Content = _actionCardInfo.AngerInOrderEffectText;
+
+                // At Least Combos
+                _atLeastTooltip.Content = _actionCardInfo.AngerAtLeastEffectText;
             }
         }
     }

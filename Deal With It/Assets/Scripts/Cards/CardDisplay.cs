@@ -94,18 +94,21 @@ public class CardDisplay : MonoBehaviour
 
     // Construct tooltip content
     public string ComposeTooltipContent(TooltipType tooltipType, LevelType levelType,
-                                        ActionType actionType, string rationale, int addend)
+                                        ActionType actionType, string rationale, int addend,
+                                        int atLeastThreshold = 0)
     {
         // Compose only when has content
         if (addend != 0)
         {
+            string firstClause = rationale + ", so ";
+
             // NPC Traits
             if (tooltipType == TooltipType.Trait)
             {
                 // NPC x Events
                 if (actionType == ActionType.None)
                 {
-                    return rationale + ", so " + levelType.ToString() + " events are " +
+                    return firstClause + levelType.ToString() + " events are " +
                            VerbalizeExtraEffect(levelType, addend);
                 }
                 // NPC x Strategy
@@ -113,12 +116,60 @@ public class CardDisplay : MonoBehaviour
                 {
                     if (levelType == LevelType.Energy)
                     {
-                        return rationale + ", so " + actionType.ToString() + " " +
+                        return firstClause + actionType.ToString() + " " +
                                VerbalizeExtraEffect(levelType, addend);
                     }
                     
-                    return rationale + ", so " + actionType.ToString() + " is " +
+                    return firstClause + actionType.ToString() + " is " +
                            VerbalizeExtraEffect(levelType, addend);
+                }
+            }
+
+            // In Order Combos
+            else if (tooltipType == TooltipType.InOrderCombo)
+            {
+                // Processing -> Reappraisal is special
+                if (actionType == ActionType.Reappraisal && addend == -13)
+                {
+                    return firstClause + actionType.ToString() + " is more effective by 2 but costs +1 more energy.";
+                }
+
+                if (levelType == LevelType.Energy)
+                {
+                    return firstClause + actionType.ToString() + " " +
+                           VerbalizeExtraEffect(levelType, addend);
+                }
+                    
+                return firstClause + actionType.ToString() + " is " +
+                       VerbalizeExtraEffect(levelType, addend);
+            }
+
+            // At Least Combos
+            else if (tooltipType == TooltipType.AtLeastCombo && atLeastThreshold != 0)
+            {
+                firstClause = "Too much " + actionType.ToString() + " " + rationale +
+                              "! At least " + atLeastThreshold.ToString() + " " +
+                              actionType.ToString() + " cards ";
+                
+                // Distraction -> Distraction
+                if (actionType == ActionType.Distraction)
+                {
+                    return firstClause + "causes all other strategies to cost +1 more energy.";
+                }
+                // Expression -> Expression
+                else if (actionType == ActionType.Expression)
+                {
+                    return firstClause + "inverts their emotional effects.";
+                }
+                // Processing -> Processing
+                else if (actionType == ActionType.Processing)
+                {
+                    return firstClause + "makes their negative emotions less effective by 2.";
+                }
+                // Reappraisal -> Reappraisal
+                else if (actionType == ActionType.Reappraisal)
+                {
+                    return firstClause + "makes them less effective by 1.";
                 }
             }
         }
