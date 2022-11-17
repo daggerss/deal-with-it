@@ -13,13 +13,13 @@ public class TooltipDisplay : MonoBehaviour
 
     /* ------------------------------ Info Sources ------------------------------ */
     // NPC Card
-    [SerializeField] private NPC _npc;
+    private NPC _npc;
 
     // Event Card
-    [SerializeField] private EventCardDisplay _eventCardInfo;
+    private EventCardDisplay _eventCardInfo;
 
     // Action Card
-    [SerializeField] private Action _actionCardInfo;
+    private Action _actionCardInfo;
 
     /* -------------------------------- Tooltips -------------------------------- */
     // NPC Card
