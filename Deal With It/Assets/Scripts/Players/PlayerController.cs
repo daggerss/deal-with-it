@@ -129,10 +129,10 @@ public class PlayerController : MonoBehaviour
             }
 
             // Timer Countdown
-            if(!RoundController.CountdownActive){
-                Debug.Log("CountdownActive = false");
-                StartCoroutine(RoundController.Skip);
-            }
+            // // if(!RoundController.CountdownActive){
+            // //     Debug.Log("CountdownActive = false");
+            // //     StartCoroutine(RoundController.Skip);
+            // // }
         }else{
             // So player can't play card when it's not their turn
             ConfirmButton.gameObject.SetActive(false);

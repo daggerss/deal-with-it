@@ -32,3 +32,9 @@ MonoBehaviour:
   _expressionEnergyAddend: 0
   _processingEnergyAddend: 0
   _reappraisalEnergyAddend: 1
+  _joyRange: {x: 6, y: 8}
+  _sadnessRange: {x: 6, y: 8}
+  _fearRange: {x: 0, y: 6}
+  _angerRange: {x: 0, y: 6}
+  _rangeWinDuration: 7
+  _rangeLoseDuration: -1

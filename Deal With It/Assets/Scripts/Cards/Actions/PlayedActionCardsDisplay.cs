@@ -33,6 +33,7 @@ public class PlayedActionCardsDisplay : CardDisplay
     public int TotalSadnessVal = 0;
     public int TotalFearVal = 0;
     public int TotalAngerVal = 0;
+    public bool OverloadUnderload = false;
 
     /* ---------------------------- Round Controller ---------------------------- */
     private RoundController RoundController;
@@ -104,6 +105,16 @@ public class PlayedActionCardsDisplay : CardDisplay
                 _effectsApplied = true;
 
                 GetTotalValues();
+
+                // Check for overload or under load
+                NPC npc = NPCDisplay.npc;
+                if((npc.JoyLvl + TotalJoyVal) < 0 || (npc.JoyLvl + TotalJoyVal) > 13 ||
+                (npc.SadnessLvl + TotalSadnessVal) < 0 || (npc.SadnessLvl + TotalSadnessVal) > 13 ||
+                (npc.FearLvl + TotalFearVal) < 0 || (npc.FearLvl + TotalFearVal) > 13 ||
+                (npc.AngerLvl + TotalAngerVal) < 0 || (npc.AngerLvl + TotalAngerVal) > 13){
+                    OverloadUnderload = true;
+                }
+
                 NPCDisplay.ApplyEffect(LevelType.Energy, TotalEnergyVal);
                 NPCDisplay.ApplyEffect(LevelType.Joy, TotalJoyVal);
                 NPCDisplay.ApplyEffect(LevelType.Sadness, TotalSadnessVal);
