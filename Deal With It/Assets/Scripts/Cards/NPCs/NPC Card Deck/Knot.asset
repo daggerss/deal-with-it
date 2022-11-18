@@ -63,3 +63,17 @@ MonoBehaviour:
   _processingEnergyRationale: 
   _reappraisalEnergyAddend: 1
   _reappraisalEnergyRationale: Knot has difficulty reframing their perspective
+  _joyRange: {x: 6, y: 8}
+  _sadnessRange: {x: 6, y: 8}
+  _fearRange: {x: 0, y: 6}
+  _angerRange: {x: 0, y: 6}
+  _rangeWinDuration: 7
+  _rangeLoseDuration: -1
+  _maxDistractionPerRound: 5
+  _maxExpressionPerRound: 5
+  _maxProcessingPerRound: 5
+  _maxReappraisalPerRound: 2
+  _minDistractionTotal: 0
+  _minExpressionTotal: 0
+  _minProcessingTotal: 0
+  _minReappraisalTotal: 0

@@ -251,4 +251,63 @@ public class NPC : Card
     [TextArea(1,3)]
     private string _reappraisalEnergyRationale;
     public string ReappraisalEnergyRationale => _reappraisalEnergyRationale;
+    
+    /* ------------------------- Win Condition Variables ------------------------ */
+    // Emotion Ranges
+    [SerializeField]
+    private Vector2 _joyRange;
+    public Vector2 JoyRange => _joyRange;
+
+    [SerializeField]
+    private Vector2 _sadnessRange;
+    public Vector2 SadnessRange => _sadnessRange;
+
+    [SerializeField]
+    private Vector2 _fearRange;
+    public Vector2 FearRange => _fearRange;
+
+    [SerializeField]
+    private Vector2 _angerRange;
+    public Vector2 AngerRange => _angerRange;
+
+    [SerializeField]
+    private int _rangeWinDuration;
+    public int RangeWinDuration => _rangeWinDuration;
+
+    [SerializeField]
+    private int _rangeLoseDuration;
+    public int RangeLoseDuration => _rangeLoseDuration;
+
+    // Action Cards Played
+    [SerializeField]
+    private int _maxDistractionPerRound;
+    public int MaxDistractionPerRound => _maxDistractionPerRound;
+
+    [SerializeField]
+    private int _maxExpressionPerRound;
+    public int MaxExpressionPerRound => _maxExpressionPerRound;
+
+    [SerializeField]
+    private int _maxProcessingPerRound;
+    public int MaxProcessingPerRound => _maxProcessingPerRound;
+
+    [SerializeField]
+    private int _maxReappraisalPerRound;
+    public int MaxReappraisalPerRound => _maxReappraisalPerRound;
+
+    [SerializeField]
+    private int _minDistractionTotal;
+    public int MinDistractionTotal => _minDistractionTotal;
+
+    [SerializeField]
+    private int _minExpressionTotal;
+    public int MinExpressionTotal => _minExpressionTotal;
+
+    [SerializeField]
+    private int _minProcessingTotal;
+    public int MinProcessingTotal => _minProcessingTotal;
+
+    [SerializeField]
+    private int _minReappraisalTotal;
+    public int MinReappraisalTotal => _minReappraisalTotal;
 }

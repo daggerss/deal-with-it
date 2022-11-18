@@ -7267,6 +7267,8 @@ MonoBehaviour:
   NPC: {fileID: 0}
   PlayedActionCards: {fileID: 0}
   CountdownActive: 0
+  WinLoseLabel: {fileID: 0}
+  WinLoseLabelText: {fileID: 0}
 --- !u!4 &964616246
 Transform:
   m_ObjectHideFlags: 0

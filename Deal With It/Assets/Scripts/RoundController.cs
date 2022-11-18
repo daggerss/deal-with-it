@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class RoundController : MonoBehaviour
 {
@@ -49,6 +51,10 @@ public class RoundController : MonoBehaviour
     public IEnumerator Skip; 
     public bool CountdownActive = false;
 
+    /* ----------------------------- Win Lose Label ----------------------------- */
+    public Button WinLoseLabel;
+    public TMP_Text WinLoseLabelText;
+
     /* -------------------------------------------------------------------------- */
     /*                                  Functions                                 */
     /* -------------------------------------------------------------------------- */
@@ -67,6 +73,9 @@ public class RoundController : MonoBehaviour
 
         // Initialize _skipPlayer
         Skip = SkipPlayer(10f);
+
+        // Initialize WinLoseLabel
+        WinLoseLabel.gameObject.SetActive(false);
     }
 
     /* -------------------------------------------------------------------------- */
@@ -110,103 +119,86 @@ public class RoundController : MonoBehaviour
         if(winLoseStatus == "continue"){
             _round++;
             _playerTurn = -1;
-        }else if(winLoseStatus == "win"){
-            Debug.Log("You win!");
         }else{
-            Debug.Log("You lose!");
+            WinLoseLabel.gameObject.SetActive(true);
+            WinLoseLabelText.text = winLoseStatus;
         }
     }
 
-    // Checks if NPC wins or loses or continue playing
-    // TODO: Make values dynamic within NPC
+    /* ------------- Checks if NPC wins or loses or continue playing ------------ */
     private string WinLoseStatus(){
-        // Count total number of played cards
-        for(int i = 0; i < PlayedActionCards.PlayedActionCards.Length; i++){
-            if(PlayedActionCards.PlayedActionCards[i] != null){
-                ActionType actionType = PlayedActionCards.PlayedActionCards[i].CardActionType;
-                if(actionType == ActionType.Distraction){
-                    _totalDistractionCount++;
-                }else if(actionType == ActionType.Expression){
-                    _totalExpressionCount++;
-                }else if(actionType == ActionType.Processing){
-                    _totalProcessingCount++;
-                }else if(actionType == ActionType.Reappraisal){
-                    _totalReappraisalCount++;
-                }
-            }else{
-                break;
+        /* ------------------------- Overload and Underload ------------------------- */
+        if(PlayedActionCards.OverloadUnderload){
+            return "One or more of the emotions has overloaded or underloaded! You lose!";
+        }
+
+        if(NPC.EnergyLvl <= -10){
+            return "You have overexhausted " + NPC.CardName + "! You lose!";
+        }
+
+        /* ------------------- Count total number of played cards ------------------- */
+        _totalDistractionCount += PlayedActionCards.DistractionCount;
+        _totalExpressionCount += PlayedActionCards.ExpressionCount;
+        _totalProcessingCount += PlayedActionCards.ProcessingCount;
+        _totalReappraisalCount += PlayedActionCards.ReappraisalCount;
+
+        /* ------------------------- Card Per Round Counter ------------------------- */
+        if(PlayedActionCards.DistractionCount > NPC.MaxDistractionPerRound ||
+        PlayedActionCards.ExpressionCount > NPC.MaxExpressionPerRound ||
+        PlayedActionCards.ProcessingCount > NPC.MaxProcessingPerRound ||
+        PlayedActionCards.ReappraisalCount > NPC.MaxReappraisalPerRound){
+            return "You used too many of a certain action type per round! You lose!";
+        }
+
+        /* ------------------------------- Card Total ------------------------------- */
+        if(NPC.MinDistractionTotal < _totalDistractionCount &&
+        NPC.MinExpressionTotal < _totalExpressionCount &&
+        NPC.MinProcessingTotal < _totalProcessingCount &&
+        NPC.MinReappraisalTotal < _totalReappraisalCount){
+            if(NPC.MinDistractionTotal != 0 && NPC.MinExpressionTotal != 0 && NPC.MinProcessingTotal != 0 && NPC.MinReappraisalTotal != 0){
+                return "You reached the goal of certain action card type played! You win!";
             }
         }
 
-        switch(NPC.CardName.ToUpper()){
-            /* ---------------------------------- Knot ---------------------------------- */
-            case "KNOT":
-                if((NPC.JoyLvl >= 6 && NPC.JoyLvl <= 8) &&
-                (NPC.SadnessLvl >= 6 && NPC.SadnessLvl <= 8) &&
-                (NPC.FearLvl < 6) &&
-                (NPC.AngerLvl < 6)){ // Joy and Sadness neutral and Fear and Anger below 6 for 7 rounds
-                    _goalCounter++;
-                }else{ // Goal counter reset when neither is set
-                    _goalCounter = 0;
-                }
+        /* ----------------- Checks is Emotions are within NPC range ---------------- */
+        if(NPC.JoyRange.x <= NPC.JoyLvl && NPC.JoyLvl <= NPC.JoyRange.y &&
+        NPC.SadnessRange.x <= NPC.SadnessLvl && NPC.SadnessLvl <= NPC.SadnessRange.y &&
+        NPC.FearRange.x <= NPC.FearLvl && NPC.FearLvl <= NPC.FearRange.y &&
+        NPC.AngerRange.x <= NPC.AngerLvl && NPC.AngerLvl <= NPC.AngerRange.y){
+            // If goal counter is negative or 0 set goal counter to 1
+            if(_goalCounter <= 0){
+                _goalCounter = 1;
 
-                if(PlayedActionCards.ExpressionCount > 2){
-                    _goalCounter = -1;
-                }
-
-                if(_goalCounter == 7){
-                    return "win";
-                }
-
-                break;
-
-            case "PICKLES":
-                if(NPC.JoyLvl > 10 ||
-                NPC.SadnessLvl > 10 ||
-                NPC.FearLvl > 10 ||
-                NPC.AngerLvl > 10){
-                    _goalCounter = -1;
-                }
-
-                // TODO Add playing more than 10 expression cards in the whole game as win
-
-                if(_goalCounter == 1){
-                    return "win";
-                }
-
-                break;
-
-            case "SNIFFLES":
-                if((NPC.JoyLvl >= 6 && NPC.JoyLvl <= 8) &&
-                (NPC.SadnessLvl >= 6 && NPC.SadnessLvl <= 8) &&
-                (NPC.FearLvl < 6) &&
-                (NPC.AngerLvl < 6)){ // Joy and Sadness neutral and Fear and Anger below 6 for 7 rounds
-                    _goalCounter++;
-                }else{ // Goal counter reset when neither is set
-                    _goalCounter = 0;
-                }
-
-                if(_goalCounter == 1){
-                    return "win";
-                }
-
-                break;
-
-            default:
-                return "continue";
-        }
-
-        if(NPC.JoyLvl + PlayedActionCards.TotalJoyVal > 13 ||
-        NPC.SadnessLvl + PlayedActionCards.TotalSadnessVal > 13 ||
-        NPC.FearLvl + PlayedActionCards.TotalFearVal > 13 ||
-        NPC.AngerLvl + PlayedActionCards.TotalAngerVal > 13){
-            _goalCounter = -1;
-        }
-
-        if(_goalCounter < 0){
-            return "lose";
+            // If goal counter is positive and not equal to 0 increment goal counter by 1
+            }else{
+                _goalCounter++;
+            }
         }else{
-            return "continue";
+
+            // If goal counter is positive or 0 set goal counter to -1
+            if(_goalCounter >= 0){
+                _goalCounter = -1;
+
+            // If goal counter is negative and not 0 decrement goal counter by 1
+            }else{
+                _goalCounter--;
+            }
         }
+
+        // Emotion Range Win Checker
+        if(NPC.RangeWinDuration == -1){
+            // Do nothing
+        }else if(_goalCounter == NPC.RangeWinDuration){
+            return "You have successfully kept the emotions within the correct range! You win!";
+        }
+
+        // Emotion Range Lose Checker
+        if(NPC.RangeLoseDuration == -1){
+            // Do nothing
+        }else if(_goalCounter * -1 == NPC.RangeLoseDuration){
+            return "You failed to keep the emotions within the right range! You lose!";
+        }
+
+        return "continue";
     }
 }
