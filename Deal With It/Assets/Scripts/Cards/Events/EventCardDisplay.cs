@@ -30,6 +30,13 @@ public class EventCardDisplay : CardDisplay
     public Image FearArrowUpImage, FearArrowDownImage;
     public Image AngerArrowUpImage, AngerArrowDownImage;
 
+    // Tooltip Texts: NPC Traits
+    public string EnergyTraitEffectText {get; private set;}
+    public string JoyTraitEffectText {get; private set;}
+    public string SadnessTraitEffectText {get; private set;}
+    public string FearTraitEffectText {get; private set;}
+    public string AngerTraitEffectText {get; private set;}
+
     // Round Variables
     public GameObject RoundObject;
     private RoundController _roundController;
@@ -132,10 +139,19 @@ public class EventCardDisplay : CardDisplay
 
         // Apply NPC trait effects
         _currentEventCard.EnergyVal = npcDisplay.ProjectTraitEffect(LevelType.Energy, _currentEventCard.EnergyVal, ActionType.None);
+        EnergyTraitEffectText = npcDisplay.TraitEffectText;
+
         _currentEventCard.JoyVal = npcDisplay.ProjectTraitEffect(LevelType.Joy, _currentEventCard.JoyVal, ActionType.None);
+        JoyTraitEffectText = npcDisplay.TraitEffectText;
+
         _currentEventCard.SadnessVal = npcDisplay.ProjectTraitEffect(LevelType.Sadness, _currentEventCard.SadnessVal, ActionType.None);
+        SadnessTraitEffectText = npcDisplay.TraitEffectText;
+
         _currentEventCard.FearVal = npcDisplay.ProjectTraitEffect(LevelType.Fear, _currentEventCard.FearVal, ActionType.None);
+        FearTraitEffectText = npcDisplay.TraitEffectText;
+
         _currentEventCard.AngerVal = npcDisplay.ProjectTraitEffect(LevelType.Anger, _currentEventCard.AngerVal, ActionType.None);
+        AngerTraitEffectText = npcDisplay.TraitEffectText;
 
         //Format Text of New Card
         CardTypeText.text = _currentEventCard.GetType().Name;

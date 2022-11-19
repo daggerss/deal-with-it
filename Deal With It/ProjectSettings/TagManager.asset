@@ -10,6 +10,7 @@ TagManager:
   - PlayerTag
   - Played Action Cards Display
   - Player Cards
+  - Event Card Controller
   layers:
   - Default
   - TransparentFX

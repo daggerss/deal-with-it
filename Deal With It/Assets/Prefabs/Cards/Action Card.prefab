@@ -2418,6 +2418,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5307225893613749025}
     m_Modifications:
+    - target: {fileID: 2376135815090205592, guid: bd680a1d4b87c76489fd5a73503f854e, type: 3}
+      propertyPath: cardType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2943779832851835579, guid: bd680a1d4b87c76489fd5a73503f854e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2565,6 +2569,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5153114723800204371}
     m_Modifications:
+    - target: {fileID: 2376135815090205592, guid: bd680a1d4b87c76489fd5a73503f854e, type: 3}
+      propertyPath: cardType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2376135815090205592, guid: bd680a1d4b87c76489fd5a73503f854e, type: 3}
+      propertyPath: _levelType
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2943779832851835579, guid: bd680a1d4b87c76489fd5a73503f854e, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2572,6 +2584,10 @@ PrefabInstance:
     - target: {fileID: 3487762265141061703, guid: bd680a1d4b87c76489fd5a73503f854e, type: 3}
       propertyPath: m_Name
       value: Fear Equal
+      objectReference: {fileID: 0}
+    - target: {fileID: 3761714070703640948, guid: bd680a1d4b87c76489fd5a73503f854e, type: 3}
+      propertyPath: _levelType
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4391553304626632897, guid: bd680a1d4b87c76489fd5a73503f854e, type: 3}
       propertyPath: m_Name
@@ -2632,6 +2648,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2242394203883340995}
     m_Modifications:
+    - target: {fileID: 2376135815090205592, guid: bd680a1d4b87c76489fd5a73503f854e, type: 3}
+      propertyPath: cardType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2376135815090205592, guid: bd680a1d4b87c76489fd5a73503f854e, type: 3}
+      propertyPath: _levelType
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2943779832851835579, guid: bd680a1d4b87c76489fd5a73503f854e, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2639,6 +2663,10 @@ PrefabInstance:
     - target: {fileID: 3487762265141061703, guid: bd680a1d4b87c76489fd5a73503f854e, type: 3}
       propertyPath: m_Name
       value: Anger Equal
+      objectReference: {fileID: 0}
+    - target: {fileID: 3761714070703640948, guid: bd680a1d4b87c76489fd5a73503f854e, type: 3}
+      propertyPath: _levelType
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4391553304626632897, guid: bd680a1d4b87c76489fd5a73503f854e, type: 3}
       propertyPath: m_Name
@@ -2699,6 +2727,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4907136447525875694}
     m_Modifications:
+    - target: {fileID: 2376135815090205592, guid: bd680a1d4b87c76489fd5a73503f854e, type: 3}
+      propertyPath: cardType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2376135815090205592, guid: bd680a1d4b87c76489fd5a73503f854e, type: 3}
+      propertyPath: _levelType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2943779832851835579, guid: bd680a1d4b87c76489fd5a73503f854e, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2706,6 +2742,10 @@ PrefabInstance:
     - target: {fileID: 3487762265141061703, guid: bd680a1d4b87c76489fd5a73503f854e, type: 3}
       propertyPath: m_Name
       value: Sadness Equal
+      objectReference: {fileID: 0}
+    - target: {fileID: 3761714070703640948, guid: bd680a1d4b87c76489fd5a73503f854e, type: 3}
+      propertyPath: _levelType
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4391553304626632897, guid: bd680a1d4b87c76489fd5a73503f854e, type: 3}
       propertyPath: m_Name
@@ -2766,6 +2806,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 324130283278027585}
     m_Modifications:
+    - target: {fileID: 2376135815090205592, guid: bd680a1d4b87c76489fd5a73503f854e, type: 3}
+      propertyPath: cardType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2376135815090205592, guid: bd680a1d4b87c76489fd5a73503f854e, type: 3}
+      propertyPath: _levelType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2943779832851835579, guid: bd680a1d4b87c76489fd5a73503f854e, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2785,6 +2833,10 @@ PrefabInstance:
     - target: {fileID: 3487762265141061703, guid: bd680a1d4b87c76489fd5a73503f854e, type: 3}
       propertyPath: m_Name
       value: Joy Equal
+      objectReference: {fileID: 0}
+    - target: {fileID: 3761714070703640948, guid: bd680a1d4b87c76489fd5a73503f854e, type: 3}
+      propertyPath: _levelType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4391553304626632897, guid: bd680a1d4b87c76489fd5a73503f854e, type: 3}
       propertyPath: m_Name

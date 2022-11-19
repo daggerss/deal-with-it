@@ -69,6 +69,7 @@ public class Tooltip : MonoBehaviour
         }
 
         // Follow cursor
+        // * Only works if tooltip is NOT a child of a layout group
         Vector2 position = Input.mousePosition;
 
         float pivotX = position.x / Screen.width - 0.25f;

@@ -16,11 +16,17 @@ public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        TooltipSystem.Show(Type, Content, Heading, PrevStrat, NextStrat);
+        // Delay
+        Invoke("Trigger", 0.25f);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         TooltipSystem.Hide();
+    }
+
+    private void Trigger()
+    {
+        TooltipSystem.Show(Type, Content, Heading, PrevStrat, NextStrat);
     }
 }

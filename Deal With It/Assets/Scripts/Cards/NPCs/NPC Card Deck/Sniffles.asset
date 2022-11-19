@@ -32,14 +32,26 @@ MonoBehaviour:
   _angerStartingMin: 9
   _angerStartingMax: 11
   _joyAddend: 2
+  _joyRationale: Sniffles is emotionally sensitive
   _sadnessAddend: 2
+  _sadnessRationale: Sniffles is emotionally sensitive
   _fearAddend: 2
+  _fearRationale: Sniffles is emotionally sensitive
   _angerAddend: 2
+  _angerRationale: Sniffles is emotionally sensitive
   _distractionEmotionAddend: 0
+  _distractionEmotionRationale: 
   _expressionEmotionAddend: 1
+  _expressionEmotionRationale: Sniffles is communicative
   _processingEmotionAddend: 1
+  _processingEmotionRationale: Sniffles is in touch with themself
   _reappraisalEmotionAddend: 0
+  _reappraisalEmotionRationale: 
   _distractionEnergyAddend: 0
+  _distractionEnergyRationale: 
   _expressionEnergyAddend: 0
+  _expressionEnergyRationale: 
   _processingEnergyAddend: 0
+  _processingEnergyRationale: 
   _reappraisalEnergyAddend: 0
+  _reappraisalEnergyRationale: 

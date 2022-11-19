@@ -43,5 +43,6 @@ public class Card : ScriptableObject
     }
 }
 
-/* ------------------------------- Level Types ------------------------------ */
+/* ---------------------------------- Enums --------------------------------- */
+public enum CardType {NPC, Event, Action};
 public enum LevelType {Energy, Joy, Sadness, Fear, Anger};

@@ -41,6 +41,30 @@ public class PlayerController : MonoBehaviour
     public PlayedActionCardsDisplay PlayedActionCards;
     private bool _aiActionCardPlayed = false; 
 
+    // Tooltip Texts: NPC Traits
+    private string _energyTraitEffectText;
+    private string _joyTraitEffectText;
+    private string _sadnessTraitEffectText;
+    private string _fearTraitEffectText;
+    private string _angerTraitEffectText;
+
+    // Tooltip Texts: In Order Combos
+    private string _prevIOStrategyText;
+    private string _nextIOStrategyText;
+    private string _energyInOrderEffectText;
+    private string _joyInOrderEffectText;
+    private string _sadnessInOrderEffectText;
+    private string _fearInOrderEffectText;
+    private string _angerInOrderEffectText;
+
+    // Tooltip Texts: At Least Combos
+    private string _ALStrategyText;
+    private string _energyAtLeastEffectText;
+    private string _joyAtLeastEffectText;
+    private string _sadnessAtLeastEffectText;
+    private string _fearAtLeastEffectText;
+    private string _angerAtLeastEffectText;
+
     /* --------------------------------- Methods -------------------------------- */
     // Start is called before the first frame update
     void Start()
@@ -151,10 +175,10 @@ public class PlayerController : MonoBehaviour
 
             // Timer Countdown
             // ! WIP
-            // if(!RoundController.CountdownActive){
-            //     Debug.Log("CountdownActive = false");
-            //     StartCoroutine(RoundController.Skip);
-            // }
+            // // if(!RoundController.CountdownActive){
+            // //     Debug.Log("CountdownActive = false");
+            // //     StartCoroutine(RoundController.Skip);
+            // // }
         }else{
             // So player can't play card when it's not their turn
             ConfirmButton.gameObject.SetActive(false);
@@ -214,13 +238,29 @@ public class PlayerController : MonoBehaviour
                 PlayedActionCards.AddPlayedActionCard(projectedCard);
 
                 projectedCard.EnergyVal = NPCDisplay.ProjectTraitEffect(LevelType.Energy, projectedCard.EnergyVal, cardActionType);
+                _energyTraitEffectText = NPCDisplay.TraitEffectText;
+
                 projectedCard.JoyVal = NPCDisplay.ProjectTraitEffect(LevelType.Joy, projectedCard.JoyVal, cardActionType);
+                _joyTraitEffectText = NPCDisplay.TraitEffectText;
+
                 projectedCard.SadnessVal = NPCDisplay.ProjectTraitEffect(LevelType.Sadness, projectedCard.SadnessVal, cardActionType);
+                _sadnessTraitEffectText = NPCDisplay.TraitEffectText;
+
                 projectedCard.FearVal = NPCDisplay.ProjectTraitEffect(LevelType.Fear, projectedCard.FearVal, cardActionType);
+                _fearTraitEffectText = NPCDisplay.TraitEffectText;
+
                 projectedCard.AngerVal = NPCDisplay.ProjectTraitEffect(LevelType.Anger, projectedCard.AngerVal, cardActionType);
+                _angerTraitEffectText = NPCDisplay.TraitEffectText;
 
                 // Check if values were changed
                 projectedCard.UpdateValueChanges();
+
+                // Update tooltips content: NPC Traits
+                projectedCard.EnergyTraitEffectText = _energyTraitEffectText;
+                projectedCard.JoyTraitEffectText = _joyTraitEffectText;
+                projectedCard.SadnessTraitEffectText = _sadnessTraitEffectText;
+                projectedCard.FearTraitEffectText = _fearTraitEffectText;
+                projectedCard.AngerTraitEffectText = _angerTraitEffectText;
 
                 // Add current card type to the card count
                 PlayedActionCards.AddCurrentCard(cardActionType);
@@ -228,15 +268,51 @@ public class PlayerController : MonoBehaviour
                 // Set all PlayedActionCards to original value before applying new effects
                 PlayedActionCards.RevertAll();
 
-                // int ProjectComboEffect(LevelType levelType, int effectValue, ActionType actionType);
+                // Apply Combo effects
                 projectedCard.EnergyVal = PlayedActionCards.ProjectComboEffect(LevelType.Energy, projectedCard.EnergyVal, cardActionType);
+                _energyInOrderEffectText = PlayedActionCards.InOrderEffectText;
+                _energyAtLeastEffectText = PlayedActionCards.AtLeastEffectText;
+                
                 projectedCard.JoyVal = PlayedActionCards.ProjectComboEffect(LevelType.Joy, projectedCard.JoyVal, cardActionType);
+                _joyInOrderEffectText = PlayedActionCards.InOrderEffectText;
+                _joyAtLeastEffectText = PlayedActionCards.AtLeastEffectText;
+                
                 projectedCard.SadnessVal = PlayedActionCards.ProjectComboEffect(LevelType.Sadness, projectedCard.SadnessVal, cardActionType);
+                _sadnessInOrderEffectText = PlayedActionCards.InOrderEffectText;
+                _sadnessAtLeastEffectText = PlayedActionCards.AtLeastEffectText;
+                
                 projectedCard.FearVal = PlayedActionCards.ProjectComboEffect(LevelType.Fear, projectedCard.FearVal, cardActionType);
+                _fearInOrderEffectText = PlayedActionCards.InOrderEffectText;
+                _fearAtLeastEffectText = PlayedActionCards.AtLeastEffectText;
+                
                 projectedCard.AngerVal = PlayedActionCards.ProjectComboEffect(LevelType.Anger, projectedCard.AngerVal, cardActionType);
+                _angerInOrderEffectText = PlayedActionCards.InOrderEffectText;
+                _angerAtLeastEffectText = PlayedActionCards.AtLeastEffectText;
+
+                // Combo order for tooltips
+                _prevIOStrategyText = PlayedActionCards.PrevIOStrategyText;
+                _nextIOStrategyText = PlayedActionCards.NextIOStrategyText;
+                _ALStrategyText = PlayedActionCards.ALStrategyText;
 
                 // Check if values were canceled out
                 projectedCard.UpdateValueCanceled();
+
+                // Update tooltips content: In Order
+                projectedCard.PrevIOStrategyText = _prevIOStrategyText;
+                projectedCard.NextIOStrategyText = _nextIOStrategyText;
+                projectedCard.EnergyInOrderEffectText = _energyInOrderEffectText;
+                projectedCard.JoyInOrderEffectText = _joyInOrderEffectText;
+                projectedCard.SadnessInOrderEffectText = _sadnessInOrderEffectText;
+                projectedCard.FearInOrderEffectText = _fearInOrderEffectText;
+                projectedCard.AngerInOrderEffectText = _angerInOrderEffectText;
+
+                // Update tooltips content: At Least
+                projectedCard.ALStrategyText = _ALStrategyText;
+                projectedCard.EnergyAtLeastEffectText = _energyAtLeastEffectText;
+                projectedCard.JoyAtLeastEffectText = _joyAtLeastEffectText;
+                projectedCard.SadnessAtLeastEffectText = _sadnessAtLeastEffectText;
+                projectedCard.FearAtLeastEffectText = _fearAtLeastEffectText;
+                projectedCard.AngerAtLeastEffectText = _angerAtLeastEffectText;
 
             // If a player clicks on a card slot with no value inside
             }else{
@@ -292,6 +368,7 @@ public class PlayerController : MonoBehaviour
         }
 
         RoundController.NextPlayer();
+        // ! WIP
         // StopCoroutine(RoundController.Skip);
     }
 
@@ -315,6 +392,7 @@ public class PlayerController : MonoBehaviour
         }
 
         RoundController.NextPlayer();
+        // ! WIP
         // StopCoroutine(RoundController.Skip);
     }
 
