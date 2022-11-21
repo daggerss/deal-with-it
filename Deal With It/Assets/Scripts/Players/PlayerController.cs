@@ -195,6 +195,7 @@ public class PlayerController : MonoBehaviour
             if(SelectedCard != -1 && SelectedCard != CardIndex){
                 PlayedActionCards.RemoveCurrentCard(CardsInHand[SelectedCard].CardActionType);
                 CardsInHandButton[SelectedCard].gameObject.SetActive(true);
+                ActionCardProject = false;
                 
                 Action projectedCard = CardsInHand[SelectedCard];
                 PlayedActionCards.RemoveActionCard(projectedCard);
@@ -211,7 +212,7 @@ public class PlayerController : MonoBehaviour
                 if (SelectedCard >= 0 && SelectedCard < CardsInHand.Length)
                 {
                     CardsInHandButton[SelectedCard].gameObject.SetActive(true);
-                    ActionCardProject = false;
+                    ActionCardProject = true;
                     PlayedActionCards.RemoveCurrentCard(CardsInHand[SelectedCard].CardActionType);
                     PlayedActionCards.RevertAll();
                     CardsInHand[SelectedCard].Revert();
@@ -229,7 +230,8 @@ public class PlayerController : MonoBehaviour
             // If a player clicks on a card slot with a value inside
             }else if(CardsInHand[CardIndex] != null){
                 SelectedCard = CardIndex;
-                CardsInHandButton[SelectedCard].gameObject.SetActive(false);
+                CardsInHandButton[SelectedCard].gameObject.SetActive(true);
+                ActionCardProject = true;
 
                 // Apply NPC trait effects
                 Action projectedCard = CardsInHand[SelectedCard];
