@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
     private Vector3[] OriginalButtonRotation = new Vector3[5];
     public Button ConfirmButton;
     public Button SwapButton;
+    public Button SkipTurnButton;
+    private bool _showSkipTurnButton = false;
 
     //public bool[] ActionCardProject = new bool[]{true, true, true, true, true};
     public bool ActionCardProject = true;
@@ -165,13 +167,16 @@ public class PlayerController : MonoBehaviour
             //If player is AI
             if(!Playable){
                 StartCoroutine(AIPlayActionCard());
+            }else if (!_showSkipTurnButton){
+                SkipTurnButton.gameObject.SetActive(true);
+                _showSkipTurnButton = true;
             }
             // Allow user player to play
-            else
-            {
-                ConfirmButton.gameObject.SetActive(true);
-                SwapButton.gameObject.SetActive(true);
-            }
+            // // else
+            // // {
+            // //     ConfirmButton.gameObject.SetActive(true);
+            // //     SwapButton.gameObject.SetActive(true);
+            // // }
 
             // Timer Countdown
             // ! WIP
@@ -181,6 +186,7 @@ public class PlayerController : MonoBehaviour
             // // }
         }else{
             // So player can't play card when it's not their turn
+            SkipTurnButton.gameObject.SetActive(false);
             ConfirmButton.gameObject.SetActive(false);
             SwapButton.gameObject.SetActive(false);
         }
@@ -208,6 +214,11 @@ public class PlayerController : MonoBehaviour
 
             // If a player clicks on a card twice it will deselect the card
             if(CardIndex == SelectedCard){
+                // Hide confirm button
+                SkipTurnButton.gameObject.SetActive(true);
+                ConfirmButton.gameObject.SetActive(false);
+                SwapButton.gameObject.SetActive(false);
+
                 // Reset the card to original
                 if (SelectedCard >= 0 && SelectedCard < CardsInHand.Length)
                 {
@@ -229,6 +240,11 @@ public class PlayerController : MonoBehaviour
                 SelectedCard = -1;
             // If a player clicks on a card slot with a value inside
             }else if(CardsInHand[CardIndex] != null){
+                // Show confirm button
+                SkipTurnButton.gameObject.SetActive(false);
+                ConfirmButton.gameObject.SetActive(true);
+                SwapButton.gameObject.SetActive(true);
+
                 SelectedCard = CardIndex;
                 CardsInHandButton[SelectedCard].gameObject.SetActive(true);
                 ActionCardProject = true;
@@ -347,6 +363,7 @@ public class PlayerController : MonoBehaviour
     // Play Card
     public void PlayCard(){
         // Hide confirm button
+        SkipTurnButton.gameObject.SetActive(true);
         ConfirmButton.gameObject.SetActive(false);
         SwapButton.gameObject.SetActive(false);
 
@@ -376,6 +393,7 @@ public class PlayerController : MonoBehaviour
 
     public void SwapCard(){
         // Hide swap button
+        SkipTurnButton.gameObject.SetActive(true);
         ConfirmButton.gameObject.SetActive(false);
         SwapButton.gameObject.SetActive(false);
 
