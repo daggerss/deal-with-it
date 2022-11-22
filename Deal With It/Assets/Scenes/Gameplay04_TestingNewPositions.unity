@@ -619,7 +619,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8e2d87d6e4f8d7b4a80e3f5264e663b7, type: 2}
   - {fileID: 11400000, guid: a3ffbc20b2382e945a4dade06c32a81b, type: 2}
   - {fileID: 11400000, guid: 0a4afc0876f31704e9b30bc87f073467, type: 2}
-  UsedCards: 
+  UsedCards: []
 --- !u!4 &139583133
 Transform:
   m_ObjectHideFlags: 0
@@ -4082,7 +4082,7 @@ GameObject:
   - component: {fileID: 469430731}
   - component: {fileID: 469430730}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Win Lose Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
