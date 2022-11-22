@@ -77,6 +77,7 @@ public class PlayedActionCardsDisplay : CardDisplay
 
     /* ---------------------------------- Misc ---------------------------------- */
     private bool _effectsApplied = false;
+    public ActionCardDeck ActionCardDeck;
 
     /* -------------------------------------------------------------------------- */
     /*                                   Methods                                  */
@@ -90,6 +91,9 @@ public class PlayedActionCardsDisplay : CardDisplay
         // Initializing NPC
         NPCDisplay = (NPCDisplay)GameObject.FindGameObjectWithTag("NPC").GetComponent(typeof(NPCDisplay));
         NPC = NPCDisplay.npc;
+
+        // Initializing Action Card Deck
+        ActionCardDeck = (ActionCardDeck)GameObject.FindGameObjectWithTag("Action Card Deck").GetComponent(typeof(ActionCardDeck));
     }
 
     /* --------------------- Update is called once per frame -------------------- */
@@ -641,6 +645,10 @@ public class PlayedActionCardsDisplay : CardDisplay
     {
         for(int i = 0; i < PlayedActionCards.Length; i++){
             // Remove card
+            if(PlayedActionCards[i] != null){
+                int emptySlotInDeck = Array.IndexOf(ActionCardDeck.Deck, null);
+                ActionCardDeck.Deck[emptySlotInDeck] = PlayedActionCards[i];
+            }
             PlayedActionCards[i] = null;
 
             // Hide card

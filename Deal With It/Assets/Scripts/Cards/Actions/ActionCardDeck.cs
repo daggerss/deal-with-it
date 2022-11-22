@@ -6,7 +6,7 @@ using UnityEngine;
 public class ActionCardDeck : MonoBehaviour
 {
     public Action[] Deck;
-    public int[] UsedCards;
+    public Action[] UsedCards;
 
     void Start()
     {
@@ -14,7 +14,7 @@ public class ActionCardDeck : MonoBehaviour
         Array.Resize(ref UsedCards, Deck.Length);
         // Set all elements in UsedCards to -1 (Can't make it null)
         for(int i = 0; i < UsedCards.Length; i++){
-            UsedCards[i] = -1;
+            UsedCards[i] = null;
         }
     }
 
@@ -23,26 +23,38 @@ public class ActionCardDeck : MonoBehaviour
         // Getting random number
         int output = UnityEngine.Random.Range(0, Deck.Length);
 
-        // Index of empty slot in UsedCards
-        int IndexOfEmptyElement = Array.IndexOf(UsedCards, -1);
-
-        // If UsedCards is not full
-        if(IndexOfEmptyElement != -1){
-            // Checking if the card has already been used
-            while(Array.IndexOf(UsedCards, output) != -1){
-                output = UnityEngine.Random.Range(0, Deck.Length);
-            }
-        // UsedCards is full
-        }else{
-            // Clear UsedCards Array
-            for(int i = 0; i < UsedCards.Length; i++){
-                UsedCards[i] = -1;
-            }
-            IndexOfEmptyElement = Array.IndexOf(UsedCards, -1);
+        while(Deck[output] == null){
+            output = UnityEngine.Random.Range(0, Deck.Length);
         }
 
-        // Output
-        UsedCards[IndexOfEmptyElement] = output;
-        return Deck[output];
+        Action chosenCard = Deck[output];
+        Deck[output] = null;
+        return chosenCard;
+
+        // // // Index of empty slot in UsedCards
+        // // int IndexOfEmptyElement = Array.IndexOf(UsedCards, null);
+
+        // // // If UsedCards is not full
+        // // if(IndexOfEmptyElement != -1){
+        // //     // Checking if the card has already been used
+        // //     while(Array.IndexOf(UsedCards, Deck[output]) != -1){
+        // //         output = UnityEngine.Random.Range(0, Deck.Length);
+        // //     }
+        // // // UsedCards is full
+        // // }else{
+        // //     // Clear UsedCards Array
+        // //     for(int i = 0; i < UsedCards.Length; i++){
+        // //         UsedCards[i] = Deck[i];
+        // //         UsedCards[i] = null;
+        // //     }
+        // //     IndexOfEmptyElement = Array.IndexOf(UsedCards, -1);
+        // // }
+
+        // // // Output
+        // // Action returnedCard = Deck[output];
+        // // UsedCards[IndexOfEmptyElement] = returnedCard;
+        // // Deck[output] = null;
+
+        // // return returnedCard;
     }
 }
