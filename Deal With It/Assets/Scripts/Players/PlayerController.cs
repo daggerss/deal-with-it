@@ -20,8 +20,12 @@ public class PlayerController : MonoBehaviour
     public Button[] CardsInHandButton = new Button[5];
     private Vector2[] OriginalButtonPosition = new Vector2[5];
     private Vector3[] OriginalButtonSize = new Vector3[5];
+    private Vector3[] OriginalButtonRotation = new Vector3[5];
     public Button ConfirmButton;
     public Button SwapButton;
+
+    //public bool[] ActionCardProject = new bool[]{true, true, true, true, true};
+    public bool ActionCardProject = true;
 
     // ActionCardDeck
     private ActionCardDeck ActionCardDeck;
@@ -86,6 +90,16 @@ public class PlayerController : MonoBehaviour
         for(int i = 0; i < OriginalButtonSize.Length; i++){
             OriginalButtonSize[i] = CardsInHandButton[i].transform.localScale;
         }
+
+        // Initializing OrginalButtonRotation
+        for (int i = 0; i < OriginalButtonRotation.Length; i++){
+            OriginalButtonRotation[i] = CardsInHandButton[i].transform.eulerAngles;
+        }
+
+        // // Initializing ActionCardProject[]
+        // for (int i = 0; i < ActionCardProject.Length; i++){
+        //     ActionCardProject[i] = true;
+        // }
     }
 
     // Update is called once per frame
@@ -180,6 +194,16 @@ public class PlayerController : MonoBehaviour
             // If you select a different card decrease the count
             if(SelectedCard != -1 && SelectedCard != CardIndex){
                 PlayedActionCards.RemoveCurrentCard(CardsInHand[SelectedCard].CardActionType);
+                CardsInHandButton[SelectedCard].gameObject.SetActive(true);
+                ActionCardProject = false;
+                
+                Action projectedCard = CardsInHand[SelectedCard];
+                PlayedActionCards.RemoveActionCard(projectedCard);
+
+                Button projectedButton = CardsInHandButton[SelectedCard];
+                projectedButton.transform.position = OriginalButtonPosition[SelectedCard];
+                projectedButton.transform.localScale = OriginalButtonSize[SelectedCard]; 
+                projectedButton.transform.eulerAngles = OriginalButtonRotation[SelectedCard];
             }
 
             // If a player clicks on a card twice it will deselect the card
@@ -187,19 +211,33 @@ public class PlayerController : MonoBehaviour
                 // Reset the card to original
                 if (SelectedCard >= 0 && SelectedCard < CardsInHand.Length)
                 {
+                    CardsInHandButton[SelectedCard].gameObject.SetActive(true);
+                    ActionCardProject = true;
                     PlayedActionCards.RemoveCurrentCard(CardsInHand[SelectedCard].CardActionType);
                     PlayedActionCards.RevertAll();
                     CardsInHand[SelectedCard].Revert();
+                    Action projectedCard = CardsInHand[SelectedCard];
+                    PlayedActionCards.RemoveActionCard(projectedCard);
+
+
+                    Button projectedButton = CardsInHandButton[SelectedCard];
+                    projectedButton.transform.position = OriginalButtonPosition[SelectedCard];
+                    projectedButton.transform.localScale = OriginalButtonSize[SelectedCard]; 
+                    projectedButton.transform.eulerAngles = OriginalButtonRotation[SelectedCard];
                 }
                 // Deselect
                 SelectedCard = -1;
             // If a player clicks on a card slot with a value inside
             }else if(CardsInHand[CardIndex] != null){
                 SelectedCard = CardIndex;
+                CardsInHandButton[SelectedCard].gameObject.SetActive(true);
+                ActionCardProject = true;
 
                 // Apply NPC trait effects
                 Action projectedCard = CardsInHand[SelectedCard];
                 ActionType cardActionType = projectedCard.CardActionType;
+
+                PlayedActionCards.AddPlayedActionCard(projectedCard);
 
                 projectedCard.EnergyVal = NPCDisplay.ProjectTraitEffect(LevelType.Energy, projectedCard.EnergyVal, cardActionType);
                 _energyTraitEffectText = NPCDisplay.TraitEffectText;
@@ -283,19 +321,26 @@ public class PlayerController : MonoBehaviour
                 // Do nothing
             }
 
-            // Flare for selected card and non-flare for non selected cards
-            for(int i = 0; i < CardsInHandButton.Length; i++){
-                Button currentButton = CardsInHandButton[i];
-                if(SelectedCard == i){
-                    currentButton.transform.position = new Vector2(currentButton.transform.position.x, 350F);
-                    currentButton.transform.localScale = new Vector3(1.5F, 1.5F, 1.5F);
-                }else{
-                    currentButton.transform.position = OriginalButtonPosition[i];
-                    currentButton.transform.localScale = OriginalButtonSize[i]; 
-                    // Reset the card to original
-                    CardsInHand[i].Revert();
-                }
-            }
+            // // Flare for selected card and non-flare for non selected cards
+            // for(int i = 0; i < CardsInHandButton.Length; i++){
+            //     Button currentButton = CardsInHandButton[i];
+            //     if(SelectedCard == i){
+            //         for (int j = 1; j < 6; j++){
+            //             if (RoundController.PlayerTurn == j){
+            //                 ActionCardProject = true;
+            //                 currentButton.transform.eulerAngles = new Vector3(0.0F, 0.0F,0.0F);
+            //                 currentButton.transform.localScale = new Vector3 (0.7F, 0.7F, 0.7F);
+            //                 currentButton.transform.position = new Vector2(PlayedActionCards.PlayedActionCardsButton[j-1].transform.position.x + 272F, PlayedActionCards.PlayedActionCardsButton[j-1].transform.position.y);
+            //             }
+            //         }
+            //     }else{
+            //         currentButton.transform.position = OriginalButtonPosition[i];
+            //         currentButton.transform.localScale = OriginalButtonSize[i]; 
+            //         currentButton.transform.eulerAngles = OriginalButtonRotation[i];
+            //         // Reset the card to original
+            //         CardsInHand[i].Revert();
+            //     }
+            // }
         }
     }
 
@@ -312,7 +357,7 @@ public class PlayerController : MonoBehaviour
             Action playedActionCard = CardsInHand[SelectedCard];
 
             // Add playedActionCard to the PlayedActionCards in the middle
-            PlayedActionCards.AddPlayedActionCard(playedActionCard);
+            // PlayedActionCards.AddPlayedActionCard(playedActionCard);
 
             Debug.Log("Player " + PlayerNumber + " played " + playedActionCard.CardActionType);
 

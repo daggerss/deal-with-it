@@ -9,6 +9,8 @@ public class PlayerCardHover : MonoBehaviour , IPointerEnterHandler, IPointerExi
     Vector2 cardPosition;
     int cardIndexNumber;
 
+    public PlayerController playerController;
+
     void Start(){
         cardScale = this.transform.localScale;
         cardPosition = this.transform.position;
@@ -16,16 +18,24 @@ public class PlayerCardHover : MonoBehaviour , IPointerEnterHandler, IPointerExi
     }
 
     public void OnPointerEnter(PointerEventData eventData){
-        this.transform.localScale = new Vector3(1.5F, 1.5F, 1.5F);
-        this.transform.position = new Vector2(this.transform.position.x, 350F);
-        this.transform.SetSiblingIndex(5);
+        if (playerController.ActionCardProject == true){
+            this.transform.localScale = new Vector3(1.5F, 1.5F, 1.5F);
+            this.transform.position = new Vector2(this.transform.position.x, 350F);
+            this.transform.SetSiblingIndex(5);
+        }
+        else{
 
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData){
-        this.transform.localScale = cardScale;
-        this.transform.position = cardPosition;
-        this.transform.SetSiblingIndex(cardIndexNumber);
-
+        if (playerController.ActionCardProject == true ){
+            this.transform.localScale = cardScale;
+            this.transform.position = cardPosition;
+            this.transform.SetSiblingIndex(cardIndexNumber);
+        }
+        else{
+            
+        }
     }
 }

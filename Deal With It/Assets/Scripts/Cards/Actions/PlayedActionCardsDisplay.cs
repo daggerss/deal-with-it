@@ -564,6 +564,19 @@ public class PlayedActionCardsDisplay : CardDisplay
             CurrentSlot++;
         }
     }
+    
+    /* -------------------- Remove Projected card from the PlayedActionCards ------------------- */
+    public void RemoveActionCard(Action actionCard){
+        if(actionCard != null){
+            // Remove card in PlayedActionCards
+            PlayedActionCards[CurrentSlot - 1] = null;
+
+            // Show card
+            PlayedActionCardsButton[CurrentSlot - 1].gameObject.SetActive(false);
+
+            CurrentSlot--;
+        }
+    }
 
     /* -------------------------- Change Original Value ------------------------- */
     private void ChangeOriginalValue(ActionType cardActionType){
