@@ -386,6 +386,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Player " + PlayerNumber + " swapped " + CardsInHand[SelectedCard].CardActionType);
 
             // Remove card from hand
+            ActionCardDeck.PutCardBack(CardsInHand[SelectedCard]);
             CardsInHand[SelectedCard] = null;
             CardsInHandButton[SelectedCard].gameObject.SetActive(false);
 

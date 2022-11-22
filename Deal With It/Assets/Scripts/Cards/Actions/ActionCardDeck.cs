@@ -57,4 +57,9 @@ public class ActionCardDeck : MonoBehaviour
 
         // // return returnedCard;
     }
+
+    public void PutCardBack(Action card){
+        int emptySlotInDeck = Array.IndexOf(Deck, null);
+        Deck[emptySlotInDeck] = card;
+    }
 }

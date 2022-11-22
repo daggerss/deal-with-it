@@ -646,8 +646,7 @@ public class PlayedActionCardsDisplay : CardDisplay
         for(int i = 0; i < PlayedActionCards.Length; i++){
             // Remove card
             if(PlayedActionCards[i] != null){
-                int emptySlotInDeck = Array.IndexOf(ActionCardDeck.Deck, null);
-                ActionCardDeck.Deck[emptySlotInDeck] = PlayedActionCards[i];
+                ActionCardDeck.PutCardBack(PlayedActionCards[i]);
             }
             PlayedActionCards[i] = null;
 
