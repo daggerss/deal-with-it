@@ -168,7 +168,7 @@ public class PlayerController : MonoBehaviour
             if(!Playable){
                 StartCoroutine(AIPlayActionCard());
             }else if (!_showSkipTurnButton){
-                SkipTurnButton.gameObject.SetActive(true);
+                SkipTurnButton.interactable = true;
                 _showSkipTurnButton = true;
             }
             // Allow user player to play
@@ -186,9 +186,9 @@ public class PlayerController : MonoBehaviour
             // // }
         }else{
             // So player can't play card when it's not their turn
-            SkipTurnButton.gameObject.SetActive(false);
-            ConfirmButton.gameObject.SetActive(false);
-            SwapButton.gameObject.SetActive(false);
+            SkipTurnButton.interactable = false;
+            ConfirmButton.interactable = false;
+            SwapButton.interactable = false;
         }
     }
 
@@ -215,9 +215,9 @@ public class PlayerController : MonoBehaviour
             // If a player clicks on a card twice it will deselect the card
             if(CardIndex == SelectedCard){
                 // Hide confirm button
-                SkipTurnButton.gameObject.SetActive(true);
-                ConfirmButton.gameObject.SetActive(false);
-                SwapButton.gameObject.SetActive(false);
+                SkipTurnButton.interactable = true;
+                ConfirmButton.interactable = false;
+                SwapButton.interactable = false;
 
                 // Reset the card to original
                 if (SelectedCard >= 0 && SelectedCard < CardsInHand.Length)
@@ -241,9 +241,9 @@ public class PlayerController : MonoBehaviour
             // If a player clicks on a card slot with a value inside
             }else if(CardsInHand[CardIndex] != null){
                 // Show confirm button
-                SkipTurnButton.gameObject.SetActive(false);
-                ConfirmButton.gameObject.SetActive(true);
-                SwapButton.gameObject.SetActive(true);
+                SkipTurnButton.interactable = false;
+                ConfirmButton.interactable = true;
+                SwapButton.interactable = true;
 
                 SelectedCard = CardIndex;
                 CardsInHandButton[SelectedCard].gameObject.SetActive(true);
@@ -363,9 +363,9 @@ public class PlayerController : MonoBehaviour
     // Play Card
     public void PlayCard(){
         // Hide confirm button
-        SkipTurnButton.gameObject.SetActive(true);
-        ConfirmButton.gameObject.SetActive(false);
-        SwapButton.gameObject.SetActive(false);
+        SkipTurnButton.interactable = true;
+        ConfirmButton.interactable = false;
+        SwapButton.interactable = false;
 
         // No card picked
         if(SelectedCard == -1){
@@ -393,9 +393,9 @@ public class PlayerController : MonoBehaviour
 
     public void SwapCard(){
         // Hide swap button
-        SkipTurnButton.gameObject.SetActive(true);
-        ConfirmButton.gameObject.SetActive(false);
-        SwapButton.gameObject.SetActive(false);
+        SkipTurnButton.interactable = true;
+        ConfirmButton.interactable = false;
+        SwapButton.interactable = false;
 
         // No card picked
         if(SelectedCard == -1){
