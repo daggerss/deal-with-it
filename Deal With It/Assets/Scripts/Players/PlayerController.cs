@@ -200,6 +200,7 @@ public class PlayerController : MonoBehaviour
             // If you select a different card decrease the count
             if(SelectedCard != -1 && SelectedCard != CardIndex){
                 PlayedActionCards.RemoveCurrentCard(CardsInHand[SelectedCard].CardActionType);
+                CardsInHand[SelectedCard].Revert();
                 CardsInHandButton[SelectedCard].gameObject.SetActive(true);
                 ActionCardProject = false;
                 
@@ -337,6 +338,7 @@ public class PlayerController : MonoBehaviour
                 // Do nothing
             }
 
+            // ! LEGACY hand of cards sliding up only
             // // Flare for selected card and non-flare for non selected cards
             // for(int i = 0; i < CardsInHandButton.Length; i++){
             //     Button currentButton = CardsInHandButton[i];
