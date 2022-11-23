@@ -16,7 +16,7 @@ MonoBehaviour:
   _cardDescription: They're easy to anger and has high anxiety, but they're not afraid
     to express themself!
   <Illustration>k__BackingField: {fileID: 0}
-  _cardGoals: 'Maintain less than 6 points of anger and fear for 7 rounds.
+  _cardGoals: 'Maintain less than 6 points of anger and fear for 2 rounds.
 
 
     Keep
@@ -67,7 +67,7 @@ MonoBehaviour:
   _sadnessRange: {x: 6, y: 8}
   _fearRange: {x: 0, y: 6}
   _angerRange: {x: 0, y: 6}
-  _rangeWinDuration: 7
+  _rangeWinDuration: 2
   _rangeLoseDuration: -1
   _maxDistractionPerRound: 5
   _maxExpressionPerRound: 5
