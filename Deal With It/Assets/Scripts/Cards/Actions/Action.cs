@@ -5,6 +5,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Action Card", menuName = "Deal With It/Cards/Action Card", order = 2)]
 public class Action : Card
 {
+    /* ------------------------- Additional Description ------------------------- */
+    [SerializeField]
+    [TextArea(1, 3)]
+    private string _cardAdditionalInfo;
+    public string CardAdditionalInfo => _cardAdditionalInfo;
+    
     /* ------------------------- Energy & Emotion Values ------------------------ */
     // The energy and emotion levels are capped accordingly.
 

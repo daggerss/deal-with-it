@@ -16,6 +16,8 @@ MonoBehaviour:
   _cardDescription: Take a deep breath and notice three things you can hear, smell,
     see, touch, and taste.
   <Illustration>k__BackingField: {fileID: 0}
+  _cardAdditionalInfo: This exercise diverts your attention from overwhelming emotions
+    to the present moment.
   _energyConstVal: -3
   _joyConstVal: 0
   _sadnessConstVal: -1

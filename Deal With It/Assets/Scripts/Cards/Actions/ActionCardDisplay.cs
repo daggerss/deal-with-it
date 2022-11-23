@@ -14,7 +14,7 @@ public class ActionCardDisplay : CardDisplay
 
     // UI Variables
     public TMP_Text CardTypeText, CardNameText, CardDescriptionText, EnergyText, JoyText, SadnessText, FearText, AngerText, ActionTypeText;
-    public Image EnergyImage, JoyImage, SadnessImage, FearImage, AngerImage, ActionTypeImage;
+    public Image InfoImage, EnergyImage, JoyImage, SadnessImage, FearImage, AngerImage, ActionTypeImage;
 
     // Arrows UI
     public Image EnergyArrowUpImage, EnergyArrowDownImage, EnergyEqualImage;
@@ -42,6 +42,8 @@ public class ActionCardDisplay : CardDisplay
             CardNameText.text = _currentActionCard.CardName;
             CardDescriptionText.text = _currentActionCard.CardDescription;
             ActionTypeText.text = _currentActionCard.CardActionType.ToString();
+
+            InfoImage.enabled = (!string.IsNullOrEmpty(_currentActionCard.CardAdditionalInfo));
 
             EnergyText.text = FormatText(_currentActionCard.EnergyVal, _currentActionCard.EnergyOriginalVal);
             EnergyImage.gameObject.SetActive(ShowImage(_currentActionCard.EnergyVal, _currentActionCard.EnergyOriginalVal));

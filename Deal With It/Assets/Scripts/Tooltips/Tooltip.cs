@@ -8,6 +8,7 @@ using TMPro;
 public class Tooltip : MonoBehaviour
 {
     [SerializeField] private bool responsiveWidth;
+    [SerializeField] private float pivotXOffset;
     public TMP_Text h1Text;
     public Image comboArrow;
     public TMP_Text prevStratText;
@@ -72,7 +73,7 @@ public class Tooltip : MonoBehaviour
         // * Only works if tooltip is NOT a child of a layout group
         Vector2 position = Input.mousePosition;
 
-        float pivotX = position.x / Screen.width - 0.25f;
+        float pivotX = position.x / Screen.width - pivotXOffset;
         float pivotY = position.y / Screen.height;
 
         rectTransform.pivot = new Vector2(pivotX, pivotY);
@@ -81,4 +82,4 @@ public class Tooltip : MonoBehaviour
 }
 
 /* ------------------------------ Tooltip Types ----------------------------- */
-public enum TooltipType {NPCGoal, NPCEvent, NPCStrategy, Trait, InOrderCombo, AtLeastCombo};
+public enum TooltipType {General, NPCGoal, NPCEvent, NPCStrategy, Trait, InOrderCombo, AtLeastCombo};

@@ -1102,6 +1102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35c1f5c7bfcbc3244bfb32a506d5788f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _general: 0
   cardType: 0
   _levelType: 0
 --- !u!114 &1466039318730039870
@@ -1116,7 +1117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1521ac259e79286458fa9ab2204c9fac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Type>k__BackingField: 0
+  <Type>k__BackingField: 1
   <Heading>k__BackingField: Goals
   <PrevStrat>k__BackingField: 
   <NextStrat>k__BackingField: 
@@ -1133,7 +1134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1521ac259e79286458fa9ab2204c9fac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Type>k__BackingField: 1
+  <Type>k__BackingField: 2
   <Heading>k__BackingField: Event Effects
   <PrevStrat>k__BackingField: 
   <NextStrat>k__BackingField: 
@@ -1150,7 +1151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1521ac259e79286458fa9ab2204c9fac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Type>k__BackingField: 2
+  <Type>k__BackingField: 3
   <Heading>k__BackingField: Strategy Effects
   <PrevStrat>k__BackingField: 
   <NextStrat>k__BackingField: 

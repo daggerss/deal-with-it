@@ -16,6 +16,7 @@ MonoBehaviour:
   _cardDescription: Recalculate the likelihood of negative outcomes. How probable
     is the outcome you worry about?
   <Illustration>k__BackingField: {fileID: 0}
+  _cardAdditionalInfo: How negative is the impact of the most likely outcome?
   _energyConstVal: -7
   _joyConstVal: 0
   _sadnessConstVal: 0

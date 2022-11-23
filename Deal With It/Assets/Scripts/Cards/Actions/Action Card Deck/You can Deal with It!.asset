@@ -15,6 +15,8 @@ MonoBehaviour:
   _cardName: You can Deal With It!
   _cardDescription: Play a card game with friends!
   <Illustration>k__BackingField: {fileID: 0}
+  _cardAdditionalInfo: A card game like Deal With It will not only give a good distraction,
+    but also help you learn more about emotion regulation!
   _energyConstVal: -3
   _joyConstVal: 2
   _sadnessConstVal: 0

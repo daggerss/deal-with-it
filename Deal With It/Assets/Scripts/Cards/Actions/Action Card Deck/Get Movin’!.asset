@@ -16,6 +16,8 @@ MonoBehaviour:
   _cardDescription: Channel your negative emotions into physical activities! Sports
     and outdoor games keep the body moving.
   <Illustration>k__BackingField: {fileID: 0}
+  _cardAdditionalInfo: Exercise and movement can divert attention from negative thoughts
+    and rumination.
   _energyConstVal: -3
   _joyConstVal: 0
   _sadnessConstVal: -1

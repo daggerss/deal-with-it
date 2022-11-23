@@ -15,6 +15,8 @@ MonoBehaviour:
   _cardName: Cause and Effect
   _cardDescription: "Think about what you\u2019re feeling and what caused it."
   <Illustration>k__BackingField: {fileID: 0}
+  _cardAdditionalInfo: How did you respond to what happened? Was there something
+    you could have done better at that time to decrease the effects of the event?
   _energyConstVal: -5
   _joyConstVal: 0
   _sadnessConstVal: -1

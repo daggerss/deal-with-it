@@ -16,6 +16,8 @@ MonoBehaviour:
   _cardDescription: Take time to note big and small wins and see if the issue is
     as bad as you thought it was.
   <Illustration>k__BackingField: {fileID: 0}
+  _cardAdditionalInfo: 'How bad is it really? People tend to focus more on negative
+    emotions and experiences for survival. '
   _energyConstVal: -7
   _joyConstVal: 0
   _sadnessConstVal: -2

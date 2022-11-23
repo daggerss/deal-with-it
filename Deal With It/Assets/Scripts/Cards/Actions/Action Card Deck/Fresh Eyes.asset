@@ -16,6 +16,8 @@ MonoBehaviour:
   _cardDescription: Take a new perspective. Step away and reconsider the effects
     of the event.
   <Illustration>k__BackingField: {fileID: 0}
+  _cardAdditionalInfo: Are there new paths that have opened up? What positive outcomes
+    can arise from this? What actions can be done to solve the negatives?
   _energyConstVal: -7
   _joyConstVal: 0
   _sadnessConstVal: -1

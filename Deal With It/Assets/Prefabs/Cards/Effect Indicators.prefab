@@ -319,11 +319,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35c1f5c7bfcbc3244bfb32a506d5788f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _general: 0
   cardType: 1
   _levelType: 0
-  _npc: {fileID: 0}
-  _eventCardInfo: {fileID: 0}
-  _actionCardInfo: {fileID: 0}
 --- !u!114 &8224596280340590657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,7 +334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1521ac259e79286458fa9ab2204c9fac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Type>k__BackingField: 3
+  <Type>k__BackingField: 4
   <Heading>k__BackingField: NPC Trait
   <PrevStrat>k__BackingField: 
   <NextStrat>k__BackingField: 
@@ -353,7 +351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1521ac259e79286458fa9ab2204c9fac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Type>k__BackingField: 4
+  <Type>k__BackingField: 5
   <Heading>k__BackingField: Strategy Combo
   <PrevStrat>k__BackingField: 
   <NextStrat>k__BackingField: 
@@ -370,7 +368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1521ac259e79286458fa9ab2204c9fac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Type>k__BackingField: 5
+  <Type>k__BackingField: 6
   <Heading>k__BackingField: Strategy Combo
   <PrevStrat>k__BackingField: 
   <NextStrat>k__BackingField: 

@@ -5,6 +5,7 @@ using UnityEngine;
 public class TooltipSystem : MonoBehaviour
 {
     private static TooltipSystem current;
+    [SerializeField] private Tooltip generalTooltip;
     [SerializeField] private Tooltip goalTooltip;
     [SerializeField] private Tooltip eventTooltip;
     [SerializeField] private Tooltip strategyTooltip;
@@ -22,8 +23,14 @@ public class TooltipSystem : MonoBehaviour
         // Only show if has content
         if (!string.IsNullOrEmpty(content))
         {
+            // General tooltip
+            if (tooltipType == TooltipType.General)
+            {
+                current.generalTooltip.SetText(content, h1);
+                current.generalTooltip.gameObject.SetActive(true);
+            }
             // [NPC] Goal tooltip
-            if (tooltipType == TooltipType.NPCGoal)
+            else if (tooltipType == TooltipType.NPCGoal)
             {
                 current.goalTooltip.SetText(content, h1);
                 current.goalTooltip.gameObject.SetActive(true);
@@ -63,6 +70,8 @@ public class TooltipSystem : MonoBehaviour
 
     public static void Hide()
     {
+        current.generalTooltip.gameObject.SetActive(false);
+
         current.goalTooltip.gameObject.SetActive(false);
         current.eventTooltip.gameObject.SetActive(false);
         current.strategyTooltip.gameObject.SetActive(false);

@@ -16,6 +16,7 @@ MonoBehaviour:
   _cardDescription: Sit and think about how you would approach the situation if it
     happened to a friend instead.
   <Illustration>k__BackingField: {fileID: 0}
+  _cardAdditionalInfo: Would you react differently?
   _energyConstVal: -7
   _joyConstVal: 0
   _sadnessConstVal: 2

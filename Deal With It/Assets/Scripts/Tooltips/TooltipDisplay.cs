@@ -5,6 +5,7 @@ using UnityEngine;
 public class TooltipDisplay : MonoBehaviour
 {
     /* ---------------------------- For all tooltips ---------------------------- */
+    [SerializeField] private bool _general;
     [SerializeField] private CardType cardType;
 
     /* ------------------------ For Event + Action Cards ------------------------ */
@@ -22,6 +23,9 @@ public class TooltipDisplay : MonoBehaviour
     private Action _actionCardInfo;
 
     /* -------------------------------- Tooltips -------------------------------- */
+    // Any Card
+    private TooltipTrigger _generalTooltip;
+
     // NPC Card
     private TooltipTrigger _goalTooltip;
     private TooltipTrigger _eventTooltip;
@@ -34,39 +38,65 @@ public class TooltipDisplay : MonoBehaviour
 
     void Start()
     {
-        if (cardType == CardType.NPC)
+        if (!_general)
         {
-            SetUpNPCTooltips();
+            if (cardType == CardType.NPC)
+            {
+                SetUpNPCTooltips();
+            }
+
+            else if (cardType == CardType.Event)
+            {
+                // Get info source
+                _eventCardInfo = (EventCardDisplay)GameObject.FindGameObjectWithTag("Event Card Controller").GetComponent<EventCardDisplay>();
+
+                InitializeEffectTooltips();
+            }
+
+            else if (cardType == CardType.Action)
+            {
+                InitializeEffectTooltips();
+            }
         }
-
-        else if (cardType == CardType.Event)
+        else
         {
-            // Get info source
-            _eventCardInfo = (EventCardDisplay)GameObject.FindGameObjectWithTag("Event Card Controller").GetComponent<EventCardDisplay>();
-
-            InitializeEffectTooltips();
-        }
-
-        else if (cardType == CardType.Action)
-        {
-            InitializeEffectTooltips();
+            // Initialize tooltip trigger
+            _generalTooltip = GetComponent<TooltipTrigger>();
         }
     }
 
     void Update()
     {
         // Update tooltip contents
-        if (cardType == CardType.Event)
+        if (!_general)
         {
-            WriteEventCardTooltips();
+            if (cardType == CardType.Event)
+            {
+                WriteEventCardTooltips();
+            }
+
+            else if (cardType == CardType.Action)
+            {
+                // Get info source
+                _actionCardInfo = this.transform.parent.gameObject.GetComponentInParent<ActionCardDisplay>().CurrentActionCard;
+
+                WriteActionCardTooltips();
+            }
         }
-
-        else if (cardType == CardType.Action)
+        else
         {
-             // Get info source
-            _actionCardInfo = this.transform.parent.gameObject.GetComponentInParent<ActionCardDisplay>().CurrentActionCard;
+            // Action Additional Information
+            if (cardType == CardType.Action)
+            {
+                // Get info source
+                _actionCardInfo = GetComponentInParent<ActionCardDisplay>().CurrentActionCard;
 
-            WriteActionCardTooltips();
+                // Update content
+                if (_actionCardInfo != null)
+                {
+                    _generalTooltip.Content = _actionCardInfo.CardAdditionalInfo;
+                }
+            }
         }
     }
 
