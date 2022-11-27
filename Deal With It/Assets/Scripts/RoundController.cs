@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -47,9 +48,10 @@ public class RoundController : MonoBehaviour
     private int _totalProcessingCount = 0;
     private int _totalReappraisalCount = 0;
 
-    /* ------------------------------- Skip Player ------------------------------ */
-    public IEnumerator Skip; 
-    public bool CountdownActive = false;
+    /* ------------------------------ Player Timer ------------------------------ */
+    public float PlayerTimer = 30;
+    public bool StopTimer = false;
+    public TMP_Text TimerText;
 
     /* ----------------------------- Win Lose Label ----------------------------- */
     public Button WinLoseLabel;
@@ -71,55 +73,61 @@ public class RoundController : MonoBehaviour
         // Initialize PlayedActionCards
         PlayedActionCards = (PlayedActionCardsDisplay)GameObject.FindGameObjectWithTag("Played Action Cards Display").GetComponent(typeof(PlayedActionCardsDisplay));
 
-        // Initialize _skipPlayer
-        Skip = SkipPlayer(10f);
-
         // Initialize WinLoseLabel
         WinLoseLabel.gameObject.SetActive(false);
+    }
+
+    void Update(){
+        // Subtract from timer
+        if(!StopTimer){
+            PlayerTimer -= Time.deltaTime;
+            TimerText.text = (Math.Ceiling(PlayerTimer)).ToString();
+        }
+
+        // If timer runs out
+        if(PlayerTimer <= 0 && !StopTimer){
+            StopTimer = true;
+            StartCoroutine(SkipPlayer());
+        }
     }
 
     /* -------------------------------------------------------------------------- */
     /*                              Custom Functions                              */
     /* -------------------------------------------------------------------------- */
+    /* ------------------------------- Skip Player ------------------------------ */
+    public IEnumerator SkipPlayer(){
+        WinLoseLabel.gameObject.SetActive(true);
+        WinLoseLabelText.text = "Ran out of time! Your turn was skipped";
+
+        yield return new WaitForSeconds(3f);
+
+        StopTimer = false;
+        WinLoseLabel.gameObject.SetActive(false);
+
+        NextPlayer();
+    }
+
     /* ----------------------- Goes to next player's turn ----------------------- */
     public void NextPlayer(){
-        CountdownActive = false;
         if(_playerTurn == NumberOfPlayers){
             StartCoroutine(NextRound());
         }else{
             _playerTurn++;
+            PlayerTimer = 30;
         }
-    }
-
-    /* ------------------------ Skip player if over time ------------------------ */
-    public IEnumerator SkipPlayer(float seconds){
-        Debug.Log("Coroutine started");
-        CountdownActive = true;
-        int elapsedTime = 0;
-        while(elapsedTime < seconds){
-            yield return new WaitForSeconds(1f);
-            elapsedTime++;
-        }
-
-        if(elapsedTime >= seconds){
-            Debug.Log("Player skipped");
-            NextPlayer();
-        }else{
-            Debug.Log("Player Not Skipped");
-        }
-
-        CountdownActive = false;
     }
 
     /* ------------------------- Executes on next round ------------------------- */
     public IEnumerator NextRound(){
+        StopTimer = true; // Stop the timer for now because there is a 3 second delay from switching to next round
         yield return new WaitForSeconds(3f);
+        StopTimer = false; // switching to next round
         string winLoseStatus = WinLoseStatus();
-        Debug.Log(_goalCounter);
         if(winLoseStatus == "continue"){
             _round++;
             _playerTurn = -1;
         }else{
+            StopTimer = true;
             WinLoseLabel.gameObject.SetActive(true);
             WinLoseLabelText.text = winLoseStatus;
         }
