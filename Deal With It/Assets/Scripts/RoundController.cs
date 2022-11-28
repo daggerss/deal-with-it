@@ -76,6 +76,10 @@ public class RoundController : MonoBehaviour
 
         // Initialize WinLoseLabel
         WinLoseLabel.gameObject.SetActive(false);
+
+        // Hide timer
+        _timerText.text = null;
+        _timerFill.fillAmount = 0f;
     }
 
     void Update(){
@@ -128,6 +132,10 @@ public class RoundController : MonoBehaviour
         if(winLoseStatus == "continue"){
             _round++;
             _playerTurn = -1;
+
+            // Hide timer
+            _timerText.text = null;
+            _timerFill.fillAmount = 0f;
         }else{
             StopTimer = true;
             WinLoseLabel.gameObject.SetActive(true);
