@@ -8,8 +8,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1089737749976570227}
+  - component: {fileID: 5963645472526721911}
   - component: {fileID: 1089737749976570224}
+  - component: {fileID: 4783259049818874261}
+  - component: {fileID: 2258239049450418485}
   m_Layer: 0
   m_Name: Played Action Cards
   m_TagString: Played Action Cards Display
@@ -17,16 +19,16 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1089737749976570227
-Transform:
+--- !u!224 &5963645472526721911
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1089737749976570226}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -548, y: 260, z: -22.655277}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -22.655277}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2381068317194611228}
   - {fileID: 2381068316285985934}
@@ -36,6 +38,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -742.5, y: -300}
+  m_SizeDelta: {x: 1485, y: 395}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1089737749976570224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,14 +77,54 @@ MonoBehaviour:
   TotalSadnessVal: 0
   TotalFearVal: 0
   TotalAngerVal: 0
+  OverloadUnderload: 0
   NPCDisplay: {fileID: 0}
   NPC: {fileID: 0}
+  ActionCardDeck: {fileID: 0}
+--- !u!222 &4783259049818874261
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089737749976570226}
+  m_CullTransparentMesh: 1
+--- !u!114 &2258239049450418485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089737749976570226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.07450981, g: 0.48235294, b: 0.81960785, a: 0.2}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 6f28d1ac28245f64eb6a027aa3509963, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1001 &1089737749365435182
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1089737749976570227}
+    m_TransformParent: {fileID: 5963645472526721911}
     m_Modifications:
     - target: {fileID: 324130283278027585, guid: 3b300bb6a4778bb4186aac9568c14287, type: 3}
       propertyPath: m_AnchorMax.y
@@ -302,7 +349,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1089737749976570227}
+    m_TransformParent: {fileID: 5963645472526721911}
     m_Modifications:
     - target: {fileID: 324130283278027585, guid: 3b300bb6a4778bb4186aac9568c14287, type: 3}
       propertyPath: m_AnchorMax.y
@@ -531,7 +578,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1089737749976570227}
+    m_TransformParent: {fileID: 5963645472526721911}
     m_Modifications:
     - target: {fileID: 324130283278027585, guid: 3b300bb6a4778bb4186aac9568c14287, type: 3}
       propertyPath: m_AnchorMax.y
@@ -760,7 +807,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1089737749976570227}
+    m_TransformParent: {fileID: 5963645472526721911}
     m_Modifications:
     - target: {fileID: 324130283278027585, guid: 3b300bb6a4778bb4186aac9568c14287, type: 3}
       propertyPath: m_AnchorMax.y
@@ -989,7 +1036,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1089737749976570227}
+    m_TransformParent: {fileID: 5963645472526721911}
     m_Modifications:
     - target: {fileID: 324130283278027585, guid: 3b300bb6a4778bb4186aac9568c14287, type: 3}
       propertyPath: m_AnchorMax.y
