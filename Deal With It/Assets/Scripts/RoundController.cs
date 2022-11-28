@@ -51,7 +51,8 @@ public class RoundController : MonoBehaviour
     /* ------------------------------ Player Timer ------------------------------ */
     public float PlayerTimer = 30;
     public bool StopTimer = false;
-    public TMP_Text TimerText;
+    [SerializeField] private TMP_Text _timerText;
+    [SerializeField] private Image _timerFill;
 
     /* ----------------------------- Win Lose Label ----------------------------- */
     public Button WinLoseLabel;
@@ -79,9 +80,10 @@ public class RoundController : MonoBehaviour
 
     void Update(){
         // Subtract from timer
-        if(!StopTimer){
+        if(!StopTimer && _playerTurn != -1){
             PlayerTimer -= Time.deltaTime;
-            TimerText.text = (Math.Ceiling(PlayerTimer)).ToString();
+            _timerText.text = (Math.Ceiling(PlayerTimer)).ToString();
+            _timerFill.fillAmount = (float)(Math.Ceiling(PlayerTimer)) / 30;
         }
 
         // If timer runs out
