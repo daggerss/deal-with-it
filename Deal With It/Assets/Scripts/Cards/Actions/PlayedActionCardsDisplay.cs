@@ -698,11 +698,11 @@ public class PlayedActionCardsDisplay : CardDisplay
         GetTotalValues();
 
         // Computed projected totals
-        _energyProjectedVal = Mathf.Clamp(NPC.EnergyLvl + TotalEnergyVal, -50, 50);;
-        _joyProjectedVal = Mathf.Clamp(NPC.JoyLvl + TotalJoyVal, 0, 13);
-        _sadnessProjectedVal = Mathf.Clamp(NPC.SadnessLvl + TotalSadnessVal, 0, 13);
-        _fearProjectedVal = Mathf.Clamp(NPC.FearLvl + TotalFearVal, 0, 13);
-        _angerProjectedVal = Mathf.Clamp(NPC.AngerLvl + TotalAngerVal, 0, 13);
+        _energyProjectedVal = NPC.EnergyLvl + TotalEnergyVal;
+        _joyProjectedVal = NPC.JoyLvl + TotalJoyVal;
+        _sadnessProjectedVal = NPC.SadnessLvl + TotalSadnessVal;
+        _fearProjectedVal = NPC.FearLvl + TotalFearVal;
+        _angerProjectedVal = NPC.AngerLvl + TotalAngerVal;
 
         // Project
         yield return new WaitUntil(() => (_energyProjectedVal != NPC.EnergyLvl) ||
