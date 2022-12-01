@@ -566,7 +566,7 @@ public class PlayedActionCardsDisplay : CardDisplay
             // Remove card in PlayedActionCards
             PlayedActionCards[CurrentSlot - 1] = null;
 
-            // Show card
+            // Hide card
             PlayedActionCardsButton[CurrentSlot - 1].gameObject.SetActive(false);
 
             CurrentSlot--;
