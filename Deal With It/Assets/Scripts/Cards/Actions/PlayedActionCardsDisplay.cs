@@ -161,6 +161,7 @@ public class PlayedActionCardsDisplay : CardDisplay
     /* ------------------------- Combo checking methods ------------------------- */
     public int ProjectComboEffect(LevelType levelType, int effectValue, ActionType actionType){
         /* ------------------------ Compose tooltip arguments ----------------------- */
+        ActionType atLeastActionType = ActionType.Distraction;
         string rationale = "";
         int baseAddend = 0;
         int threshold = 0;
@@ -193,11 +194,12 @@ public class PlayedActionCardsDisplay : CardDisplay
             // Additional +1 energy to all non distraction cards
 
             // Tooltip content
+            atLeastActionType = ActionType.Distraction;
             atLeastStrat = "Distraction";
             rationale = "keeps you from addressing the issue";
             threshold = 3;
             fullTooltip = ComposeTooltipContent(TooltipType.AtLeastCombo, levelType,
-                                               actionType, rationale, 1, threshold);
+                                               atLeastActionType, rationale, 1, threshold);
 
             // Project on the cards already played
             if(levelType == LevelType.Energy && DistractionCount == 3){ // To make sure this only runs once or else the value will keep changing
@@ -230,11 +232,12 @@ public class PlayedActionCardsDisplay : CardDisplay
             // Flips emotion values of expression card (+1 becomes -1)
 
             // Tooltip content
+            atLeastActionType = ActionType.Expression;
             atLeastStrat = "Expression";
             rationale = "amplifies the experience instead";
             threshold = 4;
             fullTooltip = ComposeTooltipContent(TooltipType.AtLeastCombo, levelType,
-                                               actionType, rationale, 1, threshold);
+                                               atLeastActionType, rationale, 1, threshold);
 
             //Project on the cards already played
             if(levelType == LevelType.Energy && ExpressionCount == 4){ // To make sure this only runs once or else the value will keep changing
@@ -270,11 +273,12 @@ public class PlayedActionCardsDisplay : CardDisplay
             // Decreases the efficacy of the Processing cards’ negative emotion effects by 2
 
             // Tooltip content
+            atLeastActionType = ActionType.Processing;
             atLeastStrat = "Processing";
             rationale = "becomes brooding";
             threshold = 3;
             fullTooltip = ComposeTooltipContent(TooltipType.AtLeastCombo, levelType,
-                                               actionType, rationale, 1, threshold);
+                                               atLeastActionType, rationale, 1, threshold);
 
             // Project on the cards already played
             if(levelType == LevelType.Energy && ProcessingCount == 3){ // To make sure this only runs once or else the value will keep changing
@@ -314,11 +318,12 @@ public class PlayedActionCardsDisplay : CardDisplay
             // Decreases efficacy of the reappraisal cards by 1
 
             // Tooltip content
+            atLeastActionType = ActionType.Reappraisal;
             atLeastStrat = "Reappraisal";
             rationale = "distorts your perspective";
             threshold = 3;
             fullTooltip = ComposeTooltipContent(TooltipType.AtLeastCombo, levelType,
-                                               actionType, rationale, 1, threshold);
+                                               atLeastActionType, rationale, 1, threshold);
 
             // Project on the cards already played
             if(levelType == LevelType.Energy && ReappraisalCount == 3){ // To make sure this only runs once or else the value will keep changing
@@ -362,7 +367,7 @@ public class PlayedActionCardsDisplay : CardDisplay
         _ALStrategyText = atLeastStrat;
         // * Addend does nothing here, but zero returns null
         _atLeastEffectText = ComposeTooltipContent(TooltipType.AtLeastCombo,
-                                                   levelType, actionType,
+                                                   levelType, atLeastActionType,
                                                    rationale, 1, threshold);
 
         /* -------------------------------- In order -------------------------------- */
