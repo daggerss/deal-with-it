@@ -23,9 +23,6 @@ public class PlayerCardHover : MonoBehaviour , IPointerEnterHandler, IPointerExi
             this.transform.position = new Vector2(this.transform.position.x, 350F);
             this.transform.SetSiblingIndex(5);
         }
-        else{
-
-        }
     }
 
     public void OnPointerExit(PointerEventData eventData){
@@ -33,9 +30,6 @@ public class PlayerCardHover : MonoBehaviour , IPointerEnterHandler, IPointerExi
             this.transform.localScale = cardScale;
             this.transform.position = cardPosition;
             this.transform.SetSiblingIndex(cardIndexNumber);
-        }
-        else{
-            
         }
     }
 }
