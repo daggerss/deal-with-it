@@ -181,7 +181,7 @@ public class PlayerController : MonoBehaviour
         if(RoundController.PlayerTurn == PlayerNumber){ // You can only select card when it is your turn
             // If you select a different card decrease the count
             if(SelectedCard != -1 && SelectedCard != CardIndex){
-                PlayedActionCards.RemoveCurrentCard(CardsInHand[SelectedCard].CardActionType);
+                PlayedActionCards.RemoveActionType(CardsInHand[SelectedCard].CardActionType);
                 CardsInHand[SelectedCard].Revert();
                 CardsInHandButton[SelectedCard].gameObject.SetActive(true);
                 ActionCardProject = false;
@@ -207,7 +207,7 @@ public class PlayerController : MonoBehaviour
                 {
                     CardsInHandButton[SelectedCard].gameObject.SetActive(true);
                     ActionCardProject = true;
-                    PlayedActionCards.RemoveCurrentCard(CardsInHand[SelectedCard].CardActionType);
+                    PlayedActionCards.RemoveActionType(CardsInHand[SelectedCard].CardActionType);
                     PlayedActionCards.RevertAll();
                     CardsInHand[SelectedCard].Revert();
                     Action projectedCard = CardsInHand[SelectedCard];
@@ -264,7 +264,7 @@ public class PlayerController : MonoBehaviour
                 projectedCard.AngerTraitEffectText = _angerTraitEffectText;
 
                 // Add current card type to the card count
-                PlayedActionCards.AddCurrentCard(cardActionType);
+                PlayedActionCards.AddActionType(cardActionType);
 
                 // Set all PlayedActionCards to original value before applying new effects
                 PlayedActionCards.RevertAll();

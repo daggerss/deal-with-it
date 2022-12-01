@@ -502,17 +502,17 @@ public class PlayedActionCardsDisplay : CardDisplay
     }
 
     /* ------------------------------- Select Card ------------------------------ */
-    public void AddCurrentCard(ActionType cardActionType){
-        CountCard(cardActionType, 1);
+    public void AddActionType(ActionType cardActionType){
+        CountActionType(cardActionType, 1);
     }
 
     /* ------------------------------ Deselect Card ----------------------------- */
-    public void RemoveCurrentCard(ActionType cardActionType){
-        CountCard(cardActionType, -1);
+    public void RemoveActionType(ActionType cardActionType){
+        CountActionType(cardActionType, -1);
     }
 
     /* ------------------------ Count the number of cards ----------------------- */
-    private void CountCard(ActionType cardActionType, int increment){
+    private void CountActionType(ActionType cardActionType, int increment){
         if(cardActionType == ActionType.Distraction){
             DistractionCount += increment;
         }else if(cardActionType == ActionType.Expression){
