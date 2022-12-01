@@ -97,11 +97,6 @@ public class PlayerController : MonoBehaviour
         for (int i = 0; i < OriginalButtonRotation.Length; i++){
             OriginalButtonRotation[i] = CardsInHandButton[i].transform.eulerAngles;
         }
-
-        // // Initializing ActionCardProject[]
-        // for (int i = 0; i < ActionCardProject.Length; i++){
-        //     ActionCardProject[i] = true;
-        // }
     }
 
     // Update is called once per frame
@@ -171,19 +166,6 @@ public class PlayerController : MonoBehaviour
                 SkipTurnButton.interactable = true;
                 _showSkipTurnButton = true;
             }
-            // Allow user player to play
-            // // else
-            // // {
-            // //     ConfirmButton.gameObject.SetActive(true);
-            // //     SwapButton.gameObject.SetActive(true);
-            // // }
-
-            // Timer Countdown
-            // ! WIP
-            // // if(!RoundController.CountdownActive){
-            // //     Debug.Log("CountdownActive = false");
-            // //     StartCoroutine(RoundController.Skip);
-            // // }
         }else{
             // So player can't play card when it's not their turn
             SkipTurnButton.interactable = false;
@@ -340,25 +322,25 @@ public class PlayerController : MonoBehaviour
 
             // ! LEGACY hand of cards sliding up only
             // // Flare for selected card and non-flare for non selected cards
-            // for(int i = 0; i < CardsInHandButton.Length; i++){
-            //     Button currentButton = CardsInHandButton[i];
-            //     if(SelectedCard == i){
-            //         for (int j = 1; j < 6; j++){
-            //             if (RoundController.PlayerTurn == j){
-            //                 ActionCardProject = true;
-            //                 currentButton.transform.eulerAngles = new Vector3(0.0F, 0.0F,0.0F);
-            //                 currentButton.transform.localScale = new Vector3 (0.7F, 0.7F, 0.7F);
-            //                 currentButton.transform.position = new Vector2(PlayedActionCards.PlayedActionCardsButton[j-1].transform.position.x + 272F, PlayedActionCards.PlayedActionCardsButton[j-1].transform.position.y);
-            //             }
-            //         }
-            //     }else{
-            //         currentButton.transform.position = OriginalButtonPosition[i];
-            //         currentButton.transform.localScale = OriginalButtonSize[i]; 
-            //         currentButton.transform.eulerAngles = OriginalButtonRotation[i];
-            //         // Reset the card to original
-            //         CardsInHand[i].Revert();
-            //     }
-            // }
+            // // for(int i = 0; i < CardsInHandButton.Length; i++){
+            // //     Button currentButton = CardsInHandButton[i];
+            // //     if(SelectedCard == i){
+            // //         for (int j = 1; j < 6; j++){
+            // //             if (RoundController.PlayerTurn == j){
+            // //                 ActionCardProject = true;
+            // //                 currentButton.transform.eulerAngles = new Vector3(0.0F, 0.0F,0.0F);
+            // //                 currentButton.transform.localScale = new Vector3 (0.7F, 0.7F, 0.7F);
+            // //                 currentButton.transform.position = new Vector2(PlayedActionCards.PlayedActionCardsButton[j-1].transform.position.x + 272F, PlayedActionCards.PlayedActionCardsButton[j-1].transform.position.y);
+            // //             }
+            // //         }
+            // //     }else{
+            // //         currentButton.transform.position = OriginalButtonPosition[i];
+            // //         currentButton.transform.localScale = OriginalButtonSize[i]; 
+            // //         currentButton.transform.eulerAngles = OriginalButtonRotation[i];
+            // // Reset the card to original
+            // //         CardsInHand[i].Revert();
+            // //     }
+            // // }
         }
     }
 
@@ -375,9 +357,6 @@ public class PlayerController : MonoBehaviour
         }else{
             Action playedActionCard = CardsInHand[SelectedCard];
 
-            // Add playedActionCard to the PlayedActionCards in the middle
-            // PlayedActionCards.AddPlayedActionCard(playedActionCard);
-
             Debug.Log("Player " + PlayerNumber + " played " + playedActionCard.CardActionType);
 
             // Remove card from hand
@@ -389,8 +368,6 @@ public class PlayerController : MonoBehaviour
         }
 
         RoundController.NextPlayer();
-        // ! WIP
-        // StopCoroutine(RoundController.Skip);
     }
 
     public void SwapCard(){
@@ -415,8 +392,6 @@ public class PlayerController : MonoBehaviour
         }
 
         RoundController.NextPlayer();
-        // ! WIP
-        // StopCoroutine(RoundController.Skip);
     }
 
     /* --------------------- AI Play Action Card With Delay --------------------- */
