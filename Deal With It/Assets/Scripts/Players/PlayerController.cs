@@ -239,6 +239,9 @@ public class PlayerController : MonoBehaviour
                 // Project on PlayedActionCards
                 PlayedActionCards.AddCard(projectedCard);
 
+                // Make projected card transparent
+                PlayedActionCards.SetTransparency(true);
+
                 projectedCard.EnergyVal = NPCDisplay.ProjectTraitEffect(LevelType.Energy, projectedCard.EnergyVal, cardActionType);
                 _energyTraitEffectText = NPCDisplay.TraitEffectText;
 
@@ -360,6 +363,9 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Player " + PlayerNumber + " played no card");
         }else{
             Action playedActionCard = CardsInHand[SelectedCard];
+
+            // Make playedActionCard opaque
+            PlayedActionCards.SetTransparency(false);
 
             // Save playedActionCard values to the PlayedActionCards
             PlayedActionCards.SaveCard(playedActionCard);

@@ -624,6 +624,29 @@ public class PlayedActionCardsDisplay : CardDisplay
         }
     }
 
+    /* ------------------- Modify transparency of current card ------------------ */
+    public void SetTransparency(bool transparent)
+    {
+        Color _cardImageColor;
+
+        // * Assumes CurrentSlot has been ++
+        // Make transparent
+        if (transparent)
+        {
+            _cardImageColor = PlayedActionCardsButton[CurrentSlot - 1].GetComponent<Image>().color;
+            _cardImageColor.a = 0.65f;
+            PlayedActionCardsButton[CurrentSlot - 1].GetComponent<Image>().color = _cardImageColor;
+        }
+
+        // Make opaque
+        else
+        {
+            _cardImageColor = PlayedActionCardsButton[CurrentSlot - 1].GetComponent<Image>().color;
+            _cardImageColor.a = 1f;
+            PlayedActionCardsButton[CurrentSlot - 1].GetComponent<Image>().color = _cardImageColor;
+        }
+    }
+
     /* -------------------------- Revert all cards back ------------------------- */
     public void RevertAll(){
         // Revert card values
