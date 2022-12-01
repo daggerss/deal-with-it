@@ -41,31 +41,7 @@ public class PlayerController : MonoBehaviour
 
     // PlayedActionCards
     public PlayedActionCardsDisplay PlayedActionCards;
-    private bool _aiActionCardPlayed = false; 
-
-    // Tooltip Texts: NPC Traits
-    private string _energyTraitEffectText;
-    private string _joyTraitEffectText;
-    private string _sadnessTraitEffectText;
-    private string _fearTraitEffectText;
-    private string _angerTraitEffectText;
-
-    // Tooltip Texts: In Order Combos
-    private string _prevIOStrategyText;
-    private string _nextIOStrategyText;
-    private string _energyInOrderEffectText;
-    private string _joyInOrderEffectText;
-    private string _sadnessInOrderEffectText;
-    private string _fearInOrderEffectText;
-    private string _angerInOrderEffectText;
-
-    // Tooltip Texts: At Least Combos
-    private string _ALStrategyText;
-    private string _energyAtLeastEffectText;
-    private string _joyAtLeastEffectText;
-    private string _sadnessAtLeastEffectText;
-    private string _fearAtLeastEffectText;
-    private string _angerAtLeastEffectText;
+    private bool _aiActionCardPlayed = false;
 
     /* --------------------------------- Methods -------------------------------- */
     // Start is called before the first frame update
@@ -243,29 +219,22 @@ public class PlayerController : MonoBehaviour
                 PlayedActionCards.SetTransparency(true);
 
                 projectedCard.EnergyVal = NPCDisplay.ProjectTraitEffect(LevelType.Energy, projectedCard.EnergyVal, cardActionType);
-                _energyTraitEffectText = NPCDisplay.TraitEffectText;
+                projectedCard.EnergyTraitEffectText = NPCDisplay.TraitEffectText; // Update tooltip
 
                 projectedCard.JoyVal = NPCDisplay.ProjectTraitEffect(LevelType.Joy, projectedCard.JoyVal, cardActionType);
-                _joyTraitEffectText = NPCDisplay.TraitEffectText;
+                projectedCard.JoyTraitEffectText = NPCDisplay.TraitEffectText; // Update tooltip
 
                 projectedCard.SadnessVal = NPCDisplay.ProjectTraitEffect(LevelType.Sadness, projectedCard.SadnessVal, cardActionType);
-                _sadnessTraitEffectText = NPCDisplay.TraitEffectText;
+                projectedCard.SadnessTraitEffectText = NPCDisplay.TraitEffectText; // Update tooltip
 
                 projectedCard.FearVal = NPCDisplay.ProjectTraitEffect(LevelType.Fear, projectedCard.FearVal, cardActionType);
-                _fearTraitEffectText = NPCDisplay.TraitEffectText;
+                projectedCard.FearTraitEffectText = NPCDisplay.TraitEffectText; // Update tooltip
 
                 projectedCard.AngerVal = NPCDisplay.ProjectTraitEffect(LevelType.Anger, projectedCard.AngerVal, cardActionType);
-                _angerTraitEffectText = NPCDisplay.TraitEffectText;
+                projectedCard.AngerTraitEffectText = NPCDisplay.TraitEffectText; // Update tooltip
 
                 // Check if values were changed
                 projectedCard.UpdateValueChanges();
-
-                // Update tooltips content: NPC Traits
-                projectedCard.EnergyTraitEffectText = _energyTraitEffectText;
-                projectedCard.JoyTraitEffectText = _joyTraitEffectText;
-                projectedCard.SadnessTraitEffectText = _sadnessTraitEffectText;
-                projectedCard.FearTraitEffectText = _fearTraitEffectText;
-                projectedCard.AngerTraitEffectText = _angerTraitEffectText;
 
                 // Save trait effects of the card on PlayedActionCards
                 PlayedActionCards.SaveCard(projectedCard);
@@ -278,49 +247,32 @@ public class PlayerController : MonoBehaviour
 
                 // Apply Combo effects
                 projectedCard.EnergyVal = PlayedActionCards.ProjectComboEffect(LevelType.Energy, projectedCard.EnergyVal, cardActionType);
-                _energyInOrderEffectText = PlayedActionCards.InOrderEffectText;
-                _energyAtLeastEffectText = PlayedActionCards.AtLeastEffectText;
+                projectedCard.EnergyInOrderEffectText = PlayedActionCards.InOrderEffectText; // Update tooltips
+                projectedCard.EnergyAtLeastEffectText = PlayedActionCards.AtLeastEffectText; // Update tooltips
                 
                 projectedCard.JoyVal = PlayedActionCards.ProjectComboEffect(LevelType.Joy, projectedCard.JoyVal, cardActionType);
-                _joyInOrderEffectText = PlayedActionCards.InOrderEffectText;
-                _joyAtLeastEffectText = PlayedActionCards.AtLeastEffectText;
+                projectedCard.JoyInOrderEffectText = PlayedActionCards.InOrderEffectText; // Update tooltips
+                projectedCard.JoyAtLeastEffectText = PlayedActionCards.AtLeastEffectText; // Update tooltips
                 
                 projectedCard.SadnessVal = PlayedActionCards.ProjectComboEffect(LevelType.Sadness, projectedCard.SadnessVal, cardActionType);
-                _sadnessInOrderEffectText = PlayedActionCards.InOrderEffectText;
-                _sadnessAtLeastEffectText = PlayedActionCards.AtLeastEffectText;
+                projectedCard.SadnessInOrderEffectText = PlayedActionCards.InOrderEffectText; // Update tooltips
+                projectedCard.SadnessAtLeastEffectText = PlayedActionCards.AtLeastEffectText; // Update tooltips
                 
                 projectedCard.FearVal = PlayedActionCards.ProjectComboEffect(LevelType.Fear, projectedCard.FearVal, cardActionType);
-                _fearInOrderEffectText = PlayedActionCards.InOrderEffectText;
-                _fearAtLeastEffectText = PlayedActionCards.AtLeastEffectText;
+                projectedCard.FearInOrderEffectText = PlayedActionCards.InOrderEffectText; // Update tooltips
+                projectedCard.FearAtLeastEffectText = PlayedActionCards.AtLeastEffectText; // Update tooltips
                 
                 projectedCard.AngerVal = PlayedActionCards.ProjectComboEffect(LevelType.Anger, projectedCard.AngerVal, cardActionType);
-                _angerInOrderEffectText = PlayedActionCards.InOrderEffectText;
-                _angerAtLeastEffectText = PlayedActionCards.AtLeastEffectText;
+                projectedCard.AngerInOrderEffectText = PlayedActionCards.InOrderEffectText; // Update tooltips
+                projectedCard.AngerAtLeastEffectText = PlayedActionCards.AtLeastEffectText; // Update tooltips
 
                 // Combo order for tooltips
-                _prevIOStrategyText = PlayedActionCards.PrevIOStrategyText;
-                _nextIOStrategyText = PlayedActionCards.NextIOStrategyText;
-                _ALStrategyText = PlayedActionCards.ALStrategyText;
+                projectedCard.PrevIOStrategyText = PlayedActionCards.PrevIOStrategyText;
+                projectedCard.NextIOStrategyText = PlayedActionCards.NextIOStrategyText;
+                projectedCard.ALStrategyText = PlayedActionCards.ALStrategyText;
 
                 // Check if values were canceled out
                 projectedCard.UpdateValueCanceled();
-
-                // Update tooltips content: In Order
-                projectedCard.PrevIOStrategyText = _prevIOStrategyText;
-                projectedCard.NextIOStrategyText = _nextIOStrategyText;
-                projectedCard.EnergyInOrderEffectText = _energyInOrderEffectText;
-                projectedCard.JoyInOrderEffectText = _joyInOrderEffectText;
-                projectedCard.SadnessInOrderEffectText = _sadnessInOrderEffectText;
-                projectedCard.FearInOrderEffectText = _fearInOrderEffectText;
-                projectedCard.AngerInOrderEffectText = _angerInOrderEffectText;
-
-                // Update tooltips content: At Least
-                projectedCard.ALStrategyText = _ALStrategyText;
-                projectedCard.EnergyAtLeastEffectText = _energyAtLeastEffectText;
-                projectedCard.JoyAtLeastEffectText = _joyAtLeastEffectText;
-                projectedCard.SadnessAtLeastEffectText = _sadnessAtLeastEffectText;
-                projectedCard.FearAtLeastEffectText = _fearAtLeastEffectText;
-                projectedCard.AngerAtLeastEffectText = _angerAtLeastEffectText;
 
             // If a player clicks on a card slot with no value inside
             }else{
