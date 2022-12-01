@@ -187,7 +187,7 @@ public class PlayerController : MonoBehaviour
                 ActionCardProject = false;
                 
                 Action projectedCard = CardsInHand[SelectedCard];
-                PlayedActionCards.RemoveActionCard(projectedCard);
+                PlayedActionCards.RemoveCard(projectedCard);
 
                 Button projectedButton = CardsInHandButton[SelectedCard];
                 projectedButton.transform.position = OriginalButtonPosition[SelectedCard];
@@ -211,7 +211,7 @@ public class PlayerController : MonoBehaviour
                     PlayedActionCards.RevertAll();
                     CardsInHand[SelectedCard].Revert();
                     Action projectedCard = CardsInHand[SelectedCard];
-                    PlayedActionCards.RemoveActionCard(projectedCard);
+                    PlayedActionCards.RemoveCard(projectedCard);
 
 
                     Button projectedButton = CardsInHandButton[SelectedCard];
@@ -236,7 +236,8 @@ public class PlayerController : MonoBehaviour
                 Action projectedCard = CardsInHand[SelectedCard];
                 ActionType cardActionType = projectedCard.CardActionType;
 
-                PlayedActionCards.AddPlayedActionCard(projectedCard);
+                // Project on PlayedActionCards
+                PlayedActionCards.AddCard(projectedCard);
 
                 projectedCard.EnergyVal = NPCDisplay.ProjectTraitEffect(LevelType.Energy, projectedCard.EnergyVal, cardActionType);
                 _energyTraitEffectText = NPCDisplay.TraitEffectText;
@@ -262,6 +263,9 @@ public class PlayerController : MonoBehaviour
                 projectedCard.SadnessTraitEffectText = _sadnessTraitEffectText;
                 projectedCard.FearTraitEffectText = _fearTraitEffectText;
                 projectedCard.AngerTraitEffectText = _angerTraitEffectText;
+
+                // Save trait effects of the card on PlayedActionCards
+                PlayedActionCards.SaveCard(projectedCard);
 
                 // Add current card type to the card count
                 PlayedActionCards.AddActionType(cardActionType);
@@ -356,6 +360,9 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Player " + PlayerNumber + " played no card");
         }else{
             Action playedActionCard = CardsInHand[SelectedCard];
+
+            // Save playedActionCard values to the PlayedActionCards
+            PlayedActionCards.SaveCard(playedActionCard);
 
             Debug.Log("Player " + PlayerNumber + " played " + playedActionCard.CardActionType);
 

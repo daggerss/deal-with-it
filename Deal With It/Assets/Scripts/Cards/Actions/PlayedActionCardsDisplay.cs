@@ -372,8 +372,10 @@ public class PlayedActionCardsDisplay : CardDisplay
 
         /* -------------------------------- In order -------------------------------- */
         //* Not the first player because CurrentSlot -1 might have an error
-        if(CurrentSlot != 0){
-            ActionType previousActionCardType = PlayedActionCards[CurrentSlot - 1].CardActionType;
+        // * AddCard() where CurrentSlot++ is called before projecting trait/combo effects
+        if(CurrentSlot > 1){
+            ActionType previousActionCardType = PlayedActionCards[CurrentSlot - 2].CardActionType;
+            
             // Previous card = Distraction
             if(previousActionCardType == ActionType.Distraction){
                 // Tooltip content
@@ -544,8 +546,9 @@ public class PlayedActionCardsDisplay : CardDisplay
         }
     }
 
-    /* -------------------- Add card to the PlayedActionCards ------------------- */
-    public void AddPlayedActionCard(Action actionCard){
+    /* --------------------- Show card on PlayedActionCards --------------------- */
+    public void AddCard(Action actionCard)
+    {
         if(actionCard != null){
             // Put card in PlayedActionCards
             PlayedActionCards[CurrentSlot] = actionCard;
@@ -553,29 +556,12 @@ public class PlayedActionCardsDisplay : CardDisplay
             // Show card
             PlayedActionCardsButton[CurrentSlot].gameObject.SetActive(true);
 
-            // Save original values
-            _energyOriginalVals[CurrentSlot] = actionCard.EnergyVal;
-            _joyOriginalVals[CurrentSlot] = actionCard.JoyVal;
-            _sadnessOriginalVals[CurrentSlot] = actionCard.SadnessVal;
-            _fearOriginalVals[CurrentSlot] = actionCard.FearVal;
-            _angerOriginalVals[CurrentSlot] = actionCard.AngerVal;
-
-            // Save canceled
-            _energyOriginalCanceled[CurrentSlot] = actionCard.EnergyValCanceled;
-            _joyOriginalCanceled[CurrentSlot] = actionCard.JoyValCanceled;
-            _sadnessOriginalCanceled[CurrentSlot] = actionCard.SadnessValCanceled;
-            _fearOriginalCanceled[CurrentSlot] = actionCard.FearValCanceled;
-            _angerOriginalCanceled[CurrentSlot] = actionCard.AngerValCanceled;
-
-            // If an at least combo is triggered, the original values of the affected cards will change
-            ChangeOriginalValue(actionCard.CardActionType);
-
             CurrentSlot++;
         }
     }
     
-    /* -------------------- Remove Projected card from the PlayedActionCards ------------------- */
-    public void RemoveActionCard(Action actionCard){
+    /* ----------------- Remove card from the PlayedActionCards ----------------- */
+    public void RemoveCard(Action actionCard){
         if(actionCard != null){
             // Remove card in PlayedActionCards
             PlayedActionCards[CurrentSlot - 1] = null;
@@ -584,6 +570,28 @@ public class PlayedActionCardsDisplay : CardDisplay
             PlayedActionCardsButton[CurrentSlot - 1].gameObject.SetActive(false);
 
             CurrentSlot--;
+        }
+    }
+
+    /* -------------------- Save card to the PlayedActionCards ------------------- */
+    public void SaveCard(Action actionCard){
+        if(actionCard != null){
+            // Save original values
+            _energyOriginalVals[CurrentSlot - 1] = actionCard.EnergyVal;
+            _joyOriginalVals[CurrentSlot - 1] = actionCard.JoyVal;
+            _sadnessOriginalVals[CurrentSlot - 1] = actionCard.SadnessVal;
+            _fearOriginalVals[CurrentSlot - 1] = actionCard.FearVal;
+            _angerOriginalVals[CurrentSlot - 1] = actionCard.AngerVal;
+
+            // Save canceled
+            _energyOriginalCanceled[CurrentSlot - 1] = actionCard.EnergyValCanceled;
+            _joyOriginalCanceled[CurrentSlot - 1] = actionCard.JoyValCanceled;
+            _sadnessOriginalCanceled[CurrentSlot - 1] = actionCard.SadnessValCanceled;
+            _fearOriginalCanceled[CurrentSlot - 1] = actionCard.FearValCanceled;
+            _angerOriginalCanceled[CurrentSlot - 1] = actionCard.AngerValCanceled;
+
+            // If an at least combo is triggered, the original values of the affected cards will change
+            ChangeOriginalValue(actionCard.CardActionType);
         }
     }
 
