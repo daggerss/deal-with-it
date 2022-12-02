@@ -150,6 +150,9 @@ public class PlayerController : MonoBehaviour
 
             // Reset Cards to Original Position at the start of every round
             SelectCard(-1);
+
+            // Reset Skip Turn Button
+            _showSkipTurnButton = false;
         }
 
         // Show or hide player turn indicator
