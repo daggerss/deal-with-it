@@ -428,7 +428,8 @@ public class PlayerController : MonoBehaviour
         _aiActionCardPlayed = true;
 
         //Wait
-        yield return new WaitForSeconds(3f);
+        float randomTime = UnityEngine.Random.Range(1, 10);
+        yield return new WaitForSeconds(randomTime);
 
         // Random Number
         int rng = UnityEngine.Random.Range(-1, CardsInHand.Length);
