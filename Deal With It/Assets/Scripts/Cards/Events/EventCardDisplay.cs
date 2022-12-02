@@ -189,10 +189,13 @@ public class EventCardDisplay : CardDisplay
 
         // Extra Event Cards
         _extraEventCards += _currentEventCard.ExtraEventCards;
+
+        StartCoroutine(ApplyCard());
     }
 
     // Hides and applies the card
-    public void ApplyCard(){
+    private IEnumerator ApplyCard(){
+        yield return new WaitForSeconds(7f);
         ThisObject.SetActive(false);
 
         // Apply Event Effects
