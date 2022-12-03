@@ -58,6 +58,35 @@ public class RoundController : MonoBehaviour
     public Button WinLoseLabel;
     public TMP_Text WinLoseLabelText;
 
+    /* ------------------------- Win Condition Tracker  ------------------------- */
+    public GameObject WinTracker;
+
+    [SerializeField] private TMP_Text conditionVars;
+    [SerializeField] private TMP_Text counter;
+    [SerializeField] private GameObject emotionRangeCheckmark;
+    [SerializeField] private GameObject joyCheckmark;
+    [SerializeField] private GameObject sadCheckmark;
+    [SerializeField] private GameObject fearCheckmark;
+    [SerializeField] private GameObject angerCheckmark;
+    [SerializeField] private TMP_Text joyTracker;
+    [SerializeField] private TMP_Text sadTracker;
+    [SerializeField] private TMP_Text fearTracker;
+    [SerializeField] private TMP_Text angerTracker;
+    bool joy = false;
+    bool sadness = false;
+    bool anger = false;
+    bool fear = false;
+
+    [SerializeField] private GameObject expressionPerRound;
+    [SerializeField] private TMP_Text expressionMax;
+    [SerializeField] private TMP_Text expressionUsed;
+    [SerializeField] private GameObject maxExpressionCheckmark;
+
+    [SerializeField] private GameObject expressionTotal;
+    [SerializeField] private TMP_Text expressionMin;
+    [SerializeField] private TMP_Text expressionUsedTotal;
+    [SerializeField] private GameObject minExpressionCheckmark;
+
     /* -------------------------------------------------------------------------- */
     /*                                  Functions                                 */
     /* -------------------------------------------------------------------------- */
@@ -80,6 +109,8 @@ public class RoundController : MonoBehaviour
         // Hide timer
         _timerText.text = null;
         _timerFill.fillAmount = 0f;
+
+        WinLoseTracker();
     }
 
     void Update(){
@@ -125,6 +156,7 @@ public class RoundController : MonoBehaviour
 
     /* ------------------------- Executes on next round ------------------------- */
     public IEnumerator NextRound(){
+        WinLoseTracker();
         StopTimer = true; // Stop the timer for now because there is a 3 second delay from switching to next round
         yield return new WaitForSeconds(3f);
         StopTimer = false; // switching to next round
@@ -217,6 +249,88 @@ public class RoundController : MonoBehaviour
             return "You failed to keep the emotions within the right range! You lose!";
         }
 
+        
         return "continue";
+    }
+    /* ------------------- Adjusts Win Tracker Based on NPC ------------------ */
+    private string WinLoseTracker(){
+        if(NPC.RangeWinDuration > 0){
+            conditionVars.text = NPC.RangeWinDuration.ToString();
+            counter.text = "(" + _goalCounter + "/" + NPC.RangeWinDuration.ToString() + ")";
+
+
+            joyTracker.text = NPC.JoyRange.x.ToString() + "-" + NPC.JoyRange.y.ToString();
+            sadTracker.text = NPC.SadnessRange.x.ToString() + "-" + NPC.SadnessRange.y.ToString();
+            fearTracker.text = NPC.FearRange.x.ToString() + "-" + NPC.FearRange.y.ToString();
+            angerTracker.text = NPC.AngerRange.x.ToString() + "-" + NPC.AngerRange.y.ToString();
+
+            if (NPC.JoyLvl < NPC.JoyRange.y && NPC.JoyLvl > NPC.JoyRange.x){
+                joyCheckmark.GetComponent<Image>().color = new Color32(0,171,109,255);
+                joy =  true;
+            }
+            else {
+                joyCheckmark.GetComponent<Image>().color = new Color32(255,255,255,255);
+                joy = false;
+            }
+
+            if (NPC.SadnessLvl < NPC.SadnessRange.y && NPC.SadnessLvl > NPC.SadnessRange.x){
+                sadCheckmark.GetComponent<Image>().color = new Color32(0,171,109,255);
+                sadness =  true;
+            }
+            else {
+                sadCheckmark.GetComponent<Image>().color = new Color32(255,255,255,255);
+                sadness = false;
+            }
+            if (NPC.AngerLvl < NPC.AngerRange.y && NPC.AngerLvl > NPC.AngerRange.x){
+                angerCheckmark.GetComponent<Image>().color = new Color32(0,171,109,255);
+                anger =  true;
+            }
+            else {
+                angerCheckmark.GetComponent<Image>().color = new Color32(255,255,255,255);
+                anger = false;
+            }
+            if (NPC.FearLvl < NPC.FearRange.y && NPC.FearLvl > NPC.FearRange.x){
+                fearCheckmark.GetComponent<Image>().color = new Color32(0,171,109,255);
+                fear =  true;
+            }
+            else {
+                fearCheckmark.GetComponent<Image>().color = new Color32(255,255,255,255);
+                fear = false;
+            }
+            if (joy == true && sadness == true && anger == true && fear == true){
+                emotionRangeCheckmark.GetComponent<Image>().color = new Color32(0,171,109,255);
+            }
+            else {
+                emotionRangeCheckmark.GetComponent<Image>().color = new Color32(255,255,255,255);
+            }
+
+        }
+        if (NPC.MaxExpressionPerRound < 5){
+            expressionPerRound.gameObject.SetActive(true);
+
+            expressionMax.text = NPC.MaxExpressionPerRound.ToString() + " Expression ";
+            expressionUsed.text = "(" + PlayedActionCards.ExpressionCount.ToString() + "/" + NPC.MaxExpressionPerRound.ToString();
+
+            if (PlayedActionCards.ExpressionCount < NPC.MaxExpressionPerRound){
+                maxExpressionCheckmark.GetComponent<Image>().color = new Color32(0,171,109,255);
+            }
+            else {
+                maxExpressionCheckmark.GetComponent<Image>().color = new Color32(255,255,255,255);
+            }
+        }
+        if (NPC.MinExpressionTotal > 0){
+            expressionTotal.gameObject.SetActive(true);
+
+            expressionMin.text = NPC.MinExpressionTotal.ToString() + " Expression ";
+            expressionUsedTotal.text = "(" + _totalExpressionCount.ToString() + "/" + NPC.MaxExpressionPerRound.ToString();
+            if (_totalExpressionCount < NPC.MinExpressionTotal){
+                minExpressionCheckmark.GetComponent<Image>().color = new Color32(0,171,109,255);
+            }
+            else {
+                minExpressionCheckmark.GetComponent<Image>().color = new Color32(255,255,255,255);
+            }
+        }
+
+        return "";
     }
 }
