@@ -8099,10 +8099,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 147918641038809479, guid: c7538a7f4caa44b40a5764239f7d7ae1, type: 3}
-      propertyPath: m_text
-      value: X-X
-      objectReference: {fileID: 0}
     - target: {fileID: 189598449667884501, guid: c7538a7f4caa44b40a5764239f7d7ae1, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -8146,10 +8142,6 @@ PrefabInstance:
     - target: {fileID: 266691427441919031, guid: c7538a7f4caa44b40a5764239f7d7ae1, type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 370634768019965286, guid: c7538a7f4caa44b40a5764239f7d7ae1, type: 3}
-      propertyPath: m_text
-      value: X-X
       objectReference: {fileID: 0}
     - target: {fileID: 728983266498154106, guid: c7538a7f4caa44b40a5764239f7d7ae1, type: 3}
       propertyPath: m_AnchorMax.y
@@ -8198,10 +8190,6 @@ PrefabInstance:
     - target: {fileID: 982202920801848355, guid: c7538a7f4caa44b40a5764239f7d7ae1, type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1057069086565656059, guid: c7538a7f4caa44b40a5764239f7d7ae1, type: 3}
-      propertyPath: m_text
-      value: points for Anger
       objectReference: {fileID: 0}
     - target: {fileID: 1484068822611800947, guid: c7538a7f4caa44b40a5764239f7d7ae1, type: 3}
       propertyPath: m_AnchorMax.y
@@ -8559,10 +8547,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4438482361666210820, guid: c7538a7f4caa44b40a5764239f7d7ae1, type: 3}
-      propertyPath: m_text
-      value: points for Fear
-      objectReference: {fileID: 0}
     - target: {fileID: 4555492985411267774, guid: c7538a7f4caa44b40a5764239f7d7ae1, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -8702,10 +8686,6 @@ PrefabInstance:
     - target: {fileID: 5499503699847391092, guid: c7538a7f4caa44b40a5764239f7d7ae1, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5530116493840616730, guid: c7538a7f4caa44b40a5764239f7d7ae1, type: 3}
-      propertyPath: m_text
-      value: X-X
       objectReference: {fileID: 0}
     - target: {fileID: 5565815279126576329, guid: c7538a7f4caa44b40a5764239f7d7ae1, type: 3}
       propertyPath: m_AnchorMax.y
@@ -9083,14 +9063,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8298938599564597401, guid: c7538a7f4caa44b40a5764239f7d7ae1, type: 3}
-      propertyPath: m_text
-      value: points for Sadness
-      objectReference: {fileID: 0}
-    - target: {fileID: 8359386572468569208, guid: c7538a7f4caa44b40a5764239f7d7ae1, type: 3}
-      propertyPath: m_text
-      value: points for Joy
-      objectReference: {fileID: 0}
     - target: {fileID: 8672310255261441594, guid: c7538a7f4caa44b40a5764239f7d7ae1, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -9218,10 +9190,6 @@ PrefabInstance:
     - target: {fileID: 9160666025284248530, guid: c7538a7f4caa44b40a5764239f7d7ae1, type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9191060879488017637, guid: c7538a7f4caa44b40a5764239f7d7ae1, type: 3}
-      propertyPath: m_text
-      value: X-X
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7538a7f4caa44b40a5764239f7d7ae1, type: 3}
