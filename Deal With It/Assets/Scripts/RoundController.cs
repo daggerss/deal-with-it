@@ -42,11 +42,25 @@ public class RoundController : MonoBehaviour
 
     /* ------------------------------ Goal Counter ------------------------------ */
     private int _goalCounter = 0;
+    public int GoalCount => _goalCounter;
+
     public PlayedActionCardsDisplay PlayedActionCards;
+
     private int _totalDistractionCount = 0;
+    public int TotalDistractionCount => _totalDistractionCount;
+
     private int _totalExpressionCount = 0;
+    public int TotalExpressionCount => _totalExpressionCount;
+
     private int _totalProcessingCount = 0;
+    public int TotalProcessingCount => _totalProcessingCount;
+
     private int _totalReappraisalCount = 0;
+    public int TotalReappraisalCount => _totalReappraisalCount;
+
+    // For Win Tracker
+    private bool _durationWinStatus;
+    public bool DurationWinStatus => _durationWinStatus;
 
     /* ------------------------------ Player Timer ------------------------------ */
     public float PlayerTimer = 30;
@@ -80,6 +94,9 @@ public class RoundController : MonoBehaviour
         // Hide timer
         _timerText.text = null;
         _timerFill.fillAmount = 0f;
+
+        // Reset Win Tracker Status
+        _durationWinStatus = false;
     }
 
     void Update(){
@@ -207,6 +224,7 @@ public class RoundController : MonoBehaviour
         if(NPC.RangeWinDuration == -1){
             // Do nothing
         }else if(_goalCounter == NPC.RangeWinDuration){
+            _durationWinStatus = true;
             return "You have successfully kept the emotions within the correct range! You win!";
         }
 
