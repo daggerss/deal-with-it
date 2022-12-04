@@ -55,3 +55,17 @@ MonoBehaviour:
   _processingEnergyRationale: 
   _reappraisalEnergyAddend: 0
   _reappraisalEnergyRationale: 
+  _joyRange: {x: 6, y: 8}
+  _sadnessRange: {x: 6, y: 8}
+  _fearRange: {x: 6, y: 8}
+  _angerRange: {x: 6, y: 8}
+  _rangeWinDuration: 0
+  _rangeLoseDuration: 0
+  _maxDistractionPerRound: 0
+  _maxExpressionPerRound: 0
+  _maxProcessingPerRound: 0
+  _maxReappraisalPerRound: 0
+  _minDistractionTotal: 0
+  _minExpressionTotal: 0
+  _minProcessingTotal: 0
+  _minReappraisalTotal: 0

@@ -56,3 +56,17 @@ MonoBehaviour:
   _processingEnergyRationale: 
   _reappraisalEnergyAddend: -1
   _reappraisalEnergyRationale: Pickles is an optimist
+  _joyRange: {x: 0, y: 11}
+  _sadnessRange: {x: 0, y: 11}
+  _fearRange: {x: 0, y: 11}
+  _angerRange: {x: 0, y: 11}
+  _rangeWinDuration: 0
+  _rangeLoseDuration: 0
+  _maxDistractionPerRound: 0
+  _maxExpressionPerRound: 0
+  _maxProcessingPerRound: 0
+  _maxReappraisalPerRound: 0
+  _minDistractionTotal: 0
+  _minExpressionTotal: 0
+  _minProcessingTotal: 0
+  _minReappraisalTotal: 0
