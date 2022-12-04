@@ -61,10 +61,10 @@ MonoBehaviour:
   _angerRange: {x: 6, y: 8}
   _rangeWinDuration: 0
   _rangeLoseDuration: 0
-  _maxDistractionPerRound: 0
-  _maxExpressionPerRound: 0
-  _maxProcessingPerRound: 0
-  _maxReappraisalPerRound: 0
+  _maxDistractionPerRound: 5
+  _maxExpressionPerRound: 5
+  _maxProcessingPerRound: 5
+  _maxReappraisalPerRound: 5
   _minDistractionTotal: 0
   _minExpressionTotal: 0
   _minProcessingTotal: 0
