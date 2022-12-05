@@ -1919,6 +1919,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3430068416161307277, guid: c76d584339ed17b4b89b58116d3cb67a, type: 3}
+      propertyPath: m_text
+      value: round/s
+      objectReference: {fileID: 0}
     - target: {fileID: 3531968186155657917, guid: c76d584339ed17b4b89b58116d3cb67a, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
