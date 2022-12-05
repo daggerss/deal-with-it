@@ -14249,7 +14249,7 @@ PrefabInstance:
     - target: {fileID: 9178039504310275434, guid: eca768678b6fee64d88bdae997a43b48, type: 3}
       propertyPath: npc
       value: 
-      objectReference: {fileID: 11400000, guid: c38dca752edf13647b3bfbdc4b0c3d71, type: 2}
+      objectReference: {fileID: 11400000, guid: 8598039399f93114daa60884f6f16afd, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eca768678b6fee64d88bdae997a43b48, type: 3}
 --- !u!224 &1503950148 stripped
@@ -17901,10 +17901,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -215.5
       objectReference: {fileID: 0}
-    - target: {fileID: 4886152610102850055, guid: ac3569959c738404cba003edf9633c7d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1389650842}
     - target: {fileID: 4918883926999253591, guid: ac3569959c738404cba003edf9633c7d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
