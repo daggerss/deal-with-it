@@ -1102,17 +1102,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 857c719bf86a092438f7f647c9fdff60, type: 3}
---- !u!114 &301055503 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2676171637884503650, guid: 474a8c2ccbdb9d04e843b3dedaff8335, type: 3}
-  m_PrefabInstance: {fileID: 1817891873}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04d486563be17dd4e854013e43bef592, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &325448147 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2676171637884503651, guid: 474a8c2ccbdb9d04e843b3dedaff8335, type: 3}
@@ -18277,18 +18266,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -208
       objectReference: {fileID: 0}
-    - target: {fileID: 275042414944421110, guid: 474a8c2ccbdb9d04e843b3dedaff8335, type: 3}
-      propertyPath: playerController
-      value: 
-      objectReference: {fileID: 301055503}
-    - target: {fileID: 311055839412000993, guid: 474a8c2ccbdb9d04e843b3dedaff8335, type: 3}
-      propertyPath: playerController
-      value: 
-      objectReference: {fileID: 301055503}
-    - target: {fileID: 364323138836307931, guid: 474a8c2ccbdb9d04e843b3dedaff8335, type: 3}
-      propertyPath: playerController
-      value: 
-      objectReference: {fileID: 301055503}
     - target: {fileID: 1338936186457348402, guid: 474a8c2ccbdb9d04e843b3dedaff8335, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -18545,10 +18522,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2051557014946796943, guid: 474a8c2ccbdb9d04e843b3dedaff8335, type: 3}
-      propertyPath: playerController
-      value: 
-      objectReference: {fileID: 301055503}
     - target: {fileID: 2403832767996379411, guid: 474a8c2ccbdb9d04e843b3dedaff8335, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -21005,10 +20978,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8723178350075338676, guid: 474a8c2ccbdb9d04e843b3dedaff8335, type: 3}
-      propertyPath: playerController
-      value: 
-      objectReference: {fileID: 301055503}
     - target: {fileID: 8787789531885321865, guid: 474a8c2ccbdb9d04e843b3dedaff8335, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

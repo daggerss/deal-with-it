@@ -1382,7 +1382,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0173d81cd63b0ba4393b895b98ca88bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
+  playerController: {fileID: 2676171637884503650}
+  eventCard: {fileID: 0}
 --- !u!1001 &2676171636766839625
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1788,7 +1789,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0173d81cd63b0ba4393b895b98ca88bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
+  playerController: {fileID: 2676171637884503650}
+  eventCard: {fileID: 0}
 --- !u!1001 &2676171637063018898
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2190,7 +2192,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0173d81cd63b0ba4393b895b98ca88bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
+  playerController: {fileID: 2676171637884503650}
+  eventCard: {fileID: 0}
 --- !u!1001 &2676171637216494906
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2596,7 +2599,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0173d81cd63b0ba4393b895b98ca88bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
+  playerController: {fileID: 2676171637884503650}
+  eventCard: {fileID: 0}
 --- !u!1001 &2676171637453589074
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2998,4 +3002,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0173d81cd63b0ba4393b895b98ca88bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
+  playerController: {fileID: 2676171637884503650}
+  eventCard: {fileID: 0}
