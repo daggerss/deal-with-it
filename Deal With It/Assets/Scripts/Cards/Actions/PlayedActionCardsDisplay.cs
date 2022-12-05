@@ -40,7 +40,12 @@ public class PlayedActionCardsDisplay : CardDisplay
     public int TotalSadnessVal = 0;
     public int TotalFearVal = 0;
     public int TotalAngerVal = 0;
-    public bool OverloadUnderload = false;
+
+    private bool _isAnyLoad = false;
+    public bool IsAnyLoad => _isAnyLoad;
+
+    private LevelType _loadLevelType;
+    public LevelType LoadLevelType => _loadLevelType;
 
     /* ---------------------------- Projected Values ---------------------------- */
     private int _energyProjectedVal = 0;
@@ -133,13 +138,7 @@ public class PlayedActionCardsDisplay : CardDisplay
                 GetTotalValues();
 
                 // Check for overload or under load
-                NPC npc = NPCDisplay.npc;
-                if((npc.JoyLvl + TotalJoyVal) < 0 || (npc.JoyLvl + TotalJoyVal) > 13 ||
-                (npc.SadnessLvl + TotalSadnessVal) < 0 || (npc.SadnessLvl + TotalSadnessVal) > 13 ||
-                (npc.FearLvl + TotalFearVal) < 0 || (npc.FearLvl + TotalFearVal) > 13 ||
-                (npc.AngerLvl + TotalAngerVal) < 0 || (npc.AngerLvl + TotalAngerVal) > 13){
-                    OverloadUnderload = true;
-                }
+                CheckLoad();
 
                 NPCDisplay.ApplyEffect(LevelType.Energy, TotalEnergyVal);
                 NPCDisplay.ApplyEffect(LevelType.Joy, TotalJoyVal);
@@ -533,12 +532,12 @@ public class PlayedActionCardsDisplay : CardDisplay
 
     // ! Legacy
     /* --------------------------- Move towards number -------------------------- */
-    private int MoveTowards(int npcLevel, int reference){
+    private int MoveTowards(int NPCLevel, int reference){
         // Effect greater than reference point
-        if(npcLevel > reference){
+        if(NPCLevel > reference){
             return -1;
         // Effect less than reference point
-        }else if(npcLevel < reference){
+        }else if(NPCLevel < reference){
             return 1;
         // Effect is equal to reference point
         }else{
@@ -718,6 +717,37 @@ public class PlayedActionCardsDisplay : CardDisplay
                 TotalFearVal += playedActionCard.FearVal;
                 TotalAngerVal += playedActionCard.AngerVal;
             }
+        }
+    }
+
+    private void CheckLoad()
+    {
+        // Joy
+        if ((NPC.JoyLvl + TotalJoyVal) < 0 || (NPC.JoyLvl + TotalJoyVal) > 13)
+        {
+            _loadLevelType = LevelType.Joy;
+            _isAnyLoad = true;
+        }
+
+        // Sadness
+        else if ((NPC.SadnessLvl + TotalSadnessVal) < 0 || (NPC.SadnessLvl + TotalSadnessVal) > 13)
+        {
+            _loadLevelType = LevelType.Sadness;
+            _isAnyLoad = true;
+        }
+
+        // Fear
+        else if ((NPC.FearLvl + TotalFearVal) < 0 || (NPC.FearLvl + TotalFearVal) > 13)
+        {
+            _loadLevelType = LevelType.Fear;
+            _isAnyLoad = true;
+        }
+
+        // Anger
+        else if ((NPC.AngerLvl + TotalAngerVal) < 0 || (NPC.AngerLvl + TotalAngerVal) > 13)
+        {
+            _loadLevelType = LevelType.Anger;
+            _isAnyLoad = true;
         }
     }
 

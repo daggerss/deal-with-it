@@ -68,9 +68,11 @@ public class RoundController : MonoBehaviour
     [SerializeField] private TMP_Text _timerText;
     [SerializeField] private Image _timerFill;
 
-    /* ----------------------------- Win Lose Label ----------------------------- */
-    public Button WinLoseLabel;
-    public TMP_Text WinLoseLabelText;
+    /* -------------------------------- Win Lose -------------------------------- */
+    private bool _isWon;
+    private string _winLoseStatus;
+    private string _gameOverTip = null;
+    [SerializeField] private GameSetDisplay gameSetDisplay;
 
     /* -------------------------------------------------------------------------- */
     /*                                  Functions                                 */
@@ -87,9 +89,6 @@ public class RoundController : MonoBehaviour
 
         // Initialize PlayedActionCards
         PlayedActionCards = (PlayedActionCardsDisplay)GameObject.FindGameObjectWithTag("Played Action Cards Display").GetComponent(typeof(PlayedActionCardsDisplay));
-
-        // Initialize WinLoseLabel
-        WinLoseLabel.gameObject.SetActive(false);
 
         // Hide timer
         _timerText.text = null;
@@ -126,13 +125,14 @@ public class RoundController : MonoBehaviour
     /* -------------------------------------------------------------------------- */
     /* ------------------------------- Skip Player ------------------------------ */
     public IEnumerator SkipPlayer(){
-        WinLoseLabel.gameObject.SetActive(true);
-        WinLoseLabelText.text = "Ran out of time! Your turn was skipped";
+        // No need na
+        // // WinLoseLabel.gameObject.SetActive(true);
+        // // WinLoseLabelText.text = "Ran out of time! Your turn was skipped";
 
         yield return new WaitForSeconds(3f);
 
         StopTimer = false;
-        WinLoseLabel.gameObject.SetActive(false);
+        // // WinLoseLabel.gameObject.SetActive(false);
 
         NextPlayer();
     }
@@ -152,8 +152,8 @@ public class RoundController : MonoBehaviour
         StopTimer = true; // Stop the timer for now because there is a 3 second delay from switching to next round
         yield return new WaitForSeconds(3f);
         StopTimer = false; // switching to next round
-        string winLoseStatus = WinLoseStatus();
-        if(winLoseStatus == "continue"){
+        _winLoseStatus = CheckWinLoseStatus();
+        if(_winLoseStatus == "continue"){
             _round++;
             _playerTurn = -1;
 
@@ -162,20 +162,41 @@ public class RoundController : MonoBehaviour
             _timerFill.fillAmount = 0f;
         }else{
             StopTimer = true;
-            WinLoseLabel.gameObject.SetActive(true);
-            WinLoseLabelText.text = winLoseStatus;
+            gameSetDisplay.SetGameStatus(_isWon, _winLoseStatus, _gameOverTip);
+            gameSetDisplay.gameObject.SetActive(true);
         }
     }
 
     /* ------------- Checks if NPC wins or loses or continue playing ------------ */
-    private string WinLoseStatus(){
+    private string CheckWinLoseStatus(){
         /* ------------------------- Overload and Underload ------------------------- */
-        if(PlayedActionCards.OverloadUnderload){
-            return "One or more of the emotions has overloaded or underloaded! You lose!";
+        if(PlayedActionCards.IsAnyLoad){
+            _isWon = false;
+
+            // Tip message
+            if (PlayedActionCards.LoadLevelType == LevelType.Joy)
+            {
+                _gameOverTip = "Tip: Joy is wonderful, but don't lose sight of other experiences in life.";
+            }
+            else if (PlayedActionCards.LoadLevelType == LevelType.Sadness)
+            {
+                _gameOverTip = "Tip: Sadness is a part of life, but try not to dwell on it either.";
+            }
+            else if (PlayedActionCards.LoadLevelType == LevelType.Fear)
+            {
+                _gameOverTip = "Tip: Fear keeps you safe, but neither cowardice nor recklessness is a virtue.";
+            }
+            else if (PlayedActionCards.LoadLevelType == LevelType.Anger)
+            {
+                _gameOverTip = "Tip: Anger lets you speak out, but don't let it control you.";
+            }
+
+            return "Oh no! At least one emotion was under or overloaded!";
         }
 
         if(NPC.EnergyLvl <= -10){
-            return "You have overexhausted " + NPC.CardName + "! You lose!";
+            _isWon = false;
+            return "Oh no! You have overexhausted " + NPC.CardName + "!";
         }
 
         /* ------------------- Count total number of played cards ------------------- */
@@ -185,11 +206,25 @@ public class RoundController : MonoBehaviour
         _totalReappraisalCount += PlayedActionCards.ReappraisalCount;
 
         /* ------------------------- Card Per Round Counter ------------------------- */
-        if(PlayedActionCards.DistractionCount > NPC.MaxDistractionPerRound ||
-        PlayedActionCards.ExpressionCount > NPC.MaxExpressionPerRound ||
-        PlayedActionCards.ProcessingCount > NPC.MaxProcessingPerRound ||
-        PlayedActionCards.ReappraisalCount > NPC.MaxReappraisalPerRound){
-            return "You used too many of a certain action type per round! You lose!";
+        if(PlayedActionCards.DistractionCount > NPC.MaxDistractionPerRound)
+        {
+            _isWon = false;
+            return "You relied on Distraction too much! It's important to learn the others too.";
+        }
+        if (PlayedActionCards.ExpressionCount > NPC.MaxExpressionPerRound)
+        {
+            _isWon = false;
+            return "You relied on Expression too much! It's important to learn the others too.";
+        }
+        if (PlayedActionCards.ProcessingCount > NPC.MaxProcessingPerRound)
+        {
+            _isWon = false;
+            return "You relied on Processing too much! It's important to learn the others too.";
+        }
+        if (PlayedActionCards.ReappraisalCount > NPC.MaxReappraisalPerRound)
+        {
+            _isWon = false;
+            return "You relied on Reappraisal too much! It's important to learn the others too.";
         }
 
         /* ------------------------------- Card Total ------------------------------- */
@@ -198,7 +233,8 @@ public class RoundController : MonoBehaviour
         NPC.MinProcessingTotal <= _totalProcessingCount &&
         NPC.MinReappraisalTotal <= _totalReappraisalCount){
             if(NPC.MinDistractionTotal != 0 && NPC.MinExpressionTotal != 0 && NPC.MinProcessingTotal != 0 && NPC.MinReappraisalTotal != 0){
-                return "You reached the goal of certain action card type played! You win!";
+                _isWon = true;
+                return "You've learned to use a certain strategy more! Keep it up!";
             }
         }
 
@@ -232,7 +268,8 @@ public class RoundController : MonoBehaviour
             // Do nothing
         }else if(_goalCounter == NPC.RangeWinDuration){
             _durationWinStatus = true;
-            return "You have successfully kept the emotions within the correct range! You win!";
+            _isWon = true;
+            return "You've kept " + NPC.CardName + "'s emotions at healthy levels! Congratulations!";
         }
 
         // Emotion Range Lose Checker
@@ -240,7 +277,8 @@ public class RoundController : MonoBehaviour
             // Do nothing
         }else if(_goalCounter * -1 == NPC.RangeLoseDuration){
             _durationWinStatus = false;
-            return "You failed to keep the emotions within the right range! You lose!";
+            _isWon = false;
+            return "It's hard to balance emotions. Don't be afraid to try again!";
         }
 
         return "continue";
