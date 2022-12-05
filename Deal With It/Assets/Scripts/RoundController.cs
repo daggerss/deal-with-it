@@ -95,8 +95,15 @@ public class RoundController : MonoBehaviour
         _timerText.text = null;
         _timerFill.fillAmount = 0f;
 
-        // Reset Win Tracker Status
-        _durationWinStatus = false;
+        // Set Win Tracker Status
+        if (NPC.RangeWinDuration > 0)
+        {
+            _durationWinStatus = false;
+        }
+        else
+        {
+            _durationWinStatus = true;
+        }
     }
 
     void Update(){
@@ -232,6 +239,7 @@ public class RoundController : MonoBehaviour
         if(NPC.RangeLoseDuration == -1){
             // Do nothing
         }else if(_goalCounter * -1 == NPC.RangeLoseDuration){
+            _durationWinStatus = false;
             return "You failed to keep the emotions within the right range! You lose!";
         }
 

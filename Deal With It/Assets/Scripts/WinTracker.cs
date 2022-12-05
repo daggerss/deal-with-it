@@ -17,7 +17,8 @@ public class WinTracker : MonoBehaviour
 
     // Tracker objects: Duration + Range
     [SerializeField] private Toggle durationToggle;
-    [SerializeField] private TMP_Text durationText;
+    [SerializeField] private TMP_Text durationCopyText;
+    [SerializeField] private TMP_Text durationValueText;
     [SerializeField] private TMP_Text durationCounter;
 
     [SerializeField] private Toggle joyRangeToggle;
@@ -98,7 +99,16 @@ public class WinTracker : MonoBehaviour
     private void SetUpConditions()
     {
         // Duration
-        durationText.text = npc.RangeWinDuration.ToString();
+        if (npc.RangeWinDuration > 0)
+        {
+            durationValueText.text = npc.RangeWinDuration.ToString();
+        }
+        else if (npc.RangeLoseDuration > 0)
+        {
+            durationCopyText.text = "Don't exceed the following for";
+            durationValueText.text = "any";
+            durationCounter.gameObject.SetActive(false);
+        }
 
         // Ranges
         joyRangeText.text = npc.JoyRange.x.ToString() + "-" + npc.JoyRange.y.ToString();
