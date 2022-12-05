@@ -60,8 +60,8 @@ MonoBehaviour:
   _sadnessRange: {x: 0, y: 11}
   _fearRange: {x: 0, y: 11}
   _angerRange: {x: 0, y: 11}
-  _rangeWinDuration: 0
-  _rangeLoseDuration: 0
+  _rangeWinDuration: -1
+  _rangeLoseDuration: 1
   _maxDistractionPerRound: 5
   _maxExpressionPerRound: 5
   _maxProcessingPerRound: 5
