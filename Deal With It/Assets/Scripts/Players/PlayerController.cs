@@ -121,6 +121,9 @@ public class PlayerController : MonoBehaviour
 
             // Reset Cards to Original Position at the start of every round
             SelectCard(-1);
+
+            // Reset Skip Turn Button
+            _showSkipTurnButton = false;
         }
 
         // Show or hide player turn indicator
@@ -365,7 +368,8 @@ public class PlayerController : MonoBehaviour
         _aiActionCardPlayed = true;
 
         //Wait
-        yield return new WaitForSeconds(3f);
+        float randomTime = UnityEngine.Random.Range(1, 10);
+        yield return new WaitForSeconds(randomTime);
 
         // Random Number
         int rng = UnityEngine.Random.Range(-1, CardsInHand.Length);
