@@ -25,6 +25,12 @@ public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         TooltipSystem.Hide();
     }
 
+    // Hide also when object is deactivated
+    private void OnDisable()
+    {
+        TooltipSystem.Hide();
+    }
+
     private void Trigger()
     {
         TooltipSystem.Show(Type, Content, Heading, PrevStrat, NextStrat);
