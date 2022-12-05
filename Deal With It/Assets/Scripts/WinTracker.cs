@@ -149,7 +149,14 @@ public class WinTracker : MonoBehaviour
     private void UpdateCounters()
     {
         // Duration
-        durationCounter.text = FormatCounter(roundStats.GoalCount, npc.RangeWinDuration);
+        if (roundStats.GoalCount < 0)
+        {
+            durationCounter.text = FormatCounter(0, npc.RangeWinDuration);
+        }
+        else
+        {
+            durationCounter.text = FormatCounter(roundStats.GoalCount, npc.RangeWinDuration);
+        }
 
         // Max Strategy per Round
         maxDistractionCounter.text = FormatCounter(playedCards.DistractionCount, npc.MaxDistractionPerRound);
