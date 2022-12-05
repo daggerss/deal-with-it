@@ -22,13 +22,13 @@ public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        TooltipSystem.Hide();
+        TooltipSystem.Hide(Type);
     }
 
     // Hide also when object is deactivated
     private void OnDisable()
     {
-        TooltipSystem.Hide();
+        TooltipSystem.Hide(Type);
     }
 
     private void Trigger()

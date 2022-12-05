@@ -68,39 +68,39 @@ public class TooltipSystem : MonoBehaviour
         }
     }
 
-    public static void Hide()
+    public static void Hide(TooltipType type)
     {
-        if (current.generalTooltip != null)
+        if (current.generalTooltip != null && type == TooltipType.General)
         {
             current.generalTooltip.gameObject.SetActive(false);
         }
 
-        if (current.goalTooltip != null)
+        else if (current.goalTooltip != null && type == TooltipType.NPCGoal)
         {
             current.goalTooltip.gameObject.SetActive(false);
         }
 
-        if (current.eventTooltip != null)
+        else if (current.eventTooltip != null && type == TooltipType.NPCEvent)
         {
             current.eventTooltip.gameObject.SetActive(false);
         }
 
-        if (current.strategyTooltip != null)
+        else if (current.strategyTooltip != null && type == TooltipType.NPCStrategy)
         {
             current.strategyTooltip.gameObject.SetActive(false);
         }
         
-        if (current.traitTooltip != null)
+        else if (current.traitTooltip != null && type == TooltipType.Trait)
         {
             current.traitTooltip.gameObject.SetActive(false);
         }
         
-        if (current.inOrderTooltip != null)
+        else if (current.inOrderTooltip != null && type == TooltipType.InOrderCombo)
         {
             current.inOrderTooltip.gameObject.SetActive(false);
         }
         
-        if (current.atLeastTooltip != null)
+        else if (current.atLeastTooltip != null && type == TooltipType.AtLeastCombo)
         {
             current.atLeastTooltip.gameObject.SetActive(false);
         }
