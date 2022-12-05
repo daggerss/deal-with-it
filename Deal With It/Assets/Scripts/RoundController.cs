@@ -186,10 +186,10 @@ public class RoundController : MonoBehaviour
         }
 
         /* ------------------------------- Card Total ------------------------------- */
-        if(NPC.MinDistractionTotal < _totalDistractionCount &&
-        NPC.MinExpressionTotal < _totalExpressionCount &&
-        NPC.MinProcessingTotal < _totalProcessingCount &&
-        NPC.MinReappraisalTotal < _totalReappraisalCount){
+        if(NPC.MinDistractionTotal <= _totalDistractionCount &&
+        NPC.MinExpressionTotal <= _totalExpressionCount &&
+        NPC.MinProcessingTotal <= _totalProcessingCount &&
+        NPC.MinReappraisalTotal <= _totalReappraisalCount){
             if(NPC.MinDistractionTotal != 0 && NPC.MinExpressionTotal != 0 && NPC.MinProcessingTotal != 0 && NPC.MinReappraisalTotal != 0){
                 return "You reached the goal of certain action card type played! You win!";
             }
