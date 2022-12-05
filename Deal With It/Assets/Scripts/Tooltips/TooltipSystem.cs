@@ -70,14 +70,39 @@ public class TooltipSystem : MonoBehaviour
 
     public static void Hide()
     {
-        current.generalTooltip.gameObject.SetActive(false);
+        if (current.generalTooltip != null)
+        {
+            current.generalTooltip.gameObject.SetActive(false);
+        }
 
-        current.goalTooltip.gameObject.SetActive(false);
-        current.eventTooltip.gameObject.SetActive(false);
-        current.strategyTooltip.gameObject.SetActive(false);
+        if (current.goalTooltip != null)
+        {
+            current.goalTooltip.gameObject.SetActive(false);
+        }
+
+        if (current.eventTooltip != null)
+        {
+            current.eventTooltip.gameObject.SetActive(false);
+        }
+
+        if (current.strategyTooltip != null)
+        {
+            current.strategyTooltip.gameObject.SetActive(false);
+        }
         
-        current.traitTooltip.gameObject.SetActive(false);
-        current.inOrderTooltip.gameObject.SetActive(false);
-        current.atLeastTooltip.gameObject.SetActive(false);
+        if (current.traitTooltip != null)
+        {
+            current.traitTooltip.gameObject.SetActive(false);
+        }
+        
+        if (current.inOrderTooltip != null)
+        {
+            current.inOrderTooltip.gameObject.SetActive(false);
+        }
+        
+        if (current.atLeastTooltip != null)
+        {
+            current.atLeastTooltip.gameObject.SetActive(false);
+        }
     }
 }
