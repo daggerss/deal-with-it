@@ -134,6 +134,11 @@ public class PlayerController : MonoBehaviour
                 SkipTurnButton.interactable = true;
                 _showSkipTurnButton = true;
             }
+
+            // If player is skipped, return projected card
+            if(RoundController.PlayerSkipped){
+                SelectCard(SelectedCard);
+            }
         }else{
             // So player can't play card when it's not their turn
             SkipTurnButton.interactable = false;

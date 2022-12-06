@@ -65,6 +65,7 @@ public class RoundController : MonoBehaviour
     /* ------------------------------ Player Timer ------------------------------ */
     public float PlayerTimer = 30;
     public bool StopTimer = false;
+    public bool PlayerSkipped = false;
 
     // ! Legacy timer
     // // [SerializeField] private TMP_Text _timerText;
@@ -133,9 +134,12 @@ public class RoundController : MonoBehaviour
         // // WinLoseLabel.gameObject.SetActive(true);
         // // WinLoseLabelText.text = "Ran out of time! Your turn was skipped";
 
+        PlayerSkipped = true;
+
         yield return new WaitForSeconds(3f);
 
         StopTimer = false;
+        PlayerSkipped = false;
         // // WinLoseLabel.gameObject.SetActive(false);
 
         NextPlayer();
