@@ -102,6 +102,8 @@ public class PlayerController : MonoBehaviour
         // for (int i = 0; i < ActionCardProject.Length; i++){
         //     ActionCardProject[i] = true;
         // }
+
+        // // this.gameObject.GetComponent<Renderer>().enabled = false;
     }
 
     // Update is called once per frame
@@ -193,6 +195,11 @@ public class PlayerController : MonoBehaviour
             ConfirmButton.interactable = false;
             SwapButton.interactable = false;
         }
+
+        // TODO DELETE TESTING
+        // // for(int i = 0; i < CardsInHandButton.Length; i++){
+        // //     CardsInHandButton[i].GetComponent<Renderer>().enabled = false;
+        // // }
     }
 
     /* ----------------------------- Custom Methods ----------------------------- */
@@ -393,7 +400,6 @@ public class PlayerController : MonoBehaviour
 
         RoundController.NextPlayer();
         // ! WIP
-        // StopCoroutine(RoundController.Skip);
     }
 
     public void SwapCard(){
@@ -419,7 +425,6 @@ public class PlayerController : MonoBehaviour
 
         RoundController.NextPlayer();
         // ! WIP
-        // StopCoroutine(RoundController.Skip);
     }
 
     /* --------------------- AI Play Action Card With Delay --------------------- */
