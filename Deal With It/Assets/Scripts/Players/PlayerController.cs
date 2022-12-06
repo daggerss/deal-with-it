@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
     public int PlayerNumber;
     private int SelectedCard = -1;
     public bool Playable;
-    [SerializeField] private GameObject _playerTurnIndicator;
 
     // Misc
 
@@ -124,16 +123,6 @@ public class PlayerController : MonoBehaviour
 
             // Reset Skip Turn Button
             _showSkipTurnButton = false;
-        }
-
-        // Show or hide player turn indicator
-        if (RoundController.PlayerTurn == PlayerNumber)
-        {
-            _playerTurnIndicator.SetActive(true);
-        }
-        else
-        {
-            _playerTurnIndicator.SetActive(false);
         }
 
         // If it is this player's turn

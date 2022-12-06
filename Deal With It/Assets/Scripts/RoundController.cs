@@ -65,8 +65,10 @@ public class RoundController : MonoBehaviour
     /* ------------------------------ Player Timer ------------------------------ */
     public float PlayerTimer = 30;
     public bool StopTimer = false;
-    [SerializeField] private TMP_Text _timerText;
-    [SerializeField] private Image _timerFill;
+
+    // ! Legacy timer
+    // // [SerializeField] private TMP_Text _timerText;
+    // // [SerializeField] private Image _timerFill;
 
     /* -------------------------------- Win Lose -------------------------------- */
     private bool _isWon;
@@ -90,9 +92,9 @@ public class RoundController : MonoBehaviour
         // Initialize PlayedActionCards
         PlayedActionCards = (PlayedActionCardsDisplay)GameObject.FindGameObjectWithTag("Played Action Cards Display").GetComponent(typeof(PlayedActionCardsDisplay));
 
-        // Hide timer
-        _timerText.text = null;
-        _timerFill.fillAmount = 0f;
+        // ! Legacy Hide timer
+        // // _timerText.text = null;
+        // // _timerFill.fillAmount = 0f;
 
         // Set Win Tracker Status
         if (NPC.RangeWinDuration > 0)
@@ -109,8 +111,10 @@ public class RoundController : MonoBehaviour
         // Subtract from timer
         if(!StopTimer && _playerTurn != -1){
             PlayerTimer -= Time.deltaTime;
-            _timerText.text = (Math.Ceiling(PlayerTimer)).ToString();
-            _timerFill.fillAmount = (float)(Math.Ceiling(PlayerTimer)) / 30;
+
+            //! Legacy timer
+            // // _timerText.text = (Math.Ceiling(PlayerTimer)).ToString();
+            // // _timerFill.fillAmount = (float)(Math.Ceiling(PlayerTimer)) / 30;
         }
 
         // If timer runs out
@@ -157,9 +161,9 @@ public class RoundController : MonoBehaviour
             _round++;
             _playerTurn = -1;
 
-            // Hide timer
-            _timerText.text = null;
-            _timerFill.fillAmount = 0f;
+            // ! Legacy Hide timer
+            // // _timerText.text = null;
+            // // _timerFill.fillAmount = 0f;
         }else{
             StopTimer = true;
             gameSetDisplay.SetGameStatus(_isWon, _winLoseStatus, _gameOverTip);
