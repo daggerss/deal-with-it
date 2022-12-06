@@ -29,10 +29,8 @@ public class PlayerCardHover : MonoBehaviour , IPointerEnterHandler, IPointerExi
     }
 
     public void OnPointerExit(PointerEventData eventData){
-        if ((playerController.ActionCardProject == true) && (roundController.PlayerTurn != -1)){
-            this.transform.localScale = cardScale;
-            this.transform.position = cardPosition;
-            this.transform.SetSiblingIndex(cardIndexNumber);
-        }
+        this.transform.localScale = cardScale;
+        this.transform.position = cardPosition;
+        this.transform.SetSiblingIndex(cardIndexNumber);
     }
 }
