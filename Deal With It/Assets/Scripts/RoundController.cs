@@ -180,7 +180,7 @@ public class RoundController : MonoBehaviour
             }
             else if (PlayedActionCards.LoadLevelType == LevelType.Sadness)
             {
-                _gameOverTip = "Tip: Sadness is a part of life, but try not to dwell on it either.";
+                _gameOverTip = "Tip: Sadness comes from love, but try not to dwell on it either.";
             }
             else if (PlayedActionCards.LoadLevelType == LevelType.Fear)
             {
