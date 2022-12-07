@@ -8349,7 +8349,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5715951549130287301, guid: c7538a7f4caa44b40a5764239f7d7ae1, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5715951549130287301, guid: c7538a7f4caa44b40a5764239f7d7ae1, type: 3}
       propertyPath: m_AnchorMax.x
@@ -8793,6 +8793,7 @@ MonoBehaviour:
   PlayedActionCards: {fileID: 0}
   PlayerTimer: 30
   StopTimer: 0
+  PlayerSkipped: 0
   gameSetDisplay: {fileID: 1320988119}
 --- !u!4 &964616246
 Transform:
@@ -8927,8 +8928,8 @@ RectTransform:
   - {fileID: 1801086217}
   - {fileID: 1503950148}
   - {fileID: 934195879}
-  - {fileID: 1045563428}
   - {fileID: 1312852021}
+  - {fileID: 1045563428}
   - {fileID: 469430729}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -8989,7 +8990,7 @@ RectTransform:
   - {fileID: 434327190}
   - {fileID: 177681162}
   m_Father: {fileID: 993389998}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -13437,7 +13438,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3320498390333178162, guid: eca768678b6fee64d88bdae997a43b48, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3320498390333178162, guid: eca768678b6fee64d88bdae997a43b48, type: 3}
       propertyPath: m_AnchorMax.x
@@ -17339,7 +17340,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3320498390333178162, guid: ac3569959c738404cba003edf9633c7d, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3320498390333178162, guid: ac3569959c738404cba003edf9633c7d, type: 3}
       propertyPath: m_AnchorMax.x
@@ -22801,7 +22802,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5963645472526721911, guid: 431120c6fa2e2404ebe46239932de0c3, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 431120c6fa2e2404ebe46239932de0c3, type: 3}
@@ -22870,7 +22871,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5462203522536800713, guid: a1777056ce86d7846975f7d7ffc4f19c, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5462203522536800713, guid: a1777056ce86d7846975f7d7ffc4f19c, type: 3}
       propertyPath: m_AnchorMax.x
