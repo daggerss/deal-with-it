@@ -330,6 +330,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7508362688195597153}
     m_Modifications:
+    - target: {fileID: 4040423496864060625, guid: 097251916acb81a488cdbcd3076856c5, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040423496864060625, guid: 097251916acb81a488cdbcd3076856c5, type: 3}
+      propertyPath: m_Color.b
+      value: 0.78039217
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040423496864060625, guid: 097251916acb81a488cdbcd3076856c5, type: 3}
+      propertyPath: m_Color.g
+      value: 0.36862746
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040423496864060625, guid: 097251916acb81a488cdbcd3076856c5, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6824752738256882696, guid: 097251916acb81a488cdbcd3076856c5, type: 3}
       propertyPath: m_Name
       value: Timer
