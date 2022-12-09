@@ -123,6 +123,7 @@ public class PlayedActionCardsDisplay : CardDisplay
                 _effectsApplied = false;
 
                 // Clear PlayedActionCards and all properties
+                RevertAll();
                 ClearCards();
 
                 // Reset Current Slot
