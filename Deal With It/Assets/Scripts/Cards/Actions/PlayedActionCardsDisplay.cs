@@ -532,18 +532,18 @@ public class PlayedActionCardsDisplay : CardDisplay
 
     // ! Legacy
     /* --------------------------- Move towards number -------------------------- */
-    private int MoveTowards(int NPCLevel, int reference){
-        // Effect greater than reference point
-        if(NPCLevel > reference){
-            return -1;
-        // Effect less than reference point
-        }else if(NPCLevel < reference){
-            return 1;
-        // Effect is equal to reference point
-        }else{
-            return 0;
-        }
-    }
+    // // private int MoveTowards(int NPCLevel, int reference){
+    //     // Effect greater than reference point
+    // //     if(NPCLevel > reference){
+    // //         return -1;
+    //     // Effect less than reference point
+    // //     }else if(NPCLevel < reference){
+    // //         return 1;
+    //     // Effect is equal to reference point
+    // //     }else{
+    // //         return 0;
+    // //     }
+    // // }
 
     /* --------------------- Show card on PlayedActionCards --------------------- */
     public void AddCard(Action actionCard)
