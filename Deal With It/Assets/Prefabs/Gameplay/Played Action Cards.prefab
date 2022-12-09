@@ -77,7 +77,6 @@ MonoBehaviour:
   TotalSadnessVal: 0
   TotalFearVal: 0
   TotalAngerVal: 0
-  OverloadUnderload: 0
   NPCDisplay: {fileID: 0}
   NPC: {fileID: 0}
   ActionCardDeck: {fileID: 0}
