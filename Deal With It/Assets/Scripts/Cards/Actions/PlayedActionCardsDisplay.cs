@@ -131,7 +131,7 @@ public class PlayedActionCardsDisplay : CardDisplay
             // Apply PlayedActionCards
             }else if(_currentTurn == RoundController.NumberOfPlayers && !_effectsApplied){
                 _effectsApplied = true;
-
+                
                 // Reset projected effects UI
                 NPCDisplay.ResetProjectedUI();
 
@@ -140,15 +140,15 @@ public class PlayedActionCardsDisplay : CardDisplay
                 // Check for overload or under load
                 CheckLoad();
 
+                // Apply effects
                 NPCDisplay.ApplyEffect(LevelType.Energy, TotalEnergyVal);
                 NPCDisplay.ApplyEffect(LevelType.Joy, TotalJoyVal);
                 NPCDisplay.ApplyEffect(LevelType.Sadness, TotalSadnessVal);
                 NPCDisplay.ApplyEffect(LevelType.Fear, TotalFearVal);
                 NPCDisplay.ApplyEffect(LevelType.Anger, TotalAngerVal);
 
-                // Revert cards
-                RevertAll();
-                ClearCards();
+                // Revert and clear all cards
+                StartCoroutine(RevertAndClear());
 
                 // Go next turn
                 RoundController.NextPlayer();
@@ -776,12 +776,22 @@ public class PlayedActionCardsDisplay : CardDisplay
                                          (_sadnessProjectedVal != NPC.SadnessLvl) ||
                                          (_fearProjectedVal != NPC.FearLvl) ||
                                          (_angerProjectedVal != NPC.AngerLvl));
-        yield return new WaitUntil(() => _currentTurn >= 1);
+        yield return new WaitUntil(() => _currentTurn >= 1 && !_effectsApplied);
 
         NPCDisplay.ProjectEffectUI(LevelType.Energy, _energyProjectedVal);
         NPCDisplay.ProjectEffectUI(LevelType.Joy, _joyProjectedVal);
         NPCDisplay.ProjectEffectUI(LevelType.Sadness, _sadnessProjectedVal);
         NPCDisplay.ProjectEffectUI(LevelType.Fear, _fearProjectedVal);
         NPCDisplay.ProjectEffectUI(LevelType.Anger, _angerProjectedVal);
+    }
+
+    /* ----------------------- Revert and clear all cards ----------------------- */
+    IEnumerator RevertAndClear()
+    {
+        yield return new WaitForSeconds(2f);
+    
+        // Revert cards
+        RevertAll();
+        ClearCards();
     }
 }
