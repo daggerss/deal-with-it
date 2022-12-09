@@ -73,7 +73,10 @@ public class RoundController : MonoBehaviour
 
     /* -------------------------------- Win Lose -------------------------------- */
     private bool _isWon;
+    
     private string _winLoseStatus;
+    public string WinLoseStatus => _winLoseStatus;
+
     private string _gameOverTip = null;
     [SerializeField] private GameSetDisplay gameSetDisplay;
 
@@ -98,6 +101,8 @@ public class RoundController : MonoBehaviour
         // // _timerFill.fillAmount = 0f;
 
         // Set Win Tracker Status
+        _winLoseStatus = "continue";
+        
         if (NPC.RangeWinDuration > 0)
         {
             _durationWinStatus = false;
