@@ -15,7 +15,7 @@ MonoBehaviour:
   _cardName: Knot
   _cardDescription: They're easy to anger and has high anxiety, but they're not afraid
     to express themself!
-  <Illustration>k__BackingField: {fileID: 0}
+  <Illustration>k__BackingField: {fileID: 21300000, guid: 6b56c5af9d53c81408b733ddf327a3e9, type: 3}
   _cardGoals: 'Maintain less than 6 points of anger and fear for 2 rounds.
 
 
