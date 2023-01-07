@@ -638,11 +638,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: feae6b05798ed35409a72cc50766824a, type: 3}
---- !u!1 &55946043 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3234325710794658139, guid: 857c719bf86a092438f7f647c9fdff60, type: 3}
-  m_PrefabInstance: {fileID: 1352936435}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &68119042 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4243942955121425073, guid: ac3569959c738404cba003edf9633c7d, type: 3}
@@ -860,7 +855,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1787405063557014432, guid: 857c719bf86a092438f7f647c9fdff60, type: 3}
       propertyPath: m_text
-      value: P5
+      value: Player 5
       objectReference: {fileID: 0}
     - target: {fileID: 2700815177440154725, guid: 857c719bf86a092438f7f647c9fdff60, type: 3}
       propertyPath: player
@@ -878,6 +873,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player 5 DP
       objectReference: {fileID: 0}
+    - target: {fileID: 6771020154683830892, guid: 857c719bf86a092438f7f647c9fdff60, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 58cb721d21eb44a42b575a9df3a8582e, type: 3}
     - target: {fileID: 7508362688195597153, guid: 857c719bf86a092438f7f647c9fdff60, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1502,7 +1501,7 @@ PrefabInstance:
     - target: {fileID: 2676171637884503650, guid: 474a8c2ccbdb9d04e843b3dedaff8335, type: 3}
       propertyPath: _playerTurnIndicator
       value: 
-      objectReference: {fileID: 55946043}
+      objectReference: {fileID: 0}
     - target: {fileID: 2676171637884503650, guid: 474a8c2ccbdb9d04e843b3dedaff8335, type: 3}
       propertyPath: PlayerTurnIndicator.Array.size
       value: 5
@@ -4253,11 +4252,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 474a8c2ccbdb9d04e843b3dedaff8335, type: 3}
---- !u!1 &437774625 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3234325710794658139, guid: 857c719bf86a092438f7f647c9fdff60, type: 3}
-  m_PrefabInstance: {fileID: 6173464695198786916}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &469430729 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5462203522536800713, guid: a1777056ce86d7846975f7d7ffc4f19c, type: 3}
@@ -4906,7 +4900,7 @@ PrefabInstance:
     - target: {fileID: 2676171637884503650, guid: 474a8c2ccbdb9d04e843b3dedaff8335, type: 3}
       propertyPath: _playerTurnIndicator
       value: 
-      objectReference: {fileID: 437774625}
+      objectReference: {fileID: 0}
     - target: {fileID: 2676171637884503651, guid: 474a8c2ccbdb9d04e843b3dedaff8335, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -7715,11 +7709,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!1 &763283152 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3234325710794658139, guid: 857c719bf86a092438f7f647c9fdff60, type: 3}
-  m_PrefabInstance: {fileID: 1400041906}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &772623735 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1864412869386128294, guid: ac3569959c738404cba003edf9633c7d, type: 3}
@@ -9162,11 +9151,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1025966807 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3234325710794658139, guid: 857c719bf86a092438f7f647c9fdff60, type: 3}
-  m_PrefabInstance: {fileID: 254036617}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1045563427
 GameObject:
   m_ObjectHideFlags: 0
@@ -9777,7 +9761,7 @@ PrefabInstance:
     - target: {fileID: 2676171637884503650, guid: 474a8c2ccbdb9d04e843b3dedaff8335, type: 3}
       propertyPath: _playerTurnIndicator
       value: 
-      objectReference: {fileID: 1870192779}
+      objectReference: {fileID: 0}
     - target: {fileID: 2676171637884503650, guid: 474a8c2ccbdb9d04e843b3dedaff8335, type: 3}
       propertyPath: PlayerTurnIndicator.Array.size
       value: 5
@@ -12691,7 +12675,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1787405063557014432, guid: 857c719bf86a092438f7f647c9fdff60, type: 3}
       propertyPath: m_text
-      value: P4
+      value: Player 4
       objectReference: {fileID: 0}
     - target: {fileID: 2700815177440154725, guid: 857c719bf86a092438f7f647c9fdff60, type: 3}
       propertyPath: player
@@ -12709,6 +12693,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player 4 DP
       objectReference: {fileID: 0}
+    - target: {fileID: 6771020154683830892, guid: 857c719bf86a092438f7f647c9fdff60, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 73225352585befb4581505f07f7d207c, type: 3}
     - target: {fileID: 7508362688195597153, guid: 857c719bf86a092438f7f647c9fdff60, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -12857,8 +12845,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1160, y: -50}
-  m_SizeDelta: {x: 650, y: 80}
+  m_AnchoredPosition: {x: -1140, y: -50}
+  m_SizeDelta: {x: 800, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1363854640
 MonoBehaviour:
@@ -12880,8 +12868,8 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 90, y: 90}
-  m_Spacing: {x: 25, y: 0}
+  m_CellSize: {x: 162, y: 162}
+  m_Spacing: {x: -25, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!1001 &1383609146
@@ -13270,7 +13258,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1787405063557014432, guid: 857c719bf86a092438f7f647c9fdff60, type: 3}
       propertyPath: m_text
-      value: P3
+      value: Player 3
       objectReference: {fileID: 0}
     - target: {fileID: 2700815177440154725, guid: 857c719bf86a092438f7f647c9fdff60, type: 3}
       propertyPath: player
@@ -13288,6 +13276,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player 3 DP
       objectReference: {fileID: 0}
+    - target: {fileID: 6771020154683830892, guid: 857c719bf86a092438f7f647c9fdff60, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: eb1597ad808c75c4c8c0ca526e89bd31, type: 3}
     - target: {fileID: 7508362688195597153, guid: 857c719bf86a092438f7f647c9fdff60, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -14789,7 +14781,7 @@ PrefabInstance:
     - target: {fileID: 2676171637884503650, guid: 474a8c2ccbdb9d04e843b3dedaff8335, type: 3}
       propertyPath: _playerTurnIndicator
       value: 
-      objectReference: {fileID: 763283152}
+      objectReference: {fileID: 0}
     - target: {fileID: 2676171637884503650, guid: 474a8c2ccbdb9d04e843b3dedaff8335, type: 3}
       propertyPath: PlayerTurnIndicator.Array.size
       value: 5
@@ -18600,7 +18592,7 @@ PrefabInstance:
     - target: {fileID: 2676171637884503650, guid: 474a8c2ccbdb9d04e843b3dedaff8335, type: 3}
       propertyPath: _playerTurnIndicator
       value: 
-      objectReference: {fileID: 1025966807}
+      objectReference: {fileID: 0}
     - target: {fileID: 2676171637884503650, guid: 474a8c2ccbdb9d04e843b3dedaff8335, type: 3}
       propertyPath: PlayerTurnIndicator.Array.size
       value: 5
@@ -21592,11 +21584,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: feae6b05798ed35409a72cc50766824a, type: 3}
---- !u!1 &1870192779 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3234325710794658139, guid: 857c719bf86a092438f7f647c9fdff60, type: 3}
-  m_PrefabInstance: {fileID: 2065186036}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1889841590 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7469784339273157517, guid: feae6b05798ed35409a72cc50766824a, type: 3}
@@ -22181,7 +22168,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1787405063557014432, guid: 857c719bf86a092438f7f647c9fdff60, type: 3}
       propertyPath: m_text
-      value: P2
+      value: Player 2
       objectReference: {fileID: 0}
     - target: {fileID: 2700815177440154725, guid: 857c719bf86a092438f7f647c9fdff60, type: 3}
       propertyPath: player
@@ -22199,6 +22186,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player 2 DP
       objectReference: {fileID: 0}
+    - target: {fileID: 6771020154683830892, guid: 857c719bf86a092438f7f647c9fdff60, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 98c4353ef857d0d479398490ce697b1b, type: 3}
     - target: {fileID: 7508362688195597153, guid: 857c719bf86a092438f7f647c9fdff60, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -23575,6 +23566,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1363854639}
     m_Modifications:
+    - target: {fileID: 1787405063557014432, guid: 857c719bf86a092438f7f647c9fdff60, type: 3}
+      propertyPath: m_text
+      value: Player 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2700815177440154725, guid: 857c719bf86a092438f7f647c9fdff60, type: 3}
       propertyPath: player
       value: 
@@ -23591,6 +23586,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player 1 DP
       objectReference: {fileID: 0}
+    - target: {fileID: 6771020154683830892, guid: 857c719bf86a092438f7f647c9fdff60, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 49f547a34ff707140b9f68a059dfadf0, type: 3}
     - target: {fileID: 7508362688195597153, guid: 857c719bf86a092438f7f647c9fdff60, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
