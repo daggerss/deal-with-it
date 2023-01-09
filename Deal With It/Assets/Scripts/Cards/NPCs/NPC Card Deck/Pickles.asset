@@ -16,6 +16,10 @@ MonoBehaviour:
   _cardDescription: Though they tend to procrastinate and bottle up emotions, they
     find it easier to look at the silver lining.
   <Illustration>k__BackingField: {fileID: 21300000, guid: b1bbbb12f3621fe48ba51b29ec093970, type: 3}
+  <JoyIllustration>k__BackingField: {fileID: 21300000, guid: 911b2ce96bccc664ab5b5c490ced5e0c, type: 3}
+  <SadnessIllustration>k__BackingField: {fileID: 21300000, guid: 441519f88fba74246ae24be7359c6712, type: 3}
+  <FearIllustration>k__BackingField: {fileID: 21300000, guid: d318fd820ae14af49be0960ec391a8eb, type: 3}
+  <AngerIllustration>k__BackingField: {fileID: 21300000, guid: 462b432242e86934cb8ddb0c2cc1041c, type: 3}
   _cardGoals: "Keep all emotions below 11 points after the first round\r.\n\nUse
     10 expression cards in total."
   _eventEffects: 

@@ -154,6 +154,7 @@ public class NPCDisplay : CardDisplay
         StartCoroutine(FadeOutEffects());
         StartCoroutine(ShowEnergySignal());
         StartCoroutine(HideEnergySignal());
+        StartCoroutine(ChangeExpression());
     }
 
     /* ----------------------------- Custom Methods ----------------------------- */
@@ -615,6 +616,49 @@ public class NPCDisplay : CardDisplay
 
             // Hide image
             EnergyBarGlow.enabled = false;
+        }
+    }
+
+    // Change NPC expressions
+    IEnumerator ChangeExpression()
+    {
+        while (true)
+        {
+            // Joy
+            if ((npc.JoyLvl > npc.SadnessLvl) &&
+                (npc.JoyLvl > npc.FearLvl) &&
+                (npc.JoyLvl > npc.AngerLvl))
+            {
+                illustrationImage.sprite = npc.JoyIllustration;
+            }
+            // Sadness
+            else if ((npc.SadnessLvl > npc.JoyLvl) &&
+                     (npc.SadnessLvl > npc.FearLvl) &&
+                     (npc.SadnessLvl > npc.AngerLvl))
+            {
+                illustrationImage.sprite = npc.SadnessIllustration;
+            }
+            // Fear
+            else if ((npc.FearLvl > npc.JoyLvl) &&
+                     (npc.FearLvl > npc.SadnessLvl) &&
+                     (npc.FearLvl > npc.AngerLvl))
+            {
+                illustrationImage.sprite = npc.FearIllustration;
+            }
+            // Anger
+            else if ((npc.AngerLvl > npc.JoyLvl) &&
+                     (npc.AngerLvl > npc.SadnessLvl) &&
+                     (npc.AngerLvl > npc.FearLvl))
+            {
+                illustrationImage.sprite = npc.SadnessIllustration;
+            }
+            // Balanced
+            else
+            {
+                illustrationImage.sprite = npc.Illustration;
+            }
+
+            yield return null;
         }
     }
 }

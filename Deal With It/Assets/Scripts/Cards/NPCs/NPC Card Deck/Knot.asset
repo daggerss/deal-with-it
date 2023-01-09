@@ -16,6 +16,10 @@ MonoBehaviour:
   _cardDescription: They're easy to anger and has high anxiety, but they're not afraid
     to express themself!
   <Illustration>k__BackingField: {fileID: 21300000, guid: 6b56c5af9d53c81408b733ddf327a3e9, type: 3}
+  <JoyIllustration>k__BackingField: {fileID: 21300000, guid: c887a76ae71572e47ac421caece25f33, type: 3}
+  <SadnessIllustration>k__BackingField: {fileID: 21300000, guid: efd9196887d686b4185197bf8a99a7eb, type: 3}
+  <FearIllustration>k__BackingField: {fileID: 21300000, guid: 6df2560251e93984ab6e8810b701950e, type: 3}
+  <AngerIllustration>k__BackingField: {fileID: 21300000, guid: 0d376745df403c146beb6c9b33eed4f3, type: 3}
   _cardGoals: 'Maintain less than 6 points of anger and fear for 2 rounds.
 
 

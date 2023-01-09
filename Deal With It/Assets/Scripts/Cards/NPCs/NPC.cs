@@ -5,6 +5,19 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NPC Card", menuName = "Deal With It/Cards/NPC Card", order = 0)]
 public class NPC : Card
 {
+    /* ------------------------ Illustration Expressions ------------------------ */
+    [field: SerializeField]
+    public Sprite JoyIllustration {get; private set;}
+
+    [field: SerializeField]
+    public Sprite SadnessIllustration {get; private set;}
+
+    [field: SerializeField]
+    public Sprite FearIllustration {get; private set;}
+
+    [field: SerializeField]
+    public Sprite AngerIllustration {get; private set;}
+
     /* ---------------------- Card Goals aka Win Conditions --------------------- */
     [SerializeField]
     [TextArea(1,3)]
