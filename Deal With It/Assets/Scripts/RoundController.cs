@@ -189,11 +189,11 @@ public class RoundController : MonoBehaviour
             // Tip message
             if (PlayedActionCards.LoadLevelType == LevelType.Joy)
             {
-                _gameOverTip = "Tip: Joy is wonderful, but don't lose sight of other experiences in life.";
+                _gameOverTip = "Tip: Joy is wonderful, but don't let it cloud your judgment.";
             }
             else if (PlayedActionCards.LoadLevelType == LevelType.Sadness)
             {
-                _gameOverTip = "Tip: Sadness comes from love, but try not to dwell on it either.";
+                _gameOverTip = "Tip: Sadness comes from love, but try not to dwell on it too long.";
             }
             else if (PlayedActionCards.LoadLevelType == LevelType.Fear)
             {
